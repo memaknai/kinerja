@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<style>
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        color: #2d2d2d;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 40px;
+    }
+    .report-wrapper {
+        max-width: 1000px;
+        margin: auto;
+        background: #fff;
+        padding: 60px;
+        border-top: 15px solid #D04A02; /* PwC Orange */
+        box-shadow: 0 5px 35px rgba(0,0,0,0.1);
+    }
+    header {
+        border-bottom: 2px solid #eeeeee;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+    }
+    .brand {
+        color: #D04A02;
+        font-weight: bold;
+        font-size: 32px;
+        margin-bottom: 10px;
+        letter-spacing: -1px;
+    }
+    h1 {
+        font-size: 26px;
+        margin: 0;
+        color: #464646;
+        text-transform: uppercase;
+    }
+    .meta-data {
+        font-size: 14px;
+        color: #7a7a7a;
+        margin-top: 5px;
+    }
+    h2 {
+        font-size: 20px;
+        color: #D04A02;
+        border-bottom: 1px solid #D04A02;
+        padding-bottom: 8px;
+        margin-top: 45px;
+    }
+    .executive-summary {
+        background-color: #f9f9f9;
+        padding: 30px;
+        border-right: 6px solid #464646;
+        margin: 30px 0;
+        font-style: italic;
+        font-size: 16px;
+    }
+    .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin: 30px 0;
+    }
+    .stat-card {
+        background: #fff8f0;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        border-radius: 4px;
+    }
+    .stat-label {
+        display: block;
+        font-size: 12px;
+        color: #888;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .stat-value {
+        font-size: 22px;
+        font-weight: bold;
+        color: #2d2d2d;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+    }
+    th {
+        background-color: #464646;
+        color: white;
+        text-align: left;
+        padding: 12px;
+        font-size: 13px;
+    }
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #eeeeee;
+        font-size: 14px;
+    }
+    .highlight-box {
+        background-color: #fff;
+        border: 1px solid #D04A02;
+        padding: 20px;
+        margin: 20px 0;
+    }
+    footer {
+        margin-top: 60px;
+        font-size: 11px;
+        color: #999;
+        border-top: 1px solid #eee;
+        padding-top: 30px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="report-wrapper">
+    <header>
+        <div class="brand">Regional Outlook</div>
+        <h1>Analisis Perencanaan Tenaga Listrik 2025-2034</h1>
+        <p class="meta-data">Wilayah Operasional: Jawa Tengah & DI Yogyakarta</p>
+    </header>
+
+    <div class="executive-summary">
+        "Dalam satu dekade ke depan, wilayah Jawa Tengah dan Yogyakarta akan menjadi pilar utama dalam stabilitas sistem Jawa-Bali, dengan fokus pada penguatan interkoneksi backbone 500 kV, pengembangan kapasitas pembangkit berbasis energi bersih (EBT), dan implementasi Smart Grid untuk mendukung pertumbuhan beban industri dan residensial."
+    </div>
+
+    <section>
+        <h2>1. Kondisi Eksisting & Beban Puncak (2024)</h2>
+        <p>Wilayah Jawa Tengah dan DIY memiliki karakteristik beban yang berbeda namun saling terinterkoneksi secara erat melalui sistem transmisi utama.</p>
+        <div class="stat-grid">
+            <div class="stat-card">
+                <span class="stat-label">Beban Puncak Jawa Tengah (Okt 2024)</span>
+                <span class="stat-value">~4.296 MW [1]</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Beban Puncak DIY (Okt 2024)</span>
+                <span class="stat-value">~622 MW [2]</span>
+            </div>
+        </div>
+        <p>Pasokan listrik Jawa Tengah didukung oleh pembangkit skala besar seperti PLTU Tanjung Jati B, PLTU Adipala, dan PLTU Jawa Tengah (PPP) [1, 3]. Sementara itu, pasokan listrik di Provinsi DIY bersumber dari subsistem Pedan dan Kesugihan yang berlokasi di Jawa Tengah [2].</p>
+    </section>
+
+    <section>
+        <h2>2. Proyeksi Pertumbuhan Penjualan & Pelanggan</h2>
+        <p>Permintaan listrik di kedua provinsi diproyeksikan tumbuh stabil seiring dengan perkembangan kawasan industri dan residensial.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Provinsi</th>
+                    <th>Rata-rata Pertumbuhan Penjualan (10 Thn)</th>
+                    <th>Target Beban Puncak 2034</th>
+                    <th>Tambahan Pelanggan Baru</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jawa Tengah</td>
+                    <td style="font-weight: bold; color: #D04A02;">5,7% [4]</td>
+                    <td>8.265 MW [4]</td>
+                    <td>~1,78 Juta [5]</td>
+                </tr>
+                <tr>
+                    <td>DI Yogyakarta</td>
+                    <td style="font-weight: bold; color: #D04A02;">7,2% [6]</td>
+                    <td>1.073 MW [6]</td>
+                    <td>~0,21 Juta [7]</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>3. Inisiatif Strategis & Transisi Energi (EBT)</h2>
+        <p>Pengembangan pembangkit ke depan difokuskan pada pemanfaatan potensi EBT setempat, terutama Panas Bumi (Geotermal), Air (Hidro), Surya, dan Bayu (Angin).</p>
+        
+        <div class="highlight-box">
+            <strong>Sorotan Proyek Strategis:</strong>
+            <ul>
+                <li><strong>Panas Bumi (PLTP):</strong> Pengembangan PLTP Dieng (FTP2), PLTP Baturaden (FTP2), dan PLTP Ungaran (FTP2) di Jawa Tengah [8, 9].</li>
+                <li><strong>Energi Bayu (PLTB):</strong> DIY diproyeksikan menjadi sentra energi angin dengan rencana pembangunan kuota PLTB tersebar hingga 450 MW sampai tahun 2034 [10].</li>
+                <li><strong>Pumped Storage:</strong> Pembangunan PS Matenggeng (943 MW) di Jawa Tengah untuk memperbaiki efisiensi beban puncak sistem [11].</li>
+                <li><strong>Pengelolaan Sampah (PLTSa):</strong> Pengembangan PLTSa di Semarang dan Surakarta sebagai solusi kota ramah lingkungan [12].</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>4. Perkuatan Jaringan & Smart Grid</h2>
+        <p>Untuk menjaga keandalan, PLN merencanakan pembangunan transmisi dan digitalisasi infrastruktur jaringan secara menyeluruh.</p>
+        <ul>
+            <li><strong>Backbone Utama:</strong> Pembangunan SUTET 500 kV Ungaran–Pedan #2 untuk memperkuat stabilitas antara jalur utara dan selatan Jawa [13].</li>
+            <li><strong>Pasokan Regional:</strong> Pembangunan GITET Purwodadi untuk meningkatkan pasokan listrik di wilayah Jawa Tengah bagian timur [13].</li>
+            <li><strong>Smart Grid:</strong> Implementasi teknologi <i>Advanced Metering Infrastructure</i> (AMI) telah dimulai di Jawa Tengah [14]. Pengembangan selanjutnya mencakup sistem <i>self-healing</i> dan monitoring energi terbarukan secara <i>real-time</i> [14, 15].</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>5. Dampak Sosial & Elektrifikasi</h2>
+        <p>Capaian Rasio Desa Berlistrik (RDB) untuk wilayah Jawa Tengah dan DIY saat ini telah mencapai <strong>100%</strong> [16, 17]. Fokus saat ini beralih pada pencapaian Rasio Elektrifikasi (RE) PLN 100% yang ditargetkan selesai sepenuhnya pada tahun **2027** [18, 19].</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 PT PLN (Persero). Laporan Ringkasan Wilayah - Strategi RUPTL 2025-2034.</p>
+    </footer>
+</div>
+
+</body>
+</html>
