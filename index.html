@@ -81,15 +81,16 @@
       </div>
     </div>
 
-    <!-- Pilih Wilayah (Kanan) -->
-    <div class="archive-group">
-      <div class="archive-label">
-        <i class="fa-solid fa-location-dot"></i> Wilayah:
-      </div>
-      <div class="archive-list">
-        <a href="index.html" class="archive-btn active">Jawa Tengah</a>
-        <a href="sukoharjo/index.html" class="archive-btn">Sukoharjo</a>
-      </div>
+ <!-- Pilih Wilayah (Kanan) - Menu Dropdown -->
+<div class="archive-group">
+  <div class="archive-label">
+    <i class="fa-solid fa-location-dot"></i> Wilayah:
+  </div>
+  <select onchange="if (this.value) location.href = this.value;" style="padding: 6px 14px; border-radius: 20px; border: 1px solid #006d77; background: #004e64; color: white; font-size: 13px; font-weight: 600; cursor: pointer; outline: none;">
+    <option value="index.html" selected>Jawa Tengah</option>
+    <option value="sukoharjo/index.html">Sukoharjo</option>
+  </select>
+</div>
     </div>
   </div>
 
