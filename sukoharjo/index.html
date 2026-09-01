@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Kinerja Keuangan - Sukoharjo</title>
+  <title>TeraSukoharjo - Kinerja Keuangan</title>
   <!-- CDN Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     *{margin:0; padding:0; box-sizing:border-box; }
     
-    /* BACKGROUND HIJAU SOFT & PROFESIONAL */
+    /* BACKGROUND KREM MUDA ELEGAN */
     body {
       font-family: 'Segoe UI', sans-serif; 
-      background: radial-gradient(circle at top right, rgba(46, 125, 50, 0.12), transparent 35%), #f4f7f4; 
-      color: #1f2937; 
+      background: radial-gradient(circle at top right, rgba(141, 110, 99, 0.12), transparent 35%), #faf6f0; 
+      color: #2c221e; 
     }
 
-    /* HEADER GRADASI HIJAU DAUN */
+    /* HEADER GRADASI COKELAT ELEGAN */
     .header {
-      background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%); 
-      color: white; 
+      background: linear-gradient(135deg, #3e2723 0%, #4e342e 50%, #6d4c41 100%); 
+      color: #fdfbf7; 
       text-align: center; 
       padding: 50px 20px 30px 20px; 
       position: relative; 
@@ -33,36 +33,36 @@
       left: -100%; 
       width: 50%; 
       height: 100%; 
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent); 
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent); 
       animation: shine 5s infinite; 
     }
-    .header h1 { font-size: 40px; margin-bottom: 8px; position: relative; z-index: 2; }
+    .header h1 { font-size: 42px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 8px; position: relative; z-index: 2; }
     .header p { font-size: 18px; position: relative; z-index: 2; opacity: 0.9; }
 
     /* NAVIGASI ARSIP & WILAYAH */
     .archive-container { max-width: 1300px; margin: 30px auto 10px auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .archive-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .archive-label { font-size: 14px; font-weight: 600; color: #374151; display: flex; align-items: center; gap: 6px; }
+    .archive-label { font-size: 14px; font-weight: 600; color: #4e342e; display: flex; align-items: center; gap: 6px; }
     .archive-list { display: flex; gap: 8px; flex-wrap: wrap; }
-    .archive-btn { text-decoration: none; background: #e5e7eb; color: #374151; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; transition: all 0.3s ease; }
-    .archive-btn:hover { background: #40916c; color: white; }
+    .archive-btn { text-decoration: none; background: #eefeeb; background: #efebe9; color: #4e342e; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; transition: all 0.3s ease; }
+    .archive-btn:hover { background: #8d6e63; color: white; }
     
-    /* Tombol Aktif Hijau Tua */
-    .archive-btn.active { background: #2d6a4f; color: white; font-weight: 600; box-shadow: 0 4px 10px rgba(45, 106, 79, 0.25); }
+    /* Tombol Aktif Cokelat */
+    .archive-btn.active { background: #5d4037; color: white; font-weight: 600; box-shadow: 0 4px 10px rgba(93, 64, 55, 0.25); }
 
     /* CONTAINER & GRID */
     .container { max-width: 1300px; margin: 20px auto 40px auto; padding: 0 20px; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
 
-    /* CARD DENGAN BORDER HIJAU DAUN */
+    /* CARD AK SEN COKELAT KAYU & KREM */
     .card { 
-      background: white; 
+      background: #ffffff; 
       border-radius: 20px; 
       padding: 28px; 
       text-decoration: none; 
       color: inherit; 
-      border-top: 5px solid #52b788; 
-      box-shadow: 0 10px 25px rgba(0,0,0,.06); 
+      border-top: 5px solid #8d6e63; 
+      box-shadow: 0 10px 25px rgba(62, 39, 35, 0.05); 
       transition: transform .35s ease, box-shadow .35s ease; 
       opacity: 0; 
       animation: fadeUp .6s ease forwards; 
@@ -75,35 +75,31 @@
     .card:nth-child(6){animation-delay:.6s;}
     .card:nth-child(7){animation-delay:.7s;}
     .card:nth-child(8){animation-delay:.8s;}
-    .card:nth-child(9){animation-delay:.9s;}
-    .card:nth-child(10){animation-delay:1.0s;}
-    .card:nth-child(11){animation-delay:1.1s;}
-    .card:nth-child(12){animation-delay:1.2s;}
     
     .card:hover { 
       transform: translateY(-6px) scale(1.02); 
-      box-shadow: 0 20px 35px rgba(45, 106, 79, 0.18); 
+      box-shadow: 0 20px 35px rgba(78, 52, 46, 0.15); 
     }
 
-    /* IKON TEMA HIJAU MUDA */
+    /* IKON KREM MUDA LEMBUT */
     .icon { 
       width: 70px; 
       height: 70px; 
       border-radius: 18px; 
-      background: #e8f5e9; 
+      background: #f5ebe6; 
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      color: #2d6a4f; 
+      color: #5d4037; 
       font-size: 30px; 
       margin-bottom: 18px; 
       transition: all .3s ease; 
     }
-    .card:hover .icon { background: #2d6a4f; color: white; transform: scale(1.1); }
+    .card:hover .icon { background: #5d4037; color: #faf6f0; transform: scale(1.1); }
     
-    .title { font-size: 22px; font-weight: 700; color: #1b4332; margin-bottom: 8px; }
-    .desc { color: #6b7280; line-height: 1.6; font-size: 15px; }
-    .footer { text-align: center; margin: 45px 0 25px 0; color: #6b7280; font-size: 13px; }
+    .title { font-size: 22px; font-weight: 700; color: #3e2723; margin-bottom: 8px; }
+    .desc { color: #795548; line-height: 1.6; font-size: 15px; }
+    .footer { text-align: center; margin: 45px 0 25px 0; color: #8d6e63; font-size: 13px; }
 
     /* ANIMATION */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
@@ -111,10 +107,10 @@
     @keyframes shine { from { left: -100%; } to { left: 200%; } }
 
     /* RESPONSIVE DESIGN */
-    @media (max-width: 992px){ .header h1{ font-size:32px; } .header p{ font-size:16px; } }
+    @media (max-width: 992px){ .header h1{ font-size:34px; } .header p{ font-size:16px; } }
     @media (max-width: 768px){ 
       .header{ padding:40px 20px 25px 20px; } 
-      .header h1{ font-size:26px; } 
+      .header h1{ font-size:28px; } 
       .header p{ font-size:14px; } 
       .archive-container{ margin-top:20px; justify-content:center; } 
       .grid{ grid-template-columns:1fr; } 
@@ -125,10 +121,10 @@
   </style>
 </head>
 <body>
-  <!-- HEADER -->
+  <!-- HEADER TERASUKOHARJO -->
   <div class="header">
-    <h1>Dashboard Kinerja Keuangan</h1>
-    <p>UP3 Sukoharjo • Periode Terkini: 30 Juni 2026</p>
+    <h1>TeraSukoharjo</h1>
+    <p>Monitoring & Kinerja Keuangan • Periode Terkini: 30 Juni 2026</p>
   </div>
 
   <!-- STRUKTUR NAVIGASI ARSIP & WILAYAH -->
@@ -145,15 +141,15 @@
       </div>
     </div>
 
-    <!-- Pilih Wilayah (Kanan) -->
+    <!-- Pilih Wilayah (Kanan Dropdown) -->
     <div class="archive-group">
       <div class="archive-label">
         <i class="fa-solid fa-location-dot"></i> Wilayah:
       </div>
-      <div class="archive-list">
-        <a href="../index.html" class="archive-btn">Jawa Tengah</a>
-        <a href="index.html" class="archive-btn active">Sukoharjo</a>
-      </div>
+      <select onchange="if (this.value) location.href = this.value;" style="padding: 6px 14px; border-radius: 20px; border: 1px solid #8d6e63; background: #4e342e; color: #faf6f0; font-size: 13px; font-weight: 600; cursor: pointer; outline: none;">
+        <option value="index.html" selected>Sukoharjo</option>
+        <option value="../index.html">Jawa Tengah</option>
+      </select>
     </div>
   </div>
 
@@ -211,7 +207,7 @@
     </div>
 
     <div class="footer">
-      <p>© 2026 JW | UP3 Sukoharjo</p>
+      <p>© 2026 TeraSukoharjo | UP3 Sukoharjo</p>
     </div>
   </div>
 </body>
