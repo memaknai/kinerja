@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UID Jawa Tengah — Monitoring Anggaran Investasi Juni 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f7f5;--bg-card:#ffffff;--bg-sec:#f2f1ee;--bg-ter:#e8e7e3;
+  --text:#1a1917;--text2:#5c5b57;--text3:#8a8984;
+  --border:rgba(0,0,0,0.10);--border2:rgba(0,0,0,0.18);
+  --pln:#0A3D7C;--pln2:#0d4f9e;--gold:#F5C400;
+  --green:#3B6D11;--green-bg:#EAF3DE;
+  --amber:#854F0B;--amber-bg:#FAEEDA;
+  --red:#A32D2D;--red-bg:#FCEBEB;
+  --blue:#185FA5;--blue-bg:#E6F1FB;
+  --r:8px;--rl:12px;
+  --font:'Inter',system-ui,sans-serif;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#141413;--bg-card:#1e1e1c;--bg-sec:#262624;--bg-ter:#2e2e2c;
+    --text:#f0efe8;--text2:#a8a7a3;--text3:#6a6966;
+    --border:rgba(255,255,255,0.10);--border2:rgba(255,255,255,0.18);
+    --green-bg:#1a2e08;--amber-bg:#2e1e04;--red-bg:#2e0f0f;--blue-bg:#0a1f38;
+  }
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px}
+
+/* HEADER */
+.header{background:var(--pln);border-radius:var(--rl);padding:20px 28px;margin-bottom:20px;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.header-eyebrow{font-size:11px;font-weight:500;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.header-title{color:#fff;font-size:20px;font-weight:700;letter-spacing:-0.3px}
+.header-sub{color:rgba(255,255,255,0.65);font-size:13px;margin-top:3px}
+.header-period{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);color:var(--gold);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;margin-top:12px}
+
+/* TABS */
+.tabs{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap;background:var(--bg-sec);padding:4px;border-radius:var(--r);border:0.5px solid var(--border)}
+.tab{padding:7px 16px;font-size:12px;font-family:var(--font);font-weight:500;border:none;border-radius:6px;cursor:pointer;background:transparent;color:var(--text2);transition:all .15s;white-space:nowrap}
+.tab.active{background:var(--pln);color:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.2)}
+.tab:hover:not(.active){background:var(--bg-card);color:var(--text)}
+
+/* SECTIONS */
+.section{display:none}.section.active{display:block}
+.sec-hdr{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+
+/* KPI GRID */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-bottom:18px}
+.kpi{background:var(--bg-sec);border-radius:var(--r);padding:13px 15px;border:0.5px solid var(--border)}
+.kpi-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:5px}
+.kpi-value{font-size:21px;font-weight:700;color:var(--text);line-height:1;letter-spacing:-0.5px}
+.kpi-value.sm{font-size:15px}
+.kpi-sub{font-size:11px;color:var(--text2);margin-top:4px}
+.badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600;margin-top:5px}
+.bg{background:var(--green-bg);color:var(--green)}
+.ba{background:var(--amber-bg);color:var(--amber)}
+.br{background:var(--red-bg);color:var(--red)}
+.bb{background:var(--blue-bg);color:var(--blue)}
+
+/* CARDS */
+.card{background:var(--bg-card);border:0.5px solid var(--border);border-radius:var(--rl);padding:16px 20px;margin-bottom:14px}
+.card-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.card-title .dot{width:8px;height:8px;border-radius:50%;background:var(--pln);flex-shrink:0}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:650px){.two-col{grid-template-columns:1fr}}
+
+/* PROGRESS */
+.prog-row{margin-bottom:10px}
+.prog-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text2);margin-bottom:3px}
+.prog-label strong{font-weight:600;color:var(--text)}
+.prog-bar{height:7px;background:var(--bg-ter);border-radius:4px;overflow:hidden}
+.prog-fill{height:100%;border-radius:4px;transition:width .6s ease}
+
+/* INSIGHT BOXES */
+.ins{border-left:3px solid var(--pln);padding:10px 14px;background:var(--bg-sec);border-radius:0 var(--r) var(--r) 0;margin-bottom:8px}
+.ins.warn{border-left-color:#EF9F27}
+.ins.danger{border-left-color:#E24B4A}
+.ins.ok{border-left-color:#639922}
+.ins-title{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px}
+.ins-text{font-size:11px;color:var(--text2);line-height:1.6}
+
+/* TABLE */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:11px;font-family:var(--font)}
+th{font-size:10px;font-weight:600;color:var(--text2);text-align:left;padding:6px 8px;border-bottom:0.5px solid var(--border);background:var(--bg-sec);white-space:nowrap}
+td{padding:6px 8px;border-bottom:0.5px solid var(--border);color:var(--text);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+td.r{text-align:right;font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+tr.tot td{font-weight:700;background:var(--blue-bg);color:var(--blue)}
+tr:hover:not(.tot) td{background:var(--bg-sec)}
+
+/* RECS */
+.rec{display:flex;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--border)}
+.rec:last-child{border-bottom:none}
+.rec-n{width:24px;height:24px;border-radius:50%;background:var(--pln);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.rec-title{font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px}
+.rec-text{font-size:11px;color:var(--text2);line-height:1.55}
+
+/* DIVIDER */
+.divider{height:0.5px;background:var(--border);margin:12px 0}
+.sub-hdr{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin:10px 0 8px}
+
+/* CHART WRAPPER */
+.chart-wrap{position:relative;width:100%}
+
+/* FOOTER */
+.footer{margin-top:24px;padding:14px 0;border-top:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--text3)}
+
+/* STATUS DOT */
+.sdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">UID Jawa Tengah</div>
+  <div class="header-title">Monitoring Anggaran Investasi</div>
+  <div class="header-sub"></div>
+  <div class="header-period">&#128197; Periode 30 Juni 2026</div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" onclick="showTab('overview')">&#9632; Overview</button>
+  <button class="tab" onclick="showTab('skai')">SKAI</button>
+  <button class="tab" onclick="showTab('skki')">SKKI</button>
+  <button class="tab" onclick="showTab('aki')">AKI</button>
+  <button class="tab" onclick="showTab('spk')">SPK Terkontrak</button>
+  <button class="tab" onclick="showTab('realisasi')">Realisasi Bayar</button>
+  <button class="tab" onclick="showTab('insight')">&#128161; Analisa &amp; Rekomendasi</button>
+</div>
+
+<!-- ============ OVERVIEW ============ -->
+<div class="section active" id="tab-overview">
+  <div class="sec-hdr">Ringkasan Eksekutif — Per 30 Juni 2026</div>
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">SKAI Total</div>
+      <div class="kpi-value sm">Rp 2.448,9 M</div>
+      <div class="kpi-sub">Baseline anggaran investasi</div>
+      <span class="badge bb">58 program</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">AKI Kumulatif</div>
+      <div class="kpi-value sm">Rp 683,7 M</div>
+      <div class="kpi-sub">27,9% dari SKAI</div>
+      <span class="badge ba">Di bawah target</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">SPK Terkontrak</div>
+      <div class="kpi-value sm">Rp 1.550,7 M</div>
+      <div class="kpi-sub">63,3% dari SKAI</div>
+      <span class="badge bb">Meningkat vs Mei</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Realisasi Bayar</div>
+      <div class="kpi-value sm">Rp 627,4 M</div>
+      <div class="kpi-sub">Per 30 Juni 2026</div>
+      <span class="badge br">25,6% SKAI</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Real. vs AKI</div>
+      <div class="kpi-value">91,8%</div>
+      <div class="kpi-sub">Penyerapan AKI</div>
+      <span class="badge bg">Di atas target</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Gap Realisasi</div>
+      <div class="kpi-value sm">Rp 1.821,5 M</div>
+      <div class="kpi-sub">Sisa SKAI belum terealisasi</div>
+      <span class="badge br">74,4% SKAI</span>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title"><span class="dot"></span>Progres Anggaran — Luncuran</div>
+      <div class="prog-row"><div class="prog-label"><span>SKAI</span><strong>Rp 496,6 M</strong></div><div class="prog-bar"><div class="prog-fill" style="width:100%;background:#0A3D7C"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>AKI</span><strong>87,4%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:87.4%;background:#378ADD"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>SPK</span><strong>99,97%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:99.9%;background:#1D9E75"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>Realisasi</span><strong>83,99%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:84%;background:#639922"></div></div></div>
+      <div class="divider"></div>
+      <div class="card-title" style="margin-bottom:10px"><span class="dot" style="background:#E24B4A"></span>Progres Anggaran — Murni 2026</div>
+      <div class="prog-row"><div class="prog-label"><span>SKAI</span><strong>Rp 1.952,2 M</strong></div><div class="prog-bar"><div class="prog-fill" style="width:100%;background:#0A3D7C"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>AKI</span><strong>12,8%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:12.8%;background:#378ADD"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>SPK</span><strong>54,0%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:54%;background:#1D9E75"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>Realisasi</span><strong>10,77%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:10.77%;background:#E24B4A"></div></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="dot"></span>Komposisi SKAI per Kategori</div>
+      <div class="chart-wrap" style="height:200px"><canvas id="donutChart"></canvas></div>
+      <div id="donut-legend" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;font-size:11px;color:var(--text2)"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Alur Anggaran Investasi — SKAI ke Realisasi (Rp Miliar)</div>
+    <div class="chart-wrap" style="height:240px"><canvas id="waterfallChart"></canvas></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Perbandingan Kinerja: Luncuran vs Murni 2026</div>
+    <div class="chart-wrap" style="height:240px"><canvas id="compareChart"></canvas></div>
+  </div>
+</div>
+
+<!-- ============ SKAI ============ -->
+<div class="section" id="tab-skai">
+  <div class="sec-hdr">SKAI — Standar Kebutuhan Anggaran Investasi</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">Total SKAI</div><div class="kpi-value sm">Rp 2.448,9 M</div><div class="kpi-sub">Keseluruhan anggaran investasi</div></div>
+    <div class="kpi"><div class="kpi-label">Program Luncuran</div><div class="kpi-value sm">Rp 496,6 M</div><div class="kpi-sub">20,3% dari total SKAI</div><span class="badge bg">41 program</span></div>
+    <div class="kpi"><div class="kpi-label">Program Murni 2026</div><div class="kpi-value sm">Rp 1.952,2 M</div><div class="kpi-sub">79,7% dari total SKAI</div><span class="badge bb">19 program</span></div>
+    <div class="kpi"><div class="kpi-label">Deviasi SKAI vs SKKI</div><div class="kpi-value sm">Rp 49,5 M</div><div class="kpi-sub">SKAI melebihi SKKI</div><span class="badge ba">Stasiun Pengisisan LIstrik</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>SKAI per Kategori Program</div>
+    <div class="chart-wrap" style="height:280px"><canvas id="skaiChart"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Detail Distribusi SKAI per Program Utama</div>
+    <div class="tw"><table>
+      <thead><tr><th>Kode</th><th>Uraian</th><th>Kategori</th><th>Tipe</th><th class="r">SKAI (Rp juta)</th><th class="r">% Total</th></tr></thead>
+      <tbody>
+        <tr><td>2026.DJTY.1.002</td><td>Penyambungan TR 2026</td><td><span class="badge bb">SAR</span></td><td><span class="badge ba">MURNI</span></td><td class="r">1.089.770</td><td class="r">44,5%</td></tr>
+        <tr><td>2026.DJTY.4.007</td><td>Event Tematik KEK Kendal</td><td><span class="badge bb">DIS</span></td><td><span class="badge ba">MURNI</span></td><td class="r">149.549</td><td class="r">6,1%</td></tr>
+        <tr><td>2025.DJTY.1.001</td><td>Penyambungan TM 2025</td><td><span class="badge bb">SAR</span></td><td><span class="badge bg">LUN</span></td><td class="r">208.289</td><td class="r">8,5%</td></tr>
+        <tr><td>2026.DJTY.1.001</td><td>Penyambungan TM 2026</td><td><span class="badge bb">SAR</span></td><td><span class="badge ba">MURNI</span></td><td class="r">206.247</td><td class="r">8,4%</td></tr>
+        <tr><td>2025.DJTY.1.002</td><td>Penyambungan TR 2025</td><td><span class="badge bb">SAR</span></td><td><span class="badge bg">LUN</span></td><td class="r">133.683</td><td class="r">5,5%</td></tr>
+        <tr><td>2026.DJTY.1.003</td><td>Stasiun Pengisian Listrik 2026</td><td><span class="badge bb">SAR</span></td><td><span class="badge ba">MURNI</span></td><td class="r">49.463</td><td class="r">2,0%</td></tr>
+        <tr><td>2026.DJTY.5.003</td><td>Manajemen Trafo 2026</td><td><span class="badge bg">LOS</span></td><td><span class="badge ba">MURNI</span></td><td class="r">50.054</td><td class="r">2,0%</td></tr>
+        <tr><td>2026.DJTY.4.002</td><td>Otomatisasi JTM 2026</td><td><span class="badge bb">DIS</span></td><td><span class="badge ba">MURNI</span></td><td class="r">50.239</td><td class="r">2,1%</td></tr>
+        <tr><td>—</td><td>Lainnya (50 program)</td><td>—</td><td>—</td><td class="r">511.506</td><td class="r">20,9%</td></tr>
+        <tr class="tot"><td colspan="4">TOTAL SKAI</td><td class="r">2.448.856</td><td class="r">100%</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ SKKI ============ -->
+<div class="section" id="tab-skki">
+  <div class="sec-hdr">SKKI — Standar Kebutuhan Kegiatan Investasi</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">Total SKKI</div><div class="kpi-value sm">Rp 2.399,4 M</div><div class="kpi-sub">Berbeda dengan SKAI</div></div>
+    <div class="kpi"><div class="kpi-label">Total SKAI</div><div class="kpi-value sm">Rp 2.448,9 M</div><div class="kpi-sub">Referensi</div></div>
+    <div class="kpi"><div class="kpi-label">Selisih SKAI vs SKKI</div><div class="kpi-value sm">Rp 49,5 M</div><div class="kpi-sub">SKAI lebih tinggi</div><span class="badge ba">Perlu klarifikasi</span></div>
+    <div class="kpi"><div class="kpi-label">SPL 2026 (Tanpa SKKI)</div><div class="kpi-value sm">Rp 49,5 M</div><div class="kpi-sub">SKAI=49,5M, SKKI=0</div><span class="badge br">Belum terdaftar</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Analisis Deviasi SKKI vs SKAI</div>
+    <div class="ins warn">
+      <div class="ins-title">&#9888; Deviasi SKKI vs SKAI Teridentifikasi — Rp 49,5 M</div>
+      <div class="ins-text">Program Stasiun Pengisian Listrik (SPL) 2026 (kode: 2026.DJTY.1.003) memiliki SKAI Rp 49,46 M namun SKKI = 0 (tidak terisi). Ini merupakan satu-satunya program dengan deviasi SKKI vs SKAI. Berbeda dengan kondisi Mei 2026 di mana semua SKAI = SKKI.</div>
+    </div>
+    <div class="ins">
+      <div class="ins-title">Implikasi dan Tindak Lanjut</div>
+      <div class="ins-text">Program SPL 2026 belum memiliki AKI, SPK, maupun realisasi bayar. Selisih SKKI vs SKAI perlu diklarifikasi: apakah program ini masih aktif, ditunda, atau perlu revisi SKAI. Tanpa SKKI yang valid, alokasi AKI tidak dapat diproses untuk program ini.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Rekonsiliasi SKKI vs SKAI per Kategori</div>
+    <div class="tw"><table>
+      <thead><tr><th>Kategori</th><th class="r">SKAI (Rp juta)</th><th class="r">SKKI (Rp juta)</th><th class="r">Selisih</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>SAR (Penyambungan)</td><td class="r">1.791.822</td><td class="r">1.742.359</td><td class="r" style="color:var(--amber)">49.463</td><td><span class="badge ba">Deviasi SPL 2026</span></td></tr>
+        <tr><td>DIS (Distribusi)</td><td class="r">343.060</td><td class="r">343.060</td><td class="r">0</td><td><span class="badge bg">Sesuai</span></td></tr>
+        <tr><td>LOS (Loss Reduction)</td><td class="r">203.255</td><td class="r">203.255</td><td class="r">0</td><td><span class="badge bg">Sesuai</span></td></tr>
+        <tr><td>EVD (Evakuasi Daya)</td><td class="r">57.465</td><td class="r">57.465</td><td class="r">0</td><td><span class="badge bg">Sesuai</span></td></tr>
+        <tr><td>SPF (Sarana Penunjang)</td><td class="r">15.337</td><td class="r">15.337</td><td class="r">0</td><td><span class="badge bg">Sesuai</span></td></tr>
+        <tr><td>SRN / K3L / SRN_DIS</td><td class="r">37.917</td><td class="r">37.917</td><td class="r">0</td><td><span class="badge bg">Sesuai</span></td></tr>
+        <tr class="tot"><td>TOTAL</td><td class="r">2.448.856</td><td class="r">2.399.394</td><td class="r">49.463</td><td><span class="badge ba">1 deviasi</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ AKI ============ -->
+<div class="section" id="tab-aki">
+  <div class="sec-hdr">AKI — Anggaran Kumulatif Investasi</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">Total AKI</div><div class="kpi-value sm">Rp 683,7 M</div><div class="kpi-sub">Kumulatif s.d. 30 Juni</div></div>
+    <div class="kpi"><div class="kpi-label">AKI / SKAI</div><div class="kpi-value">27,9%</div><div class="kpi-sub">6 bulan berjalan</div><span class="badge br">Target 50%</span></div>
+    <div class="kpi"><div class="kpi-label">AKI Luncuran</div><div class="kpi-value sm">Rp 434,1 M</div><div class="kpi-sub">87,4% SKAI luncuran</div><span class="badge bg">Baik</span></div>
+    <div class="kpi"><div class="kpi-label">AKI Murni 2026</div><div class="kpi-value sm">Rp 249,5 M</div><div class="kpi-sub">12,8% SKAI murni</div><span class="badge br">Kritis</span></div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title"><span class="dot"></span>AKI vs SKAI per Kategori (Rp M)</div>
+      <div class="chart-wrap" style="height:260px"><canvas id="akiChart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="dot"></span>Progres AKI — Program Kunci</div>
+      <div class="prog-row"><div class="prog-label"><span>Penyambungan TR 2025</span><strong>96,8%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:96.8%;background:#0A3D7C"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>Penyambungan TM 2025</span><strong>92,2%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:92.2%;background:#0A3D7C"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>SPLU 2025</span><strong>92,7%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:92.7%;background:#1D9E75"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>Batang KIT 2025</span><strong>99,99%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:99.9%;background:#1D9E75"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>Peremajaan kWh 2026</span><strong>33,9%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:33.9%;background:#EF9F27"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>Penyambungan TR 2026</span><strong>18,4%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:18.4%;background:#E24B4A"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>Penyambungan TM 2026</span><strong>8,7%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:8.7%;background:#E24B4A"></div></div></div>
+      <div class="prog-row"><div class="prog-label"><span>Evakuasi Daya GI 2026</span><strong>0,1%</strong></div><div class="prog-bar"><div class="prog-fill" style="width:0.1%;background:#E24B4A"></div></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#E24B4A"></span>Program Murni 2026 dengan AKI = 0</div>
+    <div class="tw"><table>
+      <thead><tr><th>Kode</th><th>Uraian</th><th>Kategori</th><th class="r">SKAI (Rp juta)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>2026.DJTY.1.003</td><td>Stasiun Pengisian Listrik 2026</td><td><span class="badge bb">SAR</span></td><td class="r">49.463</td><td><span class="badge br">AKI=0, SPK=0</span></td></tr>
+        <tr><td>2026.DJTY.1.004</td><td>KEK Industropolis Batang</td><td><span class="badge bb">SAR</span></td><td class="r">69.793</td><td><span class="badge br">AKI=0</span></td></tr>
+        <tr><td>2026.DJTY.12.001</td><td>Infrastruktur Lingkungan 2026</td><td><span class="badge bb">K3L</span></td><td class="r">4.849</td><td><span class="badge br">AKI=0</span></td></tr>
+        <tr><td>2026.DJTY.4.007</td><td>Event Tematik KEK Kendal</td><td><span class="badge bb">DIS</span></td><td class="r">149.549</td><td><span class="badge br">AKI=0</span></td></tr>
+        <tr><td>2026.DJTY.4.003</td><td>Digitalisasi Scadatel 2026</td><td><span class="badge bb">DIS</span></td><td class="r">4.094</td><td><span class="badge br">AKI=0</span></td></tr>
+        <tr><td>2026.DJTY.6.001</td><td>Sarana Penunjang Distribusi 2026</td><td><span class="badge bb">SPF</span></td><td class="r">1.524</td><td><span class="badge br">AKI=0, SPK=0</span></td></tr>
+        <tr><td>2026.DJTY.8.001</td><td>Sertifikasi Tanah 2026</td><td><span class="badge ba">SRN</span></td><td class="r">414</td><td><span class="badge br">AKI=0, SPK=0</span></td></tr>
+        <tr><td>2026.DJTY.9.001</td><td>Sertifikasi Laik Operasi 2026</td><td><span class="badge ba">SRN</span></td><td class="r">2.652</td><td><span class="badge br">AKI=0, SPK=0</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ SPK ============ -->
+<div class="section" id="tab-spk">
+  <div class="sec-hdr">SPK Terkontrak — Nilai Kontrak Kumulatif</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">Total SPK</div><div class="kpi-value sm">Rp 1.550,7 M</div><div class="kpi-sub">Kumulatif terkontrak</div></div>
+    <div class="kpi"><div class="kpi-label">SPK / SKAI</div><div class="kpi-value">63,3%</div><div class="kpi-sub">Coverage kontrak</div><span class="badge bb">Meningkat signifikan</span></div>
+    <div class="kpi"><div class="kpi-label">SPK / AKI</div><div class="kpi-value">226,9%</div><div class="kpi-sub">SPK jauh melampaui AKI</div><span class="badge br">Risiko tinggi</span></div>
+    <div class="kpi"><div class="kpi-label">SPK Luncuran</div><div class="kpi-value sm">Rp 496,5 M</div><div class="kpi-sub">99,97% SKAI luncuran</div><span class="badge bg">Hampir penuh</span></div>
+    <div class="kpi"><div class="kpi-label">SPK Murni 2026</div><div class="kpi-value sm">Rp 1.054,2 M</div><div class="kpi-sub">54,0% SKAI murni</div><span class="badge bb">Naik dari 34,3%</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>SPK vs SKAI — Program Besar (Rp M)</div>
+    <div class="chart-wrap" style="height:300px"><canvas id="spkChart"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Detail SPK per Program Murni 2026</div>
+    <div class="tw"><table>
+      <thead><tr><th>Uraian</th><th class="r">SKAI (M)</th><th class="r">SPK (M)</th><th class="r">% SKAI</th><th class="r">AKI (M)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Penyambungan TR 2026</td><td class="r">1.089,8</td><td class="r">651,2</td><td class="r">59,8%</td><td class="r">200,7</td><td><span class="badge bb">Berjalan</span></td></tr>
+        <tr><td>Event Tematik KEK Kendal</td><td class="r">149,5</td><td class="r">73,3</td><td class="r">49,0%</td><td class="r">0,0</td><td><span class="badge br">AKI=0</span></td></tr>
+        <tr><td>Penyambungan TM 2026</td><td class="r">206,2</td><td class="r">76,2</td><td class="r">37,0%</td><td class="r">17,9</td><td><span class="badge bb">Berjalan</span></td></tr>
+        <tr><td>Manajemen Trafo 2026</td><td class="r">50,1</td><td class="r">45,7</td><td class="r">91,2%</td><td class="r">2,0</td><td><span class="badge bg">SPK Tinggi</span></td></tr>
+        <tr><td>Peremajaan kWh 2026</td><td class="r">55,0</td><td class="r">49,4</td><td class="r">89,8%</td><td class="r">18,7</td><td><span class="badge bg">SPK Tinggi</span></td></tr>
+        <tr><td>Otomatisasi JTM 2026</td><td class="r">50,2</td><td class="r">30,3</td><td class="r">60,3%</td><td class="r">5,6</td><td><span class="badge bb">Berjalan</span></td></tr>
+        <tr><td>Akademi Militer Magelang</td><td class="r">37,0</td><td class="r">26,6</td><td class="r">71,9%</td><td class="r">0,3</td><td><span class="badge ba">AKI sangat kecil</span></td></tr>
+        <tr><td>Evakuasi Daya GI 2026</td><td class="r">47,4</td><td class="r">21,1</td><td class="r">44,6%</td><td class="r">0,1</td><td><span class="badge br">AKI=0,1%</span></td></tr>
+        <tr><td>KEK Industropolis Batang</td><td class="r">69,8</td><td class="r">7,7</td><td class="r">11,1%</td><td class="r">0,0</td><td><span class="badge br">AKI=0</span></td></tr>
+        <tr><td>Digitalisasi Scadatel 2026</td><td class="r">4,1</td><td class="r">2,8</td><td class="r">68,2%</td><td class="r">0,0</td><td><span class="badge br">AKI=0</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ REALISASI ============ -->
+<div class="section" id="tab-realisasi">
+  <div class="sec-hdr">Realisasi Bayar — Per 30 Juni 2026</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">Realisasi Total</div><div class="kpi-value sm">Rp 627,4 M</div><div class="kpi-sub">Total pembayaran</div></div>
+    <div class="kpi"><div class="kpi-label">Real / SKAI</div><div class="kpi-value">25,6%</div><div class="kpi-sub">6 bulan berjalan</div><span class="badge br">Target 50%</span></div>
+    <div class="kpi"><div class="kpi-label">Real / AKI</div><div class="kpi-value">91,8%</div><div class="kpi-sub">Penyerapan AKI</div><span class="badge bg">Sangat baik</span></div>
+    <div class="kpi"><div class="kpi-label">Real Luncuran</div><div class="kpi-value sm">Rp 417,1 M</div><div class="kpi-sub">83,99% SKAI luncuran</div><span class="badge bg">Baik</span></div>
+    <div class="kpi"><div class="kpi-label">Real Murni 2026</div><div class="kpi-value sm">Rp 210,3 M</div><div class="kpi-sub">10,77% SKAI murni</div><span class="badge br">Kritis</span></div>
+    <div class="kpi"><div class="kpi-label">Kenaikan vs Mei</div><div class="kpi-value sm">+Rp 198 M</div><div class="kpi-sub">Dari Rp 429,4M → 627,4M</div><span class="badge bg">+46,1%</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Realisasi Bayar per Kategori Program (Rp M)</div>
+    <div class="chart-wrap" style="height:300px"><canvas id="realChart"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Top 10 Program — Realisasi Tertinggi</div>
+    <div class="tw"><table>
+      <thead><tr><th>Uraian</th><th>Tipe</th><th class="r">SKAI (Rp M)</th><th class="r">Realisasi (Rp M)</th><th class="r">% SKAI</th></tr></thead>
+      <tbody>
+        <tr><td>Penyambungan TM 2025</td><td><span class="badge bg">LUN/SAR</span></td><td class="r">208.289</td><td class="r">185.664</td><td class="r">89,1%</td></tr>
+        <tr><td>Penyambungan TR 2025</td><td><span class="badge bg">LUN/SAR</span></td><td class="r">133.683</td><td class="r">120.376</td><td class="r">90,0%</td></tr>
+        <tr><td>Penyambungan TR 2026</td><td><span class="badge ba">MURNI/SAR</span></td><td class="r">1.089.770</td><td class="r">167.217</td><td class="r">15,3%</td></tr>
+        <tr><td>SPLU 2025</td><td><span class="badge bg">LUN/SAR</span></td><td class="r">23.935</td><td class="r">22.199</td><td class="r">92,7%</td></tr>
+        <tr><td>Event Tematik Taruna Nusantara 2025</td><td><span class="badge bg">LUN/DIS</span></td><td class="r">11.978</td><td class="r">11.080</td><td class="r">92,5%</td></tr>
+        <tr><td>Batang KIT 2025</td><td><span class="badge bg">LUN/SAR</span></td><td class="r">10.632</td><td class="r">10.631</td><td class="r">99,99%</td></tr>
+        <tr><td>Nusakambangan Distribusi 2024</td><td><span class="badge bg">LUN/DIS</span></td><td class="r">9.204</td><td class="r">9.113</td><td class="r">99,0%</td></tr>
+        <tr><td>Sarana Penunjang Distribusi 2025</td><td><span class="badge bg">LUN/SPF</span></td><td class="r">13.812</td><td class="r">13.718</td><td class="r">99,3%</td></tr>
+        <tr><td>Manajemen Trafo 2025</td><td><span class="badge bg">LUN/LOS</span></td><td class="r">6.410</td><td class="r">6.015</td><td class="r">93,8%</td></tr>
+        <tr><td>Peremajaan kWh Meter 2026</td><td><span class="badge ba">MURNI/LOS</span></td><td class="r">55.024</td><td class="r">16.713</td><td class="r">30,4%</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#E24B4A"></span>Program Murni 2026 — Realisasi = 0</div>
+    <div class="tw"><table>
+      <thead><tr><th>Uraian</th><th class="r">SKAI (Rp M)</th><th class="r">SPK (Rp M)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Stasiun Pengisian Listrik 2026</td><td class="r">49.463</td><td class="r">0</td><td><span class="badge br">SPK=0, AKI=0</span></td></tr>
+        <tr><td>KEK Industropolis Batang 2026</td><td class="r">69.793</td><td class="r">7.748</td><td><span class="badge br">AKI=0</span></td></tr>
+        <tr><td>Infrastruktur Lingkungan 2026</td><td class="r">4.849</td><td class="r">1.407</td><td><span class="badge br">AKI=0</span></td></tr>
+        <tr><td>Event Tematik KEK Kendal 2026</td><td class="r">149.549</td><td class="r">73.253</td><td><span class="badge br">AKI=0</span></td></tr>
+        <tr><td>Digitalisasi Scadatel 2026</td><td class="r">4.094</td><td class="r">2.795</td><td><span class="badge br">AKI=0</span></td></tr>
+        <tr><td>Akademi Militer Magelang 2026</td><td class="r">36.967</td><td class="r">26.572</td><td><span class="badge br">Real=0</span></td></tr>
+        <tr><td>Sarana Penunjang Distribusi 2026</td><td class="r">1.524</td><td class="r">0</td><td><span class="badge br">Belum ada SPK</span></td></tr>
+        <tr><td>Sertifikasi Tanah 2026</td><td class="r">414</td><td class="r">0</td><td><span class="badge br">Belum ada SPK</span></td></tr>
+        <tr><td>Sertifikasi Laik Operasi 2026</td><td class="r">2.652</td><td class="r">0</td><td><span class="badge br">Belum ada SPK</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ INSIGHT ============ -->
+<div class="section" id="tab-insight">
+  <div class="sec-hdr">Analisa Strategis &amp; Rekomendasi</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">Status Keseluruhan</div><div class="kpi-value sm" style="color:var(--amber)">Akselerasi Mendesak</div><div class="kpi-sub">Semester 2 jadi penentu</div></div>
+    <div class="kpi"><div class="kpi-label">Risk Level</div><div class="kpi-value sm" style="color:var(--red)">Tinggi</div><div class="kpi-sub">74,4% anggaran belum terealisasi</div></div>
+    <div class="kpi"><div class="kpi-label">Sisa Anggaran</div><div class="kpi-value sm">Rp 1.821,5 M</div><div class="kpi-sub">Harus diserap dalam 6 bulan</div></div>
+    <div class="kpi"><div class="kpi-label">Target Bulanan S2</div><div class="kpi-value sm">Rp 303,6 M</div><div class="kpi-sub">Per bulan Jul–Des 2026</div></div>
+    <div class="kpi"><div class="kpi-label">Kenaikan Realisasi MoM</div><div class="kpi-value">+46,1%</div><div class="kpi-sub">Mei: 429,4M → Juni: 627,4M</div><span class="badge bg">Momentum positif</span></div>
+    <div class="kpi"><div class="kpi-label">SPK vs AKI Gap</div><div class="kpi-value sm">Rp 867 M</div><div class="kpi-sub">SPK tanpa backing AKI</div><span class="badge br">Risiko likuiditas</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Temuan Kunci (Key Findings)</div>
+    <div class="ins danger">
+      <div class="ins-title">1. Realisasi murni 2026 masih kritis — baru 10,77% setelah 6 bulan</div>
+      <div class="ins-text">Dari SKAI Rp 1.952 M untuk program murni 2026, realisasi bayar baru mencapai Rp 210,3 M (10,77%). Target ideal semester 1 adalah minimal 50% dari AKI. Penyambungan TR 2026 — program terbesar (Rp 1.089,8 M) — baru terealisasi 15,3%. Diperlukan rata-rata Rp 303,6 M/bulan di Semester 2 hanya untuk program murni.</div>
+    </div>
+    <div class="ins warn">
+      <div class="ins-title">2. SPK melampaui AKI 226,9% — risiko likuiditas meningkat</div>
+      <div class="ins-text">Nilai SPK terkontrak Rp 1.550,7 M sangat jauh melampaui AKI Rp 683,7 M, menciptakan gap Rp 867 M. Hal ini berisiko tinggi apabila tagihan kontraktor jatuh tempo namun AKI tidak mencukupi. Diperlukan percepatan revisi AKI terutama untuk program Penyambungan TR 2026 (SPK Rp 651,2 M vs AKI Rp 200,7 M).</div>
+    </div>
+    <div class="ins warn">
+      <div class="ins-title">3. Deviasi SKKI vs SKAI pada SPL 2026 — Rp 49,5 M tanpa SKKI</div>
+      <div class="ins-text">Program Stasiun Pengisian Listrik 2026 memiliki SKAI Rp 49,46 M namun SKKI = 0, AKI = 0, SPK = 0, dan realisasi = 0. Ini merupakan anomali perencanaan yang perlu segera diklarifikasi agar program tidak kehilangan alokasi anggaran.</div>
+    </div>
+    <div class="ins warn">
+      <div class="ins-title">4. 9 program murni 2026 masih realisasi = 0 (total Rp 319 M)</div>
+      <div class="ins-text">Termasuk di dalamnya: KEK Industropolis Batang (Rp 69,8 M), Event Tematik KEK Kendal (Rp 149,5 M), dan Akademi Militer Magelang (Rp 37 M). Program-program ini sudah memiliki SPK namun AKI masih nol, sehingga pembayaran terblokir.</div>
+    </div>
+    <div class="ins ok">
+      <div class="ins-title">5. Momentum positif: realisasi naik 46,1% dari Mei ke Juni 2026</div>
+      <div class="ins-text">Realisasi melonjak dari Rp 429,4 M (Mei) ke Rp 627,4 M (Juni), kenaikan Rp 198 M dalam satu bulan. Ini adalah signal positif bahwa program-program mulai mengalir. Penyambungan TR 2026 sendiri sudah terealisasi Rp 167,2 M di Juni. Momentum ini harus dipertahankan.</div>
+    </div>
+    <div class="ins ok">
+      <div class="ins-title">6. Program luncuran mendekati penyelesaian — tinggal 16%</div>
+      <div class="ins-text">Program luncuran telah mencapai 83,99% realisasi dari SKAI. Beberapa program hampir 100%: Batang KIT 2025 (99,99%), Nusakambangan (99%), Sarana Penunjang 2025 (99,3%). Ini mengindikasikan eksekusi program luncuran sangat solid dan bisa menjadi referensi best practice.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Rekomendasi Strategis</div>
+    <div class="rec">
+      <div class="rec-n">1</div>
+      <div>
+        <div class="rec-title">Percepat AKI untuk 5 program murni dengan SPK namun AKI = 0</div>
+        <div class="rec-text">KEK Kendal (Rp 149,5M), KEK Batang (Rp 69,8M), Akmil Magelang (Rp 37M), Infrastruktur Lingkungan, dan Scadatel memiliki SPK aktif namun AKI = 0. Blokade AKI ini menghentikan aliran pembayaran ke kontraktor. Target: seluruh AKI program ini selesai ≤ 15 Juli 2026.</div>
+      </div>
+    </div>
+    <div class="rec">
+      <div class="rec-n">2</div>
+      <div>
+        <div class="rec-title">Sinkronisasi AKI dengan laju kontrak Penyambungan TR 2026</div>
+        <div class="rec-text">Program terbesar ini memiliki SPK Rp 651,2M namun AKI hanya Rp 200,7M — gap Rp 450,5M. Lakukan revisi AKI bulanan mengikuti progress fisik agar pembayaran termin kontraktor tidak terhambat di Semester 2.</div>
+      </div>
+    </div>
+    <div class="rec">
+      <div class="rec-n">3</div>
+      <div>
+        <div class="rec-title">Klarifikasi dan aktivasi SPL 2026 (Rp 49,5M tanpa SKKI)</div>
+        <div class="rec-text">Lakukan review status program Stasiun Pengisian Listrik 2026 bersama fungsi perencanaan dan anggaran. Jika program masih aktif, segera lengkapi SKKI agar AKI dapat ditetapkan. Jika ditunda, lakukan revisi SKAI agar anggaran dapat dialokasikan ke program lain yang lebih mendesak.</div>
+      </div>
+    </div>
+    <div class="rec">
+      <div class="rec-n">4</div>
+      <div>
+        <div class="rec-title">Tetapkan war room monitoring mingguan untuk program &gt; Rp 50M</div>
+        <div class="rec-text">Dengan target Rp 303,6M/bulan di Semester 2, diperlukan monitoring intensif. Bentuk war room mingguan untuk program bernilai &gt;Rp 50M yang mencakup: Penyambungan TR 2026, Penyambungan TM 2026, KEK Kendal, Evakuasi Daya 2026, dan Peremajaan kWh 2026.</div>
+      </div>
+    </div>
+    <div class="rec">
+      <div class="rec-n">5</div>
+      <div>
+        <div class="rec-title">Dorong penyelesaian sisa 16% program luncuran sebelum Q3 2026</div>
+        <div class="rec-text">Sisa program luncuran Rp 79,5M (16% SKAI) termasuk: Pembebanan GI Zona Utara (masih Rp 223,7M SPK belum terbayar), Rekonfigurasi JTM Zona Utara, Rehab JTM 2025. Target seluruh program luncuran tuntas 100% sebelum akhir September 2026.</div>
+      </div>
+    </div>
+    <div class="rec">
+      <div class="rec-n">6</div>
+      <div>
+        <div class="rec-title">Manfaatkan momentum Juni sebagai baseline akselerasi Semester 2</div>
+        <div class="rec-text">Kenaikan realisasi 46,1% MoM di Juni membuktikan kapasitas eksekusi ada. Pastikan faktor pendorong kenaikan Juni (PO, termin, dll) terus dipertahankan dan diperluas ke program murni yang baru mulai. Targetkan kenaikan minimum 20% MoM hingga September 2026.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot"></span>Proyeksi Skenario Realisasi Akhir 2026 (Rp Miliar)</div>
+    <div class="chart-wrap" style="height:260px"><canvas id="projChart"></canvas></div>
+    <div class="divider"></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px">
+      <div style="font-size:11px;color:var(--text2)"><span class="sdot" style="background:#E24B4A"></span><strong>Pesimis:</strong> laju Jun tetap (Rp 198M/bln) → Rp 1.821M akhir tahun (74,4% SKAI)</div>
+      <div style="font-size:11px;color:var(--text2)"><span class="sdot" style="background:#EF9F27"></span><strong>Moderat:</strong> akselerasi bertahap → Rp 1.950M (79,6% SKAI)</div>
+      <div style="font-size:11px;color:var(--text2)"><span class="sdot" style="background:#1D9E75"></span><strong>Optimis:</strong> program murni mengalir penuh → Rp 2.280M (93,1% SKAI)</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span> ☕2026 | JW — Monitoring Anggaran Investasi - UID Jawa Tengah</span>
+ 
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const tc = isDark ? '#a8a7a3' : '#5c5b57';
+const gc = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)';
+const bgCard = isDark ? '#1e1e1c' : '#ffffff';
+const FONT = { family: "'Inter', system-ui, sans-serif", size: 11 };
+Chart.defaults.font = FONT;
+Chart.defaults.color = tc;
+const BASE = {
+  responsive: true, maintainAspectRatio: false,
+  plugins: { legend: { display: false } },
+  scales: {
+    x: { grid: { color: gc }, ticks: { font: FONT, color: tc } },
+    y: { grid: { color: gc }, ticks: { font: FONT, color: tc } }
+  }
+};
+const fmtM = v => 'Rp ' + Math.round(v) + ' M';
+
+// ─── TABS ───────────────────────────────────────────────────────
+const tabMap = { overview:0, skai:1, skki:2, aki:3, spk:4, realisasi:5, insight:6 };
+const rendered = {};
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  document.querySelectorAll('.tab')[tabMap[id]].classList.add('active');
+  setTimeout(() => buildCharts(id), 60);
+}
+
+// ─── CHARTS ─────────────────────────────────────────────────────
+function buildCharts(tab) {
+  if (rendered[tab]) return;
+  rendered[tab] = true;
+
+  if (tab === 'overview') {
+    // Donut
+    new Chart(document.getElementById('donutChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['SAR','DIS','LOS','EVD','SPF','SRN/K3L'],
+        datasets: [{ data: [1791.8, 343.1, 203.3, 57.5, 15.3, 37.9],
+          backgroundColor: ['#185FA5','#0F6E56','#3B6D11','#BA7517','#534AB7','#8B3212'],
+          borderWidth: 2, borderColor: bgCard }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+    });
+    const dl = document.getElementById('donut-legend');
+    [['SAR','#185FA5','73,2%'],['DIS','#0F6E56','14,0%'],['LOS','#3B6D11','8,3%'],['EVD','#BA7517','2,3%'],['SPF','#534AB7','0,6%'],['SRN/K3L','#8B3212','1,5%']].forEach(([l,c,p]) => {
+      dl.innerHTML += `<span style="display:flex;align-items:center;gap:4px"><span style="width:9px;height:9px;border-radius:2px;background:${c}"></span>${l} ${p}</span>`;
+    });
+    // Waterfall
+    new Chart(document.getElementById('waterfallChart'), {
+      type: 'bar',
+      data: {
+        labels: ['SKAI','SKKI','AKI','SPK Terkontrak','Realisasi Bayar'],
+        datasets: [{ data: [2448.9, 2399.4, 683.7, 1550.7, 627.4],
+          backgroundColor: ['#185FA5','#185FA5','#EF9F27','#1D9E75','#E24B4A'],
+          borderWidth: 0, borderRadius: 4 }]
+      },
+      options: { ...BASE, scales: { x: BASE.scales.x, y: { ...BASE.scales.y, ticks: { callback: fmtM, font: FONT, color: tc } } } }
+    });
+    // Compare Luncuran vs Murni
+    new Chart(document.getElementById('compareChart'), {
+      type: 'bar',
+      data: {
+        labels: ['SKAI','AKI','SPK','Realisasi'],
+        datasets: [
+          { label: 'Luncuran', data: [496.6, 434.1, 496.5, 417.1], backgroundColor: '#185FA5', borderRadius: 3 },
+          { label: 'Murni 2026', data: [1952.2, 249.5, 1054.2, 210.3], backgroundColor: '#E24B4A', borderRadius: 3 }
+        ]
+      },
+      options: { ...BASE, plugins: { legend: { display: true, labels: { font: FONT, color: tc } } },
+        scales: { x: BASE.scales.x, y: { ...BASE.scales.y, ticks: { callback: fmtM, font: FONT, color: tc } } } }
+    });
+  }
+
+  if (tab === 'skai') {
+    new Chart(document.getElementById('skaiChart'), {
+      type: 'bar',
+      data: {
+        labels: ['SAR\n(Penyambungan)','DIS\n(Distribusi)','LOS\n(Loss Red.)','EVD\n(Evakuasi)','SPF\n(Sarana Pjg)','SRN/K3L'],
+        datasets: [
+          { label: 'Luncuran', data: [375.5, 38.1, 27.6, 10.1, 14.7, 0.5], backgroundColor: '#185FA5', borderRadius: 3, stack: 'a' },
+          { label: 'Murni 2026', data: [1416.3, 305.0, 185.1, 47.4, 1.5, 37.4], backgroundColor: '#7FAADB', borderRadius: 3, stack: 'a' }
+        ]
+      },
+      options: { ...BASE, plugins: { legend: { display: true, labels: { font: FONT, color: tc } } },
+        scales: { x: BASE.scales.x, y: { ...BASE.scales.y, stacked: true, ticks: { callback: fmtM, font: FONT, color: tc } } } }
+    });
+  }
+
+  if (tab === 'aki') {
+    new Chart(document.getElementById('akiChart'), {
+      type: 'bar',
+      data: {
+        labels: ['SAR','DIS','LOS','EVD','SPF','SRN/K3L'],
+        datasets: [
+          { label: 'SKAI', data: [1791.8, 343.1, 203.3, 57.5, 15.3, 37.9], backgroundColor: 'rgba(24,95,165,0.18)', borderRadius: 3 },
+          { label: 'AKI', data: [573.0, 51.5, 37.0, 7.9, 13.7, 0.6], backgroundColor: '#185FA5', borderRadius: 3 }
+        ]
+      },
+      options: { ...BASE, plugins: { legend: { display: true, labels: { font: FONT, color: tc } } },
+        scales: { x: BASE.scales.x, y: { ...BASE.scales.y, ticks: { callback: fmtM, font: FONT, color: tc } } } }
+    });
+  }
+
+  if (tab === 'spk') {
+    new Chart(document.getElementById('spkChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Peny.TR\n2026','Peny.TM\n2025','Peny.TR\n2025','Peny.TM\n2026','KEK\nKendal','Peremajaan\nkWh 2026','Manajemen\nTrafo 2026'],
+        datasets: [
+          { label: 'SKAI', data: [1089.8, 208.3, 133.7, 206.2, 149.5, 55.0, 50.1], backgroundColor: 'rgba(24,95,165,0.18)', borderRadius: 3 },
+          { label: 'SPK', data: [651.2, 208.3, 133.7, 76.2, 73.3, 49.4, 45.7], backgroundColor: '#1D9E75', borderRadius: 3 },
+          { label: 'AKI', data: [200.7, 192.1, 129.4, 17.9, 0, 18.7, 2.0], backgroundColor: '#EF9F27', borderRadius: 3 }
+        ]
+      },
+      options: { ...BASE, plugins: { legend: { display: true, labels: { font: FONT, color: tc } } },
+        scales: { x: BASE.scales.x, y: { ...BASE.scales.y, ticks: { callback: fmtM, font: FONT, color: tc } } } }
+    });
+  }
+
+  if (tab === 'realisasi') {
+    new Chart(document.getElementById('realChart'), {
+      type: 'bar',
+      data: {
+        labels: ['SAR\nLuncuran','DIS\nLuncuran','LOS\nLuncuran','EVD\nLuncuran','SPF\nLuncuran','SAR\nMurni','DIS\nMurni','LOS\nMurni','EVD\nMurni'],
+        datasets: [
+          { label: 'SPK', data: [376.5, 37.3, 17.8, 10.1, 13.8, 727.4, 168.4, 117.6, 21.1], backgroundColor: 'rgba(24,95,165,0.18)', borderRadius: 3 },
+          { label: 'Realisasi', data: [338.6, 37.3, 22.0, 7.5, 13.7, 183.4, 6.0, 19.8, 0.1], backgroundColor: '#185FA5', borderRadius: 3 }
+        ]
+      },
+      options: { ...BASE, plugins: { legend: { display: true, labels: { font: FONT, color: tc } } },
+        scales: { x: BASE.scales.x, y: { ...BASE.scales.y, ticks: { callback: fmtM, font: FONT, color: tc } } } }
+    });
+  }
+
+  if (tab === 'insight') {
+    new Chart(document.getElementById('projChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Realisasi\ns.d. Jun','Pesimis\n(Des 2026)','Moderat\n(Des 2026)','Optimis\n(Des 2026)','Target\nSKAI'],
+        datasets: [{
+          data: [627.4, 1821, 1950, 2280, 2448.9],
+          backgroundColor: ['#185FA5','#E24B4A','#EF9F27','#1D9E75','rgba(24,95,165,0.25)'],
+          borderRadius: 4, borderWidth: 0
+        }]
+      },
+      options: { ...BASE, scales: { x: BASE.scales.x, y: { ...BASE.scales.y, max: 2700, ticks: { callback: fmtM, font: FONT, color: tc } } } }
+    });
+  }
+}
+
+// Init
+setTimeout(() => buildCharts('overview'), 200);
+</script>
+</body>
+</html>
