@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis TUL 309 — UID Jawa Tengah, Juni 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0a1a2e;
+    --navy-900:#0d2544;
+    --navy-800:#123568;
+    --navy-700:#1a4680;
+    --gold-600:#b8863a;
+    --gold-500:#c99b4d;
+    --gold-100:#f6ecd9;
+    --teal-700:#0f6d5c;
+    --teal-100:#e2f4ef;
+    --red-700:#9c3b30;
+    --red-100:#fbeae7;
+    --ink-900:#1c2430;
+    --ink-700:#3d4552;
+    --ink-500:#6b7684;
+    --ink-300:#9aa4b1;
+    --line:#e3e7ed;
+    --bg:#f4f5f7;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', -apple-system, sans-serif;
+    background:var(--bg);
+    color:var(--ink-900);
+    line-height:1.55;
+    font-size:15px;
+  }
+  h1,h2,h3,h4{ font-family:'Playfair Display', Georgia, serif; font-weight:700; color:var(--navy-950); }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 40px; }
+
+  /* ===== COVER ===== */
+  .cover{
+    background: linear-gradient(155deg, var(--navy-950) 0%, var(--navy-800) 55%, var(--navy-700) 100%);
+    color:#fff;
+    padding:64px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cover::before{
+    content:"";
+    position:absolute; right:-120px; top:-160px;
+    width:480px; height:480px; border-radius:50%;
+    background: radial-gradient(circle, rgba(201,155,77,0.25) 0%, transparent 70%);
+  }
+  .cover::after{
+    content:"";
+    position:absolute; left:-6%; bottom:-220px;
+    width:520px; height:520px; border-radius:50%;
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    text-transform:uppercase; letter-spacing:2.5px; font-size:11.5px; font-weight:700;
+    color:var(--gold-500); margin-bottom:22px;
+  }
+  .eyebrow .bar{ width:34px; height:2px; background:var(--gold-500); display:inline-block;}
+  .cover h1{
+    color:#fff; font-size:44px; line-height:1.18; max-width:760px; margin-bottom:16px;
+  }
+  .cover .sub{
+    color:rgba(255,255,255,0.78); font-size:17px; max-width:640px; font-weight:400;
+  }
+  .cover-meta{
+    display:flex; gap:40px; margin-top:40px; flex-wrap:wrap;
+    position:relative; z-index:2;
+  }
+  .cover-meta div{ border-left:2px solid rgba(201,155,77,0.6); padding-left:14px; }
+  .cover-meta .lbl{ font-size:10.5px; text-transform:uppercase; letter-spacing:1.5px; color:var(--gold-500); font-weight:700; margin-bottom:4px;}
+  .cover-meta .val{ font-size:14.5px; color:#fff; font-weight:600; }
+
+  /* ===== SECTION SHELL ===== */
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .sec-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:8px; }
+  .sec-num{
+    font-family:'Playfair Display', serif; font-size:15px; font-weight:700; color:#fff;
+    background:var(--navy-900); width:36px; height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .sec-title{ font-size:27px; color:var(--navy-950); }
+  .sec-kicker{ font-size:12.5px; text-transform:uppercase; letter-spacing:1.8px; color:var(--gold-600); font-weight:700; margin-bottom:6px; margin-left:52px;}
+  .sec-lead{ margin-left:52px; color:var(--ink-700); font-size:15px; max-width:920px; margin-bottom:32px; }
+  .content{ margin-left:52px; }
+
+  /* ===== EXEC SUMMARY KPI ===== */
+  .kpi-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-left:52px; margin-bottom:8px;}
+  .kpi{
+    background:var(--card); border:1px solid var(--line); border-top:3px solid var(--gold-500);
+    border-radius:6px; padding:20px 18px;
+  }
+  .kpi .lbl{ font-size:11px; text-transform:uppercase; letter-spacing:1.1px; color:var(--ink-500); font-weight:700; margin-bottom:10px;}
+  .kpi .num{ font-size:25px; font-weight:800; color:var(--navy-950); font-family:'Playfair Display',serif; line-height:1.15;}
+  .kpi .delta{ font-size:12.5px; font-weight:600; margin-top:8px; display:inline-flex; align-items:center; gap:5px; padding:3px 8px; border-radius:20px;}
+  .delta.up{ color:var(--teal-700); background:var(--teal-100); }
+  .delta.down{ color:var(--red-700); background:var(--red-100); }
+  .kpi .foot{ font-size:11.5px; color:var(--ink-500); margin-top:8px; }
+
+  /* ===== CALLOUT ===== */
+  .callout{
+    margin-left:52px; background:var(--navy-950); color:#fff; border-radius:8px;
+    padding:26px 30px; display:flex; gap:22px; align-items:flex-start; margin-bottom:32px;
+  }
+  .callout .icon{ font-family:'Playfair Display',serif; font-size:34px; color:var(--gold-500); font-weight:800; flex-shrink:0; line-height:1;}
+  .callout .txt strong{ color:var(--gold-500); }
+  .callout .txt{ font-size:14.5px; color:rgba(255,255,255,0.92); line-height:1.65; }
+
+  .insight-box{
+    border-left:3px solid var(--gold-500); background:var(--gold-100);
+    padding:16px 20px; font-size:13.8px; color:var(--ink-700); border-radius:0 6px 6px 0; margin:22px 0;
+  }
+  .insight-box b{ color:var(--navy-950); }
+
+  /* ===== TABLE ===== */
+  table{ width:100%; border-collapse:collapse; font-size:13.6px; margin:18px 0 28px; }
+  thead th{
+    text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.8px;
+    color:#fff; background:var(--navy-900); padding:11px 14px; font-weight:700;
+  }
+  thead th.num, td.num{ text-align:right; }
+  tbody td{ padding:10px 14px; border-bottom:1px solid var(--line); color:var(--ink-700); }
+  tbody tr:hover{ background:#fafbfc; }
+  tbody tr.total-row td{ font-weight:800; color:var(--navy-950); border-top:2px solid var(--navy-900); background:#f7f8fa;}
+  td.seg-tag{ font-weight:700; color:var(--navy-950); }
+  .tag{ display:inline-block; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; letter-spacing:0.3px;}
+  .tag.g{ background:var(--teal-100); color:var(--teal-700); }
+  .tag.r{ background:var(--red-100); color:var(--red-700); }
+  .tag.n{ background:#eef0f3; color:var(--ink-500); }
+
+  /* ===== BAR CHART (custom, css) ===== */
+  .barchart{ margin:20px 0 30px; }
+  .bar-row{ display:grid; grid-template-columns:150px 1fr 64px; align-items:center; gap:14px; margin-bottom:11px; }
+  .bar-row .name{ font-size:12.8px; font-weight:700; color:var(--navy-950); }
+  .bar-track{ background:#eef0f3; border-radius:4px; height:20px; position:relative; overflow:hidden;}
+  .bar-fill{ height:100%; border-radius:4px; display:flex; align-items:center; }
+  .bar-row .pct{ font-size:12.6px; font-weight:700; color:var(--ink-700); text-align:right; }
+  .legend-row{ display:flex; gap:22px; margin:6px 0 22px 0; font-size:12px; color:var(--ink-500); }
+  .legend-row span{ display:inline-flex; align-items:center; gap:6px; }
+  .legend-dot{ width:10px; height:10px; border-radius:2px; display:inline-block; }
+
+  /* ===== TRIPLE COMPARE BARS (pelanggan vs daya vs pendapatan) ===== */
+  .triple{ display:grid; grid-template-columns:120px 1fr; gap:14px; align-items:center; margin-bottom:16px;}
+  .triple .name{ font-size:13px; font-weight:700; color:var(--navy-950);}
+  .triple .subname{ display:block; font-size:11px; font-weight:400; color:var(--ink-500); margin-top:2px;}
+  .triple-bars{ display:flex; flex-direction:column; gap:5px; }
+  .tb-line{ display:grid; grid-template-columns:70px 1fr 50px; gap:8px; align-items:center; }
+  .tb-line .tlabel{ font-size:10.5px; color:var(--ink-500); text-transform:uppercase; letter-spacing:0.5px;}
+  .tb-track{ background:#eef0f3; border-radius:3px; height:11px; }
+  .tb-fill{ height:100%; border-radius:3px;}
+  .tb-line .tval{ font-size:11.5px; font-weight:700; color:var(--ink-700); }
+
+  /* ===== KPI BRIDGE (YoY waterfall-ish) ===== */
+  .bridge{ display:flex; align-items:stretch; gap:0; margin:24px 0 10px; flex-wrap:wrap; }
+  .bnode{ flex:1; min-width:190px; background:var(--card); border:1px solid var(--line); padding:18px 16px; position:relative; }
+  .bnode:not(:last-child)::after{
+    content:"→"; position:absolute; right:-18px; top:50%; transform:translateY(-50%);
+    font-size:18px; color:var(--gold-600); font-weight:700; z-index:2;
+  }
+  .bnode .tag2{ font-size:10.5px; text-transform:uppercase; letter-spacing:1px; font-weight:700; color:var(--ink-500); margin-bottom:8px;}
+  .bnode .big{ font-size:22px; font-weight:800; color:var(--navy-950); font-family:'Playfair Display',serif;}
+  .bnode .small{ font-size:11.8px; color:var(--ink-500); margin-top:6px; }
+  .bnode.highlight{ background:var(--navy-950); border-color:var(--navy-950); }
+  .bnode.highlight .big, .bnode.highlight .tag2{ color:#fff; }
+  .bnode.highlight .small{ color:rgba(255,255,255,0.7); }
+  .bnode.good .big{ color:var(--teal-700); }
+  .bnode.bad .big{ color:var(--red-700); }
+
+  /* ===== TWO COL ===== */
+  .twocol{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:36px; margin-left:52px; align-items:start;}
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:22px 24px; }
+  .card h4{ font-size:15px; margin-bottom:14px; color:var(--navy-950); }
+
+  /* ===== STAT PILL GRID (jogja) ===== */
+  .pillgrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-left:52px; margin-bottom:26px;}
+  .pill{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--navy-800); padding:16px 18px; border-radius:4px;}
+  .pill .lbl{ font-size:10.8px; text-transform:uppercase; color:var(--ink-500); font-weight:700; letter-spacing:0.5px; margin-bottom:8px;}
+  .pill .num{ font-size:20px; font-weight:800; color:var(--navy-950); font-family:'Playfair Display',serif;}
+  .pill .foot{ font-size:11.3px; color:var(--ink-500); margin-top:5px;}
+
+  /* ===== RECOMMENDATION LIST ===== */
+  .reco{ margin-left:52px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+  .reco-card{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:20px 22px; position:relative; padding-left:56px;}
+  .reco-card .num{
+    position:absolute; left:20px; top:20px; width:26px; height:26px; border-radius:50%;
+    background:var(--gold-100); color:var(--gold-600); font-weight:800; font-size:13px;
+    display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif;
+  }
+  .reco-card h5{ font-size:14px; color:var(--navy-950); margin-bottom:6px; font-family:'Inter'; font-weight:700;}
+  .reco-card p{ font-size:13px; color:var(--ink-700); }
+
+  footer{
+    background:var(--navy-950); color:rgba(255,255,255,0.65); padding:36px 0; font-size:12px;
+  }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; align-items:center;}
+  footer b{ color:#fff; }
+  footer .src{ max-width:640px; line-height:1.7;}
+
+  @media(max-width:900px){
+    .kpi-grid, .pillgrid, .reco{ grid-template-columns:repeat(2,1fr); }
+    .twocol{ grid-template-columns:1fr; }
+    .cover h1{ font-size:32px; }
+    .wrap{ padding:0 20px; }
+    .sec-lead, .content, .kpi-grid, .callout, .pillgrid, .reco{ margin-left:0; }
+    .sec-kicker{ margin-left:0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<div class="cover">
+  <div class="wrap">
+    <div class="eyebrow"><span class="bar"></span> LAPORAN TUL III-09 · PENJUALAN TENAGA LISTRIK</div>
+    <h1>Sebaran Pelanggan, Daya Terpasang &amp; Dampak Pendapatan — UID Jawa Tengah</h1>
+    <p class="sub">Analisis posisi Juni 2026, perbandingan year-on-year terhadap Juni 2025, serta pembacaan dampak reorganisasi UID Yogyakarta per 1 April 2026 terhadap basis pelanggan.</p>
+    <div class="cover-meta">
+      <div><div class="lbl">Periode Data Utama</div><div class="val">S.d. 30 Juni 2026</div></div>
+      <div><div class="lbl">Pembanding</div><div class="val">S.d. 30 Juni 2025</div></div>
+      <div><div class="lbl">Cakupan</div><div class="val">UID Jawa Tengah + UID Yogyakarta</div></div>
+      <div><div class="lbl">Sumber</div><div class="val">Form TUL III-09</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ================= EXEC SUMMARY ================= -->
+<section>
+  <div class="sec-head"><div class="sec-num">01</div><h2 class="sec-title">Ringkasan Eksekutif</h2></div>
+  <p class="sec-kicker">Posisi Juni 2026 — UID Jawa Tengah (pasca pemisahan unit Yogyakarta)</p>
+  <p class="sec-lead">Per Juni 2026, UID Jawa Tengah melayani <b>12,76 juta pelanggan</b> dengan daya tersambung <b>20,01 juta kVA</b> dan pendapatan semester berjalan <b>Rp18,44 triliun</b>. Secara nominal jumlah pelanggan turun 8,6% dibanding Juni 2025, namun penurunan ini murni struktural — bukan atrisi pasar — karena berdirinya UID Yogyakarta sebagai unit induk mandiri per 1 April 2026.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="lbl">Total Pelanggan</div>
+      <div class="num">12.759.171</div>
+      <span class="delta down">▼ 8,59% vs Jun-25</span>
+      <div class="foot">Efek struktural pemisahan Yogyakarta, bukan atrisi organik</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Daya Tersambung</div>
+      <div class="num">20.014.123.798 VA</div>
+      <span class="delta down">▼ 6,69% vs Jun-25</span>
+      <div class="foot">≈ 20,01 juta kVA terpasang</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Pendapatan Semester</div>
+      <div class="num">Rp18,44 T</div>
+      <span class="delta up">▲ 7,99% vs Jun-25</span>
+      <div class="foot">Naik meski basis pelanggan mengecil</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">ARPU per Pelanggan</div>
+      <div class="num">Rp1.445.049</div>
+      <span class="delta up">▲ 18,1% vs Jun-25</span>
+      <div class="foot">Rp/kWh rata-rata: Rp1.063,74</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="icon">“</div>
+    <div class="txt">Tiga hal yang menentukan cerita di balik angka: <strong>(1) 90,8% pelanggan menyumbang hanya 42,6% pendapatan</strong> — mayoritas basis adalah pelanggan rumah tangga daya kecil; <strong>(2) 0,21% pelanggan industri menyumbang 28,9% pendapatan</strong> — konsentrasi nilai yang ekstrem; dan <strong>(3) penurunan pelanggan 2026 sepenuhnya dijelaskan oleh pemisahan Yogyakarta</strong> — setelah disesuaikan (apple-to-apple), basis gabungan justru tumbuh 3,1% dan pendapatan tumbuh 15,5% YoY.</div>
+  </div>
+</section>
+
+<!-- ================= SECTION 2: SEBARAN KELOMPOK ================= -->
+<section>
+  <div class="sec-head"><div class="sec-num">02</div><h2 class="sec-title">Sebaran Pelanggan Berdasarkan Kelompok Tarif</h2></div>
+  <p class="sec-kicker">Data Juni 2026 — UID Jawa Tengah</p>
+  <p class="sec-lead">Golongan <b>Rumah Tangga (R)</b> mendominasi basis pelanggan (90,81%) namun kontribusi pendapatannya proporsional jauh lebih kecil (42,57%). Sebaliknya, golongan <b>Industri (I)</b> yang hanya 0,21% dari populasi menyerap 22,51% daya tersambung dan menyumbang 28,89% pendapatan — nilai per pelanggan yang jauh lebih tinggi.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Kelompok Tarif</th>
+        <th class="num">Jumlah Pelanggan</th>
+        <th class="num">Pangsa Pelanggan</th>
+        <th class="num">Daya Tersambung (VA)</th>
+        <th class="num">Pangsa Daya</th>
+        <th class="num">Pendapatan (Rp)</th>
+        <th class="num">Pangsa Pendapatan</th>
+        <th class="num">ARPU (Rp/pelanggan)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="seg-tag">S — Sosial</td><td class="num">334.590</td><td class="num">2,62%</td><td class="num">1.183.753.250</td><td class="num">5,91%</td><td class="num">774.187.045.505</td><td class="num">4,20%</td><td class="num">2.313.838</td></tr>
+      <tr><td class="seg-tag">R — Rumah Tangga</td><td class="num">11.586.290</td><td class="num">90,81%</td><td class="num">9.951.954.650</td><td class="num">49,72%</td><td class="num">7.848.787.784.273</td><td class="num">42,57%</td><td class="num">677.420</td></tr>
+      <tr><td class="seg-tag">B — Bisnis</td><td class="num">720.713</td><td class="num">5,65%</td><td class="num">3.529.958.700</td><td class="num">17,64%</td><td class="num">3.295.006.838.075</td><td class="num">17,87%</td><td class="num">4.571.871</td></tr>
+      <tr><td class="seg-tag">I — Industri</td><td class="num">27.063</td><td class="num">0,21%</td><td class="num">4.504.619.500</td><td class="num">22,51%</td><td class="num">5.325.767.188.448</td><td class="num">28,89%</td><td class="num">196.791.457</td></tr>
+      <tr><td class="seg-tag">P — Publik/Pemerintah</td><td class="num">88.631</td><td class="num">0,69%</td><td class="num">506.210.748</td><td class="num">2,53%</td><td class="num">721.702.902.662</td><td class="num">3,91%</td><td class="num">8.142.782</td></tr>
+      <tr><td class="seg-tag">C, T, L — Curah/Traksi/Layanan Khusus</td><td class="num">1.884</td><td class="num">0,01%</td><td class="num">337.626.950</td><td class="num">1,69%</td><td class="num">472.170.368.119</td><td class="num">2,56%</td><td class="num">250.621.215</td></tr>
+      <tr class="total-row"><td class="seg-tag">TOTAL</td><td class="num">12.759.171</td><td class="num">100%</td><td class="num">20.014.123.798</td><td class="num">100%</td><td class="num">18.437.622.127.082</td><td class="num">100%</td><td class="num">1.445.049</td></tr>
+    </tbody>
+  </table>
+
+  <div class="twocol" style="margin-left:0;">
+    <div>
+      <h4 style="margin-left:0; font-family:'Inter'; font-size:14px; color:var(--navy-950); font-weight:700; margin-bottom:14px;">Pangsa Pelanggan vs. Pangsa Pendapatan per Kelompok</h4>
+      <div class="triple">
+        <div class="name">S<span class="subname">Sosial</span></div>
+        <div class="triple-bars">
+          <div class="tb-line"><span class="tlabel">Pelanggan</span><div class="tb-track"><div class="tb-fill" style="width:2.62%; background:var(--navy-800);"></div></div><span class="tval">2,62%</span></div>
+          <div class="tb-line"><span class="tlabel">Pendapatan</span><div class="tb-track"><div class="tb-fill" style="width:4.2%; background:var(--gold-500);"></div></div><span class="tval">4,20%</span></div>
+        </div>
+      </div>
+      <div class="triple">
+        <div class="name">R<span class="subname">Rumah Tangga</span></div>
+        <div class="triple-bars">
+          <div class="tb-line"><span class="tlabel">Pelanggan</span><div class="tb-track"><div class="tb-fill" style="width:90.81%; background:var(--navy-800);"></div></div><span class="tval">90,81%</span></div>
+          <div class="tb-line"><span class="tlabel">Pendapatan</span><div class="tb-track"><div class="tb-fill" style="width:42.57%; background:var(--gold-500);"></div></div><span class="tval">42,57%</span></div>
+        </div>
+      </div>
+      <div class="triple">
+        <div class="name">B<span class="subname">Bisnis</span></div>
+        <div class="triple-bars">
+          <div class="tb-line"><span class="tlabel">Pelanggan</span><div class="tb-track"><div class="tb-fill" style="width:5.65%; background:var(--navy-800);"></div></div><span class="tval">5,65%</span></div>
+          <div class="tb-line"><span class="tlabel">Pendapatan</span><div class="tb-track"><div class="tb-fill" style="width:17.87%; background:var(--gold-500);"></div></div><span class="tval">17,87%</span></div>
+        </div>
+      </div>
+      <div class="triple">
+        <div class="name">I<span class="subname">Industri</span></div>
+        <div class="triple-bars">
+          <div class="tb-line"><span class="tlabel">Pelanggan</span><div class="tb-track"><div class="tb-fill" style="width:0.21%; background:var(--navy-800);"></div></div><span class="tval">0,21%</span></div>
+          <div class="tb-line"><span class="tlabel">Pendapatan</span><div class="tb-track"><div class="tb-fill" style="width:28.89%; background:var(--gold-500);"></div></div><span class="tval">28,89%</span></div>
+        </div>
+      </div>
+      <div class="triple">
+        <div class="name">P<span class="subname">Publik</span></div>
+        <div class="triple-bars">
+          <div class="tb-line"><span class="tlabel">Pelanggan</span><div class="tb-track"><div class="tb-fill" style="width:0.69%; background:var(--navy-800);"></div></div><span class="tval">0,69%</span></div>
+          <div class="tb-line"><span class="tlabel">Pendapatan</span><div class="tb-track"><div class="tb-fill" style="width:3.91%; background:var(--gold-500);"></div></div><span class="tval">3,91%</span></div>
+        </div>
+      </div>
+      <div class="legend-row">
+        <span><span class="legend-dot" style="background:var(--navy-800);"></span> Pangsa Pelanggan</span>
+        <span><span class="legend-dot" style="background:var(--gold-500);"></span> Pangsa Pendapatan</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Pembacaan Cepat</h4>
+      <div class="insight-box">Rasio "nilai per pelanggan" golongan <b>Industri lebih besar 290 kali</b> dibanding golongan Rumah Tangga (ARPU Rp196,8 juta vs Rp677 ribu per semester).</div>
+      <div class="insight-box">Golongan <b>R.1M/900VA</b> (rumah tangga mampu) adalah subsegmen R terbesar: 3,41 juta pelanggan (26,73%) menyumbang Rp2,82 T (15,3%) — kontributor utama pendapatan di dalam blok Rumah Tangga.</div>
+      <div class="insight-box">Golongan <b>R.1/450VA</b> bersubsidi terbesar secara populasi (4,93 juta pelanggan, 38,66%) tetapi hanya menyumbang 6,16% pendapatan — mencerminkan struktur tarif subsidi.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 3: DAYA TERPASANG & KONSENTRASI PENDAPATAN ================= -->
+<section>
+  <div class="sec-head"><div class="sec-num">03</div><h2 class="sec-title">Daya Terpasang &amp; Konsentrasi Dampak Pendapatan</h2></div>
+  <p class="sec-kicker">Piramida nilai pelanggan — Juni 2026</p>
+  <p class="sec-lead">Ketika data dipecah hingga level subgolongan, konsentrasi nilai menjadi lebih tajam: segelintir pelanggan daya besar mendominasi kontribusi pendapatan, sementara jutaan pelanggan daya kecil menjadi basis volume.</p>
+
+  <div class="bridge">
+    <div class="bnode highlight">
+      <div class="tag2">Industri Besar (I.3 + I.4, &gt;200 kVA)</div>
+      <div class="big">2.449 pelanggan</div>
+      <div class="small">0,02% dari total populasi pelanggan</div>
+    </div>
+    <div class="bnode highlight">
+      <div class="tag2">Menyumbang Pendapatan</div>
+      <div class="big">Rp4,66 T</div>
+      <div class="small">25,27% dari total pendapatan Jateng</div>
+    </div>
+    <div class="bnode">
+      <div class="tag2">Dibandingkan Dengan</div>
+      <div class="big">6,88 juta pelanggan</div>
+      <div class="small">Gabungan seluruh golongan S + R.1/450VA + R.1/900VA (55,6% populasi)</div>
+    </div>
+    <div class="bnode">
+      <div class="tag2">Pendapatan Kelompok Tsb.</div>
+      <div class="big">Rp2,63 T</div>
+      <div class="small">Lebih rendah dari kontribusi 2.449 pelanggan industri besar</div>
+    </div>
+  </div>
+
+  <div class="insight-box" style="margin-left:0;">
+    <b>Insight kunci:</b> 2.449 pelanggan industri besar (I.3 &gt;200 kVA dan I.4 ≥30.000 kVA) — hanya 0,02% dari basis pelanggan — menghasilkan pendapatan (Rp4,66 T) yang <b>lebih besar</b> dari gabungan seluruh 6,88 juta pelanggan golongan Sosial dan Rumah Tangga daya terkecil (R.1/450VA &amp; R.1/900VA) yang berjumlah Rp2,63 T. Ini menegaskan bahwa keandalan pasokan dan retensi segmen industri besar adalah pengungkit pendapatan paling kritikal, meski dampaknya nyaris tak terlihat pada statistik jumlah pelanggan.
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Subgolongan Kunci</th><th class="num">Jumlah Pelanggan</th><th class="num">Pangsa Pelanggan</th><th class="num">Pendapatan (Rp)</th><th class="num">Pangsa Pendapatan</th><th class="num">ARPU (Rp/pelanggan)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="seg-tag">I.3 / &gt; 200 kVA</td><td class="num">2.440</td><td class="num">0,02%</td><td class="num">4.135.330.892.503</td><td class="num">22,43%</td><td class="num">1.694.807.743</td></tr>
+      <tr><td class="seg-tag">I.4 / ≥ 30.000 kVA</td><td class="num">9</td><td class="num">0,00%</td><td class="num">524.358.252.652</td><td class="num">2,84%</td><td class="num">58.262.028.072</td></tr>
+      <tr><td class="seg-tag">B.2 / 6.600 VA–200 kVA</td><td class="num">88.336</td><td class="num">0,69%</td><td class="num">1.985.007.083.181</td><td class="num">10,77%</td><td class="num">22.471.100</td></tr>
+      <tr><td class="seg-tag">R.1M / 900 VA (rumah tangga mampu)</td><td class="num">3.410.912</td><td class="num">26,73%</td><td class="num">2.821.273.898.192</td><td class="num">15,30%</td><td class="num">827.132</td></tr>
+      <tr><td class="seg-tag">R.1 / 450 VA (subsidi)</td><td class="num">4.932.223</td><td class="num">38,66%</td><td class="num">1.135.929.899.637</td><td class="num">6,16%</td><td class="num">230.308</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight-box" style="margin-left:0;">
+    Dari sisi <b>daya terpasang</b>, golongan Industri menyerap 22,51% total daya (4,50 juta kVA) dengan rerata 166.449 VA/pelanggan — lebih dari 190x lipat rerata daya pelanggan Rumah Tangga (859 VA/pelanggan). Efisiensi harga jual (Rp/kVA daya terpasang) golongan Publik (P) tertinggi (Rp1.425,7/VA), diikuti C/T/L (Rp1.398,5/VA) dan Industri (Rp1.182,3/VA) — mengindikasikan intensitas pemakaian (load factor) golongan ini relatif lebih tinggi dibanding golongan Sosial (Rp654,0/VA).
+  </div>
+</section>
+
+<!-- ================= SECTION 4: YoY ================= -->
+<section>
+  <div class="sec-head"><div class="sec-num">04</div><h2 class="sec-title">Progres Year-on-Year: Juni 2025 → Juni 2026</h2></div>
+  <p class="sec-kicker">Membaca angka di balik "penurunan" pelanggan</p>
+  <p class="sec-lead">Perbandingan apa adanya (nominal) menunjukkan penurunan jumlah pelanggan sebesar 8,59%. Namun perbandingan ini tidak apple-to-apple karena Juni 2025 masih mencakup wilayah Yogyakarta, sementara Juni 2026 sudah tidak lagi — akibat reorganisasi UID Yogyakarta menjadi unit induk mandiri per 1 April 2026.</p>
+
+  <div class="bridge">
+    <div class="bnode">
+      <div class="tag2">Jun-2025 (Gabungan Jateng + Jogja)</div>
+      <div class="big">13.957.921</div>
+      <div class="small">Baseline sebelum reorganisasi</div>
+    </div>
+    <div class="bnode bad">
+      <div class="tag2">Jun-2026 Jateng-saja (nominal)</div>
+      <div class="big">12.759.171</div>
+      <div class="small">▼ 8,59% — turun karena Jogja sudah terpisah, bukan atrisi pelanggan</div>
+    </div>
+    <div class="bnode">
+      <div class="tag2">+ Jun-2026 Jogja (standalone)</div>
+      <div class="big">1.635.967</div>
+      <div class="small">Unit baru hasil pemisahan per 1 April 2026</div>
+    </div>
+    <div class="bnode good">
+      <div class="tag2">Jun-2026 Gabungan (apple-to-apple)</div>
+      <div class="big">14.395.138</div>
+      <div class="small">▲ 3,13% YoY — pertumbuhan organik riil</div>
+    </div>
+  </div>
+
+  <div class="insight-box" style="margin-left:0;">
+    <b>Kesimpulan metodologis:</b> jumlah pelanggan yang "hilang" dari laporan Jawa Tengah (1.198.750 pelanggan) justru <b>lebih kecil</b> dari jumlah pelanggan yang kini tercatat di UID Yogyakarta (1.635.967 pelanggan) — rasio 136,5%. Ini berarti wilayah eks-gabungan sesungguhnya tumbuh melebihi angka penurunan yang tampak; base Jawa Tengah pasca-pemisahan tetap solid, dan pertumbuhan organik gabungan tercatat positif di seluruh golongan.
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Kelompok Tarif</th><th class="num">YoY Pelanggan (Gabungan)</th><th class="num">YoY Daya Tersambung</th><th class="num">YoY Pendapatan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="seg-tag">S — Sosial</td><td class="num">+2,80%</td><td class="num">+7,53%</td><td class="num">+8,26%</td></tr>
+      <tr><td class="seg-tag">R — Rumah Tangga</td><td class="num">+2,70%</td><td class="num">+4,55%</td><td class="num">+25,09%</td></tr>
+      <tr><td class="seg-tag">B — Bisnis</td><td class="num">+9,98%</td><td class="num">+9,79%</td><td class="num">+7,73%</td></tr>
+      <tr><td class="seg-tag">I — Industri</td><td class="num">+23,56%</td><td class="num">+6,73%</td><td class="num">+8,51%</td></tr>
+      <tr><td class="seg-tag">P — Publik</td><td class="num">+4,54%</td><td class="num">+5,37%</td><td class="num">-0,45%</td></tr>
+      <tr><td class="seg-tag">C, T, L</td><td class="num">+18,77%</td><td class="num">+48,69%</td><td class="num">+62,29%</td></tr>
+      <tr class="total-row"><td class="seg-tag">TOTAL</td><td class="num">+3,13%</td><td class="num">+6,62%</td><td class="num">+15,48%</td></tr>
+    </tbody>
+  </table>
+  <div class="insight-box" style="margin-left:0;">
+    Golongan <b>Industri tumbuh paling agresif secara jumlah pelanggan (+23,56% YoY)</b> — sinyal ekspansi aktivitas industri/manufaktur di wilayah layanan. Golongan <b>C/T/L</b> (curah, traksi, layanan khusus) mencatat lonjakan pendapatan tertinggi (+62,29%) meski basisnya sangat kecil. Pendapatan golongan <b>Rumah Tangga melonjak +25,09%</b> — jauh melebihi pertumbuhan jumlah pelanggannya (+2,70%), mengindikasikan kenaikan konsumsi kWh dan/atau pergeseran daya ke golongan lebih tinggi (upgrading daya).
+  </div>
+</section>
+
+<!-- ================= SECTION 5: JOGJA ================= -->
+<section>
+  <div class="sec-head"><div class="sec-num">05</div><h2 class="sec-title">Dampak Reorganisasi UID Yogyakarta</h2></div>
+  <p class="sec-kicker">Konteks tambahan — unit induk baru efektif 1 April 2026</p>
+  <p class="sec-lead">Sejak 1 April 2026, wilayah Yogyakarta berdiri sebagai unit induk distribusi (UID) tersendiri, terpisah dari UID Jawa Tengah. Data Juni 2026 UID Yogyakarta berikut disajikan sebagai konteks tambahan untuk memahami skala unit yang terpisah dari basis pelaporan utama.</p>
+
+  <div class="pillgrid">
+    <div class="pill"><div class="lbl">Pelanggan UID Jogja</div><div class="num">1.635.967</div><div class="foot">11,36% dari total basis gabungan Jateng+Jogja</div></div>
+    <div class="pill"><div class="lbl">Daya Tersambung</div><div class="num">2.853.733.079 VA</div><div class="foot">≈ 2,85 juta kVA</div></div>
+    <div class="pill"><div class="lbl">Pendapatan Semester</div><div class="num">Rp1,28 T</div><div class="foot">6,49% dari pendapatan gabungan</div></div>
+    <div class="pill"><div class="lbl">ARPU Jogja</div><div class="num">Rp781.851</div><div class="foot">Rp/kWh rata-rata: Rp1.187,33</div></div>
+  </div>
+
+  <div class="insight-box" style="margin-left:0;">
+    Struktur pelanggan UID Yogyakarta didominasi golongan Rumah Tangga (91,19% populasi, mirip proporsi Jateng), namun dengan pangsa pendapatan Rumah Tangga yang justru lebih tinggi (54,17%) dibanding pangsa Rumah Tangga di UID Jawa Tengah (42,57%) — mengindikasikan basis industri Yogyakarta jauh lebih tipis (hanya 0,06% pelanggan &amp; 6,67% pendapatan, dibanding Jateng 0,21% &amp; 28,89%). Ini menegaskan Yogyakarta adalah unit yang lebih residensial-sentris, sedangkan Jawa Tengah relatif lebih industri-sentris.
+  </div>
+</section>
+
+<!-- ================= SECTION 6: KESIMPULAN ================= -->
+<section>
+  <div class="sec-head"><div class="sec-num">06</div><h2 class="sec-title">Kesimpulan &amp; Implikasi Strategis</h2></div>
+  <p class="sec-kicker">Apa yang perlu ditindaklanjuti</p>
+
+  <div class="reco">
+    <div class="reco-card">
+      <div class="num">1</div>
+      <h5>Jangan salah baca tren pelanggan</h5>
+      <p>Penurunan 8,59% pelanggan Juni 2026 adalah artefak reorganisasi, bukan sinyal kehilangan pasar. Laporan kinerja korporat sebaiknya menyertakan angka "gabungan apple-to-apple" (+3,13%) agar keputusan manajemen tidak salah arah akibat efek basis.</p>
+    </div>
+    <div class="reco-card">
+      <div class="num">2</div>
+      <h5>Prioritaskan retensi &amp; layanan segmen Industri besar</h5>
+      <p>2.449 pelanggan I.3/I.4 menyumbang 25,3% pendapatan. Gangguan pasokan atau migrasi captive power pada segmen ini berdampak jauh lebih besar terhadap pendapatan dibanding hilangnya jutaan pelanggan rumah tangga kecil.</p>
+    </div>
+    <div class="reco-card">
+      <div class="num">3</div>
+      <h5>Dorong migrasi daya di golongan Rumah Tangga mampu</h5>
+      <p>R.1M/900VA menjadi mesin pendapatan terbesar di blok Rumah Tangga. Pertumbuhan pendapatan R (+25,09% YoY) jauh melampaui pertumbuhan pelanggannya — potensi upselling daya &amp; efisiensi tarif progresif perlu terus dipantau.</p>
+    </div>
+    <div class="reco-card">
+      <div class="num">4</div>
+      <h5>Manfaatkan momentum pertumbuhan Industri (+23,56% YoY)</h5>
+      <p>Golongan Industri tumbuh tercepat secara jumlah pelanggan. Kapasitas jaringan &amp; kesiapan daya di kawasan industri baru perlu diantisipasi agar pertumbuhan ini tidak terhambat kendala infrastruktur.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="src"><b>Sumber data:</b> Form TUL III-09 — Laporan Penjualan Tenaga Listrik per 30 Juni 2025 &amp; 30 Juni 2026 (UID Jawa Tengah), dan Laporan Penjualan Aliran Listrik Triwulan II-2026 (UID Yogyakarta). Seluruh angka pendapatan &amp; kWh bersifat kumulatif semester berjalan (Januari–Juni).</div>
+    <div>☕2026 | JW - Disusun untuk kebutuhan internal analisis manajemen</div>
+     
+  </div>
+</footer>
+
+</body>
+</html>
