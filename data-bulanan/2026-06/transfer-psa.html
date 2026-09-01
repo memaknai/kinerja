@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis Transfer Energi PSA — Semester I 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root{
+    --navy:#0A1F3C;
+    --navy-2:#122A4E;
+    --steel:#2E5C8A;
+    --steel-light:#5D89B8;
+    --accent:#D98C2B;
+    --accent-2:#17A398;
+    --bg:#F5F6F8;
+    --card:#FFFFFF;
+    --line:#E3E6EC;
+    --ink:#152238;
+    --muted:#657289;
+    --tt-color:#0A1F3C;
+    --tm-color:#5D89B8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
+  @media(max-width:760px){.wrap{padding:0 20px;}}
+
+  /* ===== HERO ===== */
+  header.hero{
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 55%, #0C2A52 100%);
+    color:#fff;
+    padding:76px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute; right:-120px; top:-160px;
+    width:520px; height:520px; border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, rgba(217,140,43,0.16), transparent 70%);
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:#B9C6DE; font-weight:600; margin-bottom:22px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
+  h1.title{
+    font-family:'Newsreader',serif;
+    font-weight:600;
+    font-size:44px;
+    line-height:1.16;
+    margin:0 0 18px;
+    max-width:760px;
+    letter-spacing:-.01em;
+  }
+  .subtitle{
+    font-size:16.5px; color:#C7D2E3; max-width:640px; margin:0 0 40px; font-weight:400;
+  }
+  .hero-kpis{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    border-top:1px solid rgba(255,255,255,.14);
+    padding-top:28px; margin-top:8px;
+  }
+  @media(max-width:900px){.hero-kpis{grid-template-columns:repeat(2,1fr); row-gap:26px;}}
+  .kpi{padding-right:22px; border-right:1px solid rgba(255,255,255,.14);}
+  .hero-kpis .kpi:last-child{border-right:none;}
+  .kpi .num{font-family:'Newsreader',serif; font-size:29px; font-weight:600; color:#fff; letter-spacing:-.01em;}
+  .kpi .lbl{font-size:12.5px; color:#9FB0CB; margin-top:6px; font-weight:500;}
+  .kpi .sub{font-size:12px; color:var(--accent); margin-top:3px; font-weight:600;}
+
+  /* ===== SECTIONS ===== */
+  section{padding:64px 0;}
+  section.alt{background:#EFF2F6;}
+  .section-head{margin-bottom:34px; max-width:760px;}
+  .section-num{
+    font-size:12.5px; font-weight:700; letter-spacing:.12em; color:var(--accent);
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  h2.h{
+    font-family:'Newsreader',serif; font-weight:600; font-size:29px; color:var(--navy);
+    margin:0 0 12px; letter-spacing:-.01em;
+  }
+  .section-desc{color:var(--muted); font-size:15px; max-width:700px;}
+
+  /* Executive summary */
+  .exec-grid{display:grid; grid-template-columns:1.05fr 1fr; gap:44px; align-items:start;}
+  @media(max-width:900px){.exec-grid{grid-template-columns:1fr;}}
+  .exec-text p{font-size:15.5px; color:#374357; margin:0 0 16px;}
+  .exec-text strong{color:var(--navy);}
+  .finding-list{list-style:none; margin:26px 0 0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .finding-list li{display:flex; gap:14px; align-items:flex-start;}
+  .finding-num{
+    flex:0 0 auto; width:26px; height:26px; border-radius:50%;
+    background:var(--navy); color:#fff; font-size:12px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; margin-top:2px;
+  }
+  .finding-list p{margin:0; font-size:14.5px; color:#374357;}
+  .finding-list b{color:var(--navy);}
+
+  .stat-card-col{display:flex; flex-direction:column; gap:14px;}
+  .stat-card{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:20px 22px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .stat-card .t{font-size:13px; color:var(--muted); font-weight:600;}
+  .stat-card .v{font-family:'Newsreader',serif; font-size:22px; font-weight:600; color:var(--navy);}
+  .stat-card .v span{font-size:13px; color:var(--accent); font-weight:700; font-family:'Inter';}
+
+  /* Cards / charts */
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:26px 28px 20px; margin-bottom:24px;
+  }
+  .card-title{font-size:15px; font-weight:700; color:var(--navy); margin-bottom:2px;}
+  .card-note{font-size:12.5px; color:var(--muted); margin-bottom:18px;}
+  .chart-box{position:relative;}
+
+  .grid-2{display:grid; grid-template-columns:1.35fr 1fr; gap:24px;}
+  @media(max-width:900px){.grid-2{grid-template-columns:1fr;}}
+
+  .callout{
+    border-left:3px solid var(--accent); background:#FBF3E8;
+    padding:16px 20px; border-radius:0 8px 8px 0; margin:18px 0;
+  }
+  .callout .lab{font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:6px;}
+  .callout p{margin:0; font-size:14px; color:#3A2F1E;}
+  .callout.blue{border-left-color:var(--steel); background:#EEF3F9;}
+  .callout.blue .lab{color:var(--steel);}
+  .callout.blue p{color:#233350;}
+
+  /* Table */
+  table{width:100%; border-collapse:collapse; font-size:13.2px;}
+  thead th{
+    text-align:left; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--muted); font-weight:700; padding:10px 12px; border-bottom:2px solid var(--navy);
+  }
+  tbody td{padding:10px 12px; border-bottom:1px solid var(--line); color:#2A374C;}
+  tbody tr:hover{background:#F7F9FC;}
+  td.num, th.num{text-align:right; font-variant-numeric:tabular-nums;}
+  .badge{
+    display:inline-block; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px;
+  }
+  .badge.tt{background:rgba(10,31,60,.09); color:var(--navy);}
+  .badge.tm{background:rgba(93,137,184,.15); color:var(--steel);}
+  .rank{color:var(--muted); font-weight:600;}
+  tr.top3 td{background:#FBF3E8;}
+
+  .legend-row{display:flex; gap:18px; flex-wrap:wrap; margin-top:14px;}
+  .legend-item{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--muted); font-weight:500;}
+  .legend-swatch{width:11px; height:11px; border-radius:3px;}
+
+  /* Recommendations */
+  .reco-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media(max-width:900px){.reco-grid{grid-template-columns:1fr;}}
+  .reco-card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:24px;}
+  .reco-tag{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:12px;}
+  .reco-card h4{font-family:'Newsreader',serif; font-size:18px; color:var(--navy); margin:0 0 10px; font-weight:600;}
+  .reco-card p{font-size:13.6px; color:var(--muted); margin:0;}
+
+  footer{
+    background:var(--navy); color:#9FB0CB; padding:36px 0; font-size:12.5px;
+  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  footer strong{color:#fff;}
+
+  @media print{
+    header.hero{padding:40px 0;}
+    section{padding:30px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>Laporan Internal · Analisis Tranfer Energi PSA</div>
+    <h1 class="title">Postur &amp; Pola Transfer Energi PSA<br>Unit UP3 — Semester I 2026</h1>
+    <p class="subtitle">Pembacaan menyeluruh atas kontribusi 13 unit UP3 terhadap volume transfer energi dan struktur biaya, serta perbandingan pola pemakaian pada waktu beban puncak (WBP) dan luar waktu beban puncak (LWBP‑1, LWBP‑2).</p>
+    <div class="hero-kpis">
+      <div class="kpi">
+        <div class="num">18,32 M</div>
+        <div class="lbl">Total Transfer Energi (kWh)</div>
+      </div>
+      <div class="kpi">
+        <div class="num">Rp 26,81 T</div>
+        <div class="lbl">Total Biaya Transfer</div>
+      </div>
+      <div class="kpi">
+        <div class="num">Rp 1.464</div>
+        <div class="lbl">Rerata Biaya per kWh</div>
+      </div>
+      <div class="kpi">
+        <div class="num">13</div>
+        <div class="lbl">Unit UP3 · 7 TT / 6 TM</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= EXECUTIVE SUMMARY ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">Ringkasan Eksekutif</div>
+      <h2 class="h">Konsentrasi volume tinggi, namun struktur biaya didominasi oleh beban koinsidensi puncak</h2>
+    </div>
+    <div class="exec-grid">
+      <div class="exec-text">
+        <p>Selama Semester I 2026, total energi yang ditransfer melalui skema PSA di 13 unit UP3 mencapai <strong>18,32 miliar kWh</strong> dengan total beban biaya <strong>Rp 26,81 triliun</strong>. Distribusi kontribusi antar‑unit sangat timpang: tiga unit terbesar — <strong>Semarang, Kudus, dan Surakarta</strong> — bersama‑sama menyumbang <strong>40,2%</strong> dari seluruh volume transfer, sementara tiga unit terkecil hanya menyumbang <strong>13,4%</strong>.</p>
+        <p>Yang lebih signifikan secara strategis adalah struktur biayanya. Meskipun energi pada waktu beban puncak (WBP) hanya mewakili <strong>18,7%</strong> dari total volume kWh, komponen <strong>biaya koinsidensi peak (kW)</strong> justru menyerap <strong>43,4%</strong> dari total biaya — porsi terbesar dari seluruh komponen tarif. Ini menunjukkan bahwa efisiensi biaya PSA jauh lebih ditentukan oleh <em>manajemen kW puncak bersamaan</em> ketimbang oleh volume energi (kWh) semata.</p>
+        <p>Sebaliknya, pola komposisi WBP : LWBP‑1 : LWBP‑2 relatif seragam di seluruh unit (kisaran sempit ±0,56 poin persentase di sekitar rata‑rata 18,8% : 30,7% : 50,6%), mengindikasikan bahwa kurva beban mengikuti pola sistemik regional — bukan perilaku unit yang menyimpang secara individual.</p>
+      </div>
+      <div class="stat-card-col">
+        <ul class="finding-list" style="margin-top:0;">
+          <li>
+            <div class="finding-num">1</div>
+            <p><b>Konsentrasi:</b> 3 unit terbesar (TT: Semarang, Kudus, Surakarta) menguasai 40,2% volume — sisanya 10 unit berbagi 59,8%.</p>
+          </li>
+          <li>
+            <div class="finding-num">2</div>
+            <p><b>Struktur biaya:</b> Biaya koinsidensi peak (43,4%) &gt; LWBP‑2 (26,4%) &gt; WBP energi (19,5%) &gt; LWBP‑1 (10,7%).</p>
+          </li>
+          <li>
+            <div class="finding-num">3</div>
+            <p><b>Pola waktu:</b> LWBP‑2 (siang, 06.00–18.00) mendominasi volume di semua unit — rata‑rata 50,6% dari total transfer per unit.</p>
+          </li>
+          <li>
+            <div class="finding-num">4</div>
+            <p><b>Efisiensi tarif:</b> Rentang Rp/kWh antar‑unit relatif sempit (Rp 1.418–1.484), dengan Cilacap paling efisien dan Purwokerto tertinggi.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1 ================= -->
+<section class="alt" id="s1">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">01 — Analisis Keseluruhan</div>
+      <h2 class="h">Postur kontribusi unit terhadap volume dan biaya transfer</h2>
+      <p class="section-desc">Peringkat 13 unit UP3 berdasarkan volume transfer energi, pangsa kontribusinya terhadap total sistem, serta bagaimana volume tersebut diterjemahkan menjadi beban biaya.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Volume Transfer Energi per Unit (kWh)</div>
+        <div class="card-note">Diurutkan dari kontribusi terbesar · warna menandakan sistem tegangan</div>
+        <div class="chart-box" style="height:420px;"><canvas id="chartRanking"></canvas></div>
+        <div class="legend-row">
+          <div class="legend-item"><span class="legend-swatch" style="background:var(--tt-color)"></span>Tegangan Tinggi (TT)</div>
+          <div class="legend-item"><span class="legend-swatch" style="background:var(--tm-color)"></span>Tegangan Menengah (TM)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Struktur Biaya Total Sistem</div>
+        <div class="card-note">Rp 26,81 triliun — komposisi per komponen tarif</div>
+        <div class="chart-box" style="height:280px;"><canvas id="chartCostStructure"></canvas></div>
+        <div class="callout" style="margin-top:6px;">
+          <div class="lab">Temuan Kunci</div>
+          <p>Biaya koinsidensi peak (kW) menyumbang <b>43,4%</b> dari total biaya — hampir 2,2× lipat porsi energi WBP (18,7%) terhadap volume. Komponen ini konsisten mendominasi struktur biaya di <b>seluruh</b> unit (kisaran 41,3%–44,3%), menjadikannya prioritas utama dalam upaya efisiensi biaya, bukan sekadar penghematan kWh.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tabel Kontribusi Unit — Volume, Biaya, dan Tarif Efektif</div>
+      <div class="card-note">Semester I 2026 · tiga unit dengan pangsa kumulatif terbesar ditandai</div>
+      <table id="mainTable">
+        <thead>
+          <tr>
+            <th>Peringkat</th><th>Unit UP3</th><th>Sistem</th>
+            <th class="num">Volume (kWh)</th><th class="num">Pangsa Volume</th>
+            <th class="num">Biaya (Rp)</th><th class="num">Tarif Efektif (Rp/kWh)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="callout blue">
+      <div class="lab">Membaca postur unit</div>
+      <p>Ketujuh unit bertegangan TT menguasai <b>58,6%</b> volume transfer meski jumlahnya hanya 7 dari 13 unit, mencerminkan peran unit TT sebagai simpul transfer energi berkapasitas besar (Semarang, Kudus, Surakarta secara konsisten berada di tiga besar). Enam unit TM cenderung berukuran menengah‑kecil namun jumlahnya lebih merata — kontribusi individualnya berkisar 4,3%–11,1% dari total sistem.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 2 ================= -->
+<section id="s2">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">02 — Analisis Perbandingan Unit</div>
+      <h2 class="h">Pola transfer pada WBP, LWBP‑1, dan LWBP‑2 antar unit</h2>
+      <p class="section-desc">Membandingkan komposisi waktu transfer di setiap unit untuk mengidentifikasi apakah pola beban bersifat seragam (sistemik) atau bervariasi (spesifik‑unit).</p>
+    </div>
+
+    <div class="callout blue" style="margin-bottom:22px;">
+      <div class="lab">Acuan pembagian periode waktu</div>
+      <p><b>WBP</b> pukul 18.00–22.00 (beban tertinggi) · <b>LWBP‑1</b> pukul 22.00–06.00 (malam–dini hari, beban terendah) · <b>LWBP‑2</b> pukul 06.00–18.00 (siang, beban menengah). Pembagian tiga blok ini merupakan konvensi operasional yang umum dipakai dalam skema transfer energi antar‑unit PLN — bukan istilah pada regulasi tarif ritel publik — sehingga batas jam persisnya sebaiknya dikonfirmasi terhadap SOP transfer PSA yang berlaku untuk data ini.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Komposisi Transfer per Periode Waktu (% dari volume unit)</div>
+      <div class="card-note">Diurutkan berdasarkan pangsa WBP tertinggi — garis putus‑putus menandakan rata‑rata sistem</div>
+      <div class="chart-box" style="height:460px;"><canvas id="chartComposition"></canvas></div>
+      <div class="legend-row">
+        <div class="legend-item"><span class="legend-swatch" style="background:#0A1F3C"></span>WBP</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#5D89B8"></span>LWBP‑1</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#C9D6E8"></span>LWBP‑2</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Tarif Efektif per Unit (Rp/kWh)</div>
+        <div class="card-note">Garis putus‑putus = rerata sistem (Rp 1.461/kWh)</div>
+        <div class="chart-box" style="height:340px;"><canvas id="chartRpKwh"></canvas></div>
+      </div>
+      <div class="exec-text">
+        <div class="callout">
+          <div class="lab">Pola homogen, bukan anomali unit</div>
+          <p>Sebaran pangsa WBP antar‑unit sangat sempit — hanya berkisar <b>17,8%–19,7%</b> (deviasi standar 0,56 poin persentase). Ini mengindikasikan kurva beban PSA dibentuk oleh <b>pola sistemik regional</b> (jam operasional industri, jadwal beban wilayah Jateng–DIY), bukan oleh karakteristik operasional unit secara individual.</p>
+        </div>
+        <div class="callout blue">
+          <div class="lab">Ukuran unit vs komposisi waktu</div>
+          <p>Tiga unit volume terbesar (Semarang, Kudus, Surakarta) justru menunjukkan pangsa WBP <b>di bawah</b> rata‑rata sistem dan pangsa LWBP‑2 (siang) <b>di atas</b> rata‑rata — korelasi negatif moderat (r ≈ ‑0,39). Unit besar cenderung membawa profil beban dasar (baseload) yang lebih rata sepanjang siang‑malam, sedangkan unit menengah‑kecil seperti Purwokerto, Magelang, dan Tegal relatif lebih peak‑heavy pada jam sore (WBP).</p>
+        </div>
+        <div class="callout">
+          <div class="lab">Sensitivitas tarif</div>
+          <p><b>Purwokerto</b> mencatat tarif efektif tertinggi (Rp 1.483,9/kWh) — sejalan dengan pangsa WBP‑nya yang juga tertinggi. <b>Cilacap</b> mencatat tarif terendah (Rp 1.418,5/kWh), didorong oleh pangsa biaya koinsidensi peak yang relatif lebih rendah (41,3% vs rata‑rata 43,1%).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RECOMMENDATIONS ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">Implikasi &amp; Langkah Lanjutan</div>
+      <h2 class="h">Tiga area prioritas untuk optimalisasi biaya transfer PSA</h2>
+    </div>
+    <div class="reco-grid">
+      <div class="reco-card">
+        <div class="reco-tag">Prioritas 1</div>
+        <h4>Kelola koinsidensi peak, bukan hanya kWh</h4>
+        <p>Karena 43,4% biaya berasal dari kW koinsidensi peak, evaluasi penjadwalan beban dan mitigasi lonjakan bersamaan (terutama di Salatiga, Semarang, Klaten, dan Surakarta yang porsinya di atas 43,7%) berpotensi memberi dampak biaya lebih besar dibanding efisiensi energi biasa.</p>
+      </div>
+      <div class="reco-card">
+        <div class="reco-tag">Prioritas 2</div>
+        <h4>Jadikan Cilacap tolok ukur (benchmark)</h4>
+        <p>Dengan tarif efektif terendah dan porsi biaya peak koin paling ramping, praktik operasional Cilacap layak ditelaah lebih lanjut sebagai referensi bagi unit dengan tarif efektif di atas rata‑rata seperti Purwokerto dan Salatiga.</p>
+      </div>
+      <div class="reco-card">
+        <div class="reco-tag">Prioritas 3</div>
+        <h4>Manfaatkan pola LWBP‑2 yang dominan</h4>
+        <p>Dengan lebih dari separuh volume transfer terjadi pada LWBP‑2, unit dapat mengevaluasi peluang pergeseran beban tambahan ke luar WBP guna menekan lebih jauh eksposur terhadap komponen tarif WBP yang secara historis lebih mahal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Laporan Analisis Transfer Energi PSA</strong> ·  Sumber data: Rekap Transfer PSA Semester I 2026 · Disusun untuk kebutuhan internal</div>
+    <div>☕2026 | JW</div>
+  </div>
+</footer>
+
+<script>
+const DATA = [
+  {"unit": "Semarang", "tegangan": "TT", "wbp": 483680794, "lwbp1": 806443113, "lwbp2": 1424378145, "total": 2714502052, "biaya": 4013460906780, "rp_per_kwh": 1478.5, "wbp_pct": 17.82, "lwbp1_pct": 29.71, "lwbp2_pct": 52.47, "share_total_pct": 14.81, "peakkoin_share_pct": 44.19},
+  {"unit": "Kudus", "tegangan": "TT", "wbp": 486483968, "lwbp1": 806761949, "lwbp2": 1323892117, "total": 2617138034, "biaya": 3840884189793, "rp_per_kwh": 1467.6, "wbp_pct": 18.59, "lwbp1_pct": 30.83, "lwbp2_pct": 50.59, "share_total_pct": 14.28, "peakkoin_share_pct": 43.61},
+  {"unit": "Surakarta", "tegangan": "TM", "wbp": 366990940, "lwbp1": 618040555, "lwbp2": 1042502284, "total": 2027533779, "biaya": 2971358354076, "rp_per_kwh": 1465.5, "wbp_pct": 18.10, "lwbp1_pct": 30.48, "lwbp2_pct": 51.42, "share_total_pct": 11.06, "peakkoin_share_pct": 43.74},
+  {"unit": "Tegal", "tegangan": "TM", "wbp": 349849100, "lwbp1": 572393897, "lwbp2": 891414808, "total": 1813657805, "biaya": 2661626796197, "rp_per_kwh": 1467.5, "wbp_pct": 19.29, "lwbp1_pct": 31.56, "lwbp2_pct": 49.15, "share_total_pct": 9.90, "peakkoin_share_pct": 43.39},
+  {"unit": "Grobogan", "tegangan": "TT", "wbp": 246231331, "lwbp1": 415993111, "lwbp2": 648496733, "total": 1310721175, "biaya": 1921446587733, "rp_per_kwh": 1465.9, "wbp_pct": 18.79, "lwbp1_pct": 31.74, "lwbp2_pct": 49.48, "share_total_pct": 7.15, "peakkoin_share_pct": 43.60},
+  {"unit": "Cilacap", "tegangan": "TT", "wbp": 244397611, "lwbp1": 409394337, "lwbp2": 618231099, "total": 1272023047, "biaya": 1804336984317, "rp_per_kwh": 1418.5, "wbp_pct": 19.21, "lwbp1_pct": 32.18, "lwbp2_pct": 48.60, "share_total_pct": 6.94, "peakkoin_share_pct": 41.34},
+  {"unit": "Purwokerto", "tegangan": "TT", "wbp": 246774229, "lwbp1": 375723897, "lwbp2": 627743710, "total": 1250241836, "biaya": 1855198703895, "rp_per_kwh": 1483.9, "wbp_pct": 19.74, "lwbp1_pct": 30.05, "lwbp2_pct": 50.21, "share_total_pct": 6.82, "peakkoin_share_pct": 43.42},
+  {"unit": "Yogyakarta", "tegangan": "TM", "wbp": 205070830, "lwbp1": 318683409, "lwbp2": 555610689, "total": 1079364928, "biaya": 1539716673643, "rp_per_kwh": 1426.5, "wbp_pct": 19.00, "lwbp1_pct": 29.53, "lwbp2_pct": 51.48, "share_total_pct": 5.89, "peakkoin_share_pct": 42.76},
+  {"unit": "Sukoharjo", "tegangan": "TM", "wbp": 170273866, "lwbp1": 280110259, "lwbp2": 448388895, "total": 898773020, "biaya": 1315080430758, "rp_per_kwh": 1463.2, "wbp_pct": 18.95, "lwbp1_pct": 31.17, "lwbp2_pct": 49.89, "share_total_pct": 4.90, "peakkoin_share_pct": 43.11},
+  {"unit": "Klaten", "tegangan": "TM", "wbp": 164769961, "lwbp1": 271534136, "lwbp2": 455093108, "total": 891397205, "biaya": 1311370564951, "rp_per_kwh": 1471.1, "wbp_pct": 18.48, "lwbp1_pct": 30.46, "lwbp2_pct": 51.05, "share_total_pct": 4.86, "peakkoin_share_pct": 43.74},
+  {"unit": "Magelang", "tegangan": "TM", "wbp": 170796482, "lwbp1": 267941373, "lwbp2": 440881917, "total": 879619772, "biaya": 1283359132286, "rp_per_kwh": 1459.0, "wbp_pct": 19.42, "lwbp1_pct": 30.46, "lwbp2_pct": 50.12, "share_total_pct": 4.80, "peakkoin_share_pct": 42.82},
+  {"unit": "Salatiga", "tegangan": "TT", "wbp": 143597334, "lwbp1": 237849770, "lwbp2": 408166541, "total": 789613645, "biaya": 1170139758626, "rp_per_kwh": 1481.9, "wbp_pct": 18.19, "lwbp1_pct": 30.12, "lwbp2_pct": 51.69, "share_total_pct": 4.31, "peakkoin_share_pct": 44.26},
+  {"unit": "Pekalongan", "tegangan": "TT", "wbp": 145213263, "lwbp1": 241938049, "lwbp2": 393150055, "total": 780301367, "biaya": 1125497896534, "rp_per_kwh": 1442.4, "wbp_pct": 18.61, "lwbp1_pct": 31.01, "lwbp2_pct": 50.38, "share_total_pct": 4.26, "peakkoin_share_pct": 42.63}
+];
+
+const NAVY = "#0A1F3C", STEEL = "#5D89B8", ACCENT = "#D98C2B", LIGHT = "#C9D6E8", MUTED="#8DA0BC";
+const fmtID = n => new Intl.NumberFormat('id-ID').format(Math.round(n));
+const fmtRp = n => "Rp " + new Intl.NumberFormat('id-ID').format(Math.round(n));
+
+Chart.defaults.font.family = "Inter, sans-serif";
+Chart.defaults.color = "#657289";
+Chart.defaults.font.size = 11.5;
+
+// ---- Table ----
+const tbody = document.querySelector('#mainTable tbody');
+DATA.forEach((d,i)=>{
+  const tr = document.createElement('tr');
+  if(i<3) tr.className='top3';
+  tr.innerHTML = `
+    <td class="rank">${i+1}</td>
+    <td><b>UP3 ${d.unit}</b></td>
+    <td><span class="badge ${d.tegangan==='TT'?'tt':'tm'}">${d.tegangan}</span></td>
+    <td class="num">${fmtID(d.total)}</td>
+    <td class="num">${d.share_total_pct.toFixed(2).replace('.',',')}%</td>
+    <td class="num">${fmtRp(d.biaya)}</td>
+    <td class="num">${d.rp_per_kwh.toFixed(1).replace('.',',')}</td>
+  `;
+  tbody.appendChild(tr);
+});
+
+// ---- Chart 1: Ranking bar ----
+new Chart(document.getElementById('chartRanking'), {
+  type:'bar',
+  data:{
+    labels: DATA.map(d=>d.unit),
+    datasets:[{
+      data: DATA.map(d=>d.total),
+      backgroundColor: DATA.map(d=> d.tegangan==='TT' ? NAVY : STEEL),
+      borderRadius:3,
+      barThickness:16,
+    }]
+  },
+  options:{
+    indexAxis:'y',
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:c=>` ${fmtID(c.raw)} kWh  (${DATA[c.dataIndex].share_total_pct.toFixed(1)}% dari total)`}}
+    },
+    scales:{
+      x:{ grid:{color:'#EEF1F5'}, ticks:{callback:v=>(v/1e9).toFixed(1)+' M'} },
+      y:{ grid:{display:false} }
+    }
+  }
+});
+
+// ---- Chart 2: Cost structure donut ----
+new Chart(document.getElementById('chartCostStructure'), {
+  type:'doughnut',
+  data:{
+    labels:['Koinsidensi Peak (kW)','LWBP‑2','WBP (energi)','LWBP‑1','Kelebihan kVArh'],
+    datasets:[{
+      data:[43.41, 26.40, 19.49, 10.67, 0.04],
+      backgroundColor:[ACCENT, NAVY, STEEL, LIGHT, '#DDE3EC'],
+      borderWidth:2, borderColor:'#fff',
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    cutout:'62%',
+    plugins:{
+      legend:{position:'bottom', labels:{boxWidth:10, padding:12, font:{size:11}}},
+      tooltip:{callbacks:{label:c=>` ${c.label}: ${c.raw}%`}}
+    }
+  }
+});
+
+// ---- Chart 3: Composition 100% stacked, sorted by wbp_pct desc ----
+const sortedComp = [...DATA].sort((a,b)=>b.wbp_pct - a.wbp_pct);
+new Chart(document.getElementById('chartComposition'), {
+  type:'bar',
+  data:{
+    labels: sortedComp.map(d=>d.unit),
+    datasets:[
+      {label:'WBP', data:sortedComp.map(d=>d.wbp_pct), backgroundColor:NAVY, stack:'s'},
+      {label:'LWBP-1', data:sortedComp.map(d=>d.lwbp1_pct), backgroundColor:STEEL, stack:'s'},
+      {label:'LWBP-2', data:sortedComp.map(d=>d.lwbp2_pct), backgroundColor:LIGHT, stack:'s'},
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.raw.toFixed(2)}%`}}
+    },
+    scales:{
+      x:{ stacked:true, grid:{display:false}, ticks:{maxRotation:45, minRotation:45} },
+      y:{ stacked:true, max:100, grid:{color:'#EEF1F5'}, ticks:{callback:v=>v+'%'} }
+    }
+  }
+});
+
+// ---- Chart 4: Rp/kWh bar with avg line ----
+const sortedRp = [...DATA].sort((a,b)=>b.rp_per_kwh - a.rp_per_kwh);
+const avgRp = DATA.reduce((s,d)=>s+d.rp_per_kwh,0)/DATA.length;
+new Chart(document.getElementById('chartRpKwh'), {
+  type:'bar',
+  data:{
+    labels: sortedRp.map(d=>d.unit),
+    datasets:[{
+      data: sortedRp.map(d=>d.rp_per_kwh),
+      backgroundColor: sortedRp.map(d=> d.rp_per_kwh>avgRp ? ACCENT : STEEL),
+      borderRadius:3,
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:c=>` Rp ${c.raw.toFixed(1)} / kWh`}},
+      annotation:undefined
+    },
+    scales:{
+      x:{ grid:{display:false}, ticks:{maxRotation:45, minRotation:45} },
+      y:{ grid:{color:'#EEF1F5'}, min:1380, ticks:{callback:v=>'Rp '+v} }
+    }
+  },
+  plugins:[{
+    id:'avgLine',
+    afterDraw(chart){
+      const {ctx, chartArea:{left,right}, scales:{y}} = chart;
+      const yPos = y.getPixelForValue(avgRp);
+      ctx.save();
+      ctx.strokeStyle = '#9AA6B8';
+      ctx.setLineDash([5,4]);
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.moveTo(left, yPos);
+      ctx.lineTo(right, yPos);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#657289';
+      ctx.font = '11px Inter';
+      ctx.fillText('rerata Rp '+avgRp.toFixed(0), left+4, yPos-6);
+      ctx.restore();
+    }
+  }]
+});
+</script>
+</body>
+</html>
