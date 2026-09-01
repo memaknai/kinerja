@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis Penyambungan Pelanggan, Daya &amp; Pendapatan BP — UID Jawa Tengah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A2647;
+    --navy-2:#123B63;
+    --ink:#16233A;
+    --paper:#FFFFFF;
+    --paper-2:#F5F7FA;
+    --line:#DCE2EA;
+    --teal:#0E7C7B;
+    --teal-2:#12A19E;
+    --gold:#B98A3D;
+    --red:#B4432D;
+    --muted:#5C6B7F;
+    --pos:#0E7C7B;
+    --neg:#B4432D;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    font-size:15px;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{font-family:'Source Serif 4',serif; color:var(--navy); margin:0;}
+  .serif{font-family:'Source Serif 4',serif;}
+  a{color:var(--teal);}
+
+  /* ===== COVER ===== */
+  .cover{
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 55%,#0A2647 100%);
+    color:#fff;
+    padding:100px 80px 70px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cover::before{
+    content:"";
+    position:absolute; right:-120px; top:-120px;
+    width:480px; height:480px; border-radius:50%;
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  .cover::after{
+    content:"";
+    position:absolute; right:-40px; top:60px;
+    width:340px; height:340px; border-radius:50%;
+    border:1px solid rgba(255,255,255,0.06);
+  }
+  .cover-eyebrow{
+    display:flex; align-items:center; gap:10px;
+    text-transform:uppercase; letter-spacing:2.5px; font-size:11.5px; font-weight:700;
+    color:var(--teal-2); margin-bottom:26px;
+  }
+  .cover-eyebrow .dot{width:7px;height:7px;background:var(--gold);border-radius:50%;display:inline-block;}
+  .cover h1{
+    font-size:44px; font-weight:700; color:#fff; line-height:1.18; max-width:820px;
+    letter-spacing:-0.3px;
+  }
+  .cover .sub{
+    margin-top:22px; font-size:17px; color:rgba(255,255,255,0.72); max-width:640px; font-weight:400;
+  }
+  .cover-meta{
+    display:flex; gap:48px; margin-top:56px; flex-wrap:wrap;
+    border-top:1px solid rgba(255,255,255,0.18); padding-top:26px;
+  }
+  .cover-meta div .k{font-size:10.5px; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.5); margin-bottom:6px;}
+  .cover-meta div .v{font-size:15px; font-weight:600; color:#fff;}
+  .confidential{
+    position:absolute; top:40px; right:80px; font-size:11px; letter-spacing:1.5px;
+    color:rgba(255,255,255,0.55); text-transform:uppercase; font-weight:600;
+  }
+
+  /* ===== SHELL ===== */
+  .wrap{max-width:1120px; margin:0 auto; padding:0 80px;}
+  section{padding:64px 0;}
+  section.alt{background:var(--paper-2);}
+  .section-head{margin-bottom:36px;}
+  .eyebrow{
+    font-size:11.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+    color:var(--teal); margin-bottom:10px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow .num{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border:1.5px solid var(--teal); border-radius:50%;
+    font-size:11px; color:var(--teal);
+  }
+  .section-head h2{font-size:29px; font-weight:700; max-width:760px;}
+  .section-head p.lead{color:var(--muted); font-size:15.5px; margin-top:12px; max-width:760px;}
+
+  /* ===== KPI CARDS ===== */
+  .kpi-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:8px;}
+  .kpi{background:#fff; padding:26px 24px;}
+  .kpi .label{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.8px; font-weight:600;}
+  .kpi .value{font-family:'Source Serif 4',serif; font-size:30px; font-weight:700; color:var(--navy); margin-top:10px; letter-spacing:-.5px;}
+  .kpi .delta{margin-top:8px; font-size:13px; font-weight:600;}
+  .kpi .delta.pos{color:var(--pos);}
+  .kpi .delta.neg{color:var(--neg);}
+  .kpi .foot{margin-top:6px; font-size:12px; color:var(--muted);}
+
+  /* ===== CHART CARD ===== */
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:4px; padding:28px 30px; margin-top:20px;
+  }
+  .card h3{font-size:16px; font-weight:700; color:var(--navy); margin-bottom:2px;}
+  .card .cap{font-size:12.5px; color:var(--muted); margin-bottom:18px;}
+  .chart-box{position:relative; width:100%;}
+
+  .grid2{display:grid; grid-template-columns:1.2fr 1fr; gap:22px;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+
+  /* ===== TABLE ===== */
+  table{width:100%; border-collapse:collapse; font-size:13.5px;}
+  thead th{
+    text-align:right; font-size:10.5px; text-transform:uppercase; letter-spacing:.6px;
+    color:var(--muted); font-weight:700; padding:10px 8px; border-bottom:2px solid var(--navy);
+  }
+  thead th:first-child, tbody td:first-child{text-align:left;}
+  tbody td{padding:10px 8px; border-bottom:1px solid var(--line); text-align:right; color:var(--ink);}
+  tbody tr:hover{background:var(--paper-2);}
+  tbody td.name{font-weight:600; color:var(--navy);}
+  .tag{
+    display:inline-block; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:10px;
+    margin-left:6px;
+  }
+  .tag.up{background:#E5F4F1; color:var(--teal);}
+  .tag.down{background:#FBEAE6; color:var(--neg);}
+
+  /* ===== CALLOUT ===== */
+  .callout{
+    display:flex; gap:16px; background:#FBF7EE; border-left:3px solid var(--gold);
+    padding:18px 22px; margin-top:20px; border-radius:2px;
+  }
+  .callout .icon{font-family:'Source Serif 4',serif; font-size:20px; color:var(--gold); font-weight:700;}
+  .callout p{margin:0; font-size:14px; color:var(--ink);}
+  .callout.teal{background:#EEF7F6; border-left-color:var(--teal);}
+  .callout.teal .icon{color:var(--teal);}
+  .callout.red{background:#FBEEEC; border-left-color:var(--red);}
+  .callout.red .icon{color:var(--red);}
+
+  /* ===== FINDINGS LIST ===== */
+  .finding{display:flex; gap:18px; padding:20px 0; border-bottom:1px solid var(--line);}
+  .finding:last-child{border-bottom:none;}
+  .finding .fnum{font-family:'Source Serif 4',serif; font-size:22px; font-weight:700; color:var(--teal); min-width:44px;}
+  .finding h4{font-size:15.5px; color:var(--navy); margin-bottom:6px;}
+  .finding p{margin:0; font-size:13.8px; color:var(--muted);}
+
+  /* ===== SEGMENT BAR ===== */
+  .seg-row{display:flex; align-items:center; gap:14px; padding:9px 0;}
+  .seg-row .seg-label{width:150px; font-size:13px; font-weight:600; color:var(--navy); flex-shrink:0;}
+  .seg-row .seg-bar-bg{flex:1; background:var(--paper-2); height:20px; border-radius:3px; overflow:hidden;}
+  .seg-row .seg-bar{height:100%; background:linear-gradient(90deg,var(--teal),var(--teal-2)); border-radius:3px;}
+  .seg-row .seg-val{width:70px; text-align:right; font-size:13px; font-weight:700; color:var(--navy); flex-shrink:0;}
+
+  /* ===== RECOMMENDATION ===== */
+  .rec-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:22px;}
+  .rec-card{background:#fff; border:1px solid var(--line); border-top:3px solid var(--teal); padding:22px 22px; border-radius:2px;}
+  .rec-card.gold{border-top-color:var(--gold);}
+  .rec-card.red{border-top-color:var(--red);}
+  .rec-card .rk{font-size:10.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .rec-card h4{font-size:15px; color:var(--navy); margin-bottom:8px;}
+  .rec-card p{font-size:13.3px; color:var(--muted); margin:0;}
+
+  footer{
+    background:var(--navy); color:rgba(255,255,255,0.65); padding:36px 80px; font-size:12.5px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+  footer strong{color:#fff;}
+
+  .legend-row{display:flex; gap:20px; margin-top:10px; flex-wrap:wrap;}
+  .legend-item{display:flex; align-items:center; gap:6px; font-size:12px; color:var(--muted);}
+  .legend-dot{width:10px; height:10px; border-radius:2px;}
+
+  @media (max-width:900px){
+    .wrap{padding:0 24px;}
+    .cover{padding:70px 24px 50px;}
+    .cover h1{font-size:30px;}
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .grid2, .grid3, .rec-grid{grid-template-columns:1fr;}
+    .confidential{right:24px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<div class="cover">
+  <div class="confidential">Internal · Terbatas</div>
+  <div class="cover-eyebrow"><span class="dot"></span>Formulir 4 — Pendapatan BP Tersambung</div>
+  <h1>Penyambungan Pelanggan, Daya Tersambung &amp; Pendapatan BP<br>UID Jawa Tengah</h1>
+  <p class="sub">Analisis capaian historis per 30 Juni 2026 dan proyeksi sampai dengan Desember 2026 — disusun sebagai basis evaluasi efektivitas anggaran investasi penyambungan pelanggan.</p>
+  <div class="cover-meta">
+    <div><div class="k">Periode Data</div><div class="v">Jan 2025 – Des 2026 (Proyeksi)</div></div>
+    <div><div class="k">Cut-off Realisasi</div><div class="v">30 Juni 2026</div></div>
+    <div><div class="k">Cakupan</div><div class="v">Seluruh Golongan Tarif (S, R, B, I, P)</div></div>
+    <div><div class="k">Metrik</div><div class="v">Pelanggan · Daya (MVA) · Pendapatan BP</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ================= 01 RINGKASAN EKSEKUTIF ================= -->
+<section id="ringkasan">
+  <div class="section-head">
+    <div class="eyebrow"><span class="num">01</span>Ringkasan Eksekutif</div>
+    <h2>Pertumbuhan pelanggan solid, tetapi kualitas pertumbuhan bergeser — bisnis melesat, industri melambat.</h2>
+    <p class="lead">Sampai dengan Juni 2026, realisasi penambahan pelanggan tumbuh 3,5% dibanding periode sama 2025, sementara pendapatan BP tumbuh jauh lebih cepat (16,9%) — sinyal bahwa komposisi pelanggan baru bergeser ke segmen bernilai lebih tinggi. Proyeksi penuh tahun 2026 menunjukkan seluruh KPI utama tumbuh positif YoY, dengan pendapatan BP menjadi metrik dengan akselerasi tertinggi.</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="label">Penambahan Pelanggan (Real s.d. Jun'26)</div>
+      <div class="value">193.276</div>
+      <div class="delta pos">▲ 3,5% YoY (Jun'25: 186.689)</div>
+      <div class="foot">43,1% dari target proyeksi 2026</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Daya Tersambung (Real s.d. Jun'26)</div>
+      <div class="value">706 MVA</div>
+      <div class="delta pos">▲ 19,3% YoY (Jun'25: 592 MVA)</div>
+      <div class="foot">53,6% dari target proyeksi 2026</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Pendapatan BP (Real s.d. Jun'26)</div>
+      <div class="value">Rp139,9 M</div>
+      <div class="delta pos">▲ 16,9% YoY (Jun'25: Rp119,6 M)</div>
+      <div class="foot">48,8% dari target proyeksi 2026 · miliar rupiah</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Proyeksi Full-Year Pelanggan 2026</div>
+      <div class="value">448.340</div>
+      <div class="delta pos">▲ 8,5% vs realisasi 2025 (413.129)</div>
+      <div class="foot">Pendapatan proyeksi: Rp286,4 M (+13,1% YoY)</div>
+    </div>
+  </div>
+
+  <div class="callout teal">
+    <div class="icon">i</div>
+    <p><strong>Temuan inti:</strong> pertumbuhan pendapatan BP (+13,1% proyeksi YoY) melampaui pertumbuhan jumlah pelanggan (+8,5%) dan daya tersambung (+4,3%). Ini mengindikasikan revenue-per-connection yang membaik — didorong oleh ekspansi pelanggan Bisnis (B) dan lonjakan pelanggan berdaya besar khusus (C &gt; 200 kVA, golongan P) — namun perlu diwaspadai karena kontraksi signifikan pada golongan Industri (I) menahan laju pertumbuhan daya tersambung secara keseluruhan.</p>
+  </div>
+</section>
+
+<!-- ================= 02 TREN KUMULATIF ================= -->
+<section class="alt" id="tren">
+  <div class="section-head">
+    <div class="eyebrow"><span class="num">02</span>Tren Kumulatif 2025 vs 2026</div>
+    <h2>Ketiga metrik konsisten tumbuh di atas capaian tahun lalu pada periode yang sama.</h2>
+    <p class="lead">Garis solid menunjukkan realisasi kumulatif; garis putus-putus pada 2026 menunjukkan proyeksi Juli–Desember berdasarkan tren yang sudah berjalan.</p>
+  </div>
+
+  <div class="card">
+    <h3>Kumulatif Penambahan Pelanggan (unit)</h3>
+    <div class="cap">Jumlah pelanggan baru tersambung, akumulasi sejak Januari — dibandingkan tahun ke tahun</div>
+    <div class="chart-box" style="height:320px;" id="chartPelanggan"></div>
+    <div class="legend-row">
+      <div class="legend-item"><span class="legend-dot" style="background:#0A2647;"></span>2025 (Realisasi)</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#0E7C7B;"></span>2026 (Realisasi s.d. Jun)</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#0E7C7B; opacity:.45;"></span>2026 (Proyeksi Jul–Des)</div>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:20px;">
+    <div class="card">
+      <h3>Kumulatif Daya Tersambung (MVA)</h3>
+      <div class="cap">Total kapasitas daya baru yang disambungkan</div>
+      <div class="chart-box" style="height:280px;" id="chartMVA"></div>
+      <div class="legend-row">
+        <div class="legend-item"><span class="legend-dot" style="background:#0A2647;"></span>2025</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#B98A3D;"></span>2026 Real</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#B98A3D; opacity:.45;"></span>2026 Proyeksi</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Kumulatif Pendapatan BP (Rp Miliar)</h3>
+      <div class="cap">Estimasi pendapatan biaya penyambungan (BP)</div>
+      <div class="chart-box" style="height:280px;" id="chartRev"></div>
+      <div class="legend-row">
+        <div class="legend-item"><span class="legend-dot" style="background:#0A2647;"></span>2025</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#12A19E;"></span>2026 Real</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#12A19E; opacity:.45;"></span>2026 Proyeksi</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid3" style="margin-top:24px;">
+    <div class="card" style="margin-top:0;">
+      <h3>Pelanggan</h3>
+      <div class="cap">Full-year 2025 vs proyeksi 2026</div>
+      <div style="font-size:26px; font-weight:700; font-family:'Source Serif 4',serif; color:var(--navy); margin-top:6px;">+8,5%</div>
+      <div style="font-size:12.5px; color:var(--muted); margin-top:4px;">413.129 → 448.340 pelanggan</div>
+    </div>
+    <div class="card" style="margin-top:0;">
+      <h3>Daya Tersambung</h3>
+      <div class="cap">Full-year 2025 vs proyeksi 2026</div>
+      <div style="font-size:26px; font-weight:700; font-family:'Source Serif 4',serif; color:var(--navy); margin-top:6px;">+4,3%</div>
+      <div style="font-size:12.5px; color:var(--muted); margin-top:4px;">1.263 → 1.317 MVA</div>
+    </div>
+    <div class="card" style="margin-top:0;">
+      <h3>Pendapatan BP</h3>
+      <div class="cap">Full-year 2025 vs proyeksi 2026</div>
+      <div style="font-size:26px; font-weight:700; font-family:'Source Serif 4',serif; color:var(--navy); margin-top:6px;">+13,1%</div>
+      <div style="font-size:12.5px; color:var(--muted); margin-top:4px;">Rp253,3 M → Rp286,4 M</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 MOMENTUM BULANAN ================= -->
+<section id="momentum">
+  <div class="section-head">
+    <div class="eyebrow"><span class="num">03</span>Momentum Bulanan &amp; Pola Musiman</div>
+    <h2>Penambahan pelanggan cenderung terkonsentrasi di paruh kedua tahun.</h2>
+    <p class="lead">Pola net-add bulanan (bukan kumulatif) memperlihatkan akselerasi konsisten menjelang akhir tahun — konsisten dengan pola 2025 — namun proyeksi 2026 menunjukkan H2 tumbuh lebih agresif dibanding H1.</p>
+  </div>
+
+  <div class="card">
+    <h3>Net Penambahan Pelanggan per Bulan (unit)</h3>
+    <div class="cap">Batang solid = realisasi; batang bergaris = proyeksi Jul–Des 2026</div>
+    <div class="chart-box" style="height:300px;" id="chartMonthly"></div>
+    <div class="legend-row">
+      <div class="legend-item"><span class="legend-dot" style="background:#C7D2DE;"></span>2025 (Realisasi)</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#0E7C7B;"></span>2026 (Realisasi)</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#0E7C7B; opacity:.4;"></span>2026 (Proyeksi)</div>
+    </div>
+  </div>
+
+  <div class="grid3" style="margin-top:20px;">
+    <div class="card" style="margin-top:0;">
+      <h3>H1 vs H2 2026 — Pelanggan</h3>
+      <div class="cap">Kontribusi paruh tahun terhadap target full-year</div>
+      <div style="display:flex; justify-content:space-between; margin-top:10px; font-size:13px;">
+        <span>H1 (real): <strong>193.276</strong></span>
+        <span>H2 (proy.): <strong>255.064</strong></span>
+      </div>
+      <div class="seg-row" style="padding:10px 0 0;">
+        <div class="seg-bar-bg"><div class="seg-bar" style="width:43.1%; background:linear-gradient(90deg,var(--navy),var(--navy-2));"></div></div>
+      </div>
+      <div style="font-size:12px; color:var(--muted); margin-top:6px;">H2 diproyeksikan +12,6% lebih tinggi dari H2 2025 (226.440)</div>
+    </div>
+    <div class="card" style="margin-top:0;">
+      <h3>H1 vs H2 2026 — Daya (MVA)</h3>
+      <div class="cap">Kontribusi paruh tahun terhadap target full-year</div>
+      <div style="display:flex; justify-content:space-between; margin-top:10px; font-size:13px;">
+        <span>H1 (real): <strong>706</strong></span>
+        <span>H2 (proy.): <strong>611</strong></span>
+      </div>
+      <div class="seg-row" style="padding:10px 0 0;">
+        <div class="seg-bar-bg"><div class="seg-bar" style="width:53.6%; background:linear-gradient(90deg,var(--gold),#D4AF6A);"></div></div>
+      </div>
+      <div style="font-size:12px; color:var(--muted); margin-top:6px;">H2 diproyeksikan −8,9% dari H2 2025 (671) — kapasitas besar sudah lebih dulu terealisasi di H1</div>
+    </div>
+    <div class="card" style="margin-top:0;">
+      <h3>H1 vs H2 2026 — Pendapatan</h3>
+      <div class="cap">Kontribusi paruh tahun terhadap target full-year</div>
+      <div style="display:flex; justify-content:space-between; margin-top:10px; font-size:13px;">
+        <span>H1 (real): <strong>Rp139,9 M</strong></span>
+        <span>H2 (proy.): <strong>Rp146,5 M</strong></span>
+      </div>
+      <div class="seg-row" style="padding:10px 0 0;">
+        <div class="seg-bar-bg"><div class="seg-bar" style="width:48.8%;"></div></div>
+      </div>
+      <div style="font-size:12px; color:var(--muted); margin-top:6px;">H2 diproyeksikan +9,6% lebih tinggi dari H2 2025 (Rp133,7 M)</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="icon">!</div>
+    <p><strong>Implikasi eksekusi:</strong> pangsa realisasi pelanggan pada H1 2026 (43,1%) sedikit lebih rendah dibanding pola historis H1 2025 (45,2%), artinya pencapaian target full-year lebih bergantung pada eksekusi H2. Sebaliknya, daya tersambung sudah melampaui pola historis (53,6% vs 46,9%) — mengindikasikan proyek berdaya besar sudah lebih banyak direalisasikan lebih awal di tahun ini.</p>
+  </div>
+</section>
+
+<!-- ================= 04 ANALISIS SEGMEN ================= -->
+<section class="alt" id="segmen">
+  <div class="section-head">
+    <div class="eyebrow"><span class="num">04</span>Analisis per Golongan Tarif</div>
+    <h2>Bisnis (B) tumbuh paling agresif; Industri (I) menjadi satu-satunya segmen yang terkontraksi.</h2>
+    <p class="lead">Kelima golongan tarif (Sosial, Rumah Tangga, Bisnis, Industri, Publik/Khusus) menunjukkan arah pertumbuhan yang sangat berbeda — perbedaan ini penting untuk alokasi ulang prioritas anggaran investasi jaringan di sisa tahun 2026.</p>
+  </div>
+
+  <div class="card">
+    <h3>Pertumbuhan Proyeksi 2026 vs Realisasi 2025 (Full-Year), per Golongan</h3>
+    <div class="cap">Persentase pertumbuhan year-on-year — pelanggan, daya (MVA), dan pendapatan BP</div>
+    <div class="chart-box" style="height:340px;" id="chartSegmen"></div>
+    <div class="legend-row">
+      <div class="legend-item"><span class="legend-dot" style="background:#0A2647;"></span>Δ Pelanggan %</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#B98A3D;"></span>Δ Daya (MVA) %</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#0E7C7B;"></span>Δ Pendapatan BP %</div>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:22px; align-items:start;">
+    <div class="card" style="margin-top:0;">
+      <h3>Komposisi Pendapatan BP Proyeksi 2026</h3>
+      <div class="cap">Kontribusi tiap golongan terhadap total Rp286,4 miliar</div>
+      <div style="margin-top:14px;">
+        <div class="seg-row"><div class="seg-label">Rumah Tangga (R)</div><div class="seg-bar-bg"><div class="seg-bar" style="width:40.4%;"></div></div><div class="seg-val">40,4%</div></div>
+        <div class="seg-row"><div class="seg-label">Bisnis (B)</div><div class="seg-bar-bg"><div class="seg-bar" style="width:29.9%; background:linear-gradient(90deg,var(--gold),#D4AF6A);"></div></div><div class="seg-val">29,9%</div></div>
+        <div class="seg-row"><div class="seg-label">Industri (I)</div><div class="seg-bar-bg"><div class="seg-bar" style="width:16.1%; background:linear-gradient(90deg,var(--red),#D06A52);"></div></div><div class="seg-val">16,1%</div></div>
+        <div class="seg-row"><div class="seg-label">Sosial (S)</div><div class="seg-bar-bg"><div class="seg-bar" style="width:6.3%;"></div></div><div class="seg-val">6,3%</div></div>
+        <div class="seg-row"><div class="seg-label">Publik/Khusus (P)</div><div class="seg-bar-bg"><div class="seg-bar" style="width:2.6%;"></div></div><div class="seg-val">2,6%</div></div>
+        <div class="seg-row"><div class="seg-label">Multiguna (M)</div><div class="seg-bar-bg"><div class="seg-bar" style="width:0.8%;"></div></div><div class="seg-val">0,8%</div></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:0;">
+      <h3>Rasio Efisiensi Rp/MVA per Golongan (Proyeksi 2026)</h3>
+      <div class="cap">Pendapatan BP dihasilkan per unit daya tersambung — proksi nilai ekonomi tiap MVA investasi jaringan</div>
+      <table style="margin-top:10px;">
+        <thead><tr><th>Golongan</th><th>Rp Juta / MVA</th><th>Δ vs 2025</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Sosial (S)</td><td>262,8</td><td><span class="tag up">▲ 66,7%</span></td></tr>
+          <tr><td class="name">Bisnis (B)</td><td>244,9</td><td><span class="tag up">▲ 6,8%</span></td></tr>
+          <tr><td class="name">Industri (I)</td><td>233,0</td><td><span class="tag up">▲ 11,8%</span></td></tr>
+          <tr><td class="name">Rumah Tangga (R)</td><td>205,4</td><td><span class="tag down">▼ 12,0%</span></td></tr>
+          <tr><td class="name">Publik/Khusus (P)</td><td>114,4</td><td><span class="tag down">▼ 21,5%</span></td></tr>
+        </tbody>
+      </table>
+      <div style="font-size:12px; color:var(--muted); margin-top:12px;">Golongan Sosial mencatat efisiensi Rp/MVA tertinggi, tumbuh 66,7% — sementara Industri, meski jumlah pelanggan &amp; daya turun, justru menghasilkan pendapatan per-MVA lebih tinggi (bauran pelanggan Industri yang tersisa cenderung bertarif lebih tinggi).</div>
+    </div>
+  </div>
+
+  <div class="grid3" style="margin-top:22px;">
+    <div class="finding" style="flex-direction:column; background:#fff; border:1px solid var(--line); padding:22px; border-radius:2px;">
+      <div class="fnum">R</div>
+      <h4>Rumah Tangga — mesin volume, penopang utama pertumbuhan unit</h4>
+      <p>Menyumbang 80,8% dari total penambahan pelanggan proyeksi 2026 (362.413 pelanggan). Didorong oleh R.1/900VA-RTM (+152.944, terbesar tunggal) seiring migrasi pelanggan dari R.1/450VA bersubsidi (kontraksi −2.365) — konsisten dengan program penyesuaian golongan tarif bersubsidi ke daya lebih tinggi.</p>
+    </div>
+    <div class="finding" style="flex-direction:column; background:#fff; border:1px solid var(--line); padding:22px; border-radius:2px;">
+      <div class="fnum">B</div>
+      <h4>Bisnis — pertumbuhan tercepat di semua metrik</h4>
+      <p>Pelanggan +21,9%, daya +34,6%, pendapatan +43,8% YoY — jauh di atas rata-rata korporat. Didorong oleh B.1/2.200–5.500VA (UMKM naik kelas, +62% pelanggan) dan B.2/6.600VA–200kVA (industri kecil-menengah, terbesar dalam kontribusi Rp BP golongan B).</p>
+    </div>
+    <div class="finding" style="flex-direction:column; background:#fff; border:1px solid var(--line); padding:22px; border-radius:2px;">
+      <div class="fnum">I</div>
+      <h4>Industri — satu-satunya segmen terkontraksi, perlu investigasi lanjut</h4>
+      <p>Pelanggan −20,9%, daya −34,0%, pendapatan −26,2% YoY. I.3 (&gt;200 kVA) — kontributor pendapatan industri terbesar — sudah mencapai Rp19,97 M di Jun'26 (dekat realisasi full-year 2025 Rp44,6 M), sehingga sisa proyeksi H2 relatif datar. Perlu ditelusuri apakah ini sinyal pelemahan permintaan industri atau pergeseran waktu proyek ke tahun berikutnya.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 DETAIL GOLONGAN TARIF ================= -->
+<section id="detail">
+  <div class="section-head">
+    <div class="eyebrow"><span class="num">05</span>Rincian Golongan Tarif Terpilih</div>
+    <h2>Sepuluh golongan tarif dengan kontribusi pendapatan BP terbesar, proyeksi 2026.</h2>
+    <p class="lead">Tabel berikut membandingkan realisasi full-year 2025, realisasi s.d. Juni 2026, dan proyeksi full-year 2026 untuk pendapatan BP (Rp Juta) — diurutkan dari kontribusi terbesar.</p>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Golongan Tarif</th>
+          <th>Real 2025 (Rp Juta)</th>
+          <th>Real s.d. Jun'26 (Rp Juta)</th>
+          <th>Proyeksi Des'26 (Rp Juta)</th>
+          <th>Δ YoY Full-Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="name">B.2 / 6.600 VA s/d 200 kVA</td><td>34.619</td><td>21.337</td><td>45.632</td><td><span class="tag up">▲ 31,8%</span></td></tr>
+        <tr><td class="name">R.1 / 900 VA RTM</td><td>31.538</td><td>15.665</td><td>35.926</td><td><span class="tag up">▲ 13,9%</span></td></tr>
+        <tr><td class="name">I.3 / &gt; 200 kVA</td><td>44.596</td><td>19.967</td><td>29.551</td><td><span class="tag down">▼ 33,7%</span></td></tr>
+        <tr><td class="name">R.1 / 1.300 VA</td><td>25.174</td><td>10.042</td><td>25.074</td><td><span class="tag down">▼ 0,4%</span></td></tr>
+        <tr><td class="name">B.1 / 2.200 VA s/d 5.500 VA</td><td>14.409</td><td>16.695</td><td>24.532</td><td><span class="tag up">▲ 70,3%</span></td></tr>
+        <tr><td class="name">R.3 / 6.600 VA keatas</td><td>7.557</td><td>4.909</td><td>14.087</td><td><span class="tag up">▲ 86,4%</span></td></tr>
+        <tr><td class="name">R.2 / 3.500 VA s/d 5.500 VA</td><td>11.801</td><td>6.150</td><td>13.878</td><td><span class="tag up">▲ 17,6%</span></td></tr>
+        <tr><td class="name">I.2 / &gt; 14 kVA s/d 200 kVA</td><td>15.477</td><td>7.795</td><td>13.786</td><td><span class="tag down">▼ 10,9%</span></td></tr>
+        <tr><td class="name">R.1 / 2.200 VA</td><td>14.076</td><td>4.932</td><td>12.779</td><td><span class="tag down">▼ 9,2%</span></td></tr>
+        <tr><td class="name">C &gt; 200 kVA (Komunal)</td><td>1.172</td><td>8.327</td><td>10.977</td><td><span class="tag up">▲ 836,6%</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout red" style="margin-top:20px;">
+    <div class="icon">▲</div>
+    <p><strong>Anomali positif — Golongan C &gt; 200 kVA (komunal/khusus):</strong> pendapatan BP melonjak dari Rp1,17 miliar (2025) menjadi Rp8,33 miliar hanya dalam 6 bulan pertama 2026, dengan proyeksi mendatar di Rp10,98 miliar untuk full-year — artinya hampir seluruh realisasi golongan ini sudah terjadi di H1. Golongan P secara keseluruhan tumbuh +99,2% pendapatan, didorong oleh koneksi bervolume besar yang bersifat episodik/proyek, bukan pertumbuhan reguler bulanan.</p>
+  </div>
+</section>
+
+<!-- ================= 06 EFISIENSI & IMPLIKASI ANGGARAN ================= -->
+<section class="alt" id="investasi">
+  <div class="section-head">
+    <div class="eyebrow"><span class="num">06</span>Implikasi terhadap Anggaran Investasi</div>
+    <h2>Kualitas pertumbuhan membaik — tiap pelanggan baru dan tiap MVA menghasilkan pendapatan lebih tinggi.</h2>
+    <p class="lead">Karena penyambungan pelanggan menyerap porsi signifikan anggaran investasi (capex jaringan, material, dan tenaga kerja), efisiensi hasil per unit investasi menjadi indikator penting di luar volume semata.</p>
+  </div>
+
+  <div class="grid3">
+    <div class="card" style="margin-top:0;">
+      <h3>Pendapatan per Pelanggan Baru</h3>
+      <div class="cap">Total Rp BP ÷ Total pelanggan baru, full-year</div>
+      <div style="font-size:26px; font-weight:700; font-family:'Source Serif 4',serif; color:var(--navy); margin-top:6px;">Rp638.700</div>
+      <div style="font-size:12.5px; color:var(--pos); margin-top:4px; font-weight:600;">▲ 4,2% vs 2025 (Rp613.048)</div>
+      <div style="font-size:12px; color:var(--muted); margin-top:8px;">Kenaikan moderat — bauran pelanggan baru sedikit bergeser ke tarif lebih tinggi.</div>
+    </div>
+    <div class="card" style="margin-top:0;">
+      <h3>Daya Rata-rata per Pelanggan</h3>
+      <div class="cap">Total MVA ÷ Total pelanggan baru, full-year</div>
+      <div style="font-size:26px; font-weight:700; font-family:'Source Serif 4',serif; color:var(--navy); margin-top:6px;">2,94 kVA</div>
+      <div style="font-size:12.5px; color:var(--neg); margin-top:4px; font-weight:600;">▼ 3,9% vs 2025 (3,06 kVA)</div>
+      <div style="font-size:12px; color:var(--muted); margin-top:8px;">Sedikit menurun — didorong oleh dominasi pertumbuhan pelanggan rumah tangga berdaya kecil–menengah.</div>
+    </div>
+    <div class="card" style="margin-top:0;">
+      <h3>Pendapatan per MVA Terpasang</h3>
+      <div class="cap">Total Rp BP ÷ Total MVA, full-year</div>
+      <div style="font-size:26px; font-weight:700; font-family:'Source Serif 4',serif; color:var(--navy); margin-top:6px;">Rp217,5 Jt</div>
+      <div style="font-size:12.5px; color:var(--pos); margin-top:4px; font-weight:600;">▲ 8,5% vs 2025 (Rp200,5 Jt)</div>
+      <div style="font-size:12px; color:var(--muted); margin-top:8px;">Efisiensi ekonomi investasi jaringan membaik — nilai ekonomi per unit kapasitas naik.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px;">
+    <h3>Membaca Efisiensi Investasi: Tiga Sinyal Utama</h3>
+    <div class="finding">
+      <div class="fnum">01</div>
+      <div><h4>Revenue quality naik meski volume daya melambat</h4><p>Pendapatan per MVA naik 8,5% — anggaran investasi jaringan yang dialokasikan menghasilkan nilai ekonomi lebih tinggi per unit kapasitas dibanding 2025, terutama ditopang golongan Sosial dan Bisnis.</p></div>
+    </div>
+    <div class="finding">
+      <div class="fnum">02</div>
+      <div><h4>Belanja kapasitas besar (MVA) sudah terdepan di H1</h4><p>53,6% dari target MVA full-year sudah tersambung pada Juni 2026 — lebih cepat dari pola normal (46,9% di 2025). Ini berarti kebutuhan capex untuk proyek berdaya besar di H2 relatif lebih ringan, membuka ruang realokasi anggaran ke penyambungan volume (golongan R &amp; B) yang justru masih di bawah pola historis (43,1% vs 45,2%).</p></div>
+    </div>
+    <div class="finding">
+      <div class="fnum">03</div>
+      <div><h4>Kontraksi Industri menahan potensi upside daya &amp; pendapatan</h4><p>Jika golongan I tumbuh flat (bukan −20,9%), tambahan potensi daya sekitar 100+ MVA dan pendapatan lebih dari Rp15 miliar berpotensi terealisasi. Ini adalah "leakage" terbesar dalam capaian tahun ini dan layak menjadi fokus investigasi akar penyebab (permintaan, proses perizinan, atau realokasi proyek ke tahun berikutnya).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 REKOMENDASI ================= -->
+<section id="rekomendasi">
+  <div class="section-head">
+    <div class="eyebrow"><span class="num">07</span>Rekomendasi</div>
+    <h2>Tiga langkah prioritas untuk sisa tahun anggaran 2026.</h2>
+    <p class="lead">Rekomendasi disusun berdasarkan pola momentum, distribusi segmen, dan rasio efisiensi investasi yang teridentifikasi di atas.</p>
+  </div>
+
+  <div class="rec-grid">
+    <div class="rec-card">
+      <div class="rk">Prioritas 01 · Realokasi Capex</div>
+      <h4>Geser porsi anggaran H2 ke penyambungan volume (R &amp; B)</h4>
+      <p>Karena kapasitas besar (MVA) sudah lebih dulu terealisasi di H1, arahkan sisa anggaran investasi ke perluasan jaringan distribusi skala kecil–menengah untuk mengejar target pelanggan yang masih di bawah pola historis, khususnya R.1/900VA-RTM dan B.1/2.200–5.500VA.</p>
+    </div>
+    <div class="rec-card gold">
+      <div class="rk">Prioritas 02 · Percepatan Segmen Bisnis</div>
+      <h4>Jadikan golongan Bisnis sebagai fokus akuisisi utama</h4>
+      <p>Dengan pertumbuhan tercepat di semua metrik (+21,9% pelanggan, +43,8% pendapatan) dan rasio Rp/MVA yang solid, segmen B menawarkan return tertinggi per unit investasi jaringan. Pertimbangkan insentif percepatan penyambungan untuk UMKM naik kelas (B.1) dan usaha menengah (B.2).</p>
+    </div>
+    <div class="rec-card red">
+      <div class="rk">Prioritas 03 · Investigasi Segmen Industri</div>
+      <h4>Telusuri akar penyebab kontraksi golongan Industri</h4>
+      <p>Lakukan asesmen terpisah untuk memastikan penurunan −20,9% pelanggan Industri mencerminkan kondisi permintaan riil (bukan penundaan administratif proyek), mengingat golongan ini historis memiliki nilai BP dan daya per pelanggan yang tinggi.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div>Sumber data: Form 4 — Pendapatan BP Tersambung, UID Jawa Tengah per 30 Juni 2026</div>
+  <div> ☕2026 | JW - Disusun untuk evaluasi internal program investasi pemasaran</div>
+</footer>
+
+<script>
+/* ============================================================
+   Self-contained SVG chart engine — no external dependencies.
+   ============================================================ */
+const COLOR = {
+  navy:'#0A2647', navy2:'#123B63', teal:'#0E7C7B', teal2:'#12A19E',
+  gold:'#B98A3D', red:'#B4432D', grid:'#EEF1F5', axis:'#DCE2EA', txt:'#5C6B7F', bar25:'#C7D2DE'
+};
+const MONTHS = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'];
+const SVGNS = 'http://www.w3.org/2000/svg';
+
+function niceCeil(max){
+  if(max<=0) return 1;
+  const mag = Math.pow(10, Math.floor(Math.log10(max)));
+  const norm = max/mag;
+  let n;
+  if(norm<=1) n=1; else if(norm<=2) n=2; else if(norm<=2.5) n=2.5; else if(norm<=5) n=5; else n=10;
+  return n*mag;
+}
+function esc(s){ return String(s); }
+
+/* ---- Dual-series trend line: 2025 full year (navy) vs 2026 real(solid)+proyeksi(dashed) ---- */
+function renderTrend(containerId, series2025, series2026, splitIdx, color2026, yFmt){
+  const el = document.getElementById(containerId);
+  const W = el.clientWidth || 600, H = el.clientHeight || 280;
+  const ml=52, mr=12, mt=14, mb=26;
+  const pw = W-ml-mr, ph = H-mt-mb;
+  const maxV = niceCeil(Math.max(...series2025, ...series2026));
+  const x = i => ml + pw*i/11;
+  const y = v => mt + ph*(1 - v/maxV);
+
+  let grid='', ylab='';
+  const steps=4;
+  for(let s=0;s<=steps;s++){
+    const v = maxV*s/steps, yy=y(v);
+    grid += `<line x1="${ml}" y1="${yy}" x2="${W-mr}" y2="${yy}" stroke="${COLOR.grid}" stroke-width="1"/>`;
+    ylab += `<text x="${ml-8}" y="${yy+4}" text-anchor="end" font-size="10.5" fill="${COLOR.txt}">${yFmt(v)}</text>`;
+  }
+  let xlab='';
+  MONTHS.forEach((m,i)=>{ xlab += `<text x="${x(i)}" y="${H-7}" text-anchor="middle" font-size="10.5" fill="${COLOR.txt}">${m}</text>`; });
+
+  const path2025 = series2025.map((v,i)=>(i===0?'M':'L')+x(i).toFixed(1)+','+y(v).toFixed(1)).join(' ');
+  const realPart = series2026.slice(0, splitIdx+1);
+  const projPart = series2026.slice(splitIdx);
+  const pathReal = realPart.map((v,i)=>(i===0?'M':'L')+x(i).toFixed(1)+','+y(v).toFixed(1)).join(' ');
+  const pathProj = projPart.map((v,i)=>(i===0?'M':'L')+x(i+splitIdx).toFixed(1)+','+y(v).toFixed(1)).join(' ');
+
+  const dots25 = series2025.map((v,i)=>`<circle cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="2.3" fill="${COLOR.navy}"/>`).join('');
+  const dotsReal = realPart.map((v,i)=>`<circle cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="3" fill="${color2026}"/>`).join('');
+
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="100%" xmlns="${SVGNS}">
+    ${grid}
+    <line x1="${ml}" y1="${H-mb}" x2="${W-mr}" y2="${H-mb}" stroke="${COLOR.axis}" stroke-width="1"/>
+    ${ylab}${xlab}
+    <path d="${path2025}" fill="none" stroke="${COLOR.navy}" stroke-width="2.2"/>
+    <path d="${pathReal}" fill="none" stroke="${color2026}" stroke-width="2.8"/>
+    <path d="${pathProj}" fill="none" stroke="${color2026}" stroke-width="2.2" stroke-dasharray="6,4" opacity="0.75"/>
+    ${dots25}${dotsReal}
+  </svg>`;
+}
+
+/* ---- Grouped monthly bars: 2025 vs 2026 (real solid / proyeksi translucent) ---- */
+function renderMonthlyBars(containerId, values2025, values2026, splitIdx, yFmt){
+  const el = document.getElementById(containerId);
+  const W = el.clientWidth || 600, H = el.clientHeight || 280;
+  const ml=52, mr=12, mt=14, mb=26;
+  const pw = W-ml-mr, ph = H-mt-mb;
+  const maxV = niceCeil(Math.max(...values2025, ...values2026));
+  const groupW = pw/12;
+  const barW = groupW*0.34;
+  const y = v => mt + ph*(1 - v/maxV);
+  const yZero = mt+ph;
+
+  let grid='', ylab='';
+  const steps=4;
+  for(let s=0;s<=steps;s++){
+    const v = maxV*s/steps, yy=y(v);
+    grid += `<line x1="${ml}" y1="${yy}" x2="${W-mr}" y2="${yy}" stroke="${COLOR.grid}" stroke-width="1"/>`;
+    ylab += `<text x="${ml-8}" y="${yy+4}" text-anchor="end" font-size="10.5" fill="${COLOR.txt}">${yFmt(v)}</text>`;
+  }
+  let bars='', xlab='';
+  for(let i=0;i<12;i++){
+    const gx = ml + groupW*i;
+    const b1x = gx + groupW*0.14;
+    const b2x = gx + groupW*0.14 + barW + 4;
+    const v25 = values2025[i], v26 = values2026[i];
+    const h25 = yZero - y(v25), h26 = yZero - y(v26);
+    const fill26 = i>=splitIdx ? `${COLOR.teal}` : COLOR.teal;
+    const op26 = i>=splitIdx ? 0.4 : 1;
+    bars += `<rect x="${b1x.toFixed(1)}" y="${y(v25).toFixed(1)}" width="${barW.toFixed(1)}" height="${h25.toFixed(1)}" rx="2.5" fill="${COLOR.bar25}"/>`;
+    bars += `<rect x="${b2x.toFixed(1)}" y="${y(v26).toFixed(1)}" width="${barW.toFixed(1)}" height="${h26.toFixed(1)}" rx="2.5" fill="${fill26}" opacity="${op26}"/>`;
+    xlab += `<text x="${(gx+groupW/2).toFixed(1)}" y="${H-7}" text-anchor="middle" font-size="10.5" fill="${COLOR.txt}">${MONTHS[i]}</text>`;
+  }
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="100%" xmlns="${SVGNS}">
+    ${grid}
+    <line x1="${ml}" y1="${yZero}" x2="${W-mr}" y2="${yZero}" stroke="${COLOR.axis}" stroke-width="1"/>
+    ${ylab}${bars}${xlab}
+  </svg>`;
+}
+
+/* ---- Grouped bars with zero baseline (supports negative values) ---- */
+function renderSignedGroupedBars(containerId, categories, series, yFmt){
+  const el = document.getElementById(containerId);
+  const W = el.clientWidth || 600, H = el.clientHeight || 320;
+  const ml=48, mr=12, mt=14, mb=48;
+  const pw = W-ml-mr, ph = H-mt-mb;
+  const allVals = series.flatMap(s=>s.values);
+  const maxV = niceCeil(Math.max(...allVals, 0));
+  const minV = -niceCeil(Math.max(0, -Math.min(...allVals, 0)));
+  const range = maxV-minV;
+  const y = v => mt + ph*(1 - (v-minV)/range);
+  const yZero = y(0);
+
+  let grid='', ylab='';
+  const steps=4;
+  for(let s=0;s<=steps;s++){
+    const v = minV + range*s/steps, yy=y(v);
+    grid += `<line x1="${ml}" y1="${yy.toFixed(1)}" x2="${W-mr}" y2="${yy.toFixed(1)}" stroke="${COLOR.grid}" stroke-width="1"/>`;
+    ylab += `<text x="${ml-8}" y="${(yy+4).toFixed(1)}" text-anchor="end" font-size="10.5" fill="${COLOR.txt}">${yFmt(v)}</text>`;
+  }
+
+  const n = categories.length, k = series.length;
+  const groupW = pw/n;
+  const barW = (groupW*0.68)/k;
+  let bars='', xlab='';
+  categories.forEach((cat,ci)=>{
+    const gx = ml + groupW*ci + groupW*0.16;
+    series.forEach((s,si)=>{
+      const v = s.values[ci];
+      const bx = gx + si*barW;
+      const yTop = Math.min(y(v), yZero);
+      const h = Math.abs(y(v)-yZero);
+      bars += `<rect x="${bx.toFixed(1)}" y="${yTop.toFixed(1)}" width="${(barW-3).toFixed(1)}" height="${h.toFixed(1)}" rx="2" fill="${s.color}"/>`;
+      bars += `<text x="${(bx+(barW-3)/2).toFixed(1)}" y="${v>=0 ? (yTop-4).toFixed(1) : (yTop+h+11).toFixed(1)}" text-anchor="middle" font-size="9.5" fill="${COLOR.txt}" font-weight="600">${v>0?'+':''}${v}%</text>`;
+    });
+    xlab += `<text x="${(ml+groupW*ci+groupW/2).toFixed(1)}" y="${H-10}" text-anchor="middle" font-size="11" fill="${COLOR.navy}" font-weight="600">${cat}</text>`;
+  });
+
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="100%" xmlns="${SVGNS}">
+    ${grid}
+    <line x1="${ml}" y1="${yZero.toFixed(1)}" x2="${W-mr}" y2="${yZero.toFixed(1)}" stroke="${COLOR.axis}" stroke-width="1.4"/>
+    ${ylab}${bars}${xlab}
+  </svg>`;
+}
+
+/* ================= DATA ================= */
+const pel2025 = [27608,63031,94385,124248,156024,186689,218581,247784,280372,320377,358519,413129];
+const pel2026 = [35455,66974,90888,118921,154145,193276,229592,274693,318244,361906,408412,448340];
+
+const mva2025 = [98,167,275,348,466,592,693,803,907,1022,1120,1263];
+const mva2026 = [99,198,318,445,565,706,794,904,1010,1114,1224,1317];
+
+const rev2025 = [19.066,38.479,58.252,78.338,98.783,119.613,140.830,162.470,184.493,206.960,229.851,253.282];
+const rev2026 = [23.820,48.009,72.623,94.588,116.979,139.891,163.056,186.732,210.897,235.561,260.746,286.395];
+
+const netPel2025 = [27608,35423,31354,29863,31776,30665,31892,29203,32588,40005,38142,54610];
+const netPel2026 = [35455,31519,23914,28033,35224,39131,36316,45101,43551,43662,46506,39928];
+
+/* ================= RENDER ================= */
+function renderAll(){
+  renderTrend('chartPelanggan', pel2025, pel2026, 5, COLOR.teal, v=>Math.round(v).toLocaleString('id-ID'));
+  renderTrend('chartMVA', mva2025, mva2026, 5, COLOR.gold, v=>Math.round(v).toLocaleString('id-ID'));
+  renderTrend('chartRev', rev2025, rev2026, 5, COLOR.teal2, v=>v.toFixed(0));
+  renderMonthlyBars('chartMonthly', netPel2025, netPel2026, 6, v=>Math.round(v).toLocaleString('id-ID'));
+  renderSignedGroupedBars('chartSegmen',
+    ['Sosial (S)','Rumah Tangga (R)','Bisnis (B)','Industri (I)','Publik/Khusus (P)'],
+    [
+      {name:'Δ Pelanggan %', color:COLOR.navy, values:[15.2,6.6,21.9,-20.9,0.0]},
+      {name:'Δ Daya (MVA) %', color:COLOR.gold, values:[-29.6,19.5,34.6,-34.0,153.8]},
+      {name:'Δ Pendapatan BP %', color:COLOR.teal, values:[17.3,5.2,43.8,-26.2,99.2]}
+    ],
+    v=>Math.round(v)+'%'
+  );
+}
+
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded', renderAll);
+}else{
+  renderAll();
+}
+window.addEventListener('resize', ()=>{
+  clearTimeout(window.__rt);
+  window.__rt = setTimeout(renderAll, 150);
+});
+</script>
+
+</body>
+</html>
