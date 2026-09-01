@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Kinerja BPP — UID Jawa Tengah | Juni 2026</title>
+<style>
+  :root{
+    --navy-950:#0B1B33;
+    --navy-900:#0F2547;
+    --navy-800:#16335F;
+    --navy-700:#1E4275;
+    --blue-600:#2F6FB0;
+    --blue-400:#6FA3D8;
+    --blue-100:#E7EFF7;
+    --gold-600:#B8872F;
+    --gold-500:#C99A3F;
+    --gold-100:#F7EFDC;
+    --red-600:#A93B41;
+    --red-100:#F6E5E4;
+    --green-700:#286651;
+    --green-100:#E3F0EA;
+    --gray-900:#171A21;
+    --gray-700:#454B57;
+    --gray-500:#6E7686;
+    --gray-300:#C9CED8;
+    --gray-150:#E7EAF0;
+    --gray-100:#F2F3F6;
+    --paper:#F7F7F5;
+    --white:#FFFFFF;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: Arial, Helvetica, 'Segoe UI', sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html,body{
+    background:var(--paper);
+    color:var(--gray-900);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  body{ padding-bottom:60px; }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* ===================== TOP BAR ===================== */
+  .topbar{
+    background:var(--navy-950);
+    color:var(--gray-300);
+    font-size:11.5px;
+    letter-spacing:.06em;
+  }
+  .topbar .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:11px;
+    padding-bottom:11px;
+  }
+  .topbar .org{ color:var(--white); font-weight:700; text-transform:uppercase; }
+  .topbar .period{
+    color:var(--gold-500);
+    font-weight:700;
+    text-transform:uppercase;
+    border:1px solid rgba(201,154,63,.55);
+    border-radius:3px;
+    padding:3px 10px;
+  }
+
+  /* ===================== HERO / HEADER ===================== */
+  .hero{
+    background:linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 100%);
+    color:var(--white);
+    padding:36px 0 0 0;
+  }
+  .hero .eyebrow{
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--blue-400);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:38px;
+    line-height:1.18;
+    max-width:760px;
+    color:var(--white);
+  }
+  .hero .sub{
+    margin-top:14px;
+    font-size:15px;
+    line-height:1.65;
+    color:#C7D3E3;
+    max-width:700px;
+  }
+  .hero .sub b{ color:var(--white); }
+
+  /* KPI band */
+  .kpi-band{
+    margin-top:26px;
+    display:grid;
+    grid-template-columns:1.25fr 1fr 1fr 1fr;
+    border-top:1px solid rgba(255,255,255,.14);
+  }
+  .kpi{
+    padding:26px 26px 30px 0;
+    border-right:1px solid rgba(255,255,255,.14);
+  }
+  .kpi:first-child{ padding-left:0; }
+  .kpi:last-child{ border-right:none; }
+  .kpi .kpi-label{
+    font-size:11.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:#9FB2CC;
+    font-weight:700;
+    margin-top:22px;
+  }
+  .kpi .kpi-value{
+    font-family:var(--serif);
+    font-size:34px;
+    font-weight:700;
+    color:var(--white);
+    margin-top:8px;
+    line-height:1.05;
+  }
+  .kpi .kpi-value small{ font-size:16px; font-weight:400; color:#B9C6DA; margin-left:2px;}
+  .kpi .kpi-sub{
+    font-size:12px;
+    color:#A9B8CE;
+    margin-top:9px;
+    line-height:1.5;
+  }
+  .badge{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    padding:2px 8px;
+    border-radius:11px;
+    margin-top:9px;
+  }
+  .badge.up{ background:rgba(169,59,65,.22); color:#F0AFA9; }
+  .badge.down{ background:rgba(40,102,81,.28); color:#8FE0BE; }
+  .badge.flat{ background:rgba(201,154,63,.22); color:#F0D191; }
+
+  /* ===================== SECTIONS ===================== */
+  section{ padding:52px 0; }
+  section.tinted{ background:var(--gray-100); }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    border-bottom:2px solid var(--navy-900);
+    padding-bottom:14px;
+    margin-bottom:30px;
+  }
+  .section-tag{
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-600);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .section-head h2{
+    font-family:var(--serif);
+    font-size:25px;
+    color:var(--navy-950);
+    font-weight:700;
+  }
+  .section-head .section-note{
+    font-size:12.5px;
+    color:var(--gray-500);
+    max-width:280px;
+    text-align:right;
+    line-height:1.5;
+  }
+
+  /* Executive summary */
+  .exec-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px 28px;
+  }
+  .exec-card{
+    background:var(--white);
+    border:1px solid var(--gray-150);
+    border-left:4px solid var(--navy-800);
+    padding:22px 24px;
+  }
+  .exec-card.flag-up{ border-left-color:var(--red-600); }
+  .exec-card.flag-down{ border-left-color:var(--green-700); }
+  .exec-card.flag-note{ border-left-color:var(--gold-600); }
+  .exec-num{
+    font-family:var(--serif);
+    font-size:12px;
+    font-weight:700;
+    color:var(--gray-500);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .exec-title{
+    font-size:16px;
+    font-weight:700;
+    color:var(--gray-900);
+    margin-top:8px;
+    line-height:1.4;
+  }
+  .exec-body{
+    font-size:13.5px;
+    color:var(--gray-700);
+    line-height:1.65;
+    margin-top:8px;
+  }
+  .exec-body b{ color:var(--navy-900); }
+
+  /* Cost structure */
+  .cost-layout{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:44px;
+    align-items:center;
+  }
+  .stackbar{
+    width:100%;
+    height:54px;
+    border-radius:3px;
+    overflow:hidden;
+    display:flex;
+    box-shadow:0 1px 3px rgba(15,37,71,.12);
+  }
+  .stackbar div{ height:100%; }
+  .cost-legend{ margin-top:22px; }
+  .cost-row{
+    display:grid;
+    grid-template-columns:16px 1fr auto auto;
+    align-items:center;
+    gap:12px;
+    padding:9px 0;
+    border-bottom:1px solid var(--gray-150);
+    font-size:13px;
+  }
+  .cost-row:last-child{ border-bottom:none; }
+  .swatch{ display:inline-block; width:12px; height:12px; border-radius:2px; }
+  .cost-name{ color:var(--gray-900); font-weight:600; }
+  .cost-val{ color:var(--gray-500); font-variant-numeric:tabular-nums; text-align:right;}
+  .cost-pct{ color:var(--navy-900); font-weight:700; font-variant-numeric:tabular-nums; width:52px; text-align:right;}
+
+  .cost-callout{
+    background:var(--navy-950);
+    color:var(--white);
+    padding:30px 28px;
+  }
+  .cost-callout .cc-tag{
+    font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--gold-500); font-weight:700; margin-bottom:12px;
+  }
+  .cost-callout .cc-num{
+    font-family:var(--serif); font-size:46px; font-weight:700; line-height:1;
+  }
+  .cost-callout .cc-num small{ font-size:20px; font-weight:400; color:#B9C6DA;}
+  .cost-callout p{ font-size:13.5px; color:#C7D3E3; line-height:1.7; margin-top:14px; }
+  .cost-callout p b{ color:var(--white); }
+
+  /* Unit comparison */
+  .unit-chart{ margin-top:6px; }
+  .unit-row{
+    display:grid;
+    grid-template-columns:56px 1fr 92px 74px;
+    align-items:center;
+    gap:14px;
+    padding:9px 0;
+  }
+  .unit-code{
+    font-weight:700;
+    font-size:13.5px;
+    color:var(--navy-950);
+  }
+  .unit-track{
+    background:var(--gray-150);
+    height:22px;
+    border-radius:2px;
+    position:relative;
+    overflow:visible;
+  }
+  .unit-fill{
+    display:block;
+    height:100%;
+    border-radius:2px;
+  }
+  .unit-value{
+    font-variant-numeric:tabular-nums;
+    font-size:13px;
+    font-weight:700;
+    color:var(--gray-900);
+    text-align:right;
+  }
+  .unit-share{
+    font-size:11.5px;
+    color:var(--gray-500);
+    text-align:right;
+    font-variant-numeric:tabular-nums;
+  }
+  .unit-chart-wrap{ padding-top:26px; }
+  .ref-line{
+    position:absolute;
+    top:26px;
+    bottom:0;
+    width:1px;
+    background:repeating-linear-gradient(to bottom, var(--red-600) 0 5px, transparent 5px 9px);
+    z-index:2;
+  }
+  .ref-label{
+    position:absolute;
+    top:0;
+    font-size:10.5px;
+    font-weight:700;
+    color:var(--red-600);
+    white-space:nowrap;
+    transform:translateX(-50%);
+    background:var(--paper);
+    padding:0 4px;
+    z-index:3;
+  }
+  .legend-inline{
+    display:flex; gap:22px; flex-wrap:wrap;
+    font-size:12px; color:var(--gray-600); margin-top:18px;
+  }
+  .legend-inline span{ display:inline-flex; align-items:center; gap:7px; }
+  .legend-dot{ width:10px; height:10px; border-radius:2px; display:inline-block; }
+  .excl-note{
+    margin-top:18px;
+    font-size:12px;
+    color:var(--gray-500);
+    background:var(--gray-100);
+    border:1px dashed var(--gray-300);
+    padding:10px 14px;
+    line-height:1.6;
+  }
+
+  /* Trend chart */
+  .trend-wrap{
+    background:var(--white);
+    border:1px solid var(--gray-150);
+    padding:28px 28px 18px 28px;
+  }
+  .trend-legend{
+    display:flex; gap:20px; flex-wrap:wrap; margin-bottom:6px; font-size:12px; color:var(--gray-700);
+  }
+  .trend-legend span{ display:inline-flex; align-items:center; gap:6px; font-weight:600;}
+  .trend-legend .ln{ width:16px; height:3px; border-radius:2px; display:inline-block;}
+
+  /* Table */
+  table.data-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12.8px;
+    background:var(--white);
+  }
+  table.data-table th{
+    background:var(--navy-950);
+    color:var(--white);
+    text-align:right;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    padding:11px 12px;
+  }
+  table.data-table th:first-child{ text-align:left; }
+  table.data-table td{
+    padding:9px 12px;
+    text-align:right;
+    border-bottom:1px solid var(--gray-150);
+    font-variant-numeric:tabular-nums;
+    color:var(--gray-900);
+  }
+  table.data-table td:first-child{ text-align:left; font-weight:700; color:var(--navy-950); }
+  table.data-table tr:nth-child(even) td{ background:var(--gray-100); }
+  table.data-table tr.best td{ background:var(--green-100); }
+  table.data-table tr.worst td{ background:var(--red-100); }
+  table.data-table tr.total-row td{
+    background:var(--navy-900); color:var(--white); font-weight:700; border-bottom:none;
+  }
+  table.data-table tr.total-row td:first-child{ color:var(--white); }
+  .tag-pill{
+    display:inline-block;
+    font-size:10px;
+    font-weight:700;
+    padding:1px 7px;
+    border-radius:9px;
+    margin-left:6px;
+  }
+  .tag-pill.best{ background:var(--green-700); color:#fff; }
+  .tag-pill.worst{ background:var(--red-600); color:#fff; }
+
+  /* Recommendation */
+  .rec-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .rec-card{
+    background:var(--white);
+    border:1px solid var(--gray-150);
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+  }
+  .rec-step{
+    font-family:var(--serif);
+    font-size:30px;
+    font-weight:700;
+    color:var(--blue-400);
+    line-height:1;
+  }
+  .rec-title{
+    font-size:15px;
+    font-weight:700;
+    color:var(--navy-950);
+    margin-top:12px;
+  }
+  .rec-body{
+    font-size:13px;
+    color:var(--gray-700);
+    line-height:1.65;
+    margin-top:8px;
+    flex-grow:1;
+  }
+  .rec-target{
+    margin-top:14px;
+    padding-top:12px;
+    border-top:1px solid var(--gray-150);
+    font-size:11.5px;
+    color:var(--gray-500);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+  .rec-target b{ color:var(--navy-900); font-weight:700; text-transform:none; letter-spacing:0; font-size:13px; display:block; margin-top:3px;}
+
+  /* Footer */
+  footer{
+    border-top:1px solid var(--gray-300);
+    padding:26px 0;
+    font-size:11px;
+    color:var(--gray-500);
+    display:flex;
+    justify-content:space-between;
+    line-height:1.6;
+  }
+  footer .fcol{ max-width:520px; }
+
+  @media (max-width: 860px){
+    .wrap{ padding:0 20px; }
+    .kpi-band{ grid-template-columns:1fr 1fr; }
+    .kpi{ border-right:none; border-bottom:1px solid rgba(255,255,255,.14); padding:20px 0; }
+    .exec-grid, .cost-layout, .rec-grid{ grid-template-columns:1fr; }
+    .hero h1{ font-size:28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="org">UID Jawa Tengah — Kinerja Biaya Pokok Penyediaan</span>
+    <span class="period">Periode s.d. Juni 2026</span>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Dashboard Kinerja BPP — Juni 2026</div>
+    <h1>BPP Gabungan Rp 1.664/kWh, Naik 5,5% dari Juni 2025</h1>
+    <p class="sub">Realisasi BPP kumulatif Januari–Juni 2026 pada 13 Unit Pelaksana UID Jawa Tengah.</p>
+
+    <div class="kpi-band">
+      <div class="kpi">
+        <div class="kpi-label">Total Biaya Operasi (Gabungan)</div>
+        <div class="kpi-value">Rp 28,84<small>Triliun</small></div>
+        <div class="kpi-sub">Akumulasi seluruh komponen biaya operasi, 13 Unit Pelaksana + Kantor Distribusi + APD</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Energi Disalurkan</div>
+        <div class="kpi-value">17,33<small>Miliar kWh</small></div>
+        <div class="kpi-sub">Volume kWh sebagai basis perhitungan BPP per unit</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">BPP Full PSA Gabungan</div>
+        <div class="kpi-value">Rp 1.664<small>/kWh</small></div>
+        <span class="badge up">▲ 5,52% YoY vs Juni 2025</span>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">BPP Non PSA Gabungan</div>
+        <div class="kpi-value">Rp 121,76<small>/kWh</small></div>
+        <span class="badge flat">Rentang antar unit: 69,6–160,9</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== EXECUTIVE SUMMARY ===================== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Ringkasan Eksekutif</div>
+        <h2>Empat Temuan Utama Kinerja BPP</h2>
+      </div>
+      <div class="section-note"></div>
+    </div>
+
+    <div class="exec-grid">
+      <div class="exec-card flag-up">
+        <div class="exec-num">Temuan 01 — Struktur Biaya</div>
+        <div class="exec-title">Biaya pembelian energi mendominasi 93,3% total biaya operasi</div>
+        <div class="exec-body">Dari total biaya operasi Rp 28,84 triliun, <b>Rp 26,89 triliun (93,3%)</b> berasal dari pembelian tenaga listrik (PSA, IP, dan IPP). Struktur biaya yang sangat terkonsentrasi ini berarti pergerakan BPP secara gabungan hampir sepenuhnya ditentukan oleh volume dan harga pembelian energi, bukan oleh efisiensi biaya internal seperti pemeliharaan atau administrasi yang bersama-sama hanya berkontribusi di bawah 4%.</div>
+      </div>
+
+      <div class="exec-card flag-note">
+        <div class="exec-num">Temuan 02 — Disparitas Antar Unit</div>
+        <div class="exec-title">Kesenjangan BPP antar unit mencapai 18,6%, dari Rp 1.446 hingga Rp 1.715/kWh</div>
+        <div class="exec-body"><b>UP PKL</b> mencatat BPP Full PSA terendah (Rp 1.446/kWh), 13,1% di bawah rata-rata gabungan, sementara <b>UP TGL</b> tertinggi (Rp 1.715/kWh), 3,1% di atas rata-rata gabungan. Rentang ini mengindikasikan adanya ruang perbaikan struktural pada unit dengan BPP tinggi, baik dari sisi bauran sumber energi maupun pola beban.</div>
+      </div>
+
+      <div class="exec-card flag-up">
+        <div class="exec-num">Temuan 03 — Efek Bobot Volume</div>
+        <div class="exec-title">BPP gabungan (Rp 1.664) lebih tinggi dari rata-rata sederhana 13 unit (Rp 1.630)</div>
+        <div class="exec-body">Dua dari tiga unit dengan kontribusi biaya terbesar — <b>SMG (14,5%)</b>, <b>KDS (13,7%)</b>, dan <b>TGL (9,7%)</b> — memiliki BPP di atas rata-rata unit, sehingga menarik BPP gabungan ke atas. Perbaikan efisiensi pada unit-unit berbobot besar ini akan memberikan dampak proporsional lebih tinggi terhadap BPP gabungan dibanding unit kecil.</div>
+      </div>
+
+      <div class="exec-card flag-up">
+        <div class="exec-num">Temuan 04 — Tren Multi-Tahun</div>
+        <div class="exec-title">BPP naik konsisten 5 tahun berturut-turut, CAGR 5,8% (2022–2026)</div>
+        <div class="exec-body">BPP Juni bergerak dari Rp 1.326/kWh (2022) menjadi Rp 1.664/kWh (2026), dengan kenaikan rata-rata H1 2026 vs H1 2025 mencapai <b>11,7%</b> — laju kenaikan tertinggi dibanding periode-periode sebelumnya. Tren ini perlu menjadi perhatian dalam proyeksi anggaran biaya operasi semester II 2026.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COST STRUCTURE ===================== -->
+<section class="tinted">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Struktur Biaya</div>
+        <h2>Komposisi Biaya Operasi Gabungan</h2>
+      </div>
+      <div class="section-note">Rp 28,84 triliun total biaya operasi periode Januari–Juni 2026, seluruh unit.</div>
+    </div>
+
+    <div class="cost-layout">
+      <div>
+        <div class="stackbar" id="stackbar"></div>
+        <div class="cost-legend" id="costLegend"></div>
+      </div>
+
+      <div class="cost-callout">
+        <div class="cc-tag">Konsentrasi Biaya Energi</div>
+        <div class="cc-num">93,3<small>%</small></div>
+        <p>Pembelian tenaga listrik PSA, IP, dan IPP menyerap <b>Rp 26,89 triliun</b> dari total biaya operasi. Komponen non-energi terbesar berikutnya — <b>penyusutan (2,1%)</b> dan <b>kepegawaian (1,6%)</b> — bersifat relatif tetap (fixed cost) dan minim ruang penghematan jangka pendek. Implikasinya, strategi penurunan BPP paling efektif berada pada optimalisasi <b>bauran pembelian energi</b> dan <b>manajemen beban</b>, bukan pemangkasan biaya operasional non-energi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== UNIT COMPARISON ===================== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Komparasi Unit Pelaksana</div>
+        <h2>Peringkat BPP Full PSA — 13 Unit Pelaksana</h2>
+      </div>
+      <div class="section-note">Diurutkan dari BPP terendah (paling efisien) ke tertinggi. Garis putus-putus merah menandai BPP gabungan Rp 1.664/kWh.</div>
+    </div>
+
+    <div class="unit-chart-wrap" id="unitChartWrap" style="position:relative;">
+      <div class="unit-chart" id="unitChart"></div>
+      <div class="ref-line" id="refLine"></div>
+      <div class="ref-label" id="refLabel">Gabungan&nbsp;Rp&nbsp;1.664</div>
+    </div>
+
+    <div class="legend-inline">
+      <span><i class="legend-dot" style="background:#286651"></i> Di bawah rata-rata gabungan (lebih efisien)</span>
+      <span><i class="legend-dot" style="background:#A93B41"></i> Di atas rata-rata gabungan (kurang efisien)</span>
+    </div>
+
+    <div class="excl-note">Catatan: Kantor Distribusi (KD) dan APD tidak ditampilkan dalam komparasi ini karena keduanya tidak memiliki realisasi kinerja BPP (fungsi kantor pusat/pendukung, bukan unit penyediaan tenaga listrik ke pelanggan).</div>
+
+    <div style="margin-top:34px;">
+      <table class="data-table" id="unitTable">
+        <thead>
+          <tr>
+            <th>Unit Pelaksana</th>
+            <th>Biaya Operasi (Rp)</th>
+            <th>Energi (kWh)</th>
+            <th>Kontribusi Biaya</th>
+            <th>BPP Full PSA (Rp/kWh)</th>
+            <th>BPP Non PSA (Rp/kWh)</th>
+            <th>Selisih vs Gabungan</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TREND ===================== -->
+<section class="tinted">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Tren 5 Tahun</div>
+        <h2>Pergerakan BPP Gabungan, Januari–Desember 2022–2026</h2>
+      </div>
+      <div class="section-note">Satuan Rp/kWh. Data 2026 tersedia s.d. Juni; periode Juli–Desember 2026 belum terealisasi.</div>
+    </div>
+
+    <div class="trend-wrap">
+      <div class="trend-legend" id="trendLegend"></div>
+      <div id="trendChart"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RECOMMENDATIONS ===================== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Insight &amp; Rekomendasi</div>
+        <h2>Tiga Area Prioritas Perbaikan BPP</h2>
+      </div>
+      <div class="section-note">Disusun berdasarkan temuan struktur biaya, disparitas unit, dan tren multi-tahun.</div>
+    </div>
+
+    <div class="rec-grid">
+      <div class="rec-card">
+        <div class="rec-step">01</div>
+        <div class="rec-title">Evaluasi bauran pembelian energi pada unit berbobot besar</div>
+        <div class="rec-body">SMG, KDS, dan TGL menyumbang 37,9% dari total biaya operasi gabungan. KDS (Rp 1.693) dan TGL (Rp 1.715) berada di atas rata-rata unit — tinjau ulang kontrak IPP/IP dan pola pembelian PSA pada kedua unit ini karena dampaknya terhadap BPP gabungan proporsional terhadap bobot volumenya.</div>
+        <div class="rec-target">Target dampak<b>Menurunkan BPP gabungan mendekati rata-rata unit (Rp 1.630)</b></div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-step">02</div>
+        <div class="rec-title">Jadikan UP PKL sebagai acuan best practice internal</div>
+        <div class="rec-body">UP PKL mencatat BPP terendah (Rp 1.446/kWh), 13,1% lebih efisien dari gabungan. Lakukan kajian komparatif atas pola pembebanan, sumber pasokan, dan struktur biaya pemeliharaan UP PKL untuk direplikasi pada unit dengan BPP di atas Rp 1.680 (GRB, MGL, KDS, TGL).</div>
+        <div class="rec-target">Target dampak<b>Mempersempit rentang BPP antar unit dari 18,6% menjadi &lt;12%</b></div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-step">03</div>
+        <div class="rec-title">Antisipasi tekanan kenaikan BPP pada proyeksi Semester II</div>
+        <div class="rec-body">Kenaikan rata-rata H1 2026 terhadap H1 2025 sebesar 11,7% merupakan laju tertinggi dalam 5 tahun terakhir. Perlu revisi outlook RKAP biaya operasi Semester II 2026 dengan skenario kenaikan harga energi berlanjut, disertai mitigasi melalui manajemen beban puncak.</div>
+        <div class="rec-target">Target dampak<b>Mitigasi risiko pembengkakan biaya operasi H2 2026</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%;">
+    <div class="fcol">Sumber data: Realisasi Biaya Pokok Penyediaan, Periode 30 Juni 2026 — UID Jawa Tengah. Dashboard disusun untuk kebutuhan analisis kinerja internal.</div>
+    <div class="fcol" style="text-align:right;">☕2026 | JW  </div>
+  </div>
+</footer>
+
+<script>
+/* ===================== EMBEDDED DATA (STATIC) ===================== */
+var GABUNGAN = { biaya: 28838052737680, kwh: 17332792698, bppFull: 1664, bppNon: 121.76 };
+
+var COST_STRUCTURE = [
+  { label: "Pembelian Energi (PSA + IP + IPP)", value: 26890777098842, pct: 93.25, color: "#0F2547" },
+  { label: "Penyusutan (Depresiasi Aset)",       value: 614830661946,  pct: 2.13,  color: "#1E4275" },
+  { label: "Kepegawaian",                        value: 454377159652,  pct: 1.58,  color: "#2F6FB0" },
+  { label: "Pemeliharaan (Jasa Borong + Material)", value: 424055806711, pct: 1.47, color: "#6FA3D8" },
+  { label: "Beban Pinjaman",                     value: 225712753215,  pct: 0.78,  color: "#C99A3F" },
+  { label: "Administrasi (Niaga + Umum)",        value: 215403845482,  pct: 0.75,  color: "#A93B41" },
+  { label: "Sewa &amp; Bahan Bakar (HSD)",            value: 12895411832,   pct: 0.04,  color: "#C9CED8" }
+];
+
+var UNITS = [
+  { code:"PKL", biaya:1310911069598, kwh:906704798,  bppFull:1446, bppNon:114.17 },
+  { code:"SLT", biaya:1224654258747, kwh:764382077,  bppFull:1602, bppNon:94.05 },
+  { code:"SKA", biaya:2959230917169, kwh:1836332809, bppFull:1611, bppNon:69.57 },
+  { code:"SMG", biaya:4173620869234, kwh:2589444888, bppFull:1612, bppNon:70.59 },
+  { code:"KLT", biaya:1394029295254, kwh:864679240,  bppFull:1612, bppNon:101.9 },
+  { code:"YGK", biaya:1605280488967, kwh:989113700,  bppFull:1623, bppNon:83.97 },
+  { code:"SKH", biaya:1574107157587, kwh:968244822,  bppFull:1626, bppNon:120.5 },
+  { code:"CLP", biaya:1961321428825, kwh:1196079967, bppFull:1640, bppNon:103.59 },
+  { code:"PWK", biaya:2032054702110, kwh:1236248438, bppFull:1644, bppNon:160.92 },
+  { code:"GRB", biaya:1962178224325, kwh:1168200160, bppFull:1680, bppNon:74.07 },
+  { code:"MGL", biaya:1425364139897, kwh:844260614,  bppFull:1688, bppNon:145.11 },
+  { code:"KDS", biaya:3947930621043, kwh:2331853048, bppFull:1693, bppNon:83.64 },
+  { code:"TGL", biaya:2807605585039, kwh:1637248137, bppFull:1715, bppNon:91.56 }
+];
+
+var TREND = {
+  months: ["JAN","FEB","MAR","APR","MEI","JUN","JUL","AGT","SEP","OKT","NOP","DES"],
+  series: [
+    { year:2026, color:"#A93B41", width:3.4, data:[1593,1615,1647,1638,1650,1664,null,null,null,null,null,null] },
+    { year:2025, color:"#0F2547", width:2.2, data:[1338,1356,1445,1498,1564,1577,1578,1590,1596,1602,1607,1608] },
+    { year:2024, color:"#2F6FB0", width:1.8, data:[1440,1477,1478,1509,1527,1536,1533,1537,1534,1522,1522,1522] },
+    { year:2023, color:"#6FA3D8", width:1.8, data:[1564,1580,1551,1485,1472,1469,1473,1454,1472,1469,1479,1476] },
+    { year:2022, color:"#C9CED8", width:1.8, data:[1122,1167,1233,1266,1308,1326,1354,1383,1396,1425,1447,1459] }
+  ]
+};
+
+/* ===================== HELPERS ===================== */
+function fmtID(n, dec){
+  dec = dec || 0;
+  var s = n.toLocaleString('id-ID', {minimumFractionDigits:dec, maximumFractionDigits:dec});
+  return s;
+}
+function fmtRp(n){ return "Rp " + fmtID(n,0); }
+
+/* ===================== COST STRUCTURE STACKBAR + LEGEND ===================== */
+(function(){
+  var bar = document.getElementById('stackbar');
+  var legend = document.getElementById('costLegend');
+  COST_STRUCTURE.forEach(function(c){
+    var seg = document.createElement('div');
+    seg.style.width = c.pct + '%';
+    seg.style.background = c.color;
+    seg.title = c.label + ' — ' + c.pct + '%';
+    bar.appendChild(seg);
+
+    var row = document.createElement('div');
+    row.className = 'cost-row';
+    row.innerHTML =
+      '<span class="swatch" style="background:'+c.color+'"></span>' +
+      '<span class="cost-name">'+c.label+'</span>' +
+      '<span class="cost-val">'+fmtRp(c.value)+'</span>' +
+      '<span class="cost-pct">'+c.pct.toFixed(2).replace('.',',')+'%</span>';
+    legend.appendChild(row);
+  });
+})();
+
+/* ===================== UNIT CHART ===================== */
+(function(){
+  var sorted = UNITS.slice().sort(function(a,b){ return a.bppFull - b.bppFull; });
+  var maxVal = Math.max.apply(null, sorted.map(function(u){return u.bppFull;}));
+  var totalBiaya = UNITS.reduce(function(s,u){return s+u.biaya;},0);
+  var container = document.getElementById('unitChart');
+
+  sorted.forEach(function(u){
+    var pctWidth = (u.bppFull / maxVal) * 100;
+    var isBest = u.bppFull === sorted[0].bppFull;
+    var isWorst = u.bppFull === sorted[sorted.length-1].bppFull;
+    var aboveGab = u.bppFull > GABUNGAN.bppFull;
+    var color = aboveGab ? '#A93B41' : '#286651';
+    var contribShare = (u.biaya/totalBiaya*100).toFixed(1).replace('.',',');
+
+    var row = document.createElement('div');
+    row.className = 'unit-row';
+    row.innerHTML =
+      '<span class="unit-code">'+u.code+(isBest?' <span class="tag-pill best">TERBAIK</span>':'')+(isWorst?' <span class="tag-pill worst">TERTINGGI</span>':'')+'</span>' +
+      '<span class="unit-track"><span class="unit-fill" style="width:'+pctWidth+'%; background:'+color+';"></span></span>' +
+      '<span class="unit-value">Rp '+u.bppFull+'</span>' +
+      '<span class="unit-share">'+contribShare+'% biaya</span>';
+    container.appendChild(row);
+  });
+
+  // Position the reference line (GABUNGAN BPP) precisely over the track columns
+  function positionRefLine(){
+    var wrap = document.getElementById('unitChartWrap');
+    var firstTrack = container.querySelector('.unit-track');
+    if(!firstTrack) return;
+    var wrapRect = wrap.getBoundingClientRect();
+    var trackRect = firstTrack.getBoundingClientRect();
+    var offsetLeft = trackRect.left - wrapRect.left;
+    var trackWidth = trackRect.width;
+    var refX = offsetLeft + (GABUNGAN.bppFull / maxVal) * trackWidth;
+    var line = document.getElementById('refLine');
+    var label = document.getElementById('refLabel');
+    line.style.left = refX + 'px';
+    label.style.left = refX + 'px';
+    label.textContent = 'Gabungan Rp ' + GABUNGAN.bppFull;
+  }
+  window.addEventListener('load', positionRefLine);
+  window.addEventListener('resize', positionRefLine);
+  setTimeout(positionRefLine, 50);
+})();
+
+/* ===================== UNIT TABLE ===================== */
+(function(){
+  var sorted = UNITS.slice().sort(function(a,b){ return a.bppFull - b.bppFull; });
+  var totalBiaya = UNITS.reduce(function(s,u){return s+u.biaya;},0);
+  var totalKwh = UNITS.reduce(function(s,u){return s+u.kwh;},0);
+  var tbody = document.querySelector('#unitTable tbody');
+
+  sorted.forEach(function(u,i){
+    var tr = document.createElement('tr');
+    if(i===0) tr.className='best';
+    if(i===sorted.length-1) tr.className='worst';
+    var diff = u.bppFull - GABUNGAN.bppFull;
+    var diffPct = (diff/GABUNGAN.bppFull*100);
+    var diffStr = (diff>=0?'+':'') + diffPct.toFixed(1).replace('.',',') + '%';
+    var contribShare = (u.biaya/totalBiaya*100).toFixed(2).replace('.',',');
+    tr.innerHTML =
+      '<td>'+u.code+'</td>'+
+      '<td>'+fmtRp(u.biaya)+'</td>'+
+      '<td>'+fmtID(u.kwh)+'</td>'+
+      '<td>'+contribShare+'%</td>'+
+      '<td>Rp '+u.bppFull+'</td>'+
+      '<td>Rp '+u.bppNon.toString().replace('.',',')+'</td>'+
+      '<td style="color:'+(diff>=0?'#A93B41':'#286651')+'; font-weight:700;">'+diffStr+'</td>';
+    tbody.appendChild(tr);
+  });
+
+  var totalRow = document.createElement('tr');
+  totalRow.className = 'total-row';
+  totalRow.innerHTML =
+    '<td>GABUNGAN</td>'+
+    '<td>'+fmtRp(GABUNGAN.biaya)+'</td>'+
+    '<td>'+fmtID(GABUNGAN.kwh)+'</td>'+
+    '<td>100,00%</td>'+
+    '<td>Rp '+GABUNGAN.bppFull+'</td>'+
+    '<td>Rp '+GABUNGAN.bppNon.toString().replace('.',',')+'</td>'+
+    '<td>—</td>';
+  tbody.appendChild(totalRow);
+})();
+
+/* ===================== TREND LINE CHART (SVG) ===================== */
+(function(){
+  var legendEl = document.getElementById('trendLegend');
+  TREND.series.forEach(function(s){
+    var sp = document.createElement('span');
+    sp.innerHTML = '<i class="ln" style="background:'+s.color+'"></i> '+s.year;
+    legendEl.appendChild(sp);
+  });
+
+  var W = 1100, H = 340, padL = 56, padR = 20, padT = 20, padB = 34;
+  var plotW = W - padL - padR, plotH = H - padT - padB;
+
+  var allVals = [];
+  TREND.series.forEach(function(s){ s.data.forEach(function(v){ if(v!==null) allVals.push(v); }); });
+  var minV = Math.min.apply(null, allVals) - 40;
+  var maxV = Math.max.apply(null, allVals) + 40;
+
+  function x(i){ return padL + (i/(TREND.months.length-1)) * plotW; }
+  function y(v){ return padT + plotH - ((v-minV)/(maxV-minV))*plotH; }
+
+  var svg = '<svg viewBox="0 0 '+W+' '+H+'" width="100%" height="380" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">';
+
+  // gridlines
+  var gridSteps = 5;
+  for(var g=0; g<=gridSteps; g++){
+    var val = minV + (maxV-minV)*(g/gridSteps);
+    var gy = y(val);
+    svg += '<line x1="'+padL+'" y1="'+gy+'" x2="'+(W-padR)+'" y2="'+gy+'" stroke="#E7EAF0" stroke-width="1"/>';
+    svg += '<text x="'+(padL-10)+'" y="'+(gy+4)+'" text-anchor="end" font-size="10.5" fill="#6E7686">'+Math.round(val)+'</text>';
+  }
+
+  // x axis labels
+  TREND.months.forEach(function(m,i){
+    svg += '<text x="'+x(i)+'" y="'+(H-12)+'" text-anchor="middle" font-size="10.5" fill="#6E7686">'+m+'</text>';
+  });
+
+  // lines
+  TREND.series.forEach(function(s){
+    var pathSegments = [];
+    var current = [];
+    s.data.forEach(function(v,i){
+      if(v===null){
+        if(current.length>0){ pathSegments.push(current); current=[]; }
+        return;
+      }
+      current.push([x(i), y(v)]);
+    });
+    if(current.length>0) pathSegments.push(current);
+
+    pathSegments.forEach(function(seg){
+      var d = seg.map(function(p,i){ return (i===0?'M':'L')+p[0].toFixed(1)+','+p[1].toFixed(1); }).join(' ');
+      svg += '<path d="'+d+'" fill="none" stroke="'+s.color+'" stroke-width="'+s.width+'" stroke-linecap="round" stroke-linejoin="round"/>';
+    });
+
+    // dots + end label
+    s.data.forEach(function(v,i){
+      if(v===null) return;
+      svg += '<circle cx="'+x(i)+'" cy="'+y(v)+'" r="'+(s.year===2026?3.2:2)+'" fill="'+s.color+'"/>';
+    });
+
+    // label at last point
+    var lastIdx = -1;
+    s.data.forEach(function(v,i){ if(v!==null) lastIdx=i; });
+    if(lastIdx>=0){
+      svg += '<text x="'+(x(lastIdx)+8)+'" y="'+(y(s.data[lastIdx])+4)+'" font-size="11.5" font-weight="700" fill="'+s.color+'">'+s.year+' · '+s.data[lastIdx]+'</text>';
+    }
+  });
+
+  svg += '</svg>';
+  document.getElementById('trendChart').innerHTML = svg;
+})();
+</script>
+
+</body>
+</html>
