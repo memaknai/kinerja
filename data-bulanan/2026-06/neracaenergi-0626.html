@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jawa Tengah dalam Peta Energi Jawa-Bali — Juni 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F6F4;
+    --paper-alt:#EFF1EE;
+    --ink:#0E2338;
+    --ink-soft:#33455A;
+    --navy-deep:#081627;
+    --navy-panel:#102A45;
+    --slate:#7C8896;
+    --rule:#DBDFE0;
+    --gold:#C08A28;
+    --gold-soft:#E9D6AC;
+    --warn:#9B4030;
+    --warn-soft:#F0DDD6;
+    --muted-bar:#C7CDD2;
+    --muted-bar-2:#8FA0AE;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 48px;}
+  @media (max-width:720px){ .wrap{padding:0 22px;} }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:
+      radial-gradient(ellipse at 78% 0%, rgba(192,138,40,0.16), transparent 55%),
+      linear-gradient(180deg, var(--navy-deep) 0%, #0B1F35 70%, var(--navy-panel) 100%);
+    color:#EDEFEA;
+    padding:72px 0 56px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; right:-60px; top:-40px; width:420px; height:420px;
+    background:
+      repeating-linear-gradient(0deg, rgba(233,214,172,0.05) 0 1px, transparent 1px 26px),
+      repeating-linear-gradient(90deg, rgba(233,214,172,0.05) 0 1px, transparent 1px 26px);
+    transform:rotate(8deg);
+    pointer-events:none;
+  }
+  .hero .eyebrow{color:#D8B96A;}
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(34px, 5vw, 56px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin:18px 0 20px;
+    max-width:15ch;
+    color:#F7F5EF;
+  }
+  .hero h1 em{font-style:italic; color:var(--gold-soft); font-weight:400;}
+  .hero p.lede{
+    max-width:56ch;
+    font-size:17.5px;
+    color:#C6CDD6;
+    margin-bottom:38px;
+  }
+  .hero-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    border-top:1px solid rgba(255,255,255,0.14);
+    padding-top:26px;
+  }
+  .hero-stats div{padding-right:18px; border-right:1px solid rgba(255,255,255,0.1);}
+  .hero-stats div:last-child{border-right:none;}
+  .hero-stat-num{
+    font-family:'Fraunces', serif;
+    font-size:32px;
+    color:#F7F5EF;
+    font-weight:500;
+  }
+  .hero-stat-label{
+    font-size:12.5px;
+    color:#9AA7B4;
+    margin-top:6px;
+    line-height:1.4;
+  }
+  @media (max-width:720px){
+    .hero-stats{grid-template-columns:repeat(2,1fr); row-gap:22px;}
+  }
+
+  /* ===== SECTIONS ===== */
+  section{padding:64px 0;}
+  section.tight{padding:48px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:24px; margin-bottom:34px; border-bottom:1px solid var(--rule); padding-bottom:18px;
+  }
+  .section-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:29px;
+    letter-spacing:-0.01em;
+    max-width:20ch;
+  }
+  .section-head .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--slate);
+    white-space:nowrap;
+    padding-bottom:4px;
+  }
+  p.intro{font-size:16.5px; color:var(--ink-soft); max-width:74ch; margin-bottom:28px;}
+  strong.hl{color:var(--ink); font-weight:700;}
+  strong.gold{color:var(--gold); font-weight:700;}
+
+  /* ===== KPI CARDS ===== */
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--rule); border:1px solid var(--rule);
+  }
+  .kpi-card{background:var(--paper); padding:26px 22px;}
+  .kpi-card .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--slate); margin-bottom:14px; display:block;
+  }
+  .kpi-card .num{font-family:'Fraunces', serif; font-size:34px; font-weight:500; color:var(--ink); line-height:1;}
+  .kpi-card .num small{font-size:16px; font-weight:400; color:var(--slate); font-family:'Inter',sans-serif;}
+  .kpi-card .sub{font-size:13.5px; color:var(--ink-soft); margin-top:10px; line-height:1.5;}
+  .kpi-card.accent{background:var(--navy-panel);}
+  .kpi-card.accent .tag{color:var(--gold-soft);}
+  .kpi-card.accent .num{color:#F7F5EF;}
+  .kpi-card.accent .sub{color:#B9C2CB;}
+  @media (max-width:820px){ .kpi-grid{grid-template-columns:repeat(2,1fr);} }
+
+  /* ===== BAR CHARTS ===== */
+  .chart{margin-top:8px;}
+  .bar-row{
+    display:grid;
+    grid-template-columns:150px 1fr 92px;
+    align-items:center;
+    gap:16px;
+    padding:9px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .bar-row:first-child{border-top:1px solid var(--rule);}
+  .bar-row .label{font-size:13.5px; color:var(--ink-soft); font-weight:500;}
+  .bar-row.highlight .label{color:var(--ink); font-weight:700;}
+  .bar-track{background:var(--paper-alt); height:20px; position:relative; overflow:hidden;}
+  .bar-fill{height:100%; background:var(--muted-bar-2);}
+  .bar-row.highlight .bar-fill{background:var(--gold);}
+  .bar-row.warn .bar-fill{background:var(--warn);}
+  .bar-row.national .bar-fill{background:transparent; border-right:2px dashed var(--ink-soft);}
+  .bar-val{font-family:'IBM Plex Mono', monospace; font-size:13px; text-align:right; color:var(--ink);}
+  .bar-row.highlight .bar-val{color:var(--gold); font-weight:600;}
+  .bar-row.warn .bar-val{color:var(--warn); font-weight:600;}
+  .chart-note{font-size:12.5px; color:var(--slate); margin-top:14px; padding-left:2px;}
+  .chart-note .swatch{display:inline-block; width:9px; height:9px; margin-right:5px; vertical-align:middle;}
+
+  .split{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px;}
+  @media (max-width:860px){ .split{grid-template-columns:1fr;} }
+  .callout{
+    background:var(--navy-panel); color:#EDEFEA; padding:28px 26px;
+    align-self:start;
+  }
+  .callout .tag{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:12px; display:block;}
+  .callout .big{font-family:'Fraunces', serif; font-size:26px; margin-bottom:10px; color:#F7F5EF; line-height:1.2;}
+  .callout p{font-size:14px; color:#C6CDD6; line-height:1.6;}
+
+  /* ===== WATERFALL / FLOW ===== */
+  .flow{margin-top:10px;}
+  .flow-step{display:grid; grid-template-columns:200px 1fr 210px; align-items:center; gap:18px; padding:14px 0;}
+  .flow-step + .flow-step{border-top:1px dashed var(--rule);}
+  .flow-label{font-size:13.5px; color:var(--ink-soft); font-weight:600;}
+  .flow-label span{display:block; font-weight:400; font-size:11.5px; color:var(--slate); margin-top:2px;}
+  .flow-track{background:var(--paper-alt); height:34px; position:relative;}
+  .flow-fill{height:100%; background:linear-gradient(90deg, var(--navy-panel), var(--gold));}
+  .flow-meta{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink); text-align:right;}
+  .flow-meta b{display:block; font-size:15px; color:var(--ink);}
+  .flow-drop{
+    font-size:12px; color:var(--warn); font-family:'IBM Plex Mono',monospace;
+    padding:6px 0 6px 200px;
+  }
+  @media (max-width:720px){
+    .flow-step{grid-template-columns:1fr; text-align:left;}
+    .flow-meta{text-align:left;}
+    .flow-drop{padding-left:0;}
+  }
+
+  /* ===== TABLE ===== */
+  table{width:100%; border-collapse:collapse; font-size:13.8px;}
+  thead th{
+    text-align:left; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:11px;
+    text-transform:uppercase; letter-spacing:.05em; color:var(--slate);
+    padding:10px 12px; border-bottom:2px solid var(--ink);
+  }
+  thead th.num, tbody td.num{text-align:right;}
+  tbody td{padding:12px; border-bottom:1px solid var(--rule); color:var(--ink-soft);}
+  tbody tr.highlight{background:var(--gold-soft);}
+  tbody tr.highlight td{color:var(--ink); font-weight:700;}
+  tbody tr.total td{border-top:2px solid var(--ink); border-bottom:none; font-weight:700; color:var(--ink); background:var(--paper-alt);}
+  tbody td.unit{font-weight:600; color:var(--ink);}
+  .table-wrap{overflow-x:auto;}
+
+  /* ===== INSIGHTS ===== */
+  .insights{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule);}
+  .insight-card{background:var(--paper); padding:28px 26px;}
+  .insight-card .idx{font-family:'Fraunces',serif; font-size:15px; color:var(--gold); font-weight:600; margin-bottom:10px;}
+  .insight-card h3{font-family:'Fraunces', serif; font-weight:500; font-size:19px; margin-bottom:10px; line-height:1.3;}
+  .insight-card p{font-size:14px; color:var(--ink-soft); line-height:1.6;}
+  @media (max-width:820px){ .insights{grid-template-columns:1fr;} }
+
+  footer{
+    background:var(--navy-deep); color:#8C99A6; padding:34px 0; font-size:12.5px;
+  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  footer b{color:#C6CDD6;}
+
+  .divider{height:1px; background:var(--rule); margin:0;}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"> Neraca Energi - Distribusi Jawa–Bali · Kumulatif Juni 2026</span>
+    <h1>Jawa Tengah dalam peta <em>energi</em> Jawa–Bali</h1>
+    <p class="lede">Menelusuri posisi UID Jawa Tengah terhadap enam unit lain di Jawa–Bali dan konsolidasi nasional — dari volume pemakaian, kontribusi, hingga efisiensi jaringan distribusi.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">10,7%</div>
+        <div class="hero-stat-label">kontribusi Jawa Tengah terhadap total pemakaian kWh nasional</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">#4 <small style="font-size:16px;color:#9AA7B4;">/ 7</small></div>
+        <div class="hero-stat-label">peringkat Jawa Tengah di antara unit induk distribusi Jawa–Bali</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">17,33 TWh</div>
+        <div class="hero-stat-label">total pemakaian kWh Jawa Tengah, kumulatif Januari–Juni 2026</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">5,96%</div>
+        <div class="hero-stat-label">susut jaringan distribusi — tertinggi kedua di Jawa–Bali</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== RINGKASAN EKSEKUTIF ===== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ringkasan eksekutif</h2>
+      <span class="num">01 — Overview</span>
+    </div>
+    <p class="intro">Dari 91,36 miliar kWh energi yang mengalir melalui tujuh unit induk distribusi Jawa–Bali dan terserap sebagai pemakaian sebesar <strong class="hl">112,24 TWh</strong> — setara <strong class="hl">69,2% dari total pemakaian nasional</strong> — Jawa Tengah menempati posisi keempat dengan <strong class="gold">17,33 TWh</strong>, di bawah Jawa Barat, Jawa Timur, dan Jakarta Raya, namun di atas Banten, Bali, dan DIY.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card accent">
+        <span class="tag">Pemakaian kWh</span>
+        <div class="num">17,33 <small>TWh</small></div>
+        <div class="sub">17.332.792.698 kWh — 15,4% dari total pemakaian Jawa–Bali</div>
+      </div>
+      <div class="kpi-card">
+        <span class="tag">Kontribusi Nasional</span>
+        <div class="num">10,7%</div>
+        <div class="sub">Terbesar ke-4 dari 7 unit; bersama Jabar, Jatim & Jakarta menyumbang 56,9% pemakaian nasional</div>
+      </div>
+      <div class="kpi-card">
+        <span class="tag">Sumber Energi</span>
+        <div class="num">99,6%<small> diterima</small></div>
+        <div class="sub">Produksi sendiri hanya 287.632 kWh (0,002% dari bruto) — sepenuhnya bergantung pasokan sistem interkoneksi</div>
+      </div>
+      <div class="kpi-card">
+        <span class="tag">Susut Distribusi</span>
+        <div class="num">5,96%</div>
+        <div class="sub">Di atas rata-rata nasional 5,72% — hanya lebih baik dari DIY (6,04%)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- ===== KONTRIBUSI REGIONAL ===== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Peta kontribusi regional</h2>
+      <span class="num">02 — Kontribusi thd. Nasional</span>
+    </div>
+    <div class="split">
+      <div>
+        <p class="intro" style="margin-bottom:22px;">Kontribusi tiap unit induk terhadap total pemakaian kWh nasional (%), diurutkan dari yang terbesar. Jawa Tengah menyumbang <strong class="gold">10,7%</strong> — terpaut 1 poin di bawah Jakarta Raya dan 9,3 poin di bawah Jawa Barat sebagai kontributor terbesar.</p>
+        <div class="chart">
+          <div class="bar-row"><div class="label">Jawa Barat</div><div class="bar-track"><div class="bar-fill" style="width:90.9%"></div></div><div class="bar-val">20,0%</div></div>
+          <div class="bar-row"><div class="label">Jawa Timur</div><div class="bar-track"><div class="bar-fill" style="width:65.9%"></div></div><div class="bar-val">14,5%</div></div>
+          <div class="bar-row"><div class="label">Jakarta Raya</div><div class="bar-track"><div class="bar-fill" style="width:53.2%"></div></div><div class="bar-val">11,7%</div></div>
+          <div class="bar-row highlight"><div class="label">Jawa Tengah</div><div class="bar-track"><div class="bar-fill" style="width:48.6%"></div></div><div class="bar-val">10,7%</div></div>
+          <div class="bar-row"><div class="label">Banten</div><div class="bar-track"><div class="bar-fill" style="width:40.9%"></div></div><div class="bar-val">9,0%</div></div>
+          <div class="bar-row"><div class="label">Bali</div><div class="bar-track"><div class="bar-fill" style="width:11.4%"></div></div><div class="bar-val">2,5%</div></div>
+          <div class="bar-row"><div class="label">DI Yogyakarta</div><div class="bar-track"><div class="bar-fill" style="width:3.2%"></div></div><div class="bar-val">0,7%</div></div>
+        </div>
+        <div class="chart-note">% terhadap total pemakaian kWh konsolidasi nasional (162,26 TWh). Sisa 30,8% berasal dari unit distribusi di luar Jawa–Bali.</div>
+      </div>
+      <div class="callout">
+        <span class="tag">Konteks Jawa–Bali</span>
+        <div class="big">69,2% pemakaian nasional</div>
+        <p>berasal dari tujuh unit Jawa–Bali. Di dalam kelompok ini, Jawa Tengah memegang <strong style="color:#F7F5EF">15,4%</strong> pangsa — menjadikannya salah satu dari empat "unit inti" (Jabar–Jatim–Jakarta–Jateng) yang bersama-sama menopang 56,9% konsumsi listrik nasional, sementara Banten, Bali, dan DIY melengkapi sisanya.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- ===== SKALA KONSUMSI ===== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Skala konsumsi absolut</h2>
+      <span class="num">03 — Volume (TWh)</span>
+    </div>
+    <p class="intro">Dalam angka absolut, gap antar unit "papan atas" relatif tipis: selisih Jawa Tengah dengan Jakarta Raya di peringkat tiga hanya <strong class="hl">1,71 TWh</strong> — setara pemakaian gabungan DIY dan sebagian Bali. Sementara jarak ke Jawa Barat di puncak mencapai <strong class="hl">15,12 TWh</strong>, hampir sebesar total pemakaian Banten.</p>
+    <div class="chart">
+      <div class="bar-row"><div class="label">Jawa Barat</div><div class="bar-track"><div class="bar-fill" style="width:92.7%"></div></div><div class="bar-val">32,45 TWh</div></div>
+      <div class="bar-row"><div class="label">Jawa Timur</div><div class="bar-track"><div class="bar-fill" style="width:67.3%"></div></div><div class="bar-val">23,57 TWh</div></div>
+      <div class="bar-row"><div class="label">Jakarta Raya</div><div class="bar-track"><div class="bar-fill" style="width:54.4%"></div></div><div class="bar-val">19,04 TWh</div></div>
+      <div class="bar-row highlight"><div class="label">Jawa Tengah</div><div class="bar-track"><div class="bar-fill" style="width:49.5%"></div></div><div class="bar-val">17,33 TWh</div></div>
+      <div class="bar-row"><div class="label">Banten</div><div class="bar-track"><div class="bar-fill" style="width:41.9%"></div></div><div class="bar-val">14,66 TWh</div></div>
+      <div class="bar-row"><div class="label">Bali</div><div class="bar-track"><div class="bar-fill" style="width:11.7%"></div></div><div class="bar-val">4,11 TWh</div></div>
+      <div class="bar-row"><div class="label">DI Yogyakarta</div><div class="bar-track"><div class="bar-fill" style="width:3.1%"></div></div><div class="bar-val">1,08 TWh</div></div>
+    </div>
+    <div class="chart-note">TWh = terawatt-hour (1 TWh = 1 miliar kWh), dikonversi dari kolom Pemakaian kWh (TUL III.09), kumulatif Januari–Juni 2026.</div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- ===== EFISIENSI DISTRIBUSI ===== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Efisiensi jaringan distribusi</h2>
+      <span class="num">04 — Susut Jaringan</span>
+    </div>
+    <div class="split">
+      <div>
+        <p class="intro" style="margin-bottom:22px;">Susut jaringan distribusi Jawa Tengah tercatat <strong style="color:var(--warn)">5,96%</strong> — tertinggi kedua di Jawa–Bali setelah DIY, dan di atas rata-rata nasional 5,72% (garis putus-putus). Banten dan Jakarta Raya menjadi acuan efisiensi dengan susut di bawah 4%.</p>
+        <div class="chart">
+          <div class="bar-row"><div class="label">Banten</div><div class="bar-track"><div class="bar-fill" style="width:54.7%"></div></div><div class="bar-val">3,83%</div></div>
+          <div class="bar-row"><div class="label">Jakarta Raya</div><div class="bar-track"><div class="bar-fill" style="width:54.9%"></div></div><div class="bar-val">3,84%</div></div>
+          <div class="bar-row"><div class="label">Bali</div><div class="bar-track"><div class="bar-fill" style="width:59.7%"></div></div><div class="bar-val">4,18%</div></div>
+          <div class="bar-row"><div class="label">Jawa Timur</div><div class="bar-track"><div class="bar-fill" style="width:78.6%"></div></div><div class="bar-val">5,50%</div></div>
+          <div class="bar-row"><div class="label">Jawa Barat</div><div class="bar-track"><div class="bar-fill" style="width:79.3%"></div></div><div class="bar-val">5,55%</div></div>
+          <div class="bar-row national"><div class="label" style="font-style:italic;">Rata-rata Nasional</div><div class="bar-track"><div class="bar-fill" style="width:81.7%"></div></div><div class="bar-val">5,72%</div></div>
+          <div class="bar-row warn highlight"><div class="label">Jawa Tengah</div><div class="bar-track"><div class="bar-fill" style="width:85.1%"></div></div><div class="bar-val">5,96%</div></div>
+          <div class="bar-row"><div class="label">DI Yogyakarta</div><div class="bar-track"><div class="bar-fill" style="width:86.3%"></div></div><div class="bar-val">6,04%</div></div>
+        </div>
+        <div class="chart-note"><span class="swatch" style="background:var(--warn)"></span>Jawa Tengah &nbsp;·&nbsp; susut = SST. Jar. Distribusi terhadap energi yang disalurkan ke distribusi</div>
+      </div>
+      <div class="callout">
+        <span class="tag">Peluang Efisiensi</span>
+        <div class="big">≈ 395 juta kWh</div>
+        <p>berpotensi dihemat apabila susut jaringan distribusi Jawa Tengah disejajarkan dengan benchmark terbaik regional, Banten (3,83%). Nilai ini setara <strong style="color:#F7F5EF">0,4 TWh</strong>, atau sekitar 2,3% dari total pemakaian Jawa Tengah saat ini — ruang perbaikan konkret di sisi rekonduktoring, penyeimbangan beban trafo, dan penertiban non-teknis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- ===== ANATOMI ALIRAN ENERGI ===== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Anatomi aliran energi Jawa Tengah</h2>
+      <span class="num">05 — Neraca Energi</span>
+    </div>
+    <p class="intro">Dari energi bruto yang masuk ke sistem Jawa Tengah, hampir seluruhnya (99,95%) berhasil disalurkan ke jaringan distribusi — rasio tertinggi ketiga di Jawa–Bali setelah Jawa Timur dan Bali. Titik kebocoran nilai terjadi setelahnya, pada tahap susut &amp; penyesuaian jaringan distribusi.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-label">Energi Bruto<span>Diterima + dibeli + produksi sendiri</span></div>
+        <div class="flow-track"><div class="flow-fill" style="width:100%"></div></div>
+        <div class="flow-meta"><b>18.527.699.472 kWh</b>100,00%</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-label">Netto<span>Setelah pemakaian sendiri pembangkit</span></div>
+        <div class="flow-track"><div class="flow-fill" style="width:100%"></div></div>
+        <div class="flow-meta"><b>18.527.694.929 kWh</b>100,00%</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-label">Disalurkan ke Distribusi<span>Setelah kirim antar-unit</span></div>
+        <div class="flow-track"><div class="flow-fill" style="width:99.95%"></div></div>
+        <div class="flow-meta"><b>18.518.755.544 kWh</b>99,95%</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-label">Pemakaian kWh<span>Riil tersalur ke pelanggan (TUL III.09)</span></div>
+        <div class="flow-track"><div class="flow-fill" style="width:93.55%"></div></div>
+        <div class="flow-meta"><b>17.332.792.698 kWh</b>93,55%</div>
+      </div>
+    </div>
+    <div class="flow-drop">↳ terpakai untuk kirim antar-unit (8,9 juta kWh) dan susut + penyesuaian jaringan distribusi (1,19 miliar kWh, 6,4%)</div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- ===== TABEL PERBANDINGAN ===== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Tabel perbandingan lengkap</h2>
+      <span class="num">06 — Seluruh Unit Jawa–Bali</span>
+    </div>
+    <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Unit Induk Distribusi</th>
+          <th class="num">Pemakaian (TWh)</th>
+          <th class="num">Kontribusi Nasional</th>
+          <th class="num">Disalurkan ke Distribusi</th>
+          <th class="num">Susut Jar. Distribusi</th>
+          <th class="num">Kirim Antar Unit (kWh)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="unit">Jawa Barat</td><td class="num">32,45</td><td class="num">20,0%</td><td class="num">99,33%</td><td class="num">5,55%</td><td class="num">234.799.288</td></tr>
+        <tr><td class="unit">Jawa Timur</td><td class="num">23,57</td><td class="num">14,5%</td><td class="num">100,00%</td><td class="num">5,50%</td><td class="num">0</td></tr>
+        <tr><td class="unit">Jakarta Raya</td><td class="num">19,04</td><td class="num">11,7%</td><td class="num">96,73%</td><td class="num">3,84%</td><td class="num">674.892.476</td></tr>
+        <tr class="highlight"><td class="unit">Jawa Tengah</td><td class="num">17,33</td><td class="num">10,7%</td><td class="num">99,95%</td><td class="num">5,96%</td><td class="num">8.939.384</td></tr>
+        <tr><td class="unit">Banten</td><td class="num">14,66</td><td class="num">9,0%</td><td class="num">94,00%</td><td class="num">3,83%</td><td class="num">981.301.846</td></tr>
+        <tr><td class="unit">Bali</td><td class="num">4,11</td><td class="num">2,5%</td><td class="num">100,00%</td><td class="num">4,18%</td><td class="num">0</td></tr>
+        <tr><td class="unit">DI Yogyakarta</td><td class="num">1,08</td><td class="num">0,7%</td><td class="num">97,59%</td><td class="num">6,04%</td><td class="num">28.515.913</td></tr>
+        <tr class="total"><td class="unit">Total Jawa–Bali</td><td class="num">112,24</td><td class="num">69,2%</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr class="total"><td class="unit">Konsolidasi Nasional</td><td class="num">162,26</td><td class="num">100,0%</td><td class="num">97,88%</td><td class="num">5,72%</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- ===== INSIGHT STRATEGIS ===== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Insight strategis</h2>
+      <span class="num">07 — Implikasi</span>
+    </div>
+    <div class="insights">
+      <div class="insight-card">
+        <div class="idx">01</div>
+        <h3>Kontributor inti, bukan pemimpin pasar</h3>
+        <p>Dengan 10,7% pangsa nasional, Jawa Tengah masuk kelompok empat unit inti Jawa–Bali (bersama Jabar, Jatim, Jakarta) yang menopang 56,9% konsumsi listrik Indonesia — namun tetap tertinggal 9,3 poin dari Jawa Barat, mengindikasikan ruang pertumbuhan permintaan yang belum tergarap penuh dibanding basis populasi dan industrinya.</p>
+      </div>
+      <div class="insight-card">
+        <div class="idx">02</div>
+        <h3>Ketergantungan penuh pada pasokan interkoneksi</h3>
+        <p>Produksi sendiri Jawa Tengah hanya 287.632 kWh — setara 0,002% dari energi bruto. Pola ini konsisten dengan sebagian besar unit Jawa–Bali (kecuali Jawa Timur yang punya kapasitas pembangkit lokal lebih besar), menegaskan peran distribusi sebagai fungsi utama, bukan pembangkitan.</p>
+      </div>
+      <div class="insight-card">
+        <div class="idx">03</div>
+        <h3>Efisiensi jaringan jadi titik perbaikan prioritas</h3>
+        <p>Susut jaringan distribusi 5,96% menjadikan Jawa Tengah unit dengan performa efisiensi terburuk kedua di Jawa–Bali, di atas rata-rata nasional. Menyamai benchmark Banten (3,83%) berpotensi menghemat ±395 juta kWh — nilai yang signifikan untuk investasi rekonduktoring dan penertiban non-teknis.</p>
+      </div>
+      <div class="insight-card">
+        <div class="idx">04</div>
+        <h3>Profil "penyerap", bukan "pengekspor" energi</h3>
+        <p>Hanya 0,05% energi netto Jawa Tengah dikirim ke unit lain (8,9 juta kWh) — jauh di bawah Banten yang mengekspor 6% netto-nya (981 juta kWh). Jawa Tengah secara konsisten menyerap hampir seluruh pasokan yang diterima untuk kebutuhan distribusi lokal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>Sumber:</b> Laporan Konsolidasi Neraca Energi (NE217), Kumulatif Juni 2026</div>
+    <div>☕2026 | JW - Disusun dari data unit induk distribusi Jawa–Bali · Angka % mengikuti pembulatan sumber asli</div>
+  </div>
+</footer>
+
+</body>
+</html>
