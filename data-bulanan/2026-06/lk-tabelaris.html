@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinerja Keuangan UID Jawa Tengah  — Juni 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --navy-950:#0a1830;
+    --navy-900:#0f2340;
+    --navy-800:#16304f;
+    --navy-700:#1f3f63;
+    --steel-500:#3d6fa8;
+    --steel-300:#8fb3d9;
+    --paper:#f6f5f1;
+    --paper-card:#ffffff;
+    --hair:#dcdad2;
+    --ink:#12181f;
+    --ink-soft:#454f5c;
+    --gold:#b8860b;
+    --gold-soft:#e4c470;
+    --pos:#1f7a5c;
+    --neg:#a5322a;
+    --neg-bg:#fbeceb;
+    --pos-bg:#eaf4f0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,sans-serif;
+    font-size:15px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  h1,h2,h3,.serif{font-family:'Source Serif 4',Georgia,serif;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 48px;}
+  a{color:inherit;}
+
+  /* ===== COVER ===== */
+  .cover{
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(184,134,11,0.16), transparent 60%),
+      linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+    color:#fff;
+    padding:76px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cover::after{
+    content:"";
+    position:absolute; right:-6%; top:-18%;
+    width:620px; height:620px;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:50%;
+  }
+  .cover::before{
+    content:"";
+    position:absolute; right:2%; top:6%;
+    width:420px; height:420px;
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:50%;
+  }
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold-soft);
+    margin-bottom:26px;
+  }
+  .eyebrow .line{width:34px; height:1px; background:var(--gold-soft);}
+  .cover h1{
+    font-size:44px; font-weight:600; line-height:1.16;
+    max-width:820px; letter-spacing:-.01em;
+    color:#fff;
+  }
+  .cover .sub{
+    margin-top:18px; font-size:16.5px; color:var(--steel-300);
+    max-width:620px; font-weight:400; line-height:1.6;
+  }
+  .kpi-strip{
+    margin-top:52px;
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid rgba(255,255,255,0.14);
+    padding-top:28px;
+    position:relative; z-index:2;
+  }
+  .kpi-strip .kpi + .kpi{border-left:1px solid rgba(255,255,255,0.14); padding-left:28px;}
+  .kpi .kpi-label{font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--steel-300); font-weight:500;}
+  .kpi .kpi-value{font-family:'Source Serif 4',serif; font-size:30px; margin-top:8px; font-weight:600; color:#fff;}
+  .kpi .kpi-value span{font-size:16px; color:var(--steel-300); font-weight:400;}
+  .kpi .kpi-delta{margin-top:6px; font-size:12.5px; color:var(--gold-soft);}
+
+  /* ===== NAV ===== */
+  .toc-bar{
+    background:var(--navy-900); border-top:1px solid rgba(255,255,255,.08);
+    position:sticky; top:0; z-index:50;
+  }
+  .toc-bar .wrap{display:flex; gap:2px; overflow-x:auto; padding:0 48px;}
+  .toc-bar a{
+    white-space:nowrap; font-size:12.5px; color:var(--steel-300); text-decoration:none;
+    padding:14px 16px; font-weight:500; border-bottom:2px solid transparent;
+  }
+  .toc-bar a:hover{color:#fff; border-bottom-color:var(--gold);}
+
+  /* ===== SECTIONS ===== */
+  section{padding:64px 0;}
+  section.alt{background:var(--paper-card); border-top:1px solid var(--hair); border-bottom:1px solid var(--hair);}
+  .sec-head{display:flex; gap:24px; justify-content:space-between; align-items:flex-end; margin-bottom:8px;}
+  .sec-num{font-family:'IBM Plex Mono',monospace; color:var(--gold); font-size:12.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:500;}
+  .sec-title{font-size:27px; font-weight:600; line-height:1.32; max-width:840px; margin-top:8px; letter-spacing:-.01em;}
+  .sec-dek{color:var(--ink-soft); font-size:15px; max-width:760px; margin-top:14px; line-height:1.65;}
+  .sec-body{margin-top:36px;}
+
+  /* ===== CARDS / GRID ===== */
+  .grid-2{display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:start;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .card{
+    background:var(--paper-card); border:1px solid var(--hair); border-radius:3px; padding:26px;
+  }
+  .card h4{font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); font-weight:600; margin-bottom:14px;}
+  .chart-card{background:var(--paper-card); border:1px solid var(--hair); border-radius:3px; padding:28px;}
+  .chart-card .chart-title{font-size:14.5px; font-weight:600; margin-bottom:2px;}
+  .chart-card .chart-note{font-size:12.5px; color:var(--ink-soft); margin-bottom:18px;}
+  canvas{max-width:100%;}
+
+  /* ===== FINDING CARDS (exec summary) ===== */
+  .findings{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--hair); border:1px solid var(--hair); margin-top:36px;}
+  .finding{background:var(--paper-card); padding:26px 28px;}
+  .finding .fnum{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--gold); letter-spacing:.1em;}
+  .finding h5{font-size:16px; font-weight:600; margin-top:10px; line-height:1.4;}
+  .finding p{font-size:13.6px; color:var(--ink-soft); margin-top:8px; line-height:1.6;}
+
+  /* ===== TABLE ===== */
+  table{width:100%; border-collapse:collapse; font-size:13.6px;}
+  thead th{
+    text-align:right; font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--ink-soft); padding:10px 12px; border-bottom:2px solid var(--navy-900);
+  }
+  thead th:first-child, tbody td:first-child{text-align:left;}
+  tbody td{padding:10px 12px; text-align:right; border-bottom:1px solid var(--hair); font-family:'IBM Plex Mono',monospace; font-size:13px;}
+  tbody td:first-child{font-family:'Inter',sans-serif; font-weight:600; font-size:13.6px;}
+  tbody tr:hover{background:#fbfaf6;}
+  .neg{color:var(--neg); font-weight:600;}
+  .pos{color:var(--pos);}
+  .pill{display:inline-block; padding:2px 8px; border-radius:20px; font-size:11px; font-weight:600; font-family:'Inter',sans-serif;}
+  .pill.pos{background:var(--pos-bg); color:var(--pos);}
+  .pill.neg{background:var(--neg-bg); color:var(--neg);}
+  .rank{color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; font-size:12px;}
+
+  /* ===== CALLOUT ===== */
+  .callout{
+    border-left:3px solid var(--gold); background:#fbf7ec; padding:20px 24px; margin-top:28px;
+  }
+  .callout .co-label{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold); font-weight:700; margin-bottom:8px;}
+  .callout p{font-size:14px; color:var(--ink); line-height:1.65;}
+  .callout.danger{border-left-color:var(--neg); background:var(--neg-bg);}
+  .callout.danger .co-label{color:var(--neg);}
+
+  /* ===== BAR LIST (custom horizontal bars for share) ===== */
+  .barlist{margin-top:6px;}
+  .barrow{display:grid; grid-template-columns:112px 1fr 64px; align-items:center; gap:12px; padding:7px 0;}
+  .barrow .lbl{font-size:13px; font-weight:600;}
+  .barrow .track{background:#eceae3; height:9px; border-radius:2px; overflow:hidden; position:relative;}
+  .barrow .fill{height:100%; border-radius:2px; background:linear-gradient(90deg, var(--steel-500), var(--navy-800));}
+  .barrow .val{font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-align:right; color:var(--ink-soft);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy-950); color:var(--steel-300); padding:40px 0; font-size:12.5px;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+  footer .fnote{max-width:640px; line-height:1.6; color:#7f95b3;}
+
+  .num-hero{font-family:'Source Serif 4',serif; font-weight:600; color:var(--navy-900);}
+  .legend-dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px;}
+
+  @media (max-width:900px){
+    .wrap{padding:0 22px;}
+    .kpi-strip{grid-template-columns:1fr 1fr; row-gap:24px;}
+    .kpi-strip .kpi:nth-child(3){border-left:none;}
+    .grid-2, .grid-3, .findings{grid-template-columns:1fr;}
+    .cover h1{font-size:32px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ======================= COVER ======================= -->
+<div class="cover">
+  <div class="wrap">
+    <div class="eyebrow"><span class="line"></span> LAPORAN KINERJA KEUANGAN &nbsp;·&nbsp; UID JAWA TENGAH </div>
+    <h1>Kontribusi unit, Struktur pendapatan & biaya utama pada kinerja UID Jateng per 30 Juni 2026</h1>
+    <p class="sub">Analisis kontribusi 13 Unit Pelaksana Pelayanan Pelanggan (UP3) terhadap pendapatan, beban usaha, dan laba usaha gabungan — serta pemetaan efisiensi biaya antar unit sebagai dasar evaluasi kinerja semester berjalan.</p>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="kpi-label">Pendapatan Usaha</div>
+        <div class="kpi-value">Rp31,06 <span>T</span></div>
+        <div class="kpi-delta">Gabungan 13 UP3 · Jan–Jun 2026</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Beban Usaha</div>
+        <div class="kpi-value">Rp28,61 <span>T</span></div>
+        <div class="kpi-delta">93,98% berasal dari pembelian tenaga listrik</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Laba Usaha</div>
+        <div class="kpi-value">Rp2,45 <span>T</span></div>
+        <div class="kpi-delta">Margin usaha 7,87%</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Rentang Margin Antar Unit</div>
+        <div class="kpi-value">4,0% <span>s.d. 20,0%</span></div>
+        <div class="kpi-delta">Grobogan terendah · Pekalongan tertinggi</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <div class="wrap">
+    <a href="#ringkasan">Ringkasan Eksekutif</a>
+    <a href="#kontribusi">1 · Kontribusi Pendapatan</a>
+    <a href="#struktur-pendapatan">2 · Struktur Pendapatan per Unit</a>
+    <a href="#struktur-beban">3 · Struktur Beban Material</a>
+    <a href="#beban-unit">4 · Beban Material per Unit</a>
+    <a href="#kinerja">5 · Perbandingan Kinerja</a>
+    <a href="#sorotan">6 · Sorotan Khusus</a>
+    <a href="#rekomendasi">7 · Rekomendasi</a>
+  </div>
+</div>
+
+<!-- ======================= RINGKASAN EKSEKUTIF ======================= -->
+<section id="ringkasan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">Ringkasan Eksekutif</div>
+        <h2 class="sec-title">Kinerja gabungan sehat, tetapi ditopang secara tidak merata oleh segelintir unit besar dan efisien</h2>
+      </div>
+    </div>
+    <p class="sec-dek">Per Juni 2026, UID Jateng &amp; DIY membukukan laba usaha Rp2,45 triliun dari pendapatan Rp31,06 triliun (margin usaha 7,87%). Namun angka gabungan ini menyembunyikan kesenjangan kinerja yang tajam antar 13 UP3 — mulai dari struktur biaya, skala pendapatan, hingga efisiensi penggunaan aset. Empat temuan berikut menjadi dasar analisis pada bagian selanjutnya.</p>
+
+    <div class="findings">
+      <div class="finding">
+        <div class="fnum">TEMUAN 01</div>
+        <h5>Pendapatan terkonsentrasi pada empat unit besar</h5>
+        <p>UP3 Semarang, Kudus, Surakarta, dan Tegal bersama-sama menyumbang 49,6% dari total pendapatan usaha gabungan — hampir separuh — sementara sembilan unit sisanya berbagi porsi 50,4% yang tersisa.</p>
+      </div>
+      <div class="finding">
+        <div class="fnum">TEMUAN 02</div>
+        <h5>Satu akun menentukan hampir seluruh struktur biaya</h5>
+        <p>Pembelian Tenaga Listrik mencakup 93,98% dari total beban usaha (Rp26,89 T dari Rp28,61 T). Seluruh akun material lain — pemeliharaan, kepegawaian, penyusutan, dan lain-lain — bersama-sama hanya 6,0%.</p>
+      </div>
+      <div class="finding">
+        <div class="fnum">TEMUAN 03</div>
+        <h5>Skala pendapatan tidak identik dengan profitabilitas</h5>
+        <p>UP3 Kudus (peringkat 2 pendapatan) hanya bermargin 4,56%, sedangkan UP3 Pekalongan yang pendapatannya jauh lebih kecil (peringkat 9) justru mencatat margin tertinggi, 19,99% — hampir 4,4x lipat.</p>
+      </div>
+      <div class="finding">
+        <div class="fnum">TEMUAN 04</div>
+        <h5>Yogyakarta mencatat rugi usaha — namun angka ini hanya mencerminkan 3 bulan pembukuan transisi</h5>
+        <p>Sejak 1 April 2026, Yogyakarta menjadi UID tersendiri sehingga neraca per 30 Juni 2026 sudah tercatat nihil di UID Jateng &amp; DIY. Angka laba rugi yang tampil di sini adalah akumulasi Januari–Maret 2026 (3 bulan) yang secara pembukuan masih melekat pada UID Jateng, dengan rasio Pembelian Tenaga Listrik 102,9% dari pendapatan periode tersebut — bukan cerminan kinerja penuh semester.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 1. KONTRIBUSI PENDAPATAN ======================= -->
+<section id="kontribusi" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">Bagian 1 — Kontribusi Pendapatan</div>
+        <h2 class="sec-title">Empat unit menyumbang hampir separuh pendapatan usaha gabungan</h2>
+      </div>
+    </div>
+    <p class="sec-dek">Distribusi pendapatan usaha antar 13 UP3 menunjukkan pola konsentrasi moderat: separuh unit teratas (top-4) menguasai hampir setengah total pendapatan, sementara ekor distribusi (Salatiga, Yogyakarta, Magelang) masing-masing berkontribusi di bawah 5%. <em>Catatan: angka Yogyakarta hanya mencakup Januari–Maret 2026 (3 bulan) karena unit ini menjadi UID tersendiri sejak 1 April 2026 — lihat Bagian 5 — sehingga posisinya dalam peringkat kontribusi ini secara struktural under-represented dibanding 12 unit lain yang mencakup periode 6 bulan penuh.</em></p>
+
+    <div class="sec-body grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Pendapatan Usaha per UP3 — Juni 2026 (Rp miliar)</div>
+        <div class="chart-note">Diurutkan dari kontribusi terbesar ke terkecil terhadap total Rp31,06 T</div>
+        <canvas id="chartRevenue" height="330"></canvas>
+      </div>
+      <div class="card">
+        <h4>Pangsa Kontribusi Kumulatif</h4>
+        <div class="barlist" id="barlistRevenue"></div>
+        <div class="callout" style="margin-top:22px;">
+          <div class="co-label">So What</div>
+          <p>Ketergantungan pada segelintir unit besar berarti volatilitas kinerja Semarang atau Kudus akan langsung terasa pada hasil konsolidasi UID. Strategi pertumbuhan pendapatan sebaiknya tetap memperhatikan unit menengah (Purwokerto–Klaten) yang secara agregat menyumbang porsi setara dengan dua unit terbesar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 2. STRUKTUR PENDAPATAN PER UNIT ======================= -->
+<section id="struktur-pendapatan" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">Bagian 2 — Struktur Pendapatan Usaha per Unit</div>
+        <h2 class="sec-title">Di balik angka pendapatan yang sama besar, komposisi sumbernya sangat berbeda antar unit</h2>
+      </div>
+    </div>
+    <p class="sec-dek">Pendapatan usaha tiap UP3 tersusun dari lima komponen: <em>Penjualan Tenaga Listrik (netto)</em> — pendapatan komersial murni dari tarif ke pelanggan; <em>Subsidi Listrik Pemerintah</em> — kompensasi negara untuk pelanggan bersubsidi (rumah tangga daya rendah, sosial); <em>Pendapatan Kompensasi</em> — kompensasi atas selisih tarif/susut yang ditanggung pemerintah; <em>Penyambungan Pelanggan</em>; dan <em>Lain-lain</em>. Komposisi ini mencerminkan pola segmen pelanggan yang dilayani tiap unit — semakin tinggi porsi subsidi &amp; kompensasi, semakin besar basis pelanggan bersubsidi/sosial di wilayah tersebut dibanding pelanggan komersial-industri.</p>
+
+    <div class="sec-body">
+      <div class="chart-card">
+        <div class="chart-title">Komposisi Pendapatan Usaha per UP3 (% terhadap pendapatan unit)</div>
+        <div class="chart-note">Diurutkan sesuai peringkat pendapatan (Bagian 1) · stacked 100%</div>
+        <canvas id="chartRevenueMix" height="290"></canvas>
+      </div>
+    </div>
+
+    <div class="sec-body grid-2" style="margin-top:8px;">
+      <div class="card">
+        <h4>Unit Paling Bergantung pada Subsidi &amp; Kompensasi Pemerintah</h4>
+        <div class="barlist" id="barlistSubsidi"></div>
+        <p style="font-size:12.5px; color:var(--ink-soft); margin-top:14px;">% (Subsidi Listrik + Pendapatan Kompensasi) terhadap total pendapatan unit — mengindikasikan proporsi pelanggan bersubsidi/sosial dalam bauran pelanggan.</p>
+      </div>
+      <div class="card">
+        <h4>Unit dengan Basis Pendapatan Paling Komersial</h4>
+        <div class="barlist" id="barlistKomersial"></div>
+        <p style="font-size:12.5px; color:var(--ink-soft); margin-top:14px;">% Penjualan Tenaga Listrik (netto) terhadap total pendapatan unit — porsi murni dari tarif berjalan tanpa subsidi/kompensasi.</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:28px; align-items:stretch;">
+      <div class="callout">
+        <div class="co-label">Pola yang Terlihat</div>
+        <p>Purwokerto, Magelang, dan Kudus memiliki porsi Subsidi + Kompensasi gabungan di atas 45% dari pendapatannya — mengindikasikan basis pelanggan yang lebih didominasi rumah tangga daya rendah dan pelanggan sosial. Sebaliknya, Semarang, Surakarta, dan Salatiga memiliki porsi penjualan komersial murni (tanpa Yogyakarta, lihat catatan) di atas 62%, konsisten dengan karakter wilayah urban/industri yang lebih padat pelanggan bisnis-industri.</p>
+      </div>
+      <div class="callout">
+        <div class="co-label">Mengapa Ini Penting</div>
+        <p>Unit dengan porsi subsidi tinggi cenderung memiliki margin usaha lebih tipis (bandingkan Purwokerto 32,5% subsidi vs margin 7,90%, dan Kudus 29,4% subsidi vs margin 4,56% pada Bagian 4) karena pendapatan dari segmen ini umumnya disertai volume energi bersubsidi yang tarifnya lebih rendah dari biaya pokok penyediaan, sehingga marjin per-kWh lebih tipis dibanding pelanggan komersial-industri.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:20px;">
+      <div class="co-label">Catatan Yogyakarta</div>
+      <p>Porsi Penjualan Tenaga Listrik Yogyakarta tampak tertinggi (78,9%) dan porsi Subsidi+Kompensasi terendah (20,4%) di antara seluruh unit — namun ini adalah artefak periode pembukuan 3 bulan (Jan–Mar 2026) sebelum pemekaran menjadi UID tersendiri, bukan cerminan pola pelanggan yang stabil sepanjang semester. Angka ini sebaiknya tidak dijadikan pembanding langsung dengan 12 unit lain pada bagian ini.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 3. STRUKTUR BEBAN MATERIAL ======================= -->
+<section id="struktur-beban">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">Bagian 3 — Struktur Beban Usaha</div>
+        <h2 class="sec-title">Pembelian tenaga listrik adalah satu-satunya akun material yang benar-benar menentukan hasil usaha</h2>
+      </div>
+    </div>
+    <p class="sec-dek">Dari total beban usaha Rp28,61 triliun, komposisi akun menunjukkan dominasi ekstrem satu pos biaya. Ini menegaskan bahwa pengendalian marjin UID secara struktural jauh lebih ditentukan oleh efisiensi pembelian energi dan mix penjualan, dibanding pengendalian biaya operasional internal (pemeliharaan, kepegawaian, dsb).</p>
+
+    <div class="sec-body grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Komposisi Beban Usaha Gabungan per Akun</div>
+        <div class="chart-note">% terhadap total beban usaha Rp28,61 T</div>
+        <canvas id="chartCostMix" height="300"></canvas>
+      </div>
+      <div class="card">
+        <h4>Rincian Akun (Rp miliar &amp; % beban usaha)</h4>
+        <table>
+          <thead><tr><th>Akun Beban</th><th>Rp Miliar</th><th>% Beban Usaha</th></tr></thead>
+          <tbody>
+            <tr><td>Pembelian Tenaga Listrik</td><td>26.890,8</td><td><strong>93,98%</strong></td></tr>
+            <tr><td>Penyusutan Aset Tetap</td><td>610,0</td><td>2,13%</td></tr>
+            <tr><td>Kepegawaian</td><td>454,4</td><td>1,59%</td></tr>
+            <tr><td>Pemeliharaan</td><td>424,1</td><td>1,48%</td></tr>
+            <tr><td>Lain-lain</td><td>215,4</td><td>0,75%</td></tr>
+            <tr><td>Sewa AHG</td><td>10,6</td><td>0,04%</td></tr>
+            <tr><td>Penyusutan Aset Sewa</td><td>4,8</td><td>0,02%</td></tr>
+            <tr><td>Bahan Bakar &amp; Pelumas</td><td>2,3</td><td>0,01%</td></tr>
+          </tbody>
+        </table>
+        <div class="callout" style="margin-top:20px;">
+          <div class="co-label">Implikasi</div>
+          <p>Karena PTL mencakup 93,98% dari beban usaha, selisih margin antar unit yang tajam (lihat Bagian 4) hampir seluruhnya bersumber dari perbedaan rasio PTL terhadap pendapatan tiap unit — bukan dari efisiensi biaya operasional internal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 3. BEBAN MATERIAL PER UNIT ======================= -->
+<section id="beban-unit" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">Bagian 4 — Kontribusi Unit pada Akun Material</div>
+        <h2 class="sec-title">Rasio Pembelian Tenaga Listrik terhadap pendapatan adalah pembeda utama efisiensi antar unit</h2>
+      </div>
+    </div>
+    <p class="sec-dek">Karena Pembelian Tenaga Listrik (PTL) mendominasi struktur biaya, rasio PTL/Pendapatan per unit menjadi indikator efisiensi paling relevan — semakin rendah rasio ini, semakin besar ruang margin yang tersisa untuk unit tersebut.</p>
+
+    <div class="sec-body grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Rasio Pembelian Tenaga Listrik terhadap Pendapatan per UP3</div>
+        <div class="chart-note">Garis referensi menunjukkan rata-rata gabungan 86,6%; UP3 Yogyakarta melewati ambang 100%</div>
+        <canvas id="chartPtlRatio" height="320"></canvas>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Kontribusi Akun Material Non-PTL per Unit</div>
+        <div class="chart-note">Pemeliharaan, Kepegawaian &amp; Penyusutan Aset — Rp miliar</div>
+        <canvas id="chartMaterialStack" height="320"></canvas>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:32px;">
+      <div class="co-label">Catatan Struktural</div>
+      <p>Di luar 13 UP3, Kantor Induk (UID) dan UP2D tercatat sebagai pusat biaya non-pendapatan (cost center) — UP2D menanggung 11,82% dari total beban pemeliharaan gabungan dan Kantor Induk menanggung 15,12% dari total beban kepegawaian gabungan, mencerminkan peran fungsi pengatur distribusi dan overhead korporat yang secara desain tidak menghasilkan pendapatan usaha langsung. Kedua unit ini dikecualikan dari perbandingan margin karena sifatnya yang berbeda secara fungsional dari UP3.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 4. PERBANDINGAN KINERJA ======================= -->
+<section id="kinerja">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">Bagian 5 — Perbandingan Kinerja Antar Unit</div>
+        <h2 class="sec-title">Skala besar tidak menjamin efisiensi — pemetaan matriks skala vs margin memperlihatkan empat kelompok unit</h2>
+      </div>
+    </div>
+    <p class="sec-dek">Memetakan pendapatan (skala) terhadap margin usaha (efisiensi) tiap UP3 menghasilkan empat kuadran kinerja yang berguna untuk menentukan prioritas pembinaan unit.</p>
+
+    <div class="sec-body">
+      <div class="chart-card">
+        <div class="chart-title">Matriks Skala vs Margin Usaha per UP3</div>
+        <div class="chart-note">Sumbu-X: pendapatan usaha (Rp miliar) · Sumbu-Y: margin usaha (%) · garis putus rata-rata gabungan</div>
+        <canvas id="chartScatter" height="290"></canvas>
+      </div>
+    </div>
+
+    <div class="sec-body grid-3" style="margin-top:8px;">
+      <div class="card">
+        <h4>★ Unggulan (Skala Besar, Margin Tinggi)</h4>
+        <p style="font-size:13.6px; color:var(--ink-soft); line-height:1.6;"><strong style="color:var(--ink);">Semarang</strong> — pendapatan #1 (15,98%) dan margin 15,90%, ROA usaha tertinggi 22,66%. Model efisiensi biaya unit ini layak dijadikan acuan replikasi ke unit besar lain.</p>
+      </div>
+      <div class="card">
+        <h4>◆ Efisien Tersembunyi (Skala Kecil, Margin Tinggi)</h4>
+        <p style="font-size:13.6px; color:var(--ink-soft); line-height:1.6;"><strong style="color:var(--ink);">Pekalongan</strong> (margin 19,99%) dan <strong style="color:var(--ink);">Salatiga</strong> (11,06%) menunjukkan disiplin biaya kuat meski skala pendapatan tergolong menengah-kecil (peringkat 9 &amp; 13).</p>
+      </div>
+      <div class="card">
+        <h4>▲ Perlu Perhatian (Skala Besar, Margin Tipis)</h4>
+        <p style="font-size:13.6px; color:var(--ink-soft); line-height:1.6;"><strong style="color:var(--ink);">Kudus</strong> (margin 4,56%) dan <strong style="color:var(--ink);">Grobogan</strong> (4,04%) — pendapatan besar tidak diimbangi margin sepadan; rasio PTL keduanya di atas 91%.</p>
+      </div>
+    </div>
+
+    <div class="sec-body">
+      <div class="card">
+        <h4>Tabel Peringkat Lengkap — Margin Usaha, ROA, dan Rasio PTL</h4>
+        <table style="margin-top:6px;">
+          <thead>
+            <tr><th>Peringkat</th><th>Unit</th><th>Pendapatan (Rp M)</th><th>Laba Usaha (Rp M)</th><th>Margin Usaha</th><th>ROA Usaha*</th><th>PTL / Pendapatan</th></tr>
+          </thead>
+          <tbody id="tblRanking"></tbody>
+        </table>
+        <div style="font-size:11.5px; color:var(--ink-soft); margin-top:10px;">*ROA Usaha = Laba Usaha / Total Aset. Yogyakarta tercatat Rp0 Total Aset karena telah menjadi UID tersendiri sejak 1 April 2026 sehingga ROA tidak relevan dihitung; angka pendapatan &amp; laba usahanya juga hanya mencakup periode Januari–Maret 2026 (3 bulan), tidak sepadan dengan 12 unit lain yang mencakup 6 bulan penuh — lihat Bagian 5.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 5. SOROTAN KHUSUS ======================= -->
+<section id="sorotan" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">Bagian 6 — Sorotan Khusus</div>
+        <h2 class="sec-title">Yogyakarta: rugi usaha yang tampil adalah warisan pembukuan 3 bulan sebelum pemekaran menjadi UID tersendiri</h2>
+      </div>
+    </div>
+    <p class="sec-dek">Per 1 April 2026, Yogyakarta resmi menjadi UID tersendiri, terpisah dari UID Jateng &amp; DIY. Konsekuensinya bersifat dua arah pada laporan ini: neraca per 30 Juni 2026 sudah nihil (seluruh aset &amp; piutang sudah tidak lagi tercatat di UID Jateng), namun laba rugi Januari–Maret 2026 — periode sebelum pemekaran — secara pembukuan masih melekat dan dikonsolidasikan ke UID Jateng &amp; DIY.</p>
+
+    <div class="sec-body grid-2">
+      <div class="callout danger">
+        <div class="co-label">Rugi Usaha Rp125,3 Miliar (Periode 3 Bulan)</div>
+        <p>Selama Januari–Maret 2026, tercatat Pembelian Tenaga Listrik senilai Rp1.523,1 miliar — 102,9% dari pendapatan usaha periode yang sama (Rp1.479,9 miliar). Karena hanya mencakup satu kuartal (bukan 6 bulan seperti 12 UP3 lainnya), angka ini tidak dapat dibandingkan apel-ke-apel dengan margin unit lain — namun rasio PTL &gt;100% tetap patut ditelusuri sebagai bagian dari serah-terima ke UID baru.</p>
+      </div>
+      <div class="callout">
+        <div class="co-label">Neraca Nihil = Konsekuensi Pemekaran, Bukan Celah Data</div>
+        <p>Seluruh pos Total Aset, Aset Tetap Netto, dan Piutang Usaha Yogyakarta tercatat kosong per 30 Juni 2026 karena sudah dialihkan ke pembukuan UID Yogyakarta yang baru. Ini bukan indikasi data hilang, melainkan cerminan struktur organisasi terkini — sehingga metrik ROA dan hari penagihan piutang tidak relevan dihitung untuk unit ini pada periode laporan.</p>
+      </div>
+    </div>
+
+    <div class="sec-body grid-2" style="margin-top:8px;">
+      <div class="chart-card">
+        <div class="chart-title">Rasio PTL Yogyakarta (Jan–Mar) vs Rata-rata Gabungan 12 UP3 (6 Bulan)</div>
+        <div class="chart-note">Rasio PTL terhadap pendapatan (%) — periode tidak identik, lihat catatan di atas</div>
+        <canvas id="chartYogya" height="230"></canvas>
+      </div>
+      <div class="card">
+        <h4>Kesehatan Piutang Usaha per Unit (proksi hari penagihan)</h4>
+        <div class="barlist" id="barlistDays"></div>
+        <p style="font-size:12.5px; color:var(--ink-soft); margin-top:14px;">Dihitung dari Piutang Usaha Netto dibagi rata-rata pendapatan harian (periode 181 hari, Jan–Jun 2026) untuk 12 UP3 yang tetap berada dalam UID Jateng &amp; DIY. Pekalongan tercatat paling lambat (~20 hari) namun masih dalam rentang wajar. Yogyakarta tidak ditampilkan karena saldo piutangnya sudah dialihkan ke UID baru sejak 1 April 2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 6. REKOMENDASI ======================= -->
+<section id="rekomendasi">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">Bagian 7 — Rekomendasi</div>
+        <h2 class="sec-title">Empat langkah prioritas untuk semester berikutnya</h2>
+      </div>
+    </div>
+
+    <div class="sec-body findings">
+      <div class="finding">
+        <div class="fnum">PRIORITAS 01</div>
+        <h5>Selaraskan strategi komersial dengan komposisi pelanggan tiap unit</h5>
+        <p>Unit dengan porsi subsidi & kompensasi tinggi (Purwokerto, Magelang, Kudus) perlu didorong menambah basis pelanggan komersial-industri untuk memperbaiki marjin per-kWh, sementara unit berbasis komersial kuat (Semarang, Surakarta, Salatiga) dapat menjadi acuan strategi akuisisi pelanggan bernilai tambah tinggi bagi unit lain.</p>
+      </div>
+      <div class="finding">
+        <div class="fnum">PRIORITAS 02</div>
+        <h5>Jadikan Pekalongan &amp; Semarang benchmark efisiensi PTL</h5>
+        <p>Unit dengan rasio PTL terendah (Pekalongan 74,8%, Semarang 80,6%) memiliki mix penjualan atau strategi pengelolaan losses yang lebih baik — dokumentasikan praktiknya untuk direplikasi ke Kudus dan Grobogan.</p>
+      </div>
+      <div class="finding">
+        <div class="fnum">PRIORITAS 03</div>
+        <h5>Tinjau ulang beban tidak sebanding di Kudus dan Grobogan</h5>
+        <p>Kedua unit besar ini memiliki margin di bawah 5% — evaluasi struktur biaya operasional serta kemungkinan penyesuaian mix pendapatan (kompensasi, subsidi) untuk memperbaiki profitabilitas tanpa mengorbankan volume.</p>
+      </div>
+      <div class="finding">
+        <div class="fnum">PRIORITAS 04</div>
+        <h5>Sesuaikan basis pembanding UID pasca-pemekaran Yogyakarta</h5>
+        <p>Mulai laporan Juli 2026, keluarkan Yogyakarta dari basis 13 unit dan gunakan 12 UP3 sebagai baseline kinerja UID Jateng &amp; DIY yang baru, agar tren margin dan pertumbuhan pendapatan tidak terdistorsi oleh efek transisi organisasi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fnote">☕2026 | JW - Sumber data: LK Tabelaris UID Jawa Tengah per 30 Juni 2026 (Laba Rugi &amp; Neraca, 15 unit pelaksana). Angka Yogyakarta hanya mencakup laba rugi Januari–Maret 2026. Laporan ini disusun untuk kebutuhan evaluasi kinerja internal.</div>
+    <div></div>
+  </div>
+</footer>
+
+<script>
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.color = '#454f5c';
+Chart.defaults.font.size = 12;
+
+const LABELS = ['Semarang', 'Kudus', 'Surakarta', 'Tegal', 'Purwokerto', 'Cilacap', 'Grobogan', 'Sukoharjo', 'Pekalongan', 'Klaten', 'Magelang', 'Yogyakarta', 'Salatiga'];
+const REVENUE = [4962.92, 4136.56, 3344.41, 2959.67, 2206.47, 2089.04, 2044.77, 1742.42, 1638.42, 1557.04, 1518.88, 1479.94, 1376.87];
+const REVENUE_PCT = [15.98, 13.32, 10.77, 9.53, 7.10, 6.73, 6.58, 5.61, 5.28, 5.01, 4.89, 4.77, 4.43];
+const MARGIN = [15.90, 4.56, 11.52, 5.14, 7.90, 6.11, 4.04, 9.66, 19.99, 10.47, 6.16, -8.47, 11.06];
+const LABA_USAHA = [789.29, 188.63, 385.17, 152.06, 174.42, 127.72, 82.59, 168.32, 327.51, 163.02, 93.51, -125.34, 152.22];
+const PTL_RATIO = [80.6, 91.6, 84.7, 89.8, 86.2, 88.2, 91.9, 85.0, 74.8, 83.9, 85.8, 102.9, 83.8];
+const ROA = [22.66, 5.96, 13.53, 5.51, 6.88, 6.48, 6.44, 12.50, 20.24, 11.90, 4.93, 0.00, 13.63];
+const PEMELIHARAAN = [45.44, 35.68, 27.52, 30.32, 27.39, 28.77, 20.13, 23.63, 19.36, 20.14, 28.41, 11.90, 18.13];
+const KEPEGAWAIAN = [35.38, 31.08, 34.07, 37.71, 29.44, 27.38, 19.86, 26.12, 21.99, 26.98, 30.73, 25.29, 19.92];
+const PENYUSUTAN = [69.88, 67.85, 51.50, 61.53, 56.37, 46.13, 28.52, 30.97, 32.95, 28.97, 43.31, 37.81, 23.91];
+const DAYS = [18, 14, 16, 13, 11, 12, 15, 15, 20, 18, 13, 0, 16];
+const PENJUALAN_REV = [3128.73, 2243.78, 2082.52, 1691.09, 1182.61, 1168.44, 1163.49, 1037.47, 982.12, 883.65, 838.01, 1167.91, 867.28];
+const SUBSIDI_REV = [960.05, 1216.65, 559.51, 760.05, 718.00, 566.21, 492.55, 374.65, 340.87, 402.40, 451.01, 184.87, 196.96];
+const KOMPENSASI_REV = [850.23, 659.31, 688.15, 492.96, 295.98, 345.26, 380.31, 322.58, 305.71, 263.29, 221.76, 117.55, 305.60];
+const PENYAMBUNGAN_REV = [22.82, 15.75, 13.84, 13.54, 9.57, 9.03, 8.23, 7.62, 9.29, 7.35, 7.92, 9.32, 5.62];
+const LAIN_REV = [1.08, 1.07, 0.38, 2.03, 0.31, 0.10, 0.19, 0.10, 0.43, 0.36, 0.19, 0.28, 1.41];
+
+const NAVY = '#16304f';
+const STEEL = '#3d6fa8';
+const STEEL_LT = '#8fb3d9';
+const GOLD = '#b8860b';
+const NEG = '#a5322a';
+const POS = '#1f7a5c';
+
+function negColor(arr, posColor){ return arr.map(v => v < 0 ? NEG : posColor); }
+
+// ---- Chart 1: Revenue bar ----
+new Chart(document.getElementById('chartRevenue'), {
+  type: 'bar',
+  data: { labels: LABELS, datasets: [{ data: REVENUE, backgroundColor: NAVY, borderRadius: 2, maxBarThickness: 26 }] },
+  options: {
+    indexAxis: 'y',
+    plugins: { legend: { display:false }, tooltip: { callbacks: { label: c => 'Rp ' + c.raw.toLocaleString('id-ID') + ' M' } } },
+    scales: {
+      x: { grid: { color:'#eceae3' }, ticks: { callback: v => v.toLocaleString('id-ID') } },
+      y: { grid: { display:false } }
+    }
+  }
+});
+
+// ---- Bar list: cumulative revenue share ----
+(function(){
+  const el = document.getElementById('barlistRevenue');
+  let cum = 0;
+  LABELS.forEach((lbl, i) => {
+    cum += REVENUE_PCT[i];
+    const row = document.createElement('div');
+    row.className = 'barrow';
+    row.innerHTML = `<div class="lbl">${lbl}</div>
+      <div class="track"><div class="fill" style="width:${REVENUE_PCT[i]*4.6}%"></div></div>
+      <div class="val">${REVENUE_PCT[i].toFixed(1)}%</div>`;
+    el.appendChild(row);
+  });
+})();
+
+// ---- Chart 1b: Revenue composition 100% stacked ----
+(function(){
+  const pct = (arr) => LABELS.map((l,i)=>{
+    const t = PENJUALAN_REV[i]+SUBSIDI_REV[i]+KOMPENSASI_REV[i]+PENYAMBUNGAN_REV[i]+LAIN_REV[i];
+    return arr[i]/t*100;
+  });
+  new Chart(document.getElementById('chartRevenueMix'), {
+    type: 'bar',
+    data: {
+      labels: LABELS,
+      datasets: [
+        { label: 'Penjualan Tenaga Listrik (netto)', data: pct(PENJUALAN_REV), backgroundColor: NAVY, maxBarThickness: 34 },
+        { label: 'Subsidi Listrik Pemerintah', data: pct(SUBSIDI_REV), backgroundColor: STEEL, maxBarThickness: 34 },
+        { label: 'Pendapatan Kompensasi', data: pct(KOMPENSASI_REV), backgroundColor: GOLD, maxBarThickness: 34 },
+        { label: 'Penyambungan Pelanggan', data: pct(PENYAMBUNGAN_REV), backgroundColor: STEEL_LT, maxBarThickness: 34 },
+        { label: 'Lain-lain', data: pct(LAIN_REV), backgroundColor: '#cbb994', maxBarThickness: 34 }
+      ]
+    },
+    options: {
+      plugins: {
+        legend: { position:'bottom', labels:{boxWidth:9,boxHeight:9,padding:14,font:{size:11}} },
+        tooltip: { callbacks: { label: c => c.dataset.label + ': ' + c.raw.toFixed(1) + '%' } }
+      },
+      scales: {
+        x: { stacked:true, grid:{display:false}, ticks:{maxRotation:40,minRotation:40, font:{size:10.5}} },
+        y: { stacked:true, max:100, grid:{color:'#eceae3'}, ticks:{callback:v=>v+'%'} }
+      }
+    }
+  });
+})();
+
+// ---- Bar list: subsidy dependency & commercial share ----
+(function(){
+  const subsidiPct = LABELS.map((l,i)=>{
+    const t = PENJUALAN_REV[i]+SUBSIDI_REV[i]+KOMPENSASI_REV[i]+PENYAMBUNGAN_REV[i]+LAIN_REV[i];
+    return {label:l, val:(SUBSIDI_REV[i]+KOMPENSASI_REV[i])/t*100};
+  }).sort((a,b)=>b.val-a.val);
+  const elS = document.getElementById('barlistSubsidi');
+  const maxS = Math.max(...subsidiPct.map(r=>r.val));
+  subsidiPct.forEach(r=>{
+    const row = document.createElement('div');
+    row.className='barrow';
+    row.innerHTML = `<div class="lbl">${r.label}</div>
+      <div class="track"><div class="fill" style="width:${r.val/maxS*100}%; background:linear-gradient(90deg, var(--gold-soft), var(--gold))"></div></div>
+      <div class="val">${r.val.toFixed(1)}%</div>`;
+    elS.appendChild(row);
+  });
+
+  const komPct = LABELS.map((l,i)=>{
+    const t = PENJUALAN_REV[i]+SUBSIDI_REV[i]+KOMPENSASI_REV[i]+PENYAMBUNGAN_REV[i]+LAIN_REV[i];
+    return {label:l, val:PENJUALAN_REV[i]/t*100};
+  }).sort((a,b)=>b.val-a.val);
+  const elK = document.getElementById('barlistKomersial');
+  const maxK = Math.max(...komPct.map(r=>r.val));
+  komPct.forEach(r=>{
+    const row = document.createElement('div');
+    row.className='barrow';
+    row.innerHTML = `<div class="lbl">${r.label}</div>
+      <div class="track"><div class="fill" style="width:${r.val/maxK*100}%"></div></div>
+      <div class="val">${r.val.toFixed(1)}%</div>`;
+    elK.appendChild(row);
+  });
+})();
+
+// ---- Chart 2: Cost mix donut ----
+new Chart(document.getElementById('chartCostMix'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Pembelian Tenaga Listrik', 'Penyusutan Aset Tetap', 'Kepegawaian', 'Pemeliharaan', 'Lain-lain & Sewa'],
+    datasets: [{
+      data: [93.98, 2.13, 1.59, 1.48, 0.82],
+      backgroundColor: [NAVY, STEEL, STEEL_LT, GOLD, '#cbb994'],
+      borderColor: '#fff', borderWidth: 2
+    }]
+  },
+  options: {
+    cutout: '62%',
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 9, boxHeight: 9, padding: 14, font: {size: 11.5} } },
+      tooltip: { callbacks: { label: c => c.label + ': ' + c.raw + '%' } }
+    }
+  }
+});
+
+// ---- Chart 3: PTL ratio bar with avg line ----
+new Chart(document.getElementById('chartPtlRatio'), {
+  type: 'bar',
+  data: {
+    labels: LABELS.slice().sort((a,b)=>0),
+    datasets: [{
+      label: 'PTL / Pendapatan',
+      data: LABELS.map((l,i)=>PTL_RATIO[i]),
+      backgroundColor: PTL_RATIO.map(v => v > 100 ? NEG : (v < 80 ? POS : STEEL)),
+      borderRadius: 2, maxBarThickness: 28
+    }]
+  },
+  options: {
+    plugins: {
+      legend: { display:false },
+      tooltip: { callbacks: { label: c => c.raw + '% dari pendapatan' } },
+      annotation: {}
+    },
+    scales: {
+      y: { grid: { color:'#eceae3' }, suggestedMax: 110, ticks: { callback: v => v + '%' } },
+      x: { grid: { display:false }, ticks: { maxRotation: 40, minRotation: 40, font:{size:10.5} } }
+    }
+  },
+  plugins: [{
+    id: 'avgLine',
+    afterDraw(chart){
+      const {ctx, chartArea:{left,right}, scales:{y}} = chart;
+      const avg = 86.6;
+      const yy = y.getPixelForValue(avg);
+      ctx.save();
+      ctx.strokeStyle = '#454f5c';
+      ctx.setLineDash([4,4]);
+      ctx.beginPath(); ctx.moveTo(left, yy); ctx.lineTo(right, yy); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#454f5c';
+      ctx.font = '10.5px Inter';
+      ctx.fillText('rata-rata 86,6%', left+4, yy-5);
+      ctx.restore();
+    }
+  }]
+});
+
+// ---- Chart 4: Material stacked bar ----
+new Chart(document.getElementById('chartMaterialStack'), {
+  type: 'bar',
+  data: {
+    labels: LABELS,
+    datasets: [
+      { label: 'Pemeliharaan', data: PEMELIHARAAN, backgroundColor: STEEL_LT, maxBarThickness: 26 },
+      { label: 'Kepegawaian', data: KEPEGAWAIAN, backgroundColor: STEEL, maxBarThickness: 26 },
+      { label: 'Penyusutan Aset', data: PENYUSUTAN, backgroundColor: NAVY, maxBarThickness: 26 }
+    ]
+  },
+  options: {
+    plugins: { legend: { position:'bottom', labels:{boxWidth:9,boxHeight:9,padding:14,font:{size:11.5}} } },
+    scales: {
+      x: { stacked: true, grid:{display:false}, ticks:{maxRotation:40,minRotation:40, font:{size:10.5}} },
+      y: { stacked: true, grid:{color:'#eceae3'} }
+    }
+  }
+});
+
+// ---- Chart 5: Scatter ----
+const scatterData = LABELS.map((l,i)=>({x:REVENUE[i], y:MARGIN[i], label:l}));
+new Chart(document.getElementById('chartScatter'), {
+  type: 'scatter',
+  data: {
+    datasets: [{
+      data: scatterData,
+      backgroundColor: scatterData.map(d => d.y < 0 ? NEG : (d.label==='Semarang' ? GOLD : STEEL)),
+      pointRadius: 7, pointHoverRadius: 9
+    }]
+  },
+  options: {
+    plugins: {
+      legend: { display:false },
+      tooltip: { callbacks: { label: c => c.raw.label + ': Rp' + c.raw.x.toLocaleString('id-ID') + ' M, margin ' + c.raw.y + '%' } },
+      datalabels: {}
+    },
+    scales: {
+      x: { title: { display:true, text:'Pendapatan Usaha (Rp Miliar)' }, grid:{color:'#eceae3'} },
+      y: { title: { display:true, text:'Margin Usaha (%)' }, grid:{color:'#eceae3'} }
+    }
+  },
+  plugins: [{
+    id: 'scatterLabels',
+    afterDatasetsDraw(chart){
+      const {ctx} = chart;
+      const meta = chart.getDatasetMeta(0);
+      ctx.save();
+      ctx.font = '10.5px Inter'; ctx.fillStyle = '#12181f';
+      meta.data.forEach((point, i) => {
+        ctx.fillText(scatterData[i].label, point.x + 9, point.y + 3);
+      });
+      ctx.restore();
+    },
+    afterDraw(chart){
+      const {ctx, chartArea:{left,right,top,bottom}, scales:{x,y}} = chart;
+      ctx.save();
+      ctx.strokeStyle = '#c8c5ba'; ctx.setLineDash([4,4]);
+      const yy = y.getPixelForValue(7.87);
+      ctx.beginPath(); ctx.moveTo(left, yy); ctx.lineTo(right, yy); ctx.stroke();
+      ctx.font = '10.5px Inter'; ctx.fillStyle = '#454f5c'; ctx.setLineDash([]);
+      ctx.fillText('rata-rata margin 7,87%', left+4, yy-6);
+      ctx.restore();
+    }
+  }]
+});
+
+// ---- Table ranking ----
+(function(){
+  const rows = LABELS.map((l,i)=>({label:l, rev:REVENUE[i], laba:LABA_USAHA[i], margin:MARGIN[i], roa:ROA[i], ptl:PTL_RATIO[i]}));
+  rows.sort((a,b)=>b.margin - a.margin);
+  const tbody = document.getElementById('tblRanking');
+  rows.forEach((r,i)=>{
+    const tr = document.createElement('tr');
+    const marginCls = r.margin < 0 ? 'neg' : '';
+    const labaCls = r.laba < 0 ? 'neg' : '';
+    tr.innerHTML = `<td class="rank">${i+1}</td>
+      <td>UP3 ${r.label}</td>
+      <td>${r.rev.toLocaleString('id-ID',{maximumFractionDigits:1})}</td>
+      <td class="${labaCls}">${r.laba.toLocaleString('id-ID',{maximumFractionDigits:1})}</td>
+      <td class="${marginCls}">${r.margin.toFixed(2)}%</td>
+      <td>${r.roa === 0 ? 'n/a' : r.roa.toFixed(2)+'%'}</td>
+      <td>${r.ptl.toFixed(1)}%</td>`;
+    tbody.appendChild(tr);
+  });
+})();
+
+// ---- Chart 6: Yogyakarta highlight ----
+new Chart(document.getElementById('chartYogya'), {
+  type: 'bar',
+  data: {
+    labels: ['Rata-rata Gabungan (13 UP3)', 'UP3 Yogyakarta'],
+    datasets: [{
+      data: [86.6, 102.9],
+      backgroundColor: [STEEL, NEG],
+      borderRadius: 3, maxBarThickness: 60
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: { legend:{display:false}, tooltip:{callbacks:{label:c=>c.raw+'% dari pendapatan'}} },
+    scales: {
+      x: { grid:{color:'#eceae3'}, suggestedMax: 115, ticks:{callback:v=>v+'%'} },
+      y: { grid:{display:false} }
+    }
+  }
+});
+
+// ---- Bar list: collection days ----
+(function(){
+  const el = document.getElementById('barlistDays');
+  const rows = LABELS.map((l,i)=>({label:l, days:DAYS[i]}));
+  rows.sort((a,b)=>b.days-a.days);
+  const maxDay = Math.max(...DAYS);
+  rows.forEach(r=>{
+    const row = document.createElement('div');
+    row.className = 'barrow';
+    row.innerHTML = `<div class="lbl">${r.label}</div>
+      <div class="track"><div class="fill" style="width:${maxDay?(r.days/maxDay*100):0}%; background:${r.days===0?'#c8c5ba':'linear-gradient(90deg, var(--steel-500), var(--navy-800))'}"></div></div>
+      <div class="val">${r.days} hari</div>`;
+    el.appendChild(row);
+  });
+})();
+</script>
+</body>
+</html>
