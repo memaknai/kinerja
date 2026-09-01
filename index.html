@@ -1,252 +1,178 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Kinerja Keuangan</title>
-    <!-- CDN Font Awesome agar Ikon Muncul -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Kinerja Keuangan - Jawa Tengah</title>
+  <!-- CDN Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *{margin:0; padding:0; box-sizing:border-box; }
+    body{font-family:'Segoe UI',sans-serif; background: radial-gradient(circle at top right, rgba(10,147,150,.12), transparent 35%), #f5f7fa; color:#1f2937; }
     
-    <style>
-        *{margin:0; padding:0; box-sizing:border-box; }
-        body{font-family:'Segoe UI',sans-serif; background: radial-gradient(circle at top right, rgba(10,147,150,.12), transparent 35%), #f5f7fa; color:#1f2937; }
-        
-        /* HEADER (100% PERSIS STYLING MARET 2026) */
-        .header{background:linear-gradient(135deg, #004e64 0%, #006d77 50%, #0a9396 100% ); color:white; text-align:center; padding:50px 20px 30px 20px; position:relative; overflow:hidden; animation:fadeDown .8s ease; }
-        .header::before{content:""; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent ); animation:shine 5s infinite; }
-        .header h1{font-size:40px; margin-bottom:8px; position:relative; z-index:2; }
-        .header p{font-size:18px; position:relative; z-index:2; opacity:0.9; }
-
-        /* NAVIGASI ARSIP BULANAN */
-        .archive-container {
-            max-width: 1300px;
-            margin: 30px auto 10px auto;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .archive-label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #4b5563;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .archive-list {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .archive-btn {
-            text-decoration: none;
-            background: #e5e7eb;
-            color: #374151;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        .archive-btn:hover {
-            background: #006d77;
-            color: white;
-        }
-        .archive-btn.active {
-            background: #004e64;
-            color: white;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(0, 78, 100, 0.2);
-        }
-        
-        /* CONTAINER */
-        .container{max-width:1300px; margin:20px auto 40px auto; padding:0 20px; }
-        
-        /* GRID */
-        .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; }
-        
-        /* CARD & ANIMASI DELAY JUNI 2026 */
-        .card{background:white; border-radius:20px; padding:28px; text-decoration:none; color:inherit; border-top:5px solid #0a9396; box-shadow:0 10px 25px rgba(0,0,0,.08); transition: transform .35s ease, box-shadow .35s ease; opacity:0; animation:fadeUp .6s ease forwards; }
-        
-        .card:nth-child(1){animation-delay:.1s;}
-        .card:nth-child(2){animation-delay:.2s;}
-        .card:nth-child(3){animation-delay:.3s;}
-        .card:nth-child(4){animation-delay:.4s;}
-        .card:nth-child(5){animation-delay:.5s;}
-        .card:nth-child(6){animation-delay:.6s;}
-        .card:nth-child(7){animation-delay:.7s;}
-        .card:nth-child(8){animation-delay:.8s;}
-        .card:nth-child(9){animation-delay:.9s;}
-        .card:nth-child(10){animation-delay:1.0s;}
-        .card:nth-child(11){animation-delay:1.1s;}
-        .card:nth-child(12){animation-delay:1.2s;}
-
-        .card:hover{transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 35px rgba(0,109,119,.18); }
-        
-        .icon{width:70px; height:70px; border-radius:18px; background:#eef8f8; display:flex; align-items:center; justify-content:center; color:#006d77; font-size:30px; margin-bottom:18px; transition:all .3s ease; }
-        .card:hover .icon{background:#006d77; color:white; transform:scale(1.1); }
-        .title{font-size:22px; font-weight:700; color:#003049; margin-bottom:8px; }
-        .desc{color:#6b7280; line-height:1.6; font-size:15px; }
-        .footer{text-align:center; margin:45px 0 25px 0; color:#6b7280; font-size:13px; }
-        
-        /* ANIMATION */
-        @keyframes fadeUp{from{opacity:0; transform:translateY(35px); } to{opacity:1; transform:translateY(0); } }
-        @keyframes fadeDown{from{opacity:0; transform:translateY(-25px); } to{opacity:1; transform:translateY(0); } }
-        @keyframes shine{from{left:-100%;} to{left:200%;} }
-        
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 992px){.header h1{font-size:32px; } .header p{font-size:16px; } }
-        @media (max-width: 768px){
-            .header{padding:40px 20px 25px 20px; } 
-            .header h1{font-size:26px; } 
-            .header p{font-size:14px; } 
-            .archive-container{margin-top:20px; justify-content:center;}
-            .grid{grid-template-columns:1fr; } 
-            .card{padding:22px; } 
-            .title{font-size:20px; } 
-            .icon{width:60px; height:60px; font-size:26px; } 
-        }
-    </style>
+    /* HEADER */
+    .header{background:linear-gradient(135deg, #004e64 0%, #006d77 50%, #0a9396 100% ); color:white; text-align:center; padding:50px 20px 30px 20px; position:relative; overflow:hidden; animation:fadeDown .8s ease; }
+    .header::before{content:""; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent ); animation:shine 5s infinite; }
+    .header h1{font-size:40px; margin-bottom:8px; position:relative; z-index:2; }
+    .header p{font-size:18px; position:relative; z-index:2; opacity:0.9; }
+    
+    /* NAVIGASI ARSIP & WILAYAH */
+    .archive-container {max-width: 1300px; margin: 30px auto 10px auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .archive-group {display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .archive-label {font-size: 14px; font-weight: 600; color: #4b5563; display: flex; align-items: center; gap: 6px; }
+    .archive-list {display: flex; gap: 8px; flex-wrap: wrap; }
+    .archive-btn {text-decoration: none; background: #e5e7eb; color: #374151; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; transition: all 0.3s ease; }
+    .archive-btn:hover {background: #006d77; color: white; }
+    .archive-btn.active {background: #004e64; color: white; font-weight: 600; box-shadow: 0 4px 10px rgba(0, 78, 100, 0.2); }
+    
+    /* CONTAINER & GRID */
+    .container{max-width:1300px; margin:20px auto 40px auto; padding:0 20px; }
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; }
+    
+    /* CARD */
+    .card{background:white; border-radius:20px; padding:28px; text-decoration:none; color:inherit; border-top:5px solid #0a9396; box-shadow:0 10px 25px rgba(0,0,0,.08); transition: transform .35s ease, box-shadow .35s ease; opacity:0; animation:fadeUp .6s ease forwards; }
+    .card:nth-child(1){animation-delay:.1s;}
+    .card:nth-child(2){animation-delay:.2s;}
+    .card:nth-child(3){animation-delay:.3s;}
+    .card:nth-child(4){animation-delay:.4s;}
+    .card:nth-child(5){animation-delay:.5s;}
+    .card:nth-child(6){animation-delay:.6s;}
+    .card:nth-child(7){animation-delay:.7s;}
+    .card:nth-child(8){animation-delay:.8s;}
+    .card:nth-child(9){animation-delay:.9s;}
+    .card:nth-child(10){animation-delay:1.0s;}
+    .card:nth-child(11){animation-delay:1.1s;}
+    .card:nth-child(12){animation-delay:1.2s;}
+    .card:hover{transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 35px rgba(0,109,119,.18); }
+    .icon{width:70px; height:70px; border-radius:18px; background:#eef8f8; display:flex; align-items:center; justify-content:center; color:#006d77; font-size:30px; margin-bottom:18px; transition:all .3s ease; }
+    .card:hover .icon{background:#006d77; color:white; transform:scale(1.1); }
+    .title{font-size:22px; font-weight:700; color:#003049; margin-bottom:8px; }
+    .desc{color:#6b7280; line-height:1.6; font-size:15px; }
+    .footer{text-align:center; margin:45px 0 25px 0; color:#6b7280; font-size:13px; }
+    
+    /* ANIMATION */
+    @keyframes fadeUp{from{opacity:0; transform:translateY(35px); } to{opacity:1; transform:translateY(0); } }
+    @keyframes fadeDown{from{opacity:0; transform:translateY(-25px); } to{opacity:1; transform:translateY(0); } }
+    @keyframes shine{from{left:-100%;} to{left:200%;} }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px){.header h1{font-size:32px; } .header p{font-size:16px; } }
+    @media (max-width: 768px){.header{padding:40px 20px 25px 20px; } .header h1{font-size:26px; } .header p{font-size:14px; } .archive-container{margin-top:20px; justify-content:center;} .grid{grid-template-columns:1fr; } .card{padding:22px; } .title{font-size:20px; } .icon{width:60px; height:60px; font-size:26px; } }
+  </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <div class="header">
-        <h1>Dashboard Kinerja Keuangan</h1>
-        <p>Periode Terkini: 30 Juni 2026</p>
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Dashboard Kinerja Keuangan</h1>
+    <p>Wilayah Jawa Tengah • Periode Terkini: 30 Juni 2026</p>
+  </div>
+
+  <!-- STRUKTUR NAVIGASI ARSIP & WILAYAH -->
+  <div class="archive-container">
+    <!-- Pilih Periode (Kiri) -->
+    <div class="archive-group">
+      <div class="archive-label">
+        <i class="fa-regular fa-calendar-days"></i> Pilih Periode:
+      </div>
+      <div class="archive-list">
+        <a href="index.html" class="archive-btn active">Juni 2026</a>
+        <a href="data-bulanan/2026-03/index.html" class="archive-btn">Mar 2026</a>
+        <a href="data-bulanan/2025-12/index.html" class="archive-btn">Dec 2025</a>
+      </div>
     </div>
 
-    <!-- STRUKTUR NAVIGASI ARSIP -->
-    <div class="archive-container">
-        <div class="archive-label">
-            <i class="fa-regular fa-calendar-days"></i> Pilih Periode:
-        </div>
-        <div class="archive-list">
-            <a href="index.html" class="archive-btn active">Juni 2026</a>
-            <a href="data-bulanan/2026-03/index.html" class="archive-btn">Mar 2026</a>
-            <a href="data-bulanan/2025-12/index.html" class="archive-btn">Dec 2025</a>
-        </div>
+    <!-- Pilih Wilayah (Kanan) -->
+    <div class="archive-group">
+      <div class="archive-label">
+        <i class="fa-solid fa-location-dot"></i> Wilayah:
+      </div>
+      <div class="archive-list">
+        <a href="index.html" class="archive-btn active">Jawa Tengah</a>
+        <a href="sukoharjo/index.html" class="archive-btn">Sukoharjo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN DASHBOARD -->
+  <div class="container">
+    <div class="grid">
+      <!-- 1. Laporan Bulanan -->
+      <a href="laporan.pdf" class="card">
+        <div class="icon"><i class="fa-solid fa-file-pdf"></i></div>
+        <div class="title">Laporan Bulanan</div>
+        <div class="desc">Laporan Bulanan Kinerja Keuangan</div>
+      </a>
+      <!-- 2. Biaya Pokok Penyediaan -->
+      <a href="bpp-jateng.html" class="card">
+        <div class="icon"><i class="fa-solid fa-sack-dollar"></i></div>
+        <div class="title">Biaya Pokok Penyediaan</div>
+        <div class="desc">Monitoring dan Analisis BPP UID Jawa Tengah</div>
+      </a>
+      <!-- 3. Non Allowable Cost -->
+      <a href="nac-jateng.html" class="card">
+        <div class="icon"><i class="fa-solid fa-file-circle-xmark"></i></div>
+        <div class="title">Non Allowable Cost</div>
+        <div class="desc">Monitoring dan Analisis Non Allowable Cost</div>
+      </a>
+      <!-- 4. Penghapusan ATTB -->
+      <a href="hapusattb-jateng.html" class="card">
+        <div class="icon"><i class="fa-solid fa-dumpster"></i></div>
+        <div class="title">Penghapusan ATTB</div>
+        <div class="desc">Monitoring Usulan Penghapusan Aset</div>
+      </a>
+      <!-- 5. Pendapatan Penjualan Tenaga Listrik -->
+      <a href="penjualan-jateng.html" class="card">
+        <div class="icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="title">Penjualan Tenaga Listrik</div>
+        <div class="desc">Monitoring & Analisis Data Penjualan</div>
+      </a>
+      <!-- 6. Pendapatan Penyambungan -->
+      <a href="bptersambung-0626.html" class="card">
+        <div class="icon"><i class="fa-solid fa-plug-circle-plus"></i></div>
+        <div class="title">Pendapatan Penyambungan</div>
+        <div class="desc">Analisis Penambahan Pelanggan, Daya Tersambung & Pendapatan</div>
+      </a>
+      <!-- 7. Anggaran Investasi -->
+      <a href="ai-jateng.html" class="card">
+        <div class="icon"><i class="fa-solid fa-chart-column"></i></div>
+        <div class="title">Anggaran Investasi</div>
+        <div class="desc">Monitoring Realisasi Anggaran Investasi</div>
+      </a>
+      <!-- 8. Anggaran Operasi -->
+      <a href="ao-jateng.html" class="card">
+        <div class="icon"><i class="fa-solid fa-chart-pie"></i></div>
+        <div class="title">Anggaran Operasi</div>
+        <div class="desc">Monitoring Realisasi Anggaran Operasi</div>
+      </a>
+      <!-- 9. LK Tabelaris -->
+      <a href="lk-tabelaris.html" class="card">
+        <div class="icon"><i class="fa-solid fa-sitemap"></i></div>
+        <div class="title">Laporan Keuangan Unit Pelaksana</div>
+        <div class="desc">Analisis Kinerja Keuangan Unit Pelaksana</div>
+      </a>
+      <!-- 10. Pola Transfer PSA -->
+      <a href="transfer-psa.html" class="card">
+        <div class="icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+        <div class="title">Pola Transfer PSA</div>
+        <div class="desc">Analisis Transfer Energi - PSA</div>
+      </a>
+      <!-- 11. Neraca Energi -->
+      <a href="neracaenergi-0626.html" class="card">
+        <div class="icon"><i class="fa-solid fa-scale-balanced"></i></div>
+        <div class="title">Neraca Energi</div>
+        <div class="desc">Jawa Tengah dalam Peta Energi Jawa Bali</div>
+      </a>
+      <!-- 12. Laporan Bulanan Non Akumulatif -->
+      <a href="laporanbulanan-0626.html" class="card">
+        <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="title">Laporan Bulanan Non Akumulatif</div>
+        <div class="desc">Realisasi & Proyeksi 2025 vs 2026</div>
+      </a>
     </div>
 
-    <!-- MAIN DASHBOARD -->
-    <div class="container">
-        <div class="grid">
-          
-          <!-- 1. Laporan Bulanan -->
-          <a href="laporan.pdf" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-file-pdf"></i>
-            </div>
-            <div class="title">Laporan Bulanan</div>
-            <div class="desc">Laporan Bulanan Kinerja Keuangan</div>
-          </a>
-
-          <!-- 2. Biaya Pokok Penyediaan -->
-          <a href="bpp-jateng.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-sack-dollar"></i>
-            </div>
-            <div class="title">Biaya Pokok Penyediaan</div>
-            <div class="desc">Monitoring dan Analisis BPP UID Jawa Tengah</div>
-          </a>
-
-          <!-- 3. Non Allowable Cost -->
-          <a href="nac-jateng.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-file-circle-xmark"></i>
-            </div>
-            <div class="title">Non Allowable Cost</div>
-            <div class="desc">Monitoring dan Analisis Non Allowable Cost</div>
-          </a>
-
-          <!-- 4. Penghapusan ATTB -->
-          <a href="hapusattb-jateng.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-dumpster"></i>
-            </div>
-            <div class="title">Penghapusan ATTB</div>
-            <div class="desc">Monitoring Usulan Penghapusan Aset</div>
-          </a>
-
-          <!-- 5. Pendapatan Penjualan Tenaga Listrik -->
-          <a href="penjualan-jateng.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-bolt"></i>
-            </div>
-            <div class="title">Penjualan Tenaga Listrik</div>
-            <div class="desc">Monitoring & Analisis Data Penjualan</div>
-          </a>
-
-          <!-- 6. Pendapatan Penyambungan -->
-          <a href="bptersambung-0626.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-plug-circle-plus"></i>
-            </div>
-            <div class="title">Pendapatan Penyambungan</div>
-            <div class="desc">Analisis Penambahan Pelanggan, Daya Tersambung & Pendapatan</div>
-          </a>
-
-          <!-- 7. Anggaran Investasi -->
-          <a href="ai-jateng.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-chart-column"></i>
-            </div>
-            <div class="title">Anggaran Investasi</div>
-            <div class="desc">Monitoring Realisasi Anggaran Investasi</div>
-          </a>
-
-          <!-- 8. Anggaran Operasi -->
-          <a href="ao-jateng.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-chart-pie"></i>
-            </div>
-            <div class="title">Anggaran Operasi</div>
-            <div class="desc">Monitoring Realisasi Anggaran Operasi</div>
-          </a>
-
-          <!-- 9. LK Tabelaris -->
-          <a href="lk-tabelaris.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-sitemap"></i>
-            </div>
-            <div class="title">Laporan Keuangan Unit Pelaksana</div>
-            <div class="desc">Analisis Kinerja Keuangan Unit Pelaksana</div>
-          </a>
-
-          <!-- 10. Pola Transfer PSA -->
-          <a href="transfer-psa.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-arrow-right-arrow-left"></i>
-            </div>
-            <div class="title">Pola Transfer PSA</div>
-            <div class="desc">Analisis Transfer Energi - PSA</div>
-          </a>
-
-          <!-- 11. Neraca Energi -->
-          <a href="neracaenergi-0626.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-scale-balanced"></i>
-            </div>
-            <div class="title">Neraca Energi</div>
-            <div class="desc">Jawa Tengah dalam Peta Energi Jawa Bali</div>
-          </a>
-
-          <!-- 12. Laporan Bulanan Non Akumulatif -->
-          <a href="laporanbulanan-0626.html" class="card">
-            <div class="icon">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
-            <div class="title">Laporan Bulanan Non Akumulatif</div>
-            <div class="desc">Realisasi & Proyeksi 2025 vs 2026</div>
-          </a>
-
-        </div>
-
-        <!-- FOOTER (PERSIS ASLI JUNI 2026) -->
-        <div class="footer">
-            <p>© 2026 JW | Belajar • Bertumbuh • Berdampak</p>
-        </div>
+    <div class="footer">
+      <p>© 2026 JW | Belajar • Bertumbuh • Berdampak</p>
     </div>
+  </div>
 </body>
 </html>
