@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kajian Strategis: Potensi Riil Daerah &amp; Peran PLN — Kabupaten Sukoharjo (di luar Kartasura)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B2036;
+    --navy:#123457;
+    --navy-2:#1B4C77;
+    --paper:#F6F3EC;
+    --paper-2:#EFEAE0;
+    --card:#FFFFFF;
+    --amber:#C98A2E;
+    --amber-soft:#F1DFB9;
+    --teal:#2C6E63;
+    --teal-soft:#DCEAE6;
+    --terra:#A8462E;
+    --terra-soft:#F1DCD3;
+    --line:#DCD5C4;
+    --text:#2B2B28;
+    --text-soft:#5C5A52;
+    --text-faint:#8B8879;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:0 40px;}
+  @media (max-width:720px){ .wrap{padding:0 20px;} }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(201,138,46,0.18), transparent 60%),
+      linear-gradient(180deg, var(--ink) 0%, var(--navy) 62%, var(--navy-2) 100%);
+    color:#F3EFE4;
+    padding:96px 0 76px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 46px);
+    pointer-events:none;
+  }
+  .hero-kicker{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.14em;
+    color:var(--amber-soft);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:28px;
+  }
+  .hero-kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);}
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(2.3rem, 4.6vw, 3.6rem);
+    line-height:1.09;
+    max-width:15ch;
+    letter-spacing:-0.01em;
+    color:#FBF8F1;
+  }
+  .hero h1 em{font-style:italic; color:var(--amber-soft); font-weight:400;}
+  .hero-sub{
+    margin-top:22px;
+    font-size:1.14rem;
+    max-width:56ch;
+    color:#C9D2DE;
+    font-weight:400;
+  }
+  .hero-meta{
+    margin-top:48px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+    padding-top:28px;
+    border-top:1px solid rgba(255,255,255,0.14);
+  }
+  @media (max-width:760px){ .hero-meta{grid-template-columns:repeat(2,1fr);} }
+  .hero-meta .m-label{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; color:#8FA1B6; text-transform:uppercase;}
+  .hero-meta .m-value{font-family:var(--serif); font-size:1.28rem; margin-top:6px; color:#F3EFE4;}
+
+  /* ===== SECTION FRAME ===== */
+  section{padding:74px 0;}
+  section.tight{padding:52px 0;}
+  .sec-head{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:22px;
+    margin-bottom:38px;
+    align-items:start;
+  }
+  .sec-num{
+    font-family:var(--serif);
+    font-size:2rem;
+    color:var(--amber);
+    font-weight:500;
+    line-height:1;
+    padding-top:4px;
+  }
+  .sec-eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; color:var(--text-faint); text-transform:uppercase; margin-bottom:8px;}
+  .sec-head h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(1.5rem,2.6vw,2.05rem);
+    color:var(--ink);
+    letter-spacing:-.01em;
+    max-width:24ch;
+  }
+  .lede{
+    max-width:74ch;
+    font-size:1.03rem;
+    color:var(--text-soft);
+    margin-bottom:30px;
+  }
+  hr.rule{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* ===== EXEC SUMMARY BANNER ===== */
+  .exec{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:44px 48px;
+    margin-top:-56px;
+    position:relative;
+    z-index:3;
+    box-shadow:0 24px 60px -30px rgba(11,32,54,0.35);
+  }
+  @media (max-width:720px){ .exec{padding:30px 26px;} }
+  .exec-top{display:flex; justify-content:space-between; align-items:baseline; gap:20px; flex-wrap:wrap; margin-bottom:22px;}
+  .exec-top h3{font-family:var(--serif); font-size:1.3rem; color:var(--ink); font-weight:500;}
+  .exec-top span{font-family:var(--mono); font-size:11px; color:var(--text-faint); letter-spacing:.08em;}
+  .exec-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0;}
+  @media (max-width:820px){ .exec-grid{grid-template-columns:1fr;} }
+  .exec-item{padding:6px 26px; border-left:1px solid var(--line);}
+  .exec-item:first-child{padding-left:0; border-left:none;}
+  @media (max-width:820px){ .exec-item{border-left:none; border-top:1px solid var(--line); padding:20px 0;} .exec-item:first-child{border-top:none;} }
+  .exec-item .tag{font-family:var(--mono); font-size:10.5px; color:var(--amber); letter-spacing:.1em; text-transform:uppercase;}
+  .exec-item p{margin-top:10px; font-size:.95rem; color:var(--text);}
+
+  /* ===== STAT ROW ===== */
+  .stat-row{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:6px;}
+  @media (max-width:760px){ .stat-row{grid-template-columns:repeat(2,1fr);} }
+  .stat{background:var(--card); padding:26px 24px;}
+  .stat .v{font-family:var(--serif); font-size:1.9rem; color:var(--ink); font-weight:500; line-height:1.1;}
+  .stat .l{margin-top:8px; font-size:.82rem; color:var(--text-soft);}
+  .stat .d{margin-top:4px; font-size:.74rem; color:var(--text-faint);}
+
+  /* ===== TWO COL ===== */
+  .cols{display:grid; grid-template-columns:1.1fr .9fr; gap:52px;}
+  @media (max-width:860px){ .cols{grid-template-columns:1fr;} }
+  .cols.rev{grid-template-columns:.9fr 1.1fr;}
+  @media (max-width:860px){ .cols.rev{grid-template-columns:1fr;} }
+
+  p.body-p{color:var(--text); margin-bottom:14px; font-size:.98rem;}
+  p.body-p:last-child{margin-bottom:0;}
+  .cap{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; color:var(--text-faint); text-transform:uppercase; margin-top:14px;}
+
+  /* ===== BAR CHART (sector PDRB) ===== */
+  .barchart{margin-top:6px;}
+  .bar-row{display:grid; grid-template-columns:190px 1fr 62px; align-items:center; gap:14px; padding:11px 0; border-bottom:1px solid var(--line);}
+  .bar-row:first-child{border-top:1px solid var(--line);}
+  .bar-label{font-size:.86rem; color:var(--text);}
+  .bar-track{background:var(--paper-2); height:10px; position:relative; border-radius:1px;}
+  .bar-fill{position:absolute; left:0; top:0; height:100%; background:linear-gradient(90deg, var(--navy-2), var(--amber)); border-radius:1px;}
+  .bar-val{font-family:var(--mono); font-size:.82rem; color:var(--ink); text-align:right;}
+
+  /* ===== TIMELINE / TREND ===== */
+  .trend{display:flex; align-items:flex-end; gap:18px; height:170px; padding:20px 4px 0; border-bottom:1px solid var(--line);}
+  .trend .col{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;}
+  .trend .stick{width:100%; max-width:56px; background:linear-gradient(180deg, var(--navy-2), var(--navy)); border-radius:2px 2px 0 0; position:relative;}
+  .trend .stick.warn{background:linear-gradient(180deg, var(--terra), #8a3722);}
+  .trend .stick .tip{position:absolute; top:-24px; left:50%; transform:translateX(-50%); font-family:var(--mono); font-size:.72rem; color:var(--ink); white-space:nowrap;}
+  .trend .yr{margin-top:10px; font-family:var(--mono); font-size:.74rem; color:var(--text-faint);}
+
+  /* ===== TABLE ===== */
+  table.data{width:100%; border-collapse:collapse; margin-top:8px;}
+  table.data th{text-align:left; font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-faint); font-weight:500; padding:10px 14px; border-bottom:1px solid var(--ink);}
+  table.data td{padding:13px 14px; border-bottom:1px solid var(--line); font-size:.9rem; color:var(--text); vertical-align:top;}
+  table.data tr:hover td{background:rgba(201,138,46,0.05);}
+  table.data td.num{font-family:var(--mono); font-size:.86rem; text-align:right;}
+
+  /* ===== CLUSTER CARDS ===== */
+  .cluster-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:860px){ .cluster-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .cluster-grid{grid-template-columns:1fr;} }
+  .cluster{background:var(--card); padding:26px 24px; min-height:190px; display:flex; flex-direction:column;}
+  .cluster .kec{font-family:var(--mono); font-size:10px; letter-spacing:.08em; color:var(--amber); text-transform:uppercase;}
+  .cluster h4{font-family:var(--serif); font-size:1.14rem; font-weight:500; color:var(--ink); margin-top:8px;}
+  .cluster p{font-size:.86rem; color:var(--text-soft); margin-top:10px; flex:1;}
+  .cluster .foot{font-size:.76rem; color:var(--text-faint); margin-top:12px; border-top:1px solid var(--line); padding-top:10px;}
+
+  /* ===== CALLOUT ===== */
+  .callout{
+    background:var(--terra-soft);
+    border-left:3px solid var(--terra);
+    padding:26px 30px;
+    margin:30px 0;
+  }
+  .callout.pos{background:var(--teal-soft); border-left-color:var(--teal);}
+  .callout .h{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--terra); margin-bottom:8px;}
+  .callout.pos .h{color:var(--teal);}
+  .callout p{font-size:.93rem; color:var(--text);}
+
+  /* ===== SWOT ===== */
+  .swot{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:700px){ .swot{grid-template-columns:1fr;} }
+  .swot-box{background:var(--card); padding:28px 30px;}
+  .swot-box h5{font-family:var(--serif); font-size:1.05rem; font-weight:600; margin-bottom:14px;}
+  .swot-box.s h5{color:var(--teal);}
+  .swot-box.w h5{color:var(--terra);}
+  .swot-box.o h5{color:var(--navy-2);}
+  .swot-box.t h5{color:#8a6b1d;}
+  .swot-box ul{list-style:none;}
+  .swot-box li{font-size:.87rem; color:var(--text); padding:7px 0 7px 18px; position:relative; border-bottom:1px dashed var(--line);}
+  .swot-box li:last-child{border-bottom:none;}
+  .swot-box li::before{content:"–"; position:absolute; left:0; color:var(--text-faint);}
+
+  /* ===== RECOMMENDATION MATRIX ===== */
+  .rec-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:760px){ .rec-grid{grid-template-columns:1fr;} }
+  .rec-card{background:var(--card); padding:30px 32px;}
+  .rec-card .idx{font-family:var(--serif); font-size:1.5rem; color:var(--amber); font-weight:500;}
+  .rec-card h4{font-family:var(--serif); font-size:1.14rem; color:var(--ink); font-weight:500; margin:10px 0 12px;}
+  .rec-card p{font-size:.9rem; color:var(--text-soft); margin-bottom:12px;}
+  .rec-card .tags{display:flex; gap:8px; flex-wrap:wrap;}
+  .pill{font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; padding:5px 10px; border:1px solid var(--line); color:var(--text-soft); border-radius:20px;}
+  .pill.hi{background:var(--ink); color:#F3EFE4; border-color:var(--ink);}
+
+  /* ===== ROADMAP ===== */
+  .roadmap{position:relative; margin-top:20px; padding-left:2px;}
+  .rm-line{position:absolute; left:96px; top:8px; bottom:8px; width:1px; background:var(--line);}
+  @media (max-width:640px){ .rm-line{left:18px;} }
+  .rm-item{display:grid; grid-template-columns:96px 24px 1fr; gap:0; padding:22px 0;}
+  @media (max-width:640px){ .rm-item{grid-template-columns:18px 20px 1fr;} }
+  .rm-phase{font-family:var(--mono); font-size:.76rem; color:var(--text-faint); padding-top:3px;}
+  @media (max-width:640px){ .rm-phase{display:none;} }
+  .rm-dot{width:10px; height:10px; border-radius:50%; background:var(--amber); margin:6px auto 0; position:relative; z-index:2;}
+  .rm-body h5{font-family:var(--serif); font-size:1.02rem; font-weight:600; color:var(--ink); margin-bottom:6px;}
+  .rm-body .rm-tag{font-family:var(--mono); font-size:10px; color:var(--amber); letter-spacing:.08em; text-transform:uppercase; display:block; margin-bottom:4px;}
+  .rm-body p{font-size:.88rem; color:var(--text-soft);}
+
+  /* ===== KECAMATAN GRID ===== */
+  .kec-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:18px;}
+  @media (max-width:640px){ .kec-grid{grid-template-columns:repeat(2,1fr);} }
+  .kec-tile{background:var(--card); padding:20px 16px; text-align:left; min-height:78px;}
+  .kec-tile .n{font-family:var(--serif); font-size:1.02rem; color:var(--ink); font-weight:600;}
+  .kec-tile .t{font-family:var(--mono); font-size:9.5px; color:var(--amber); text-transform:uppercase; margin-top:8px; letter-spacing:.04em; line-height:1.5;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink); color:#B9C3D1; padding:56px 0 40px;}
+  footer .wrap{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px;}
+  @media (max-width:760px){ footer .wrap{grid-template-columns:1fr; gap:28px;} }
+  footer h6{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#7C8AA0; margin-bottom:14px;}
+  footer p, footer li{font-size:.83rem; color:#B9C3D1; line-height:1.7;}
+  footer ul{list-style:none;}
+  footer .brand{font-family:var(--serif); font-size:1.2rem; color:#F3EFE4; margin-bottom:10px;}
+  .disclaimer{border-top:1px solid rgba(255,255,255,0.12); margin-top:40px; padding-top:22px; font-size:.76rem; color:#7C8AA0;}
+
+  .src{font-size:.72rem; color:var(--text-faint); margin-top:6px;}
+  ::selection{background:var(--amber-soft);}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-kicker"><span class="dot"></span>KAJIAN STRATEGIS &nbsp;·&nbsp; KONSULTAN BISNIS &nbsp;·&nbsp; SEPTEMBER 2026</div>
+    <h1>Membaca Ulang Sukoharjo:<br><em>potensi riil daerah</em> di luar Kartasura</h1>
+    <p class="hero-sub">Analisis struktur ekonomi, guncangan industri tekstil, dan peta peluang 11 kecamatan Kabupaten Sukoharjo — serta rekomendasi konkret bagi PLN Unit Layanan Pelanggan untuk mengubah kerawanan menjadi pertumbuhan yang lebih tangguh dan merata.</p>
+    <div class="hero-meta">
+      <div><div class="m-label">Cakupan wilayah</div><div class="m-value">11 dari 12 kecamatan</div></div>
+      <div><div class="m-label">PDRB 2024 (ADHB)</div><div class="m-value">Rp 49,99 triliun</div></div>
+      <div><div class="m-label">Basis data utama</div><div class="m-value">BPS, BKPM, Pemkab</div></div>
+      <div><div class="m-label">Fokus analisis</div><div class="m-value">Ekonomi &amp; kelistrikan</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- ============ EXECUTIVE SUMMARY ============ -->
+  <div class="exec">
+    <div class="exec-top">
+      <h3>Ringkasan Eksekutif</h3>
+      <span>3 TEMUAN UTAMA</span>
+    </div>
+    <div class="exec-grid">
+      <div class="exec-item">
+        <div class="tag">01 — Struktur ganda</div>
+        <p>Ekonomi Sukoharjo (di luar Kartasura) bertumpu pada dua kaki: industri pengolahan padat energi (tekstil, garmen, farmasi‑herbal) yang terkonsentrasi di koridor Grogol–Nguter–Tawangsari–Mojolaban — dengan Grogol sebagai simpul industri sekaligus komersial terbesar kedua setelah Sukoharjo Kota — dan jaringan sentra UMKM berbasis rumah tangga (gitar, mebel, jamu, konveksi, gamelan) yang tersebar merata di hampir semua kecamatan.</p>
+      </div>
+      <div class="exec-item">
+        <div class="tag">02 — Guncangan &amp; peluang</div>
+        <p>Kepailitan Sritex (Maret 2025) melepas kapasitas industri besar senilai puluhan ribu tenaga kerja dan infrastruktur pabrik siap pakai. Proses lelang aset yang berjalan sejak Juli 2025 membuka peluang reindustrialisasi cepat bagi investor baru — dengan permintaan sambungan daya yang bisa datang tiba-tiba dan besar.</p>
+      </div>
+      <div class="exec-item">
+        <div class="tag">03 — Peran PLN</div>
+        <p>PLN ULP Sukoharjo berada pada titik ungkit: bukan sekadar penyedia daya, tetapi enabler pemulihan industri, penopang naik-kelas UMKM lewat elektrifikasi produktif, dan mitra strategis pemerintah daerah dalam menjaga keandalan pasokan di tengah transisi ekonomi.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 01 RUANG LINGKUP ============ -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div>
+        <div class="sec-eyebrow">Ruang Lingkup &amp; Metodologi</div>
+        <h2>Mengapa Kartasura dikeluarkan dari kajian ini</h2>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <p class="body-p">Kartasura adalah kasus khusus: kecamatan terpadat di Sukoharjo (111.984 jiwa, kepadatan 5.170 jiwa/km²) yang secara fungsional telah menyatu dengan aglomerasi perkotaan Surakarta (Solo Raya). Karakter ekonominya — jasa, ritel modern, pendidikan tinggi, dan hunian penglaju — berbeda secara struktural dari 11 kecamatan lain yang masih didominasi industri manufaktur skala menengah-besar, pertanian, dan sentra kerajinan berbasis desa.</p>
+        <p class="body-p">Menyatukan Kartasura ke dalam analisis akan mengaburkan potensi riil daerah "Sukoharjo inti" — wilayah yang justru paling relevan bagi perencanaan jaringan dan layanan PLN ULP karena polanya lebih industrial, lebih tersebar secara geografis, dan lebih sensitif terhadap keandalan pasokan listrik untuk produksi.</p>
+      </div>
+      <div>
+        <p class="body-p">Kajian ini karenanya difokuskan pada wilayah kerja seluas kurang lebih 439 km² yang mencakup Kecamatan Sukoharjo (kota kabupaten), Grogol, Baki, Gatak, Polokarto, Mojolaban, Bendosari, Nguter, Bulu, Tawangsari, dan Weru — sebelas kecamatan dengan karakter industri, pertanian, dan kerajinan yang jauh lebih beragam dibanding Kartasura.</p>
+      </div>
+    </div>
+
+    <div class="cap" style="margin-top:40px;">Wilayah Cakupan Kajian — 11 Kecamatan</div>
+    <div class="kec-grid">
+      <div class="kec-tile"><div class="n">Sukoharjo</div><div class="t">Ibu kota &amp; jasa</div></div>
+      <div class="kec-tile"><div class="n">Grogol</div><div class="t">Industri &amp; padat huni</div></div>
+      <div class="kec-tile"><div class="n">Baki</div><div class="t">Sentra gitar</div></div>
+      <div class="kec-tile"><div class="n">Gatak</div><div class="t">Manufaktur ringan</div></div>
+      <div class="kec-tile"><div class="n">Polokarto</div><div class="t">Agro &amp; UMKM</div></div>
+      <div class="kec-tile"><div class="n">Mojolaban</div><div class="t">Konveksi &amp; garmen</div></div>
+      <div class="kec-tile"><div class="n">Bendosari</div><div class="t">Industri campuran</div></div>
+      <div class="kec-tile"><div class="n">Nguter</div><div class="t">Tekstil &amp; jamu</div></div>
+      <div class="kec-tile"><div class="n">Bulu</div><div class="t">Pertanian, kepadatan terendah</div></div>
+      <div class="kec-tile"><div class="n">Tawangsari</div><div class="t">Farmasi herbal &amp; agro</div></div>
+      <div class="kec-tile"><div class="n">Weru</div><div class="t">Pertanian &amp; kerajinan</div></div>
+    </div>
+    <p class="src">Sumber: BPS Kabupaten Sukoharjo, Profil Kependudukan 2024; Portal Kabupaten Sukoharjo.</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ 02 POTRET EKONOMI ============ -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div>
+        <div class="sec-eyebrow">Potret Ekonomi Makro</div>
+        <h2>Pertumbuhan konsisten, ditopang industri pengolahan</h2>
+      </div>
+    </div>
+    <p class="lede">PDRB Sukoharjo tumbuh positif empat tahun berturut-turut pasca-kontraksi pandemi, mencapai Rp 49,99 triliun (harga berlaku) pada 2024 dengan pertumbuhan 4,97% dibanding tahun sebelumnya. Industri pengolahan tetap menjadi tulang punggung — namun konsentrasinya pada satu sub-sektor (tekstil-garmen) juga menjadi sumber kerentanan, sebagaimana terbukti pada kasus Sritex.</p>
+
+    <div class="stat-row">
+      <div class="stat"><div class="v">Rp 49,99 T</div><div class="l">PDRB ADHB 2024</div><div class="d">naik dari Rp 46,52 T (2023)</div></div>
+      <div class="stat"><div class="v">4,97%</div><div class="l">Pertumbuhan ekonomi 2024</div><div class="d">berlanjut sejak pemulihan 2021</div></div>
+      <div class="stat"><div class="v">Rp 53,1 jt</div><div class="l">PDRB per kapita/tahun</div><div class="d">peringkat ke-240 nasional</div></div>
+      <div class="stat"><div class="v">208.725</div><div class="l">unit UMKM aktif</div><div class="d">volume usaha Rp 22,37 T</div></div>
+    </div>
+
+    <div class="cols" style="margin-top:48px;">
+      <div>
+        <div class="cap">Tren PDRB ADHB, 2021–2024 (Rp triliun)</div>
+        <div class="trend">
+          <div class="col"><div class="stick" style="height:74%;"><span class="tip">40,4</span></div><div class="yr">2021</div></div>
+          <div class="col"><div class="stick" style="height:80%;"><span class="tip">42,8</span></div><div class="yr">2022</div></div>
+          <div class="col"><div class="stick" style="height:88%;"><span class="tip">46,5</span></div><div class="yr">2023</div></div>
+          <div class="col"><div class="stick" style="height:100%;"><span class="tip">50,0</span></div><div class="yr">2024</div></div>
+        </div>
+        <p class="src">Sumber: BPS Kabupaten Sukoharjo, Publikasi PDRB Menurut Lapangan Usaha 2020–2024 (rilis 11 April 2025); Databoks.</p>
+      </div>
+      <div>
+        <div class="cap">Kontribusi sektor terhadap PDRB 2024</div>
+        <div class="barchart">
+          <div class="bar-row"><div class="bar-label">Industri pengolahan</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div><div class="bar-val">38,15%</div></div>
+          <div class="bar-row"><div class="bar-label">Perdagangan &amp; reparasi</div><div class="bar-track"><div class="bar-fill" style="width:45%;"></div></div><div class="bar-val">17,22%</div></div>
+          <div class="bar-row"><div class="bar-label">Pertanian, kehutanan, perikanan</div><div class="bar-track"><div class="bar-fill" style="width:21%;"></div></div><div class="bar-val">8,14%</div></div>
+          <div class="bar-row"><div class="bar-label">Konstruksi</div><div class="bar-track"><div class="bar-fill" style="width:18%;"></div></div><div class="bar-val">6,97%</div></div>
+          <div class="bar-row"><div class="bar-label">Sektor lainnya (13 sektor)</div><div class="bar-track"><div class="bar-fill" style="width:76%;"></div></div><div class="bar-val">29,52%</div></div>
+        </div>
+        <p class="src">Sumber: Profil Kependudukan Kabupaten Sukoharjo 2024; Databoks — Sektor Utama Penggerak Perekonomian Sukoharjo 2024.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ 03 SOROTAN SRITEX ============ -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div>
+        <div class="sec-eyebrow">Sorotan Khusus</div>
+        <h2>Guncangan Sritex: dari krisis tenaga kerja menuju jendela reindustrialisasi</h2>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <p class="body-p">PT Sri Rejeki Isman Tbk (Sritex) — raksasa tekstil yang 58 tahun beroperasi di Sukoharjo dan sempat menjadi pabrik tekstil terintegrasi terbesar di Asia Tenggara — dinyatakan pailit oleh Pengadilan Niaga Semarang pada 21 Oktober 2024 setelah gagal bayar utang sekitar Rp 12,9 triliun. Operasional dihentikan total per 1 Maret 2025.</p>
+        <p class="body-p">Gelombang PHK menyapu <strong>8.504 karyawan PT Sritex di Sukoharjo</strong> sendiri, dan total 10.665–10.965 pekerja di seluruh Sritex Group (termasuk entitas di Semarang dan Boyolali). Ini adalah salah satu kontraksi tenaga kerja industri terbesar di Jawa Tengah dalam satu dekade terakhir, dengan efek berganda pada daya beli rumah tangga di sekitar koridor Nguter–Sukoharjo kota.</p>
+        <p class="body-p">Namun proses hukum kepailitan membuka babak baru: sejak Juli 2025 tim kurator menjalankan lelang aset bertahap, dan hingga awal 2026 tercatat sedikitnya enam Letter of Intent dari calon investor yang berminat mengakuisisi lini produksi (weaving, garment, finishing). Saham SRIL dijadwalkan delisting dari BEI efektif 10 November 2026, menandai penutupan babak lama sekaligus membuka ruang bagi entitas baru mengambil alih aset produktif secara bersih dari beban legasi.</p>
+      </div>
+      <div>
+        <div class="callout">
+          <div class="h">Risiko bagi daerah</div>
+          <p>Hilangnya kontribusi pajak, sewa properti sekitar pabrik, dan rantai pasok lokal (logistik, katering, konveksi rumahan pemasok Sritex) berpotensi menekan sektor perdagangan dan jasa di kecamatan sekitar pabrik dalam 1–2 tahun ke depan.</p>
+        </div>
+        <div class="callout pos">
+          <div class="h">Peluang bagi daerah &amp; PLN</div>
+          <p>Aset pabrik siap pakai — bangunan, mesin, dan yang terpenting <em>kapasitas sambungan listrik industri eksisting</em> — dapat mempercepat masuknya investor baru dibanding membangun kawasan industri dari nol. Pabrik pengganti berpotensi beroperasi dengan lini bisnis lebih terdiversifikasi (tidak seluruhnya tekstil), memberi PLN ULP peluang menata ulang portofolio pelanggan tegangan menengah/industri secara lebih tangguh.</p>
+        </div>
+      </div>
+    </div>
+    <p class="src">Sumber: Kompas.com, Tempo.co, IDX Channel, Espos.id, BP Lawyers (Feb 2025 – Apr 2026).</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ 04 LANSKAP INVESTASI ============ -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div>
+        <div class="sec-eyebrow">Lanskap Investasi &amp; Iklim Usaha</div>
+        <h2>Investasi tetap masuk meski industri jangkar goyah</h2>
+      </div>
+    </div>
+    <div class="cols rev">
+      <div>
+        <div class="cap">Realisasi investasi Sukoharjo 2024</div>
+        <table class="data">
+          <tr><th>Komponen</th><th style="text-align:right;">Nilai</th></tr>
+          <tr><td>Total realisasi investasi</td><td class="num">Rp 943,14 miliar</td></tr>
+          <tr><td>Penanaman Modal Dalam Negeri (PMDN)</td><td class="num">Rp 682,82 miliar</td></tr>
+          <tr><td>Penanaman Modal Asing (PMA)</td><td class="num">Rp 260,32 miliar</td></tr>
+          <tr><td>UMKM aktif</td><td class="num">208.725 unit</td></tr>
+          <tr><td>Volume usaha UMKM</td><td class="num">Rp 22,37 triliun</td></tr>
+        </table>
+        <p class="src">Sumber: Profil Kependudukan Kabupaten Sukoharjo 2024, Portal Kabupaten Sukoharjo.</p>
+      </div>
+      <div>
+        <p class="body-p">Struktur investasi Sukoharjo masih 72% berasal dari modal domestik — menandakan basis kewirausahaan lokal yang kuat, namun juga menunjukkan ruang besar yang belum tergarap untuk menarik PMA berskala lebih besar, terutama jika dibandingkan tetangga terdekatnya, Kawasan Ekonomi Khusus Kendal dan KIT Batang yang tengah menjadi magnet investasi manufaktur Jawa Tengah senilai puluhan triliun rupiah.</p>
+        <p class="body-p">Realisasi investasi provinsi Jawa Tengah tercatat Rp 48,54 triliun dengan manufaktur dan kawasan industri sebagai andalan utama — sinyal bahwa arus modal regional sedang bergerak ke koridor Semarang–Kendal–Batang. Sukoharjo perlu memosisikan diri sebagai simpul pendukung (bukan pesaing langsung) rantai pasok kawasan tersebut, memanfaatkan basis SDM terampil tekstil-garmen yang justru baru saja "dilepas" oleh Sritex.</p>
+        <p class="body-p">Peraturan Daerah Nomor 7 Tahun 2024 tentang Rencana Pembangunan Industri Kabupaten Sukoharjo 2024–2044 secara eksplisit menetapkan industri pengolahan sebagai sektor sekunder prioritas — payung kebijakan yang relevan untuk disinergikan dengan perencanaan jaringan kelistrikan jangka panjang PLN.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ 05 PETA KLASTER ============ -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div>
+        <div class="sec-eyebrow">Pemetaan Potensi Riil</div>
+        <h2>Enam klaster ekonomi yang membentuk wajah Sukoharjo</h2>
+      </div>
+    </div>
+    <p class="lede">Di luar ketergantungan pada Sritex, Sukoharjo memiliki mozaik klaster ekonomi berbasis kecamatan yang telah terbukti bertahan puluhan tahun — sebagian bahkan menembus pasar ekspor tanpa dukungan infrastruktur industri formal.</p>
+
+    <div class="cluster-grid">
+      <div class="cluster">
+        <div class="kec">Baki — Kampung Gitar Mancasan</div>
+        <h4>Alat musik petik</h4>
+        <p>Sentra rumahan sejak 1975, melibatkan lebih dari 2.500 keluarga pengrajin di tiga desa dengan produksi rata-rata setara Rp 2 miliar/bulan. Telah ekspor ke Malaysia (1984), Jerman (2000), dan multi-negara sejak 2016.</p>
+        <div class="foot">Kebutuhan: daya stabil untuk mesin serut &amp; finishing kayu berskala rumah tangga.</div>
+      </div>
+      <div class="cluster">
+        <div class="kec">Nguter &amp; Tawangsari — Koridor jamu &amp; farmasi</div>
+        <h4>Jamu &amp; herbal modern</h4>
+        <p>Julukan "Kabupaten Jamu" didukung industri jamu tradisional Nguter dan investasi baru farmasi herbal — termasuk pabrik Rp 15 miliar milik emiten Brigit Biofarmaka (OBAT) di Tawangsari yang beroperasi sejak Februari 2025, ditargetkan mendongkrak omset hingga Rp 250 miliar.</p>
+        <div class="foot">Kebutuhan: daya tegangan menengah andal untuk lini produksi farmasi bersertifikat CPOTB.</div>
+      </div>
+      <div class="cluster">
+        <div class="kec">Mojolaban &amp; Grogol — Konveksi &amp; garmen</div>
+        <h4>Garmen &amp; tekstil skala menengah</h4>
+        <p>Ekosistem konveksi dan garmen pendukung (subkontraktor) yang sebagian tumbuh dari rantai pasok Sritex; berpotensi menyerap sebagian tenaga kerja terampil eks-Sritex melalui usaha konveksi mandiri atau kemitraan pabrik baru.</p>
+        <div class="foot">Kebutuhan: sambungan daya menengah yang fleksibel untuk skala usaha yang naik-turun.</div>
+      </div>
+      <div class="cluster">
+        <div class="kec">Weru, Bulu, Polokarto — Kerajinan &amp; agro</div>
+        <h4>Mebel, gamelan &amp; batik</h4>
+        <p>Julukan "Kota Gamelan" dan "The House of Souvenir" bertumpu pada sentra mebel rotan/kayu, gamelan, tatah sungging, dan batik yang tersebar di kecamatan berkepadatan lebih rendah — area dengan potensi elektrifikasi produktif pedesaan yang masih dapat dioptimalkan.</p>
+        <div class="foot">Kebutuhan: perluasan jaringan tegangan rendah ke sentra produksi di pedesaan.</div>
+      </div>
+      <div class="cluster">
+        <div class="kec">Bulu &amp; Weru — Basis pertanian</div>
+        <h4>Padi &amp; hortikultura</h4>
+        <p>Kecamatan berkepadatan terendah (Bulu: 801 jiwa/km²) menjaga fungsi lumbung pangan Sukoharjo; irigasi teknis dan pompanisasi berbasis listrik menjadi kunci produktivitas di tengah tekanan konversi lahan akibat urbanisasi koridor Solo Raya.</p>
+        <div class="foot">Kebutuhan: elektrifikasi pompa irigasi &amp; pascapanen (RMU, dryer) — selaras program PLN Electrifying Agriculture.</div>
+      </div>
+      <div class="cluster">
+        <div class="kec">Sukoharjo Kota &amp; Grogol — Jasa &amp; perdagangan</div>
+        <h4>Pusat jasa &amp; ritel kabupaten</h4>
+        <p>Sebagai ibu kota kabupaten dan kecamatan terpadat kedua (Grogol: 121.870 jiwa), keduanya menjadi motor sektor perdagangan besar-eceran (17,22% PDRB) — sektor kedua terbesar setelah manufaktur, dengan permintaan daya rumah tangga dan bisnis kecil yang terus tumbuh.</p>
+        <div class="foot">Kebutuhan: keandalan pasokan perkotaan &amp; layanan pelanggan digital (PLN Mobile) yang responsif.</div>
+      </div>
+    </div>
+    <p class="src">Sumber: Tribunnews, Liputan6, Espos.id, Kumparan, IDX Channel, Peraturan Bupati Sukoharjo No. 45/2025.</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ 06 SWOT ============ -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div>
+        <div class="sec-eyebrow">Sintesis Strategis</div>
+        <h2>Peluang dan tantangan pertumbuhan daerah</h2>
+      </div>
+    </div>
+    <div class="swot">
+      <div class="swot-box s">
+        <h5>Kekuatan</h5>
+        <ul>
+          <li>Basis UMKM sangat besar &amp; teruji (208 ribu unit, Rp 22,4 T omset)</li>
+          <li>SDM terampil tekstil-garmen dalam jumlah besar, siap diserap ulang</li>
+          <li>Lokasi strategis di jalur Solo Raya, akses logistik baik ke Yogyakarta &amp; Semarang</li>
+          <li>Diversifikasi sentra kerajinan bernilai ekspor (gitar, mebel, jamu)</li>
+        </ul>
+      </div>
+      <div class="swot-box w">
+        <h5>Kelemahan</h5>
+        <ul>
+          <li>Ketergantungan historis pada satu industri jangkar (tekstil) yang kini rentan</li>
+          <li>PMA relatif kecil (27,6% dari total investasi) dibanding PMDN</li>
+          <li>Sentra UMKM sebagian besar informal, akses pembiayaan &amp; daya listrik terbatas</li>
+          <li>Infrastruktur kawasan industri formal masih minim dibanding Kendal/Batang</li>
+        </ul>
+      </div>
+      <div class="swot-box o">
+        <h5>Peluang</h5>
+        <ul>
+          <li>Aset pabrik Sritex siap pakai untuk investor baru pascalelang</li>
+          <li>Posisi sebagai simpul rantai pasok KEK Kendal &amp; KIT Batang</li>
+          <li>Naik kelas UMKM lewat elektrifikasi produktif &amp; digitalisasi</li>
+          <li>Hilirisasi produk agro &amp; jamu menuju standar farmasi/ekspor</li>
+        </ul>
+      </div>
+      <div class="swot-box t">
+        <h5>Ancaman</h5>
+        <ul>
+          <li>Gelombang PHK lanjutan bila proses lelang aset berlarut-larut</li>
+          <li>Persaingan menarik investor dengan kawasan industri baru di Jawa Tengah</li>
+          <li>Konversi lahan pertanian akibat tekanan urbanisasi Solo Raya</li>
+          <li>Fluktuasi permintaan daya besar-mendadak jika pabrik baru beroperasi cepat</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ 07 PERAN PLN ============ -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div>
+        <div class="sec-eyebrow">Dukungan PLN Unit Layanan</div>
+        <h2>Dari penyedia daya menjadi mitra strategis pemulihan ekonomi</h2>
+      </div>
+    </div>
+    <p class="lede">PLN ULP Sukoharjo mengelola pelanggan lintas segmen — rumah tangga, bisnis, industri, dan sosial — di wilayah yang tengah mengalami transisi struktural. Empat kebutuhan berikut relevan langsung dengan mandat PLN sebagai unit layanan pelanggan garda depan.</p>
+
+    <div class="rec-grid">
+      <div class="rec-card">
+        <div class="idx">A</div>
+        <h4>Kesiapan daya untuk reindustrialisasi eks-Sritex</h4>
+        <p>Menyiapkan skema percepatan penyambungan/normalisasi daya tegangan menengah bagi investor yang mengakuisisi aset pabrik Sritex Group, termasuk asesmen kapasitas trafo eksisting agar tidak menjadi hambatan birokratis saat investor sudah siap berproduksi.</p>
+        <div class="tags"><span class="pill hi">Prioritas tinggi</span><span class="pill">Industri</span><span class="pill">Jangka pendek</span></div>
+      </div>
+      <div class="rec-card">
+        <div class="idx">B</div>
+        <h4>Elektrifikasi produktif UMKM &amp; sentra kerajinan</h4>
+        <p>Mengarahkan program nasional seperti diskon tambah daya 50% dan Electrifying Lifestyle secara tersegmentasi ke sentra gitar Baki, konveksi Mojolaban, dan jamu Nguter — dengan pendampingan NIB agar pelaku usaha memenuhi syarat golongan tarif bisnis yang tepat.</p>
+        <div class="tags"><span class="pill hi">Prioritas tinggi</span><span class="pill">UMKM</span><span class="pill">Jangka pendek–menengah</span></div>
+      </div>
+      <div class="rec-card">
+        <div class="idx">C</div>
+        <h4>Electrifying Agriculture di Bulu, Weru &amp; Polokarto</h4>
+        <p>Memperluas jaringan listrik produktif untuk pompa irigasi, rice milling unit, dan pengering hasil panen di kecamatan berbasis pertanian — menjaga fungsi lumbung pangan sekaligus meningkatkan nilai tambah pascapanen tanpa bergantung genset berbahan bakar fosil.</p>
+        <div class="tags"><span class="pill">Prioritas menengah</span><span class="pill">Pertanian</span><span class="pill">Jangka menengah</span></div>
+      </div>
+      <div class="rec-card">
+        <div class="idx">D</div>
+        <h4>Keandalan pasokan &amp; layanan digital di koridor perkotaan</h4>
+        <p>Menjaga SAIDI/SAIFI rendah di Sukoharjo Kota dan Grogol sebagai pusat jasa-perdagangan, memperkuat adopsi PLN Mobile untuk transparansi tagihan dan gangguan, mendukung pertumbuhan sektor perdagangan yang menyumbang 17,22% PDRB.</p>
+        <div class="tags"><span class="pill">Prioritas menengah</span><span class="pill">Rumah tangga &amp; bisnis</span><span class="pill">Berkelanjutan</span></div>
+      </div>
+    </div>
+    <p class="src">Sumber: Kompas.com &amp; Kontan (program diskon tambah daya PLN 2026); PLN ULP Sukoharjo; Media Jatim News.</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ 08 ROADMAP ============ -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">08</div>
+      <div>
+        <div class="sec-eyebrow">Rencana Aksi</div>
+        <h2>Peta jalan implementasi bertahap</h2>
+      </div>
+    </div>
+    <div class="roadmap">
+      <div class="rm-line"></div>
+      <div class="rm-item">
+        <div class="rm-phase">0–6 bulan</div>
+        <div class="rm-dot"></div>
+        <div class="rm-body">
+          <span class="rm-tag">Quick win</span>
+          <h5>Pemetaan ulang beban &amp; kontak proaktif investor pasca-lelang aset Sritex</h5>
+          <p>Koordinasi rutin dengan tim kurator dan Disperinaker Sukoharjo untuk mendapat sinyal dini calon investor, sehingga proses penyambungan daya tidak menjadi titik kemacetan saat produksi hendak dimulai kembali.</p>
+        </div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-phase">0–6 bulan</div>
+        <div class="rm-dot"></div>
+        <div class="rm-body">
+          <span class="rm-tag">Quick win</span>
+          <h5>Kampanye tersegmentasi program tambah daya &amp; electrifying lifestyle ke sentra UMKM</h5>
+          <p>Sosialisasi langsung di Kampung Gitar Baki, sentra konveksi Mojolaban, dan sentra jamu Nguter, memanfaatkan momentum promo nasional yang sudah berjalan agar konversi ke golongan tarif bisnis meningkat.</p>
+        </div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-phase">6–18 bulan</div>
+        <div class="rm-dot"></div>
+        <div class="rm-body">
+          <span class="rm-tag">Inisiatif menengah</span>
+          <h5>Perluasan Electrifying Agriculture di kecamatan lumbung pangan</h5>
+          <p>Studi kebutuhan daya untuk irigasi &amp; pascapanen di Bulu, Weru, dan Polokarto, disinergikan dengan program pemerintah daerah untuk menjaga ketahanan pangan di tengah tekanan alih fungsi lahan.</p>
+        </div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-phase">6–18 bulan</div>
+        <div class="rm-dot"></div>
+        <div class="rm-body">
+          <span class="rm-tag">Inisiatif menengah</span>
+          <h5>Peningkatan keandalan jaringan di koridor industri Nguter–Tawangsari–Mojolaban</h5>
+          <p>Audit kapasitas gardu &amp; trafo di sepanjang koridor yang berpotensi menerima investasi farmasi-herbal dan garmen baru, agar keandalan pasokan menjadi nilai jual daerah kepada investor.</p>
+        </div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-phase">18–36 bulan</div>
+        <div class="rm-dot"></div>
+        <div class="rm-body">
+          <span class="rm-tag">Strategis</span>
+          <h5>Kolaborasi perencanaan jaringan jangka panjang dengan RPI Kabupaten 2024–2044</h5>
+          <p>Menyelaraskan rencana pengembangan jaringan distribusi PLN ULP dengan Rencana Pembangunan Industri Kabupaten Sukoharjo, agar penambahan kapasitas mendahului kebutuhan investasi, bukan mengikutinya.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ 09 PENUTUP ============ -->
+  <section class="tight">
+    <div class="sec-head">
+      <div class="sec-num">09</div>
+      <div>
+        <div class="sec-eyebrow">Penutup</div>
+        <h2>Titik ungkit ada di tangan yang bergerak lebih dulu</h2>
+      </div>
+    </div>
+    <div class="cols">
+      <p class="body-p">Sukoharjo di luar Kartasura adalah daerah dengan fondasi ekonomi riil yang jauh lebih kaya dari sekadar "kota Sritex". Klaster UMKM yang tersebar merata, basis pertanian yang masih terjaga, dan momentum reindustrialisasi pascakepailitan menjadikan wilayah ini berada di persimpangan antara risiko jangka pendek dan peluang jangka menengah yang nyata.</p>
+      <p class="body-p">Bagi PLN Unit Layanan Pelanggan, tantangan terbesar bukan pada kapasitas pembangkitan nasional, melainkan pada <em>kecepatan dan ketepatan segmentasi layanan</em> — memastikan investor baru tidak menunggu, UMKM naik kelas tanpa hambatan birokrasi daya, dan petani mendapat akses elektrifikasi produktif yang selama ini masih tertinggal dari sektor industri.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand">Kajian Strategis Sukoharjo</div>
+      <p>Disusun sebagai bahan analisis internal untuk mendukung perencanaan layanan kelistrikan dan pemetaan potensi ekonomi daerah. Dipersiapkan oleh fungsi konsultasi bisnis, September 2026.</p>
+    </div>
+    <div>
+      <h6>Sumber Data Utama</h6>
+      <ul>
+        <li>BPS Kabupaten Sukoharjo — PDRB &amp; Profil Kependudukan 2024–2025</li>
+        <li>Portal resmi Pemkab Sukoharjo &amp; JDIH Sukoharjo</li>
+        <li>Kompas.com, Tempo.co, Espos.id, IDX Channel</li>
+        <li>Databoks Katadata, Vibizmedia</li>
+      </ul>
+    </div>
+    <div>
+      <h6>Catatan Metodologis</h6>
+      <ul>
+        <li>Data ekonomi terbaru mengacu rilis BPS April 2025 (tahun data 2024)</li>
+        <li>Perkembangan kasus Sritex dipantau hingga awal 2026</li>
+        <li>Program PLN mengacu kebijakan nasional berjalan per Agustus 2026</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap disclaimer">
+    ☕2026 | JW - Dokumen ini disusun untuk tujuan analisis strategis dan diskusi internal. Angka-angka bersumber dari publikasi resmi dan pemberitaan media yang dapat diverifikasi ulang; pembaca disarankan merujuk publikasi asli BPS/BKPM/PLN untuk kebutuhan pengambilan keputusan formal.
+  </div>
+</footer>
+
+</body>
+</html>
