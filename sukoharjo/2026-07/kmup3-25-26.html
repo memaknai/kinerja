@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis Pergeseran Kontrak Manajemen UP3 — 2025 ke 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0F2A4A;
+    --navy-deep: #0A1E38;
+    --gold: #A8853F;
+    --gold-light: #D8C79A;
+    --paper: #FFFFFF;
+    --band: #F5F6F8;
+    --ink: #202A34;
+    --ink-soft: #5B6570;
+    --line: #DCE1E6;
+    --up: #1E7A54;
+    --up-bg: #EAF4EF;
+    --down: #B23A2E;
+    --down-bg: #FBEDEB;
+    --neutral: #8A6D1F;
+    --neutral-bg: #FBF4E5;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    font-family:'Inter', -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Source Serif 4', Georgia, serif;
+    color: var(--navy-deep);
+    margin:0;
+    font-weight:600;
+  }
+
+  .wrap{ max-width: 980px; margin:0 auto; padding: 0 32px; }
+
+  /* ---------- Cover ---------- */
+  .cover{
+    background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 68%, #163A63 100%);
+    color: #EFF3F8;
+    padding: 88px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::after{
+    content:"";
+    position:absolute;
+    right:-120px; top:-160px;
+    width:480px; height:480px;
+    border-radius:50%;
+    border: 1px solid rgba(216,199,154,0.18);
+  }
+  .cover::before{
+    content:"";
+    position:absolute;
+    right:-40px; top:-40px;
+    width:320px; height:320px;
+    border-radius:50%;
+    border: 1px solid rgba(216,199,154,0.28);
+  }
+  .cover-tag{
+    display:inline-block;
+    font-size:13px;
+    letter-spacing:.02em;
+    color: var(--gold-light);
+    border: 1px solid rgba(216,199,154,0.4);
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+  .cover h1{
+    color:#fff;
+    font-size: 42px;
+    line-height:1.18;
+    max-width: 680px;
+    letter-spacing:-0.01em;
+  }
+  .cover p.sub{
+    max-width: 600px;
+    color: #C6D1DE;
+    font-size: 17px;
+    margin-top:18px;
+    font-family:'Inter',sans-serif;
+  }
+  .cover-meta{
+    margin-top:48px;
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top:22px;
+  }
+  .cover-meta div{ font-size:13px; color:#9CACBE; }
+  .cover-meta div b{ display:block; color:#fff; font-size:15px; font-weight:600; margin-top:3px; font-family:'Inter',sans-serif;}
+
+  /* ---------- Section shell ---------- */
+  section{ padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section.band{ background: var(--band); }
+  .kicker{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom: 20px;
+  }
+  .kicker .num{
+    font-family:'Source Serif 4', serif;
+    font-size:15px;
+    color: var(--gold);
+    font-weight:600;
+  }
+  .kicker .label{
+    font-size:13px;
+    color: var(--ink-soft);
+    font-weight:500;
+  }
+  h2.title{ font-size:28px; margin-bottom:14px; max-width:680px; }
+  p.lede{ color: var(--ink-soft); font-size:16.5px; max-width: 680px; margin-bottom: 8px;}
+
+  /* ---------- Executive summary strip ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    margin-top: 36px;
+    border: 1px solid var(--line);
+  }
+  .stat{ background:#fff; padding: 24px 20px; }
+  .stat .n{ font-family:'Source Serif 4',serif; font-size:30px; color:var(--navy); font-weight:600; }
+  .stat .n span{ font-size:16px; color: var(--ink-soft); font-family:'Inter',sans-serif; font-weight:500;}
+  .stat .d{ font-size:13.5px; color: var(--ink-soft); margin-top:6px; }
+
+  /* ---------- Bobot comparison bars ---------- */
+  .bars{ margin-top: 30px; }
+  .bar-row{
+    display:grid;
+    grid-template-columns: 230px 1fr 60px;
+    align-items:center;
+    gap:14px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .bar-row:last-child{ border-bottom:none; }
+  .bar-row .name{ font-size:14px; color: var(--ink); }
+  .bar-track{ position:relative; height:20px; background:#EDEFF2; border-radius:2px; overflow:hidden;}
+  .bar-fill{ position:absolute; top:0; left:0; height:100%; border-radius:2px; }
+  .bar-fill.b25{ background: #B8C4D2; }
+  .bar-fill.b26{ background: var(--navy); }
+  .bar-row .val{ font-size:13px; text-align:right; color:var(--ink-soft); font-variant-numeric: tabular-nums;}
+  .bar-legend{ display:flex; gap:22px; margin-top:16px; font-size:13px; color:var(--ink-soft);}
+  .bar-legend span{ display:inline-flex; align-items:center; gap:7px;}
+  .bar-legend i{ width:12px; height:12px; border-radius:2px; display:inline-block;}
+
+  .tag{ display:inline-block; font-size:11.5px; padding:2px 8px; border-radius:20px; font-weight:600; margin-left:8px; vertical-align:middle;}
+  .tag.new{ background: var(--neutral-bg); color: var(--neutral); }
+  .tag.gone{ background: var(--down-bg); color: var(--down); text-decoration: line-through; text-decoration-color: var(--down);}
+
+  /* ---------- Tables ---------- */
+  table{ width:100%; border-collapse: collapse; margin-top: 28px; font-size:14.5px; }
+  thead th{
+    text-align:left;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    color: var(--navy-deep);
+    font-size:13px;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--navy);
+  }
+  tbody td{ padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:hover{ background: rgba(15,42,74,0.025); }
+  td.metric{ font-weight:500; color:var(--ink); }
+  td.num{ font-variant-numeric: tabular-nums; text-align:right; white-space:nowrap; }
+  .delta{ display:inline-flex; align-items:center; gap:5px; padding:3px 9px; border-radius:20px; font-size:12.5px; font-weight:600; white-space:nowrap;}
+  .delta.up{ background:var(--up-bg); color:var(--up); }
+  .delta.down{ background:var(--down-bg); color:var(--down); }
+  .delta.flat{ background:#EEF0F2; color:var(--ink-soft); }
+
+  /* ---------- Insight cards ---------- */
+  .insight-list{ margin-top: 32px; display:flex; flex-direction:column; gap:0; }
+  .insight{
+    display:grid;
+    grid-template-columns: 46px 1fr;
+    gap: 20px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .insight:last-child{ border-bottom:none; }
+  .insight .mark{ font-family:'Source Serif 4',serif; font-size:22px; color: var(--gold); font-weight:600; }
+  .insight h3{ font-size:17px; margin-bottom:8px; color:var(--navy-deep); }
+  .insight p{ margin:0; color: var(--ink-soft); font-size:15px; max-width:640px; }
+
+  /* ---------- Critique callouts ---------- */
+  .callout{
+    border-left: 3px solid var(--down);
+    background: var(--down-bg);
+    padding: 20px 24px;
+    margin: 22px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout h4{ font-size:15px; color:#7A2A21; margin-bottom:8px; font-family:'Inter',sans-serif; font-weight:700; }
+  .callout p{ margin:0; font-size:14.5px; color:#5B3B34; line-height:1.65; }
+
+  /* ---------- Recommendation list ---------- */
+  .reco{ margin-top:30px; display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+  .reco-card{ background:#fff; border:1px solid var(--line); border-top: 3px solid var(--navy); padding:22px 22px 24px; }
+  .reco-card .idx{ font-family:'Source Serif 4',serif; color: var(--gold); font-size:14px; font-weight:600; margin-bottom:10px; }
+  .reco-card h4{ font-size:15.5px; margin-bottom:8px; }
+  .reco-card p{ font-size:14px; color:var(--ink-soft); margin:0; }
+
+  /* ---------- Footer ---------- */
+  footer{ padding: 40px 0 60px; }
+  footer p{ font-size:13px; color: var(--ink-soft); }
+
+  @media (max-width: 760px){
+    .wrap{ padding:0 20px; }
+    .cover{ padding:56px 0 44px; }
+    .cover h1{ font-size:30px; }
+    .stats{ grid-template-columns: 1fr 1fr; }
+    .bar-row{ grid-template-columns: 130px 1fr 46px; gap:8px; }
+    .reco{ grid-template-columns: 1fr; }
+    table{ font-size:13px; }
+    thead th, tbody td{ padding:8px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="wrap">
+    <span class="cover-tag">Analisis Kontrak Manajemen · PT PLN (Persero) UP3</span>
+    <h1>Dari volume ke eksekusi investasi: membaca ulang arah kinerja 2026</h1>
+    <p class="sub">Perbandingan struktur dan target Kontrak Manajemen UP3 Sukoharjo tahun 2025 dan 2026 — apa yang berubah, ke mana fokus perusahaan bergeser, dan di mana letak titik rawannya.</p>
+    <div class="cover-meta">
+      <div>Periode dibandingkan<b>2025 → 2026</b></div>
+      <div>Dokumen sumber<b>Kontrak Manajemen KPI, 2 tahun</b></div>
+      <div>Total bobot kinerja<b>100 poin + pengurang</b></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="kicker"><span class="num">Ringkasan</span><span class="label">Apa yang berubah dalam satu tarikan napas</span></div>
+    <h2 class="title">Empat pergeseran besar membentuk ulang kontrak kinerja tahun ini</h2>
+    <p class="lede">Struktur KPI 2026 bukan revisi kecil — bobot dipindah dalam jumlah besar dari indikator administratif/governance ke investasi fisik dan efisiensi jaringan, sementara sejumlah target keandalan justru dilonggarkan di saat bersamaan.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">+8 <span>poin</span></div><div class="d">Kenaikan bobot Susut Distribusi, dari 4 menjadi 12 — lonjakan bobot terbesar di seluruh kontrak</div></div>
+      <div class="stat"><div class="n">10 <span>poin</span></div><div class="d">Bobot kelompok baru "Penyelesaian RUPTL &amp; Investasi" yang tidak ada di 2025</div></div>
+      <div class="stat"><div class="n">9 <span>poin</span></div><div class="d">Bobot positif SDM/TJSL/Business Excellence yang dihapus, kini murni jadi pengurang</div></div>
+      <div class="stat"><div class="n">2 <span>indikator</span></div><div class="d">Metrik kualitas layanan digital (Rating PLN Mobile, Pengaduan Berulang) yang hilang total</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="kicker"><span class="num">01</span><span class="label">Struktur bobot</span></div>
+    <h2 class="title">Bobot bergeser dari kelompok administratif ke investasi dan efisiensi jaringan</h2>
+    <p class="lede">Membandingkan bobot tiap kelompok indikator antara dua tahun kontrak. Batang biru tua menunjukkan bobot 2026, batang abu-abu menunjukkan bobot 2025 pada kelompok yang sebanding.</p>
+
+    <div class="bars">
+      <div class="bar-row"><div class="name">Penjualan Tenaga Listrik<span class="tag new">Formula berubah</span></div><div class="bar-track"><div class="bar-fill b25" style="width:100%"></div><div class="bar-fill b26" style="width:100%"></div></div><div class="val">14 → 14</div></div>
+
+      <div class="bar-row"><div class="name">Susut Distribusi</div><div class="bar-track"><div class="bar-fill b25" style="width:33%"></div><div class="bar-fill b26" style="width:100%"></div></div><div class="val">4 → 12</div></div>
+
+      <div class="bar-row"><div class="name">Keandalan Sistem (SAIDI/SAIFI/ENS)</div><div class="bar-track"><div class="bar-fill b25" style="width:100%"></div><div class="bar-fill b26" style="width:86%"></div></div><div class="val">14 → 12</div></div>
+
+      <div class="bar-row"><div class="name">RUPTL &amp; Investasi<span class="tag new">Baru</span></div><div class="bar-track"><div class="bar-fill b26" style="width:83%"></div></div><div class="val">– → 10</div></div>
+
+      <div class="bar-row"><div class="name">Percepatan Penyambungan Pelanggan</div><div class="bar-track"><div class="bar-fill b25" style="width:100%"></div><div class="bar-fill b26" style="width:100%"></div></div><div class="val">10 → 10</div></div>
+
+      <div class="bar-row"><div class="name">Peningkatan Pelayanan Pelanggan</div><div class="bar-track"><div class="bar-fill b25" style="width:75%"></div><div class="bar-fill b26" style="width:100%"></div></div><div class="val">6 → 8</div></div>
+
+      <div class="bar-row"><div class="name">Keandalan Jaringan TM</div><div class="bar-track"><div class="bar-fill b25" style="width:86%"></div><div class="bar-fill b26" style="width:100%"></div></div><div class="val">6 → 7</div></div>
+
+      <div class="bar-row"><div class="name">Dispatch/OMS → Emergency Response</div><div class="bar-track"><div class="bar-fill b25" style="width:100%"></div><div class="bar-fill b26" style="width:86%"></div></div><div class="val">7 → 6</div></div>
+
+      <div class="bar-row"><div class="name">Cash In</div><div class="bar-track"><div class="bar-fill b25" style="width:100%"></div><div class="bar-fill b26" style="width:100%"></div></div><div class="val">6 → 6</div></div>
+
+      <div class="bar-row"><div class="name">Pengendalian Anggaran</div><div class="bar-track"><div class="bar-fill b25" style="width:100%"></div><div class="bar-fill b26" style="width:83%"></div></div><div class="val">6 → 5</div></div>
+
+      <div class="bar-row"><div class="name">Digitalisasi Aplikasi Korporat</div><div class="bar-track"><div class="bar-fill b25" style="width:100%"></div><div class="bar-fill b26" style="width:67%"></div></div><div class="val">6 → 4</div></div>
+
+      <div class="bar-row"><div class="name">Meter, P2TL &amp; Transaksi Energi<span class="tag new">Dikonsolidasi</span></div><div class="bar-track"><div class="bar-fill b25" style="width:100%"></div><div class="bar-fill b26" style="width:60%"></div></div><div class="val">10 → 6</div></div>
+
+      <div class="bar-row"><div class="name">SDM, TJSL &amp; Business Excellence<span class="tag gone">Jadi pengurang</span></div><div class="bar-track"><div class="bar-fill b25" style="width:100%"></div></div><div class="val">9 → 0</div></div>
+    </div>
+
+    <div class="bar-legend">
+      <span><i style="background:#B8C4D2"></i>Bobot 2025</span>
+      <span><i style="background:var(--navy)"></i>Bobot 2026</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker"><span class="num">02</span><span class="label">Target kunci</span></div>
+    <h2 class="title">Sebagian target membaik, sebagian justru dilonggarkan</h2>
+    <p class="lede">Sepuluh indikator dengan pergerakan target paling signifikan dari 2025 ke 2026.</p>
+
+    <table>
+      <thead>
+        <tr><th>Indikator</th><th>Target 2025</th><th>Target 2026</th><th>Arah</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="metric">SAIFI (kali/plg)</td><td class="num">1,21</td><td class="num">0,92</td><td><span class="delta up">▼ Membaik ~24%</span></td></tr>
+        <tr><td class="metric">Kerusakan Peralatan Distribusi (unit)</td><td class="num">50</td><td class="num">37</td><td><span class="delta up">▼ Membaik ~26%</span></td></tr>
+        <tr><td class="metric">SAIDI (menit/plg)</td><td class="num">65,19</td><td class="num">60,67</td><td><span class="delta up">▼ Membaik ~7%</span></td></tr>
+        <tr><td class="metric">Daya Tersambung (MVA)</td><td class="num">36,63</td><td class="num">28,54</td><td><span class="delta down">▼ Target turun ~22%</span></td></tr>
+        <tr><td class="metric">Penambahan Pelanggan</td><td class="num">22.975</td><td class="num">21.420</td><td><span class="delta down">▼ Target turun ~7%</span></td></tr>
+        <tr><td class="metric">Susut Distribusi (%)</td><td class="num">5,95</td><td class="num">6,07</td><td><span class="delta down">▲ Dilonggarkan, meski bobot naik 3×</span></td></tr>
+        <tr><td class="metric">ENS (MWh)</td><td class="num">202,62</td><td class="num">217,32</td><td><span class="delta down">▲ Dilonggarkan ~7%</span></td></tr>
+        <tr><td class="metric">Pelanggan Lisdes</td><td class="num">0</td><td class="num">9</td><td><span class="delta up">Target baru muncul</span></td></tr>
+        <tr><td class="metric">Pendapatan Biaya Penyambungan</td><td class="num">— <span class="tag new" style="margin-left:0">Baru</span></td><td class="num">Rp 46,9 M</td><td><span class="delta up">Indikator revenue baru</span></td></tr>
+        <tr><td class="metric">Rupiah Transaksi PLN Mobile</td><td class="num">— <span class="tag new" style="margin-left:0">Baru</span></td><td class="num">Rp 52,2 M</td><td><span class="delta up">Indikator revenue baru</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="kicker"><span class="num">03</span><span class="label">Insight strategis</span></div>
+    <h2 class="title">Apa yang sesungguhnya diprioritaskan perusahaan tahun ini</h2>
+
+    <div class="insight-list">
+      <div class="insight">
+        <div class="mark">A</div>
+        <div>
+          <h3>Dari volume penjualan ke pertumbuhan dan realisasi investasi</h3>
+          <p>Formula penjualan berubah dari "total penjualan" menjadi "penambahan penjualan", dan kelompok baru "Penyelesaian Eksekusi RUPTL &amp; Investasi" langsung masuk sebagai salah satu bobot terbesar. Unit sekarang dituntut membuktikan realisasi pembangunan aset fisik (km JTM, km JTR, MVA trafo), bukan sekadar menjaga volume jual tetap tinggi.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <div class="mark">B</div>
+        <div>
+          <h3>Efisiensi jaringan naik jadi prioritas kedua terbesar</h3>
+          <p>Bobot Susut Distribusi melonjak tiga kali lipat (4 → 12) — kenaikan bobot terbesar di seluruh kontrak. Digabung dengan konsolidasi P2TL, ganti meter, dan LBKB ke satu kelompok "Pengelolaan Transaksi Energi", total penekanan pada losses dan integritas transaksi energi naik dari sekitar 12 menjadi 18 poin.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <div class="mark">C</div>
+        <div>
+          <h3>Orientasi pendapatan menjadi lebih eksplisit</h3>
+          <p>Tahun 2025 hanya menghitung jumlah transaksi PLN Mobile; 2026 mulai menghitung nilai rupiahnya, dan menambahkan pendapatan biaya penyambungan sebagai indikator baru. Unit pelayanan pelanggan kini didorong berpikir lebih komersial, bukan hanya operasional.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <div class="mark">D</div>
+        <div>
+          <h3>Elektrifikasi pedesaan kembali menjadi target aktif</h3>
+          <p>Target pelanggan dan kWh Lisdes yang di 2025 dipatok nol, kini punya target positif — sejalan dengan tagline baru "Menggerakkan Industri, Menopang Pangan Negeri", kemungkinan merespons agenda ketahanan pangan dan elektrifikasi pertanian.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <div class="mark">E</div>
+        <div>
+          <h3>Indikator governance dilucuti dari skor positif</h3>
+          <p>HCR-OCR, produktivitas unit, TJSL, K3, business excellence, dan maturity level yang dulu menyumbang 9 poin nilai positif kini murni menjadi pengurang. Berhasil di area ini tidak lagi menambah nilai — hanya kegagalan yang berdampak pada skor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker"><span class="num">04</span><span class="label">Kritik</span></div>
+    <h2 class="title">Empat titik rawan yang perlu dipertanyakan</h2>
+    <p class="lede">Perubahan ini punya arah yang masuk akal, tetapi beberapa kombinasi bobot dan target justru saling bertentangan secara logika.</p>
+
+    <div class="callout">
+      <h4>Bobot susut naik 3×, tapi targetnya malah dilonggarkan</h4>
+      <p>Jika efisiensi jaringan benar-benar jadi prioritas strategis, target semestinya makin ketat — bukan naik dari 5,95% menjadi 6,07%. Tanpa penjelasan perubahan metodologi atau baseline, kombinasi ini terlihat seperti menaikkan "harga" indikator sambil menurunkan standarnya, yang secara efektif memudahkan pencapaian target meski bobotnya besar.</p>
+    </div>
+
+    <div class="callout">
+      <h4>ENS memburuk saat SAIDI dan SAIFI membaik</h4>
+      <p>Ketiga indikator keandalan biasanya bergerak searah. ENS yang melonggar dari 202,62 menjadi 217,32 MWh, berbarengan dengan SAIDI/SAIFI yang membaik, pantas dikonfirmasi — apakah karena perubahan cakupan "sesuai kewenangan", atau proyeksi penambahan beban dari ekspansi jaringan RUPTL.</p>
+    </div>
+
+    <div class="callout">
+      <h4>Insentif business excellence hilang, dorongan perbaikan berkelanjutan melemah</h4>
+      <p>Mengubah indikator governance menjadi murni pengurang membuat sistem lebih defensif: unit hanya perlu "tidak melanggar" untuk aman, tanpa insentif mengejar keunggulan di luar operasional inti seperti K3, TJSL, dan tata kelola.</p>
+    </div>
+
+    <div class="callout">
+      <h4>Metrik kualitas layanan digital dihapus saat target transaksi dinaikkan</h4>
+      <p>Rating PLN Mobile dan pengaduan gangguan berulang hilang dari kontrak, sementara target volume dan nilai rupiah transaksi justru naik. Ini berisiko mendorong unit mengejar kuantitas transaksi tanpa insentif eksplisit menjaga kepuasan pelanggan atas layanan digital itu sendiri.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="kicker"><span class="num">05</span><span class="label">Rekomendasi</span></div>
+    <h2 class="title">Yang perlu diklarifikasi sebelum kontrak berjalan penuh</h2>
+
+    <div class="reco">
+      <div class="reco-card">
+        <div class="idx">Rekomendasi 1</div>
+        <h4>Minta justifikasi tertulis untuk pelonggaran target susut dan ENS</h4>
+        <p>Terutama karena bobot susut dinaikkan tiga kali lipat — perlu kejelasan apakah ini akibat perubahan baseline jaringan atau memang penyesuaian ambisi.</p>
+      </div>
+      <div class="reco-card">
+        <div class="idx">Rekomendasi 2</div>
+        <h4>Pertahankan minimal satu indikator kualitas layanan digital</h4>
+        <p>Agar dorongan monetisasi transaksi PLN Mobile tetap diimbangi ukuran kepuasan pelanggan, bukan sekadar volume dan nilai rupiah.</p>
+      </div>
+      <div class="reco-card">
+        <div class="idx">Rekomendasi 3</div>
+        <h4>Kaitkan target RUPTL dengan target keandalan secara eksplisit</h4>
+        <p>Tunjukkan bagaimana penambahan aset JTM/JTR/trafo diproyeksikan menurunkan SAIDI/SAIFI/ENS ke depan, agar investasi dan keandalan terlihat sebagai satu rantai sebab-akibat, bukan dua target yang berdiri sendiri.</p>
+      </div>
+      <div class="reco-card">
+        <div class="idx">Rekomendasi 4</div>
+        <h4>Pertimbangkan insentif positif kecil untuk governance</h4>
+        <p>Sistem murni pengurang cenderung defensif. Bobot kecil yang tetap positif untuk pencapaian di atas baseline dapat menjaga dorongan perbaikan berkelanjutan pada K3, TJSL, dan tata kelola.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Disusun berdasarkan perbandingan dua dokumen Kontrak Manajemen KPI UP3 (2025 dan 2026). Angka bobot pada visualisasi batang dinormalisasi terhadap bobot maksimum pada baris masing-masing untuk memudahkan perbandingan visual, bukan skala absolut lintas baris.</p>
+  </div>
+</footer>
+
+</body>
+</html>
