@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis Kondisi Keuangan — Agustus 2026 vs Agustus 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2545;
+    --navy-deep:#071A33;
+    --steel:#3E6E9E;
+    --gold:#B8873B;
+    --gold-light:#E4C88C;
+    --paper:#F6F5F1;
+    --card:#FFFFFF;
+    --ink:#1C2530;
+    --ink-soft:#5B6672;
+    --line:#DEDBD1;
+    --up:#2E7D5B;
+    --watch:#B54545;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Lora',serif;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 40px;}
+
+  /* ===== HERO ===== */
+  header.hero{
+    background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 62%, #123763 100%);
+    color:#EDEFF3;
+    padding:72px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute; right:-120px; top:-160px;
+    width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, rgba(184,135,59,0.35), rgba(184,135,59,0) 70%);
+  }
+  .eyebrow{
+    color:var(--gold-light);
+    font-size:13.5px;
+    letter-spacing:.02em;
+    font-weight:600;
+    margin-bottom:18px;
+  }
+  header.hero h1{
+    font-size:42px;
+    font-weight:600;
+    line-height:1.18;
+    max-width:680px;
+    margin:0 0 18px;
+    color:#fff;
+  }
+  header.hero p.sub{
+    max-width:600px;
+    font-size:16.5px;
+    color:#C7CEDA;
+    margin:0 0 34px;
+  }
+  .hero-meta{
+    display:flex; gap:36px; flex-wrap:wrap;
+    border-top:1px solid rgba(255,255,255,0.18);
+    padding-top:22px;
+    font-size:13.5px;
+    color:#AEB8C6;
+  }
+  .hero-meta strong{display:block;color:#fff;font-size:15px;font-family:'Lora',serif;font-weight:600;}
+
+  /* ===== SECTION GENERIC ===== */
+  section{padding:56px 0;}
+  section.alt{background:#EFECE3;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    border-bottom:2px solid var(--navy);
+    padding-bottom:14px;
+    margin-bottom:30px;
+    gap:24px;
+  }
+  .section-head h2{font-size:26px; font-weight:600; margin:0; color:var(--navy);}
+  .section-head .tag{font-size:12.5px;color:var(--ink-soft);white-space:nowrap;padding-bottom:4px;}
+
+  /* ===== KPI STRIP ===== */
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+  .kpi{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-top:3px solid var(--gold);
+    padding:22px 20px;
+  }
+  .kpi .label{font-size:12.5px;color:var(--ink-soft);margin-bottom:10px;}
+  .kpi .value{font-family:'Lora',serif;font-size:27px;font-weight:600;color:var(--navy);}
+  .kpi .delta{font-size:13px;margin-top:8px;font-weight:600;}
+  .kpi .delta.up{color:var(--up);}
+  .kpi .delta.down{color:var(--watch);}
+  .kpi .delta.flat{color:var(--ink-soft);}
+
+  /* ===== TWO COL ===== */
+  .grid-2{display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;align-items:start;}
+  .lead-text{font-size:16px;color:var(--ink);}
+  .lead-text p{margin:0 0 16px;}
+
+  /* ===== BAR CHART ===== */
+  .chart-card{background:var(--card);border:1px solid var(--line);padding:26px 26px 10px;}
+  .chart-card h3{margin:0 0 4px;font-size:17px;color:var(--navy);font-weight:600;}
+  .chart-card .cap{font-size:12.5px;color:var(--ink-soft);margin-bottom:20px;}
+  .bar-row{margin-bottom:16px;}
+  .bar-row .rlabel{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;}
+  .bar-row .rlabel .name{color:var(--ink);font-weight:600;}
+  .bar-track{background:#EEEBE2;height:9px;border-radius:0;position:relative;}
+  .bar-fill{height:9px;position:absolute;left:0;top:0;}
+  .bar-fill.y26{background:var(--navy);}
+  .bar-fill.y25{background:var(--gold);opacity:.9;}
+  .legend{display:flex;gap:20px;font-size:12px;color:var(--ink-soft);margin:14px 0 20px;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .swatch{width:10px;height:10px;display:inline-block;}
+  .swatch.navy{background:var(--navy);}
+  .swatch.gold{background:var(--gold);}
+  .double-row{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:14px;}
+  .double-row .bar-track{margin-top:2px;}
+
+  /* ===== COMPOSITION BAR (stacked) ===== */
+  .stack-wrap{margin-bottom:26px;}
+  .stack-wrap .stitle{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px;}
+  .stack{display:flex;height:34px;width:100%;overflow:hidden;border:1px solid var(--line);}
+  .stack div{height:100%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:600;}
+  .stack-legend{display:flex;flex-wrap:wrap;gap:14px 20px;margin-top:10px;font-size:12px;color:var(--ink-soft);}
+  .stack-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .stack-legend .sw{width:10px;height:10px;display:inline-block;}
+
+  /* ===== TABLE ===== */
+  table.fin{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card);}
+  table.fin th,table.fin td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:right;}
+  table.fin th:first-child,table.fin td:first-child{text-align:left;}
+  table.fin thead th{background:var(--navy);color:#fff;font-weight:600;font-size:12.5px;}
+  table.fin tbody tr:nth-child(even){background:#FAF9F5;}
+  table.fin tr.total td{font-weight:700;border-top:2px solid var(--navy);border-bottom:none;background:#EFECE3;}
+  .pos{color:var(--up);font-weight:600;}
+  .neg{color:var(--watch);font-weight:600;}
+
+  /* ===== RATIO CARDS ===== */
+  .ratio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .ratio{background:var(--card);border:1px solid var(--line);padding:20px;}
+  .ratio .rname{font-size:12.5px;color:var(--ink-soft);margin-bottom:10px;}
+  .ratio .rvals{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;}
+  .ratio .rvals .now{font-family:'Lora',serif;font-size:24px;font-weight:600;color:var(--navy);}
+  .ratio .rvals .prev{font-size:12.5px;color:var(--ink-soft);}
+  .status{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:2px;}
+  .status.good{background:#E3F0E9;color:var(--up);}
+  .status.watch{background:#F6E5E5;color:var(--watch);}
+  .status.neutral{background:#EFEEE9;color:var(--ink-soft);}
+
+  /* ===== INSIGHT / RISK CARDS ===== */
+  .insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .insight{background:var(--card);border:1px solid var(--line);padding:20px 22px;border-left:4px solid var(--steel);}
+  .insight.risk{border-left:4px solid var(--watch);}
+  .insight h4{margin:0 0 8px;font-size:15px;color:var(--navy);font-weight:600;}
+  .insight p{margin:0;font-size:13.8px;color:var(--ink-soft);}
+  .insight .num{font-family:'Lora',serif;color:var(--gold);font-size:13px;font-weight:600;margin-bottom:6px;letter-spacing:.02em;}
+
+  /* ===== RECOMMENDATIONS ===== */
+  .rec-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .rec-col{background:var(--card);border:1px solid var(--line);}
+  .rec-head{padding:16px 20px;color:#fff;font-weight:600;font-size:14px;}
+  .rec-head.urgent{background:var(--watch);}
+  .rec-head.short{background:var(--gold);color:#2b1d05;}
+  .rec-head.mid{background:var(--navy);}
+  .rec-body{padding:18px 20px;}
+  .rec-body li{font-size:13.6px;margin-bottom:12px;color:var(--ink);padding-left:2px;}
+  .rec-body li:last-child{margin-bottom:0;}
+
+  footer{
+    background:var(--navy-deep);
+    color:#9AA6B5;
+    padding:34px 0;
+    font-size:12.5px;
+  }
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+
+  @media(max-width:860px){
+    .wrap{padding:0 22px;}
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .grid-2{grid-template-columns:1fr;}
+    .ratio-grid{grid-template-columns:repeat(2,1fr);}
+    .insight-grid{grid-template-columns:1fr;}
+    .rec-cols{grid-template-columns:1fr;}
+    header.hero h1{font-size:32px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">ANALISIS KONDISI KEUANGAN — UP3 SUKOHARJO</div>
+    <h1>Laba bersih melonjak 282%, namun ditopang subsidi &mdash; bukan efisiensi operasional.</h1>
+    <p class="sub">Tinjauan neraca dan laba rugi kumulatif Januari&ndash;Agustus, membandingkan posisi tahun 2026 terhadap 2025. Disusun untuk mendukung diskusi manajemen mengenai keberlanjutan kinerja dan area yang memerlukan tindak lanjut.</p>
+    <div class="hero-meta">
+      <div><strong>Agustus 2026</strong>Periode berjalan</div>
+      <div><strong>Agustus 2025</strong>Periode pembanding</div>
+      <div><strong>Rp 1.347,6 M</strong>Total aset per Agu 2026</div>
+      <div><strong>Rp 316,4 M</strong>Laba bersih kumulatif</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= RINGKASAN EKSEKUTIF ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ringkasan Eksekutif</h2>
+      <div class="tag">Empat indikator inti, Agu 2026 vs Agu 2025</div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="label">Total Aset</div>
+        <div class="value">Rp 1.347,6 M</div>
+        <div class="delta flat">-0,2% &mdash; relatif stagnan</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Pendapatan Usaha</div>
+        <div class="value">Rp 2.464,1 M</div>
+        <div class="delta up">+20,3% dari Rp 2.048,1 M</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Laba Bersih</div>
+        <div class="value">Rp 316,4 M</div>
+        <div class="delta up">+282,0% dari Rp 82,8 M</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Margin Bersih</div>
+        <div class="value">12,8%</div>
+        <div class="delta up">naik dari 4,0%</div>
+      </div>
+    </div>
+
+    <div style="height:34px;"></div>
+
+    <div class="grid-2">
+      <div class="lead-text">
+        <p>Secara nominal, kinerja perusahaan tahun ini terlihat sangat kuat: laba bersih tumbuh hampir empat kali lipat, dan margin bersih naik dari 4,0% menjadi 12,8%. Namun saat komposisi pendapatan diurai, sebagian besar pertumbuhan ini berasal dari <strong>kenaikan subsidi dan kompensasi pemerintah</strong> (+37,7%), bukan dari penjualan listrik ke pelanggan yang hanya tumbuh 9,9% &mdash; sejalan dengan kenaikan biaya pembelian tenaga listrik sebesar 9,8%.</p>
+        <p>Dengan kata lain, <strong>margin dari aktivitas jual-beli listrik murni tidak banyak berubah</strong>. Perbaikan laba tahun ini lebih mencerminkan penyesuaian kebijakan subsidi/kompensasi dibanding perbaikan struktural pada efisiensi operasi. Total aset relatif flat (-0,2%), menunjukkan pertumbuhan laba belum diiringi ekspansi kapasitas usaha yang signifikan.</p>
+        <p>Sinyal positif lain: porsi pendanaan dari akun antar-satuan administrasi (dana dari kantor pusat/holding) turun tajam dari 64,2% menjadi 43,0% dari total pasiva, digantikan oleh laba ditahan yang membesar &mdash; mengindikasikan unit usaha ini mulai lebih mandiri secara pendanaan.</p>
+      </div>
+      <div class="chart-card">
+        <h3>Pendapatan vs Beban Usaha</h3>
+        <div class="cap">dalam miliar rupiah, kumulatif Jan&ndash;Agu</div>
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Pendapatan Usaha</span><span>2.464,1</span></div>
+          <div class="bar-track"><div class="bar-fill y26" style="width:100%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Pendapatan Usaha (2025)</span><span>2.048,1</span></div>
+          <div class="bar-track"><div class="bar-fill y25" style="width:83.1%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Beban Usaha</span><span>2.146,4</span></div>
+          <div class="bar-track"><div class="bar-fill y26" style="width:87.1%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Beban Usaha (2025)</span><span>1.965,9</span></div>
+          <div class="bar-track"><div class="bar-fill y25" style="width:79.8%;"></div></div>
+        </div>
+        <div class="legend">
+          <span><span class="swatch navy"></span>Periode 2026</span>
+          <span><span class="swatch gold"></span>Periode 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NERACA ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Struktur Neraca</h2>
+      <div class="tag">Komposisi aset &amp; sumber pendanaan</div>
+    </div>
+
+    <div class="stack-wrap">
+      <div class="stitle">Komposisi Aset — Agustus 2026 (% dari total aset Rp 1.347,6 M)</div>
+      <div class="stack">
+        <div style="width:85.2%;background:var(--navy);">Aset Tetap Netto 85,2%</div>
+        <div style="width:11.8%;background:var(--steel);">11,8%</div>
+        <div style="width:2.6%;background:var(--gold);"></div>
+        <div style="width:0.4%;background:#C8CCD2;"></div>
+      </div>
+      <div class="stack-legend">
+        <span><span class="sw" style="background:var(--navy);"></span>Aset Tetap Netto — 85,2%</span>
+        <span><span class="sw" style="background:var(--steel);"></span>Aset Lancar — 11,8%</span>
+        <span><span class="sw" style="background:var(--gold);"></span>Konstruksi Dalam Pengerjaan — 2,6%</span>
+        <span><span class="sw" style="background:#C8CCD2;"></span>Properti Investasi &amp; Lain-lain — 0,4%</span>
+      </div>
+    </div>
+
+    <div class="stack-wrap">
+      <div class="stitle">Sumber Pendanaan — Agustus 2026 vs Agustus 2025 (% dari total pasiva)</div>
+      <div class="stack" style="margin-bottom:6px;">
+        <div style="width:23.5%;background:var(--up);">Ekuitas 23,5%</div>
+        <div style="width:43.0%;background:var(--navy);">Antar Satuan Adm. 43,0%</div>
+        <div style="width:19.4%;background:var(--steel);">LP Jk. Panjang 19,4%</div>
+        <div style="width:14.0%;background:var(--gold);">LP Jk. Pendek 14,0%</div>
+      </div>
+      <div class="stack">
+        <div style="width:6.1%;background:var(--up);">6,1%</div>
+        <div style="width:64.2%;background:var(--navy);">Antar Satuan Adm. 64,2%</div>
+        <div style="width:16.0%;background:var(--steel);">16,0%</div>
+        <div style="width:13.7%;background:var(--gold);">13,7%</div>
+      </div>
+      <div class="stack-legend">
+        <span><span class="sw" style="background:var(--up);"></span>Ekuitas (laba ditahan periode)</span>
+        <span><span class="sw" style="background:var(--navy);"></span>Akun antar satuan administrasi</span>
+        <span><span class="sw" style="background:var(--steel);"></span>Liabilitas jangka panjang</span>
+        <span><span class="sw" style="background:var(--gold);"></span>Liabilitas jangka pendek</span>
+      </div>
+      <p style="font-size:13px;color:var(--ink-soft);margin-top:12px;">Baris atas: Agustus 2026 &middot; Baris bawah: Agustus 2025. Pergeseran paling mencolok: porsi <em>akun antar satuan administrasi</em> menyusut &minus;33,1% secara nominal (dari Rp 867,0 M menjadi Rp 580,0 M), digantikan oleh laba ditahan yang tumbuh Rp 233,6 M.</p>
+    </div>
+
+    <table class="fin">
+      <thead>
+        <tr><th>Pos Neraca (ringkas)</th><th>Agu 2026 (Rp M)</th><th>Agu 2025 (Rp M)</th><th>Selisih</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Aset tetap (netto)</td><td>1.148,6</td><td>1.157,0</td><td class="neg">-0,7%</td></tr>
+        <tr><td>Konstruksi dalam pengerjaan (PDP)</td><td>35,4</td><td>29,2</td><td class="pos">+21,5%</td></tr>
+        <tr><td>Piutang usaha (netto)</td><td>147,6</td><td>143,8</td><td class="pos">+2,6%</td></tr>
+        <tr><td>Persediaan</td><td>10,9</td><td>16,2</td><td class="neg">-32,7%</td></tr>
+        <tr><td>Total aset lancar</td><td>158,6</td><td>160,0</td><td class="neg">-0,9%</td></tr>
+        <tr class="total"><td>Total Aset</td><td>1.347,6</td><td>1.350,8</td><td class="neg">-0,2%</td></tr>
+        <tr><td>Ekuitas (laba periode berjalan)</td><td>316,4</td><td>82,8</td><td class="pos">+282,0%</td></tr>
+        <tr><td>Akun antar satuan administrasi</td><td>580,0</td><td>867,0</td><td class="pos">-33,1%</td></tr>
+        <tr><td>Liabilitas jangka panjang</td><td>262,0</td><td>216,1</td><td class="neg">+21,2%</td></tr>
+        <tr><td>Liabilitas jangka pendek</td><td>188,8</td><td>184,8</td><td class="neg">+2,2%</td></tr>
+        <tr><td>&nbsp;&nbsp;&mdash; Utang usaha</td><td>9,4</td><td>18,1</td><td class="pos">-48,1%</td></tr>
+        <tr><td>&nbsp;&nbsp;&mdash; Jaminan langganan &amp; utang lain</td><td>161,0</td><td>151,6</td><td class="neg">+6,2%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-soft);margin-top:8px;">Tanda +/- pada kolom selisih mengikuti arah yang menguntungkan (hijau) atau memerlukan perhatian (merah) bagi posisi keuangan, bukan sekadar arah aritmetika.</p>
+  </div>
+</section>
+
+<!-- ================= LABA RUGI ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Struktur Laba Rugi</h2>
+      <div class="tag">Komposisi pendapatan &amp; beban usaha</div>
+    </div>
+
+    <div class="grid-2">
+      <div class="chart-card">
+        <h3>Komposisi Pendapatan Usaha</h3>
+        <div class="cap">dalam miliar rupiah</div>
+
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Penjualan Tenaga Listrik</span><span>1.405,8 vs 1.278,8</span></div>
+          <div class="bar-track"><div class="bar-fill y26" style="width:100%;"></div></div>
+          <div class="bar-track" style="margin-top:4px;"><div class="bar-fill y25" style="width:91.0%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Subsidi &amp; Kompensasi Pemerintah</span><span>1.047,8 vs 760,9</span></div>
+          <div class="bar-track"><div class="bar-fill y26" style="width:74.5%;"></div></div>
+          <div class="bar-track" style="margin-top:4px;"><div class="bar-fill y25" style="width:54.1%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Penyambungan Pelanggan</span><span>10,3 vs 8,3</span></div>
+          <div class="bar-track"><div class="bar-fill y26" style="width:0.7%;"></div></div>
+          <div class="bar-track" style="margin-top:4px;"><div class="bar-fill y25" style="width:0.6%;"></div></div>
+        </div>
+        <div class="legend">
+          <span><span class="swatch navy"></span>2026</span>
+          <span><span class="swatch gold"></span>2025</span>
+        </div>
+        <p style="font-size:12.5px;color:var(--ink-soft);">Subsidi &amp; kompensasi kini menyumbang <strong>42,5%</strong> dari total pendapatan usaha (naik dari 37,2%) &mdash; ketergantungan terhadap kebijakan pemerintah meningkat.</p>
+      </div>
+
+      <div class="chart-card">
+        <h3>Komposisi Beban Usaha</h3>
+        <div class="cap">dalam miliar rupiah</div>
+
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Pembelian Tenaga Listrik</span><span>2.020,9 vs 1.840,7</span></div>
+          <div class="bar-track"><div class="bar-fill y26" style="width:100%;"></div></div>
+          <div class="bar-track" style="margin-top:4px;"><div class="bar-fill y25" style="width:91.1%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Penyusutan Aset Tetap</span><span>41,6 vs 39,8</span></div>
+          <div class="bar-track"><div class="bar-fill y26" style="width:2.1%;"></div></div>
+          <div class="bar-track" style="margin-top:4px;"><div class="bar-fill y25" style="width:2.0%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Kepegawaian</span><span>34,5 vs 34,4</span></div>
+          <div class="bar-track"><div class="bar-fill y26" style="width:1.7%;"></div></div>
+          <div class="bar-track" style="margin-top:4px;"><div class="bar-fill y25" style="width:1.7%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="rlabel"><span class="name">Pemeliharaan</span><span>32,2 vs 31,4</span></div>
+          <div class="bar-track"><div class="bar-fill y26" style="width:1.6%;"></div></div>
+          <div class="bar-track" style="margin-top:4px;"><div class="bar-fill y25" style="width:1.6%;"></div></div>
+        </div>
+        <div class="legend">
+          <span><span class="swatch navy"></span>2026</span>
+          <span><span class="swatch gold"></span>2025</span>
+        </div>
+        <p style="font-size:12.5px;color:var(--ink-soft);">Pembelian tenaga listrik mendominasi <strong>~94%</strong> dari total beban usaha di kedua periode &mdash; sensitivitas laba sangat tinggi terhadap harga/volume pembelian energi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RASIO ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Rasio Keuangan Kunci</h2>
+      <div class="tag">Agustus 2026 vs Agustus 2025</div>
+    </div>
+    <div class="ratio-grid">
+      <div class="ratio">
+        <div class="rname">Margin Laba Bersih</div>
+        <div class="rvals"><span class="now">12,8%</span><span class="prev">vs 4,0%</span></div>
+        <span class="status good">Membaik</span>
+      </div>
+      <div class="ratio">
+        <div class="rname">Rasio Beban terhadap Pendapatan</div>
+        <div class="rvals"><span class="now">87,1%</span><span class="prev">vs 96,0%</span></div>
+        <span class="status good">Membaik</span>
+      </div>
+      <div class="ratio">
+        <div class="rname">Rasio Lancar (Current Ratio)</div>
+        <div class="rvals"><span class="now">0,84x</span><span class="prev">vs 0,87x</span></div>
+        <span class="status watch">Perlu Perhatian</span>
+      </div>
+      <div class="ratio">
+        <div class="rname">Beli Listrik / Jual Listrik</div>
+        <div class="rvals"><span class="now">143,8%</span><span class="prev">vs 143,9%</span></div>
+        <span class="status neutral">Stagnan</span>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--ink-soft);margin-top:16px;">Rasio lancar di bawah 1,0x berarti liabilitas jangka pendek melebihi aset lancar &mdash; pola ini umum pada entitas distribusi listrik dengan liabilitas jaminan pelanggan yang besar, namun tetap perlu dipantau agar tidak menekan likuiditas operasional. Rasio beli/jual listrik yang tetap di atas 100% menegaskan bahwa penjualan listrik saja tidak menutup biaya pembeliannya &mdash; celah ini ditutup oleh subsidi/kompensasi pemerintah.</p>
+  </div>
+</section>
+
+<!-- ================= INSIGHT ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Insight Utama</h2>
+      <div class="tag">Apa yang benar-benar menggerakkan angka</div>
+    </div>
+    <div class="insight-grid">
+      <div class="insight">
+        <div class="num">Insight 01</div>
+        <h4>Pertumbuhan laba didorong subsidi, bukan efisiensi</h4>
+        <p>Dari kenaikan pendapatan Rp 416,0 M, sekitar 69% (Rp 286,9 M) berasal dari subsidi &amp; kompensasi pemerintah. Margin dari perdagangan listrik murni relatif tidak berubah karena kenaikan harga jual sebanding dengan kenaikan biaya beli (+9,9% vs +9,8%).</p>
+      </div>
+      <div class="insight">
+        <div class="num">Insight 02</div>
+        <h4>Ketergantungan pendanaan grup menurun signifikan</h4>
+        <p>Porsi akun antar satuan administrasi turun dari 64,2% menjadi 43,0% dari total pasiva, seiring laba ditahan yang menggantikan peran pendanaan tersebut &mdash; sinyal positif menuju kemandirian finansial unit usaha.</p>
+      </div>
+      <div class="insight">
+        <div class="num">Insight 03</div>
+        <h4>Ekspansi aset melambat, investasi bergeser ke proyek berjalan</h4>
+        <p>Total aset nyaris flat (-0,2%) dan aset tetap netto sedikit menyusut (-0,7%), sementara konstruksi dalam pengerjaan tumbuh 21,5% &mdash; menunjukkan kapasitas baru masih dalam pipeline, belum berkontribusi pada operasi.</p>
+      </div>
+      <div class="insight">
+        <div class="num">Insight 04</div>
+        <h4>Perputaran persediaan &amp; utang usaha berubah drastis</h4>
+        <p>Persediaan material turun 32,7% dan utang usaha turun 48,1% secara bersamaan &mdash; pola ini bisa mencerminkan manajemen modal kerja yang lebih ketat, namun juga berisiko menandakan penundaan pengadaan/pemeliharaan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RISIKO ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Area yang Memerlukan Perhatian</h2>
+      <div class="tag">Sinyal yang perlu ditindaklanjuti manajemen</div>
+    </div>
+    <div class="insight-grid">
+      <div class="insight risk">
+        <div class="num" style="color:var(--watch);">Perhatian 01</div>
+        <h4>Lonjakan akumulasi penyusutan tidak wajar (+127,6%)</h4>
+        <p>Akumulasi penyusutan naik Rp 61,6 M, jauh melebihi beban penyusutan tahun berjalan (Rp 41,6 M). Selisih ini perlu ditelusuri &mdash; kemungkinan koreksi/reklasifikasi aset yang memerlukan verifikasi register aset tetap dan tim audit.</p>
+      </div>
+      <div class="insight risk">
+        <div class="num" style="color:var(--watch);">Perhatian 02</div>
+        <h4>Rasio lancar konsisten di bawah 1,0x</h4>
+        <p>Liabilitas jangka pendek (Rp 188,8 M) melebihi aset lancar (Rp 158,6 M). Meski wajar untuk struktur bisnis kelistrikan, kondisi ini membatasi ruang gerak likuiditas jika terjadi tekanan arus kas mendadak.</p>
+      </div>
+      <div class="insight risk">
+        <div class="num" style="color:var(--watch);">Perhatian 03</div>
+        <h4>Ketergantungan tinggi pada kebijakan subsidi</h4>
+        <p>42,5% pendapatan usaha kini bertumpu pada subsidi/kompensasi pemerintah. Perubahan kebijakan tarif atau keterlambatan pencairan kompensasi dapat berdampak material terhadap laba dan arus kas.</p>
+      </div>
+      <div class="insight risk">
+        <div class="num" style="color:var(--watch);">Perhatian 04</div>
+        <h4>Penurunan tajam persediaan &amp; utang usaha</h4>
+        <p>Persediaan material pemeliharaan turun sepertiga sementara utang usaha turun hampir separuh. Perlu dipastikan penurunan stok tidak mengganggu kesiapan pemeliharaan jaringan dan keandalan pasokan listrik.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REKOMENDASI ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Rekomendasi</h2>
+      <div class="tag">Disusun berdasarkan urgensi tindak lanjut</div>
+    </div>
+    <div class="rec-cols">
+      <div class="rec-col">
+        <div class="rec-head urgent">Segera (0&ndash;30 hari)</div>
+        <div class="rec-body">
+          <ul style="padding-left:18px;margin:0;">
+            <li>Telusuri dan dokumentasikan penyebab lonjakan akumulasi penyusutan 127,6%; rekonsiliasi dengan register aset tetap dan pastikan tidak ada kesalahan pencatatan.</li>
+            <li>Verifikasi alasan penurunan tajam persediaan material (-32,7%) terhadap rencana pemeliharaan jaringan agar tidak mengganggu keandalan layanan.</li>
+            <li>Susun proyeksi arus kas jangka pendek mengingat rasio lancar berada di bawah 1,0x.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rec-col">
+        <div class="rec-head short">Jangka Pendek (1&ndash;6 bulan)</div>
+        <div class="rec-body">
+          <ul style="padding-left:18px;margin:0;">
+            <li>Evaluasi kebijakan pembayaran ke pemasok mengingat utang usaha turun 48,1% &mdash; pastikan ini pilihan strategis, bukan tekanan dari pemasok.</li>
+            <li>Tinjau ulang kecukupan penyisihan piutang ragu-ragu, karena saldo piutang naik sementara penyisihan justru menurun.</li>
+            <li>Pantau realisasi pencairan subsidi &amp; kompensasi pemerintah secara berkala untuk mengelola risiko arus kas dari ketergantungan ini.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rec-col">
+        <div class="rec-head mid">Jangka Menengah&ndash;Panjang</div>
+        <div class="rec-body">
+          <ul style="padding-left:18px;margin:0;">
+            <li>Percepat penyelesaian proyek dalam pengerjaan (PDP tumbuh 21,5%) agar segera berkontribusi pada kapasitas dan pendapatan operasional.</li>
+            <li>Bangun inisiatif efisiensi biaya pembelian/susut energi, karena margin jual-beli listrik murni belum membaik secara struktural.</li>
+            <li>Lanjutkan tren pengurangan ketergantungan pendanaan antar satuan administrasi dengan memperkuat kemampuan pendanaan mandiri dari laba operasional.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Disusun berdasarkan data neraca &amp; laba rugi kumulatif Periode 08 (Agustus) 2026 vs 2025 yang disediakan. Seluruh angka dalam Rupiah, dibulatkan ke satu desimal miliar.</div>
+    <div>Analisis bersifat umum untuk mendukung diskusi manajemen &mdash; bukan opini audit atau nasihat investasi.</div>
+  </div>
+</footer>
+
+</body>
+</html>

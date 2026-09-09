@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis Anggaran UP3 Sukoharjo 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root{
+  --ink:#132437;
+  --ink-soft:#3d5064;
+  --slate:#5c6b7a;
+  --line:#dde2e6;
+  --paper:#fbfbfa;
+  --band:#f2f4f5;
+  --gold:#a9752f;
+  --gold-soft:#e9d9bd;
+  --navy-bar:#1c3550;
+  --grey-bar:#c7cdd5;
+  --bad:#a83b2f;
+  --bad-soft:#f4e2df;
+  --ok:#2f6f52;
+  --ok-soft:#dfeee5;
+  --warn:#a9752f;
+  --warn-soft:#f2e6d2;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'IBM Plex Sans', -apple-system, sans-serif;
+  font-size:15.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+.page{max-width:900px;margin:0 auto;padding:0 40px;}
+
+/* ---------- COVER ---------- */
+.cover{
+  background:var(--ink);
+  color:#fff;
+  padding:88px 0 64px;
+}
+.cover .page{display:flex;flex-direction:column;gap:34px;}
+.cover-kicker{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  letter-spacing:.06em;
+  color:var(--gold-soft);
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+.cover-kicker .dot{width:5px;height:5px;border-radius:50%;background:var(--gold-soft);display:inline-block;}
+.cover h1{
+  font-family:'Newsreader', serif;
+  font-weight:500;
+  font-size:52px;
+  line-height:1.12;
+  margin:0;
+  max-width:760px;
+  letter-spacing:-0.01em;
+}
+.cover h1 em{font-style:italic;color:var(--gold-soft);}
+.cover p.lead{
+  font-size:17px;
+  color:#c9d2da;
+  max-width:600px;
+  margin:0;
+}
+.cover-meta{
+  display:flex;
+  gap:48px;
+  margin-top:18px;
+  padding-top:26px;
+  border-top:1px solid rgba(255,255,255,.16);
+  flex-wrap:wrap;
+}
+.cover-meta div{display:flex;flex-direction:column;gap:4px;}
+.cover-meta .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8fa0af;}
+.cover-meta .v{font-size:15px;color:#fff;font-weight:500;}
+
+/* ---------- SECTION GENERIC ---------- */
+section{padding:64px 0;}
+section.band{background:var(--band);}
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11.5px;
+  letter-spacing:.05em;
+  color:var(--gold);
+  margin:0 0 10px;
+}
+h2.chapter{
+  font-family:'Newsreader', serif;
+  font-weight:500;
+  font-size:34px;
+  margin:0 0 6px;
+  color:var(--ink);
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+}
+h2.chapter .num{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:16px;
+  color:var(--slate);
+  font-weight:500;
+}
+.chapter-intro{
+  max-width:620px;
+  color:var(--ink-soft);
+  font-size:15.5px;
+  margin:14px 0 0;
+}
+h3.sub{
+  font-family:'Newsreader', serif;
+  font-weight:500;
+  font-style:italic;
+  font-size:22px;
+  margin:52px 0 6px;
+  color:var(--ink);
+}
+h3.sub:first-of-type{margin-top:38px;}
+p.sub-intro{color:var(--ink-soft);max-width:640px;margin:0 0 22px;font-size:14.8px;}
+
+p{margin:0 0 16px;}
+.prose{max-width:680px;}
+.prose p{margin-bottom:14px;}
+.prose strong{color:var(--ink);font-weight:600;}
+
+/* ---------- EXEC SUMMARY ---------- */
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  margin:30px 0 36px;
+}
+.stat{background:#fff;padding:22px 20px;}
+.stat .num{
+  font-family:'Newsreader', serif;
+  font-size:30px;
+  color:var(--ink);
+  font-weight:500;
+  line-height:1;
+}
+.stat .num.bad{color:var(--bad);}
+.stat .num.ok{color:var(--ok);}
+.stat .label{font-size:12.5px;color:var(--slate);margin-top:8px;line-height:1.4;}
+
+.finding-box{
+  border-left:3px solid var(--gold);
+  background:#fff;
+  padding:20px 24px;
+  margin:26px 0;
+}
+.finding-box .tag{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:10.5px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:8px;
+  display:block;
+}
+.finding-box.risk{border-left-color:var(--bad);}
+.finding-box.risk .tag{color:var(--bad);}
+.finding-box.good{border-left-color:var(--ok);}
+.finding-box.good .tag{color:var(--ok);}
+.finding-box p{margin:0;color:var(--ink-soft);font-size:14.8px;}
+.finding-box p strong{color:var(--ink);}
+
+/* ---------- BAR CHARTS ---------- */
+.chart-wrap{margin:26px 0 34px;}
+.chart-cap{font-size:12.5px;color:var(--slate);margin-bottom:14px;}
+.barchart{display:flex;flex-direction:column;gap:7px;}
+.bar-row{
+  display:grid;
+  grid-template-columns:22px 108px 1fr 118px;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+}
+.bar-rank{font-family:'IBM Plex Mono', monospace;color:#a7b0b8;font-size:11px;}
+.bar-label{color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.bar-track{background:#e9ebec;height:16px;position:relative;border-radius:1px;}
+.bar-fill{background:var(--grey-bar);height:100%;border-radius:1px;}
+.bar-fill.hl{background:var(--navy-bar);}
+.bar-fill.gap{background:var(--warn-soft);}
+.bar-fill.gap.hl{background:var(--bad);}
+.bar-value{font-family:'IBM Plex Mono', monospace;font-size:12px;color:var(--ink-soft);text-align:right;}
+.bar-row.hl .bar-label{color:var(--ink);font-weight:600;}
+.bar-row.hl .bar-value{color:var(--ink);font-weight:600;}
+
+.legend{display:flex;gap:22px;font-size:12px;color:var(--slate);margin-top:10px;}
+.legend span{display:inline-flex;align-items:center;gap:6px;}
+.legend i{width:11px;height:11px;display:inline-block;border-radius:2px;}
+
+/* ---------- TABLES ---------- */
+table.data{
+  width:100%;
+  border-collapse:collapse;
+  margin:22px 0 30px;
+  font-size:13.3px;
+}
+table.data caption{
+  text-align:left;
+  font-size:12px;
+  color:var(--slate);
+  margin-bottom:10px;
+  caption-side:top;
+}
+table.data th{
+  text-align:left;
+  font-weight:600;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:var(--slate);
+  border-bottom:1.5px solid var(--ink);
+  padding:8px 10px;
+}
+table.data td{
+  padding:9px 10px;
+  border-bottom:1px solid var(--line);
+  color:var(--ink-soft);
+}
+table.data td.tprog{color:var(--ink);font-weight:500;}
+table.data td.tnum{text-align:right;font-family:'IBM Plex Mono', monospace;font-size:12.3px;}
+table.data tr.ttotal td{border-top:1.5px solid var(--ink);border-bottom:none;font-weight:600;color:var(--ink);padding-top:12px;}
+table.data td.g-bad{color:var(--bad);font-weight:600;}
+table.data td.g-warn{color:var(--warn);font-weight:600;}
+table.data td.g-ok{color:var(--ok);font-weight:600;}
+
+/* ---------- RANK PILL ---------- */
+.rankline{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 8px;}
+.pill{
+  border:1px solid var(--line);
+  padding:5px 12px;
+  font-size:12.3px;
+  color:var(--ink-soft);
+  border-radius:20px;
+  background:#fff;
+}
+.pill b{color:var(--ink);}
+.pill.bad{border-color:var(--bad);color:var(--bad);}
+.pill.ok{border-color:var(--ok);color:var(--ok);}
+
+/* ---------- RECOMMENDATION LIST ---------- */
+.reco{
+  display:flex;
+  gap:18px;
+  padding:20px 0;
+  border-top:1px solid var(--line);
+}
+.reco:last-child{border-bottom:1px solid var(--line);}
+.reco .rn{
+  font-family:'Newsreader', serif;
+  font-style:italic;
+  font-size:26px;
+  color:var(--gold);
+  min-width:36px;
+}
+.reco .rt{font-weight:600;color:var(--ink);margin-bottom:5px;font-size:15px;}
+.reco .rd{color:var(--ink-soft);font-size:14.3px;max-width:600px;}
+.reco .rmeta{font-family:'IBM Plex Mono', monospace;font-size:10.5px;color:var(--slate);text-transform:uppercase;letter-spacing:.05em;margin-top:8px;display:inline-block;}
+
+/* ---------- QUADRANT ---------- */
+.quadrant{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  margin:30px 0;
+}
+.qcell{background:#fff;padding:22px 24px;min-height:150px;}
+.qcell .qtitle{font-weight:600;font-size:14.5px;color:var(--ink);margin-bottom:8px;}
+.qcell .qtitle .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;}
+.qcell p{font-size:13.3px;color:var(--ink-soft);margin:0;}
+.qcell.investasi{border-top:3px solid var(--bad);}
+.qcell.operasi{border-top:3px solid var(--ok);}
+
+/* ---------- FOOTER / METHOD ---------- */
+.methodnote{
+  font-size:12.5px;
+  color:var(--slate);
+  border-top:1px solid var(--line);
+  padding-top:20px;
+  margin-top:30px;
+}
+.methodnote code{
+  font-family:'IBM Plex Mono', monospace;
+  background:var(--band);
+  padding:1px 5px;
+  border-radius:3px;
+  font-size:11.5px;
+}
+footer{
+  background:var(--ink);
+  color:#8fa0af;
+  padding:36px 0;
+  font-size:12.5px;
+}
+footer .page{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+@media (max-width:640px){
+  .page{padding:0 20px;}
+  .cover h1{font-size:34px;}
+  .stat-grid{grid-template-columns:1fr;}
+  .quadrant{grid-template-columns:1fr;}
+  .bar-row{grid-template-columns:18px 78px 1fr 90px;font-size:11.5px;}
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="page">
+    <div class="cover-kicker"><span>PT PLN (PERSERO) &middot; UID JAWA TENGAH &amp; DIY</span><span class="dot"></span><span>TAHUN ANGGARAN 2026</span></div>
+    <h1>Anggaran UP3 Sukoharjo: kuat mengunci kontrak, <em>tertinggal mencairkan pembayaran</em></h1>
+    <p class="lead">Analisis kritis atas besaran, posisi relatif, realisasi kontrak, dan realisasi pembayaran anggaran Investasi dan Operasi UP3 Sukoharjo dibandingkan 13 unit pelaksana se-Jawa Tengah &amp; DIY.</p>
+    <div class="cover-meta">
+      <div><span class="k">Cakupan</span><span class="v">Investasi (SKKI) &amp; Operasi (SKKO)</span></div>
+      <div><span class="k">Pembanding</span><span class="v">13 UP3 + UP2D Jateng &amp; DIY</span></div>
+      <div><span class="k">Sumber data</span><span class="v">Dashboard Apkeu 09-09-2026</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="band">
+  <div class="page">
+    <p class="eyebrow">Ringkasan Eksekutif</p>
+    <h2 class="chapter">Satu unit, dua wajah kinerja anggaran</h2>
+    <p class="chapter-intro">UP3 Sukoharjo mengelola pagu yang relatif kecil dibanding unit lain di Jawa Tengah, namun pola realisasinya jauh berbeda antara portofolio Investasi dan Operasi &mdash; dan perbedaan itulah yang menjadi inti temuan laporan ini.</p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="num">Rp30.278.158.674</div>
+        <div class="label">Total pagu Investasi + Operasi Sukoharjo &mdash; peringkat 11 dari 13 UP3 (kelompok pagu terkecil)</div>
+      </div>
+      <div class="stat">
+        <div class="num ok">97,48%</div>
+        <div class="label">Realisasi terkontrak Investasi &mdash; peringkat 2 dari 13, jauh di atas rata-rata 88,3%</div>
+      </div>
+      <div class="stat">
+        <div class="num bad">36,51%</div>
+        <div class="label">Realisasi terbayar Investasi &mdash; peringkat 11 dari 13, di bawah rata-rata 51,7%</div>
+      </div>
+    </div>
+
+    <div class="finding-box risk">
+      <span class="tag">Temuan Utama</span>
+      <p>Selisih antara realisasi terkontrak dan realisasi terbayar Investasi Sukoharjo mencapai <strong>60,97 poin persentase</strong> &mdash; <strong>gap terbesar dari seluruh 13 UP3 di Jawa Tengah</strong>. Artinya hampir seluruh pagu investasi sudah terikat kontrak, tetapi lebih dari 60% nilainya belum tercermin sebagai uang yang benar-benar keluar. Pola ini berbanding terbalik dengan portofolio Operasi, di mana gap Sukoharjo hanya 16,67 poin (peringkat 10 dari 13, tergolong sehat).</p>
+    </div>
+
+    <p class="prose" style="max-width:680px;color:var(--ink-soft)">Laporan ini membahas Bab Investasi terlebih dahulu &mdash; karena di situlah letak risiko terbesar &mdash; sebelum masuk ke Bab Operasi yang relatif lebih terkendali, ditutup dengan sintesis lintas-bab dan rekomendasi prioritas.</p>
+  </div>
+</section>
+
+<section>
+  <div class="page">
+    <p class="eyebrow">Bab I</p>
+    <h2 class="chapter"><span class="num">01</span>Anggaran Investasi</h2>
+    <p class="chapter-intro">Pagu SKKI Sukoharjo tahun 2026 sebesar <strong>Rp21.761.921.771</strong>, setara 0,89% dari total pagu investasi Jawa Tengah Rp2.446.055.398.509.</p>
+
+    <h3 class="sub">1.1 &nbsp;Besaran dan posisi di antara 13 UP3</h3>
+    <p class="sub-intro">Dari sisi besaran pagu, Sukoharjo berada di kelompok bawah &mdash; peringkat 11 dari 13 UP3, di bawah median Rp27.384.331.914, dan kurang dari sepertiga pagu UP3 Semarang yang terbesar.</p>
+    <div class="rankline">
+      <span class="pill">Peringkat pagu: <b>11 dari 13</b></span>
+      <span class="pill">Pagu Sukoharjo: <b>Rp21.761.921.771</b></span>
+      <span class="pill">Median UP3: <b>Rp27.384.331.914</b></span>
+      <span class="pill">Pagu terbesar (Semarang): <b>Rp16.945.667.972</b></span>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-cap">Nilai SKKI (pagu investasi) per UP3, diurutkan dari terbesar</div>
+      <div class="barchart">
+<div class="bar-row"><div class="bar-rank">01</div><div class="bar-label">Semarang</div><div class="bar-track"><div class="bar-fill" style="width:100.00%"></div></div><div class="bar-value">Rp92.735.652.477</div></div>
+<div class="bar-row"><div class="bar-rank">02</div><div class="bar-label">Kudus</div><div class="bar-track"><div class="bar-fill" style="width:71.66%"></div></div><div class="bar-value">Rp66.454.329.427</div></div>
+<div class="bar-row"><div class="bar-rank">03</div><div class="bar-label">Magelang</div><div class="bar-track"><div class="bar-fill" style="width:45.25%"></div></div><div class="bar-value">Rp41.959.109.612</div></div>
+<div class="bar-row"><div class="bar-rank">04</div><div class="bar-label">Tegal</div><div class="bar-track"><div class="bar-fill" style="width:44.21%"></div></div><div class="bar-value">Rp41.002.603.113</div></div>
+<div class="bar-row"><div class="bar-rank">05</div><div class="bar-label">Surakarta</div><div class="bar-track"><div class="bar-fill" style="width:42.20%"></div></div><div class="bar-value">Rp39.131.900.328</div></div>
+<div class="bar-row"><div class="bar-rank">06</div><div class="bar-label">Pekalongan</div><div class="bar-track"><div class="bar-fill" style="width:38.89%"></div></div><div class="bar-value">Rp36.062.070.373</div></div>
+<div class="bar-row"><div class="bar-rank">07</div><div class="bar-label">Purwokerto</div><div class="bar-track"><div class="bar-fill" style="width:29.53%"></div></div><div class="bar-value">Rp27.384.331.914</div></div>
+<div class="bar-row"><div class="bar-rank">08</div><div class="bar-label">Cilacap</div><div class="bar-track"><div class="bar-fill" style="width:26.61%"></div></div><div class="bar-value">Rp24.677.441.560</div></div>
+<div class="bar-row"><div class="bar-rank">09</div><div class="bar-label">Klaten</div><div class="bar-track"><div class="bar-fill" style="width:25.81%"></div></div><div class="bar-value">Rp23.933.540.931</div></div>
+<div class="bar-row"><div class="bar-rank">10</div><div class="bar-label">Grobogan</div><div class="bar-track"><div class="bar-fill" style="width:23.78%"></div></div><div class="bar-value">Rp22.051.135.705</div></div>
+<div class="bar-row hl"><div class="bar-rank">11</div><div class="bar-label">Sukoharjo</div><div class="bar-track"><div class="bar-fill hl" style="width:23.47%"></div></div><div class="bar-value">Rp21.761.921.771</div></div>
+<div class="bar-row"><div class="bar-rank">12</div><div class="bar-label">Salatiga</div><div class="bar-track"><div class="bar-fill" style="width:18.27%"></div></div><div class="bar-value">Rp16.945.667.972</div></div>
+<div class="bar-row"><div class="bar-rank">13</div><div class="bar-label">Yogyakarta</div><div class="bar-track"><div class="bar-fill" style="width:10.07%"></div></div><div class="bar-value">Rp9.342.333.085</div></div>
+</div>
+    </div>
+    <div class="prose">
+      <p>Dengan pagu sekitar 21,76 miliar rupiah, Sukoharjo bukan prioritas investasi utama di wilayah Jateng &amp; DIY &mdash; sejalan dengan karakter wilayahnya yang relatif matang secara jaringan dibanding UP3 dengan kebutuhan ekspansi lebih besar seperti Semarang atau Kudus. Namun besaran pagu yang kecil justru membuat setiap rupiah yang tidak terserap lebih terasa dampaknya terhadap kinerja penyerapan unit secara keseluruhan.</p>
+    </div>
+
+    <h3 class="sub">1.2 &nbsp;Realisasi terkontrak: yang terbaik kedua se-Jawa Tengah</h3>
+    <p class="sub-intro">Sukoharjo mengunci 97,48% dari pagunya ke dalam kontrak &mdash; hanya kalah dari UP3 Yogyakarta yang mencapai 100%, dan jauh di atas rata-rata 13 UP3 sebesar 88,3%. Sisa SKKI yang belum terkontrak hanya Rp547.472.143, atau 2,52% dari pagu.</p>
+    <div class="chart-wrap">
+      <div class="chart-cap">% Terkontrak terhadap pagu SKKI, per UP3</div>
+      <div class="barchart">
+<div class="bar-row"><div class="bar-rank">01</div><div class="bar-label">Yogyakarta</div><div class="bar-track"><div class="bar-fill" style="width:100.00%"></div></div><div class="bar-value">100,00%</div></div>
+<div class="bar-row hl"><div class="bar-rank">02</div><div class="bar-label">Sukoharjo</div><div class="bar-track"><div class="bar-fill hl" style="width:97.48%"></div></div><div class="bar-value">97,48%</div></div>
+<div class="bar-row"><div class="bar-rank">03</div><div class="bar-label">Cilacap</div><div class="bar-track"><div class="bar-fill" style="width:97.34%"></div></div><div class="bar-value">97,34%</div></div>
+<div class="bar-row"><div class="bar-rank">04</div><div class="bar-label">Pekalongan</div><div class="bar-track"><div class="bar-fill" style="width:94.77%"></div></div><div class="bar-value">94,77%</div></div>
+<div class="bar-row"><div class="bar-rank">05</div><div class="bar-label">Tegal</div><div class="bar-track"><div class="bar-fill" style="width:94.44%"></div></div><div class="bar-value">94,44%</div></div>
+<div class="bar-row"><div class="bar-rank">06</div><div class="bar-label">Magelang</div><div class="bar-track"><div class="bar-fill" style="width:92.03%"></div></div><div class="bar-value">92,03%</div></div>
+<div class="bar-row"><div class="bar-rank">07</div><div class="bar-label">Klaten</div><div class="bar-track"><div class="bar-fill" style="width:89.88%"></div></div><div class="bar-value">89,88%</div></div>
+<div class="bar-row"><div class="bar-rank">08</div><div class="bar-label">Purwokerto</div><div class="bar-track"><div class="bar-fill" style="width:87.18%"></div></div><div class="bar-value">87,18%</div></div>
+<div class="bar-row"><div class="bar-rank">09</div><div class="bar-label">Surakarta</div><div class="bar-track"><div class="bar-fill" style="width:81.90%"></div></div><div class="bar-value">81,90%</div></div>
+<div class="bar-row"><div class="bar-rank">10</div><div class="bar-label">Kudus</div><div class="bar-track"><div class="bar-fill" style="width:81.39%"></div></div><div class="bar-value">81,39%</div></div>
+<div class="bar-row"><div class="bar-rank">11</div><div class="bar-label">Semarang</div><div class="bar-track"><div class="bar-fill" style="width:77.92%"></div></div><div class="bar-value">77,92%</div></div>
+<div class="bar-row"><div class="bar-rank">12</div><div class="bar-label">Salatiga</div><div class="bar-track"><div class="bar-fill" style="width:77.11%"></div></div><div class="bar-value">77,11%</div></div>
+<div class="bar-row"><div class="bar-rank">13</div><div class="bar-label">Grobogan</div><div class="bar-track"><div class="bar-fill" style="width:76.75%"></div></div><div class="bar-value">76,75%</div></div>
+</div>
+    </div>
+    <div class="finding-box good">
+      <span class="tag">Sisi Positif</span>
+      <p>Kecepatan dan kedisiplinan proses pengadaan Investasi di Sukoharjo tergolong <strong>terbaik di Jawa Tengah</strong>. Nyaris seluruh pagu sudah punya kepastian kontrak sejak dini &mdash; mengindikasikan perencanaan pengadaan (RUP/lelang) yang matang dan risiko gagal kontrak di sisa tahun anggaran yang sangat rendah.</p>
+    </div>
+
+    <h3 class="sub">1.3 &nbsp;Realisasi terbayar: kontradiksi yang perlu ditelusuri</h3>
+    <p class="sub-intro">Meski juara kedua dalam kontrak, Sukoharjo justru berada di peringkat 11 dari 13 untuk realisasi pembayaran &mdash; hanya 36,51% dari pagu yang benar-benar sudah cair, di bawah rata-rata 51,7%.</p>
+    <div class="chart-wrap">
+      <div class="chart-cap">% Realisasi bayar terhadap pagu SKKI, per UP3</div>
+      <div class="barchart">
+<div class="bar-row"><div class="bar-rank">01</div><div class="bar-label">Yogyakarta</div><div class="bar-track"><div class="bar-fill" style="width:100.00%"></div></div><div class="bar-value">100,00%</div></div>
+<div class="bar-row"><div class="bar-rank">02</div><div class="bar-label">Klaten</div><div class="bar-track"><div class="bar-fill" style="width:58.98%"></div></div><div class="bar-value">58,98%</div></div>
+<div class="bar-row"><div class="bar-rank">03</div><div class="bar-label">Purwokerto</div><div class="bar-track"><div class="bar-fill" style="width:58.58%"></div></div><div class="bar-value">58,58%</div></div>
+<div class="bar-row"><div class="bar-rank">04</div><div class="bar-label">Surakarta</div><div class="bar-track"><div class="bar-fill" style="width:57.29%"></div></div><div class="bar-value">57,29%</div></div>
+<div class="bar-row"><div class="bar-rank">05</div><div class="bar-label">Tegal</div><div class="bar-track"><div class="bar-fill" style="width:57.10%"></div></div><div class="bar-value">57,10%</div></div>
+<div class="bar-row"><div class="bar-rank">06</div><div class="bar-label">Kudus</div><div class="bar-track"><div class="bar-fill" style="width:52.78%"></div></div><div class="bar-value">52,78%</div></div>
+<div class="bar-row"><div class="bar-rank">07</div><div class="bar-label">Pekalongan</div><div class="bar-track"><div class="bar-fill" style="width:50.65%"></div></div><div class="bar-value">50,65%</div></div>
+<div class="bar-row"><div class="bar-rank">08</div><div class="bar-label">Cilacap</div><div class="bar-track"><div class="bar-fill" style="width:49.35%"></div></div><div class="bar-value">49,35%</div></div>
+<div class="bar-row"><div class="bar-rank">09</div><div class="bar-label">Salatiga</div><div class="bar-track"><div class="bar-fill" style="width:42.81%"></div></div><div class="bar-value">42,81%</div></div>
+<div class="bar-row"><div class="bar-rank">10</div><div class="bar-label">Grobogan</div><div class="bar-track"><div class="bar-fill" style="width:42.59%"></div></div><div class="bar-value">42,59%</div></div>
+<div class="bar-row hl"><div class="bar-rank">11</div><div class="bar-label">Sukoharjo</div><div class="bar-track"><div class="bar-fill hl" style="width:36.51%"></div></div><div class="bar-value">36,51%</div></div>
+<div class="bar-row"><div class="bar-rank">12</div><div class="bar-label">Magelang</div><div class="bar-track"><div class="bar-fill" style="width:35.48%"></div></div><div class="bar-value">35,48%</div></div>
+<div class="bar-row"><div class="bar-rank">13</div><div class="bar-label">Semarang</div><div class="bar-track"><div class="bar-fill" style="width:29.98%"></div></div><div class="bar-value">29,98%</div></div>
+</div>
+    </div>
+
+    <p class="sub-intro" style="margin-top:40px">Jika kedua indikator digabung menjadi selisih (gap) antara % terkontrak dan % terbayar, Sukoharjo menempati posisi paling ekstrem di seluruh Jawa Tengah.</p>
+    <div class="chart-wrap">
+      <div class="chart-cap">Gap % Terkontrak &minus; % Terbayar, per UP3 (makin besar = makin banyak nilai kontrak yang belum cair)</div>
+      <div class="barchart">
+<div class="bar-row hl"><div class="bar-rank">01</div><div class="bar-label">Sukoharjo</div><div class="bar-track"><div class="bar-fill gap hl" style="width:100.00%"></div></div><div class="bar-value">60,97 poin</div></div>
+<div class="bar-row"><div class="bar-rank">02</div><div class="bar-label">Magelang</div><div class="bar-track"><div class="bar-fill gap" style="width:92.75%"></div></div><div class="bar-value">56,55 poin</div></div>
+<div class="bar-row"><div class="bar-rank">03</div><div class="bar-label">Cilacap</div><div class="bar-track"><div class="bar-fill gap" style="width:78.71%"></div></div><div class="bar-value">47,99 poin</div></div>
+<div class="bar-row"><div class="bar-rank">04</div><div class="bar-label">Semarang</div><div class="bar-track"><div class="bar-fill gap" style="width:78.63%"></div></div><div class="bar-value">47,94 poin</div></div>
+<div class="bar-row"><div class="bar-rank">05</div><div class="bar-label">Pekalongan</div><div class="bar-track"><div class="bar-fill gap" style="width:72.36%"></div></div><div class="bar-value">44,12 poin</div></div>
+<div class="bar-row"><div class="bar-rank">06</div><div class="bar-label">Tegal</div><div class="bar-track"><div class="bar-fill gap" style="width:61.24%"></div></div><div class="bar-value">37,34 poin</div></div>
+<div class="bar-row"><div class="bar-rank">07</div><div class="bar-label">Salatiga</div><div class="bar-track"><div class="bar-fill gap" style="width:56.26%"></div></div><div class="bar-value">34,30 poin</div></div>
+<div class="bar-row"><div class="bar-rank">08</div><div class="bar-label">Grobogan</div><div class="bar-track"><div class="bar-fill gap" style="width:56.03%"></div></div><div class="bar-value">34,16 poin</div></div>
+<div class="bar-row"><div class="bar-rank">09</div><div class="bar-label">Klaten</div><div class="bar-track"><div class="bar-fill gap" style="width:50.68%"></div></div><div class="bar-value">30,90 poin</div></div>
+<div class="bar-row"><div class="bar-rank">10</div><div class="bar-label">Kudus</div><div class="bar-track"><div class="bar-fill gap" style="width:46.92%"></div></div><div class="bar-value">28,61 poin</div></div>
+<div class="bar-row"><div class="bar-rank">11</div><div class="bar-label">Purwokerto</div><div class="bar-track"><div class="bar-fill gap" style="width:46.91%"></div></div><div class="bar-value">28,60 poin</div></div>
+<div class="bar-row"><div class="bar-rank">12</div><div class="bar-label">Surakarta</div><div class="bar-track"><div class="bar-fill gap" style="width:40.36%"></div></div><div class="bar-value">24,61 poin</div></div>
+<div class="bar-row"><div class="bar-rank">13</div><div class="bar-label">Yogyakarta</div><div class="bar-track"><div class="bar-fill gap" style="width:1.50%"></div></div><div class="bar-value">0,00 poin</div></div>
+</div>
+    </div>
+    <div class="finding-box risk">
+      <span class="tag">Risiko Utama</span>
+      <p>Gap 60,97 poin di Sukoharjo berarti sekitar <strong>Rp13.269.592.108</strong> nilai yang sudah menjadi komitmen kontrak, namun belum keluar sebagai pembayaran riil. Pola ini bisa berasal dari tiga sumber: (1) pekerjaan fisik/pengadaan barang belum selesai walau kontrak sudah efektif, (2) proses verifikasi &amp; administrasi Berita Acara Serah Terima (BAST) yang lambat, atau (3) termin pembayaran vendor yang panjang. Tanpa percepatan, nilai ini berisiko menjadi tunggakan pembayaran akhir tahun atau bahkan potensi SILPA (anggaran terkontrak tapi tak terserap kas).</p>
+    </div>
+
+    <h3 class="sub">1.4 &nbsp;Rincian per program: SAR-Pemasaran sebagai pusat masalah</h3>
+    <p class="sub-intro">Pagu investasi Sukoharjo terbagi ke 5 program. Program <strong>SAR &ndash; Pemasaran</strong> mendominasi 56,0% dari total pagu, sudah 98,39% terkontrak, namun baru 19,19% terbayar &mdash; menjadikannya kontributor tunggal terbesar terhadap gap keseluruhan Bab Investasi.</p>
+    <table class="data">
+      <thead><tr><th>Program</th><th>Nilai SKKI</th><th>Porsi</th><th>% Terkontrak</th><th>% Terbayar</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr>
+<td class="tprog">LUN - Luncuran</td>
+<td class="tnum">Rp4.938.869.907</td>
+<td class="tnum">22,7%</td>
+<td class="tnum">99,71%</td>
+<td class="tnum">99,71%</td>
+<td class="tnum g-ok">0,00 pp</td>
+</tr>
+<tr>
+<td class="tprog">DIS - Perkuatan Jaringan Distribusi</td>
+<td class="tnum">Rp911.553.671</td>
+<td class="tnum">4,2%</td>
+<td class="tnum">63,05%</td>
+<td class="tnum">6,19%</td>
+<td class="tnum g-bad">56,86 pp</td>
+</tr>
+<tr>
+<td class="tprog">LOS - Penurunan Susut</td>
+<td class="tnum">Rp2.144.481.310</td>
+<td class="tnum">9,9%</td>
+<td class="tnum">99,98%</td>
+<td class="tnum">29,24%</td>
+<td class="tnum g-bad">70,74 pp</td>
+</tr>
+<tr>
+<td class="tprog">SAR - Pemasaran</td>
+<td class="tnum">Rp12.177.711.000</td>
+<td class="tnum">56,0%</td>
+<td class="tnum">98,39%</td>
+<td class="tnum">19,19%</td>
+<td class="tnum g-bad">79,20 pp</td>
+</tr>
+<tr>
+<td class="tprog">EDP - Evakuasi Daya dan Perluasan JTM</td>
+<td class="tnum">Rp1.589.305.883</td>
+<td class="tnum">7,3%</td>
+<td class="tnum">100,00%</td>
+<td class="tnum">0,00%</td>
+<td class="tnum g-bad">100,00 pp</td>
+</tr>
+<tr class="ttotal">
+<td class="tprog">Total Investasi</td>
+<td class="tnum">Rp21.761.921.771</td>
+<td class="tnum">100,0%</td>
+<td class="tnum">97,48%</td>
+<td class="tnum">36,51%</td>
+<td class="tnum">60,97 pp</td>
+</tr>
+      </tbody>
+    </table>
+    <div class="prose">
+      <p><strong>EDP &ndash; Evakuasi Daya dan Perluasan JTM</strong> patut mendapat perhatian khusus: program ini sudah <strong>100% terkontrak</strong> tetapi realisasi bayarnya <strong>nol rupiah</strong>. Ini adalah kasus paling murni dari pola "commit penuh, cair nihil" dan sebaiknya menjadi objek pemeriksaan pertama oleh tim keuangan/anggaran unit.</p>
+      <p><strong>DIS &ndash; Perkuatan Jaringan Distribusi</strong> juga bermasalah dari sisi kontrak itu sendiri: baru 63,05% terkontrak (satu-satunya program investasi Sukoharjo yang terkontraknya di bawah 90%), dengan realisasi bayar hanya 6,19%. Program ini menghadapi risiko ganda &mdash; pengadaan yang lambat sekaligus pencairan yang lambat.</p>
+      <p>Sebaliknya, <strong>LUN &ndash; Luncuran</strong> (carry-over dari tahun sebelumnya) menunjukkan performa terbaik dengan 99,71% terbayar &mdash; wajar karena merupakan pekerjaan lanjutan yang progresnya sudah berjalan sejak periode sebelumnya.</p>
+    </div>
+
+    <h3 class="sub">1.5 &nbsp;Kesimpulan Bab Investasi</h3>
+    <div class="prose">
+      <p>Sukoharjo tidak memiliki masalah perencanaan atau pengadaan &mdash; catatan kontraknya termasuk yang terbaik di Jawa Tengah. Masalah utamanya ada di hilir: <strong>konversi dari kontrak menjadi pembayaran riil berjalan jauh lebih lambat dibanding unit lain</strong>, terkonsentrasi pada program SAR-Pemasaran dan EDP. Ini adalah persoalan eksekusi/administratif, bukan persoalan perencanaan anggaran.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="page">
+    <p class="eyebrow">Bab II</p>
+    <h2 class="chapter"><span class="num">02</span>Anggaran Operasi</h2>
+    <p class="chapter-intro">Pagu SKKO Sukoharjo sebesar <strong>Rp8.516.236.903</strong>, setara 0,58% dari total pagu operasi Jawa Tengah Rp1.476.765.041.571. Berbeda dengan Bab Investasi, portofolio ini menunjukkan pola realisasi yang jauh lebih sehat.</p>
+
+    <h3 class="sub">2.1 &nbsp;Besaran dan posisi: berada di kelompok menengah</h3>
+    <p class="sub-intro">Pagu operasi Sukoharjo menempati peringkat 9 dari 13 UP3, mendekati nilai median Rp8.718.682.405 &mdash; posisi yang jauh lebih ke tengah dibanding posisinya di Bab Investasi (peringkat 11).</p>
+    <div class="rankline">
+      <span class="pill">Peringkat pagu: <b>9 dari 13</b></span>
+      <span class="pill">Pagu Sukoharjo: <b>Rp8.516.236.903</b></span>
+      <span class="pill">Median UP3: <b>Rp8.718.682.405</b></span>
+      <span class="pill">Pagu terbesar (Kudus): <b>Rp22.566.570.233</b></span>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-cap">Nilai SKKO (pagu operasi) per UP3, diurutkan dari terbesar</div>
+      <div class="barchart">
+<div class="bar-row"><div class="bar-rank">01</div><div class="bar-label">Kudus</div><div class="bar-track"><div class="bar-fill" style="width:100.00%"></div></div><div class="bar-value">Rp22.566.570.233</div></div>
+<div class="bar-row"><div class="bar-rank">02</div><div class="bar-label">Pekalongan</div><div class="bar-track"><div class="bar-fill" style="width:62.29%"></div></div><div class="bar-value">Rp14.055.813.019</div></div>
+<div class="bar-row"><div class="bar-rank">03</div><div class="bar-label">Surakarta</div><div class="bar-track"><div class="bar-fill" style="width:57.15%"></div></div><div class="bar-value">Rp12.897.573.440</div></div>
+<div class="bar-row"><div class="bar-rank">04</div><div class="bar-label">Semarang</div><div class="bar-track"><div class="bar-fill" style="width:55.33%"></div></div><div class="bar-value">Rp12.487.089.289</div></div>
+<div class="bar-row"><div class="bar-rank">05</div><div class="bar-label">Tegal</div><div class="bar-track"><div class="bar-fill" style="width:50.14%"></div></div><div class="bar-value">Rp11.314.611.882</div></div>
+<div class="bar-row"><div class="bar-rank">06</div><div class="bar-label">Purwokerto</div><div class="bar-track"><div class="bar-fill" style="width:44.98%"></div></div><div class="bar-value">Rp10.149.855.806</div></div>
+<div class="bar-row"><div class="bar-rank">07</div><div class="bar-label">Cilacap</div><div class="bar-track"><div class="bar-fill" style="width:38.64%"></div></div><div class="bar-value">Rp8.718.682.405</div></div>
+<div class="bar-row"><div class="bar-rank">08</div><div class="bar-label">Magelang</div><div class="bar-track"><div class="bar-fill" style="width:37.93%"></div></div><div class="bar-value">Rp8.558.888.076</div></div>
+<div class="bar-row hl"><div class="bar-rank">09</div><div class="bar-label">Sukoharjo</div><div class="bar-track"><div class="bar-fill hl" style="width:37.74%"></div></div><div class="bar-value">Rp8.516.236.903</div></div>
+<div class="bar-row"><div class="bar-rank">10</div><div class="bar-label">Grobogan</div><div class="bar-track"><div class="bar-fill" style="width:37.49%"></div></div><div class="bar-value">Rp8.460.678.057</div></div>
+<div class="bar-row"><div class="bar-rank">11</div><div class="bar-label">Salatiga</div><div class="bar-track"><div class="bar-fill" style="width:36.01%"></div></div><div class="bar-value">Rp8.126.664.734</div></div>
+<div class="bar-row"><div class="bar-rank">12</div><div class="bar-label">Klaten</div><div class="bar-track"><div class="bar-fill" style="width:34.89%"></div></div><div class="bar-value">Rp7.873.125.340</div></div>
+<div class="bar-row"><div class="bar-rank">13</div><div class="bar-label">Yogyakarta</div><div class="bar-track"><div class="bar-fill" style="width:11.99%"></div></div><div class="bar-value">Rp2.705.400.872</div></div>
+</div>
+    </div>
+
+    <h3 class="sub">2.2 &nbsp;Realisasi terkontrak: di atas rata-rata</h3>
+    <p class="sub-intro">Sebanyak 78,73% pagu operasi Sukoharjo sudah terkontrak &mdash; peringkat 5 dari 13, di atas rata-rata 71,4%. Sisa SKKO yang belum terkontrak masih cukup besar secara proporsi, yaitu 21,27% (Rp1.811.811.341), wajar mengingat kontrak operasional cenderung dieksekusi bertahap sepanjang tahun berjalan.</p>
+    <div class="chart-wrap">
+      <div class="chart-cap">% Terkontrak terhadap pagu SKKO, per UP3</div>
+      <div class="barchart">
+<div class="bar-row"><div class="bar-rank">01</div><div class="bar-label">Yogyakarta</div><div class="bar-track"><div class="bar-fill" style="width:100.00%"></div></div><div class="bar-value">101,82%</div></div>
+<div class="bar-row"><div class="bar-rank">02</div><div class="bar-label">Cilacap</div><div class="bar-track"><div class="bar-fill" style="width:84.94%"></div></div><div class="bar-value">86,49%</div></div>
+<div class="bar-row"><div class="bar-rank">03</div><div class="bar-label">Purwokerto</div><div class="bar-track"><div class="bar-fill" style="width:79.65%"></div></div><div class="bar-value">81,10%</div></div>
+<div class="bar-row"><div class="bar-rank">04</div><div class="bar-label">Surakarta</div><div class="bar-track"><div class="bar-fill" style="width:77.50%"></div></div><div class="bar-value">78,91%</div></div>
+<div class="bar-row hl"><div class="bar-rank">05</div><div class="bar-label">Sukoharjo</div><div class="bar-track"><div class="bar-fill hl" style="width:77.32%"></div></div><div class="bar-value">78,73%</div></div>
+<div class="bar-row"><div class="bar-rank">06</div><div class="bar-label">Pekalongan</div><div class="bar-track"><div class="bar-fill" style="width:75.28%"></div></div><div class="bar-value">76,65%</div></div>
+<div class="bar-row"><div class="bar-rank">07</div><div class="bar-label">Semarang</div><div class="bar-track"><div class="bar-fill" style="width:73.86%"></div></div><div class="bar-value">75,20%</div></div>
+<div class="bar-row"><div class="bar-rank">08</div><div class="bar-label">Salatiga</div><div class="bar-track"><div class="bar-fill" style="width:68.65%"></div></div><div class="bar-value">69,90%</div></div>
+<div class="bar-row"><div class="bar-rank">09</div><div class="bar-label">Tegal</div><div class="bar-track"><div class="bar-fill" style="width:65.10%"></div></div><div class="bar-value">66,28%</div></div>
+<div class="bar-row"><div class="bar-rank">10</div><div class="bar-label">Klaten</div><div class="bar-track"><div class="bar-fill" style="width:58.82%"></div></div><div class="bar-value">59,89%</div></div>
+<div class="bar-row"><div class="bar-rank">11</div><div class="bar-label">Magelang</div><div class="bar-track"><div class="bar-fill" style="width:56.57%"></div></div><div class="bar-value">57,60%</div></div>
+<div class="bar-row"><div class="bar-rank">12</div><div class="bar-label">Grobogan</div><div class="bar-track"><div class="bar-fill" style="width:49.01%"></div></div><div class="bar-value">49,90%</div></div>
+<div class="bar-row"><div class="bar-rank">13</div><div class="bar-label">Kudus</div><div class="bar-track"><div class="bar-fill" style="width:45.03%"></div></div><div class="bar-value">45,85%</div></div>
+</div>
+    </div>
+
+    <h3 class="sub">2.3 &nbsp;Realisasi terbayar: kebalikan dari pola Investasi</h3>
+    <p class="sub-intro">Realisasi bayar operasi Sukoharjo mencapai 62,06% &mdash; peringkat 4 dari 13, di atas rata-rata 48,2%. Gap antara terkontrak dan terbayar hanya 16,67 poin (peringkat 10 dari 13, tergolong terkendali).</p>
+    <div class="chart-wrap">
+      <div class="chart-cap">% Realisasi bayar terhadap pagu SKKO, per UP3</div>
+      <div class="barchart">
+<div class="bar-row"><div class="bar-rank">01</div><div class="bar-label">Yogyakarta</div><div class="bar-track"><div class="bar-fill" style="width:100.00%"></div></div><div class="bar-value">82,09%</div></div>
+<div class="bar-row"><div class="bar-rank">02</div><div class="bar-label">Cilacap</div><div class="bar-track"><div class="bar-fill" style="width:94.76%"></div></div><div class="bar-value">77,79%</div></div>
+<div class="bar-row"><div class="bar-rank">03</div><div class="bar-label">Surakarta</div><div class="bar-track"><div class="bar-fill" style="width:84.36%"></div></div><div class="bar-value">69,25%</div></div>
+<div class="bar-row hl"><div class="bar-rank">04</div><div class="bar-label">Sukoharjo</div><div class="bar-track"><div class="bar-fill hl" style="width:75.60%"></div></div><div class="bar-value">62,06%</div></div>
+<div class="bar-row"><div class="bar-rank">05</div><div class="bar-label">Salatiga</div><div class="bar-track"><div class="bar-fill" style="width:60.20%"></div></div><div class="bar-value">49,42%</div></div>
+<div class="bar-row"><div class="bar-rank">06</div><div class="bar-label">Semarang</div><div class="bar-track"><div class="bar-fill" style="width:59.50%"></div></div><div class="bar-value">48,84%</div></div>
+<div class="bar-row"><div class="bar-rank">07</div><div class="bar-label">Tegal</div><div class="bar-track"><div class="bar-fill" style="width:57.03%"></div></div><div class="bar-value">46,82%</div></div>
+<div class="bar-row"><div class="bar-rank">08</div><div class="bar-label">Klaten</div><div class="bar-track"><div class="bar-fill" style="width:49.01%"></div></div><div class="bar-value">40,23%</div></div>
+<div class="bar-row"><div class="bar-rank">09</div><div class="bar-label">Purwokerto</div><div class="bar-track"><div class="bar-fill" style="width:48.82%"></div></div><div class="bar-value">40,08%</div></div>
+<div class="bar-row"><div class="bar-rank">10</div><div class="bar-label">Grobogan</div><div class="bar-track"><div class="bar-fill" style="width:45.84%"></div></div><div class="bar-value">37,63%</div></div>
+<div class="bar-row"><div class="bar-rank">11</div><div class="bar-label">Magelang</div><div class="bar-track"><div class="bar-fill" style="width:38.25%"></div></div><div class="bar-value">31,40%</div></div>
+<div class="bar-row"><div class="bar-rank">12</div><div class="bar-label">Pekalongan</div><div class="bar-track"><div class="bar-fill" style="width:33.15%"></div></div><div class="bar-value">27,21%</div></div>
+<div class="bar-row"><div class="bar-rank">13</div><div class="bar-label">Kudus</div><div class="bar-track"><div class="bar-fill" style="width:17.46%"></div></div><div class="bar-value">14,33%</div></div>
+</div>
+    </div>
+    <div class="finding-box good">
+      <span class="tag">Sisi Positif</span>
+      <p>Meski pagu operasi Sukoharjo hanya 39,1% dari pagu investasinya, realisasi bayar operasi (Rp5.285.094.403) hampir menyamai realisasi bayar investasi (Rp7.944.857.520). Ini adalah bukti bahwa proses pencairan pembayaran <strong>bisa berjalan cepat</strong> di Sukoharjo &mdash; masalah di Bab Investasi karenanya lebih mengarah pada karakter proyek (nilai kontrak besar, pekerjaan konstruksi/pengadaan barang) ketimbang kapasitas administratif unit secara umum.</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-cap">Gap % Terkontrak &minus; % Terbayar Operasi, per UP3</div>
+      <div class="barchart">
+<div class="bar-row"><div class="bar-rank">01</div><div class="bar-label">Pekalongan</div><div class="bar-track"><div class="bar-fill gap" style="width:100.00%"></div></div><div class="bar-value">49,44 poin</div></div>
+<div class="bar-row"><div class="bar-rank">02</div><div class="bar-label">Purwokerto</div><div class="bar-track"><div class="bar-fill gap" style="width:82.97%"></div></div><div class="bar-value">41,02 poin</div></div>
+<div class="bar-row"><div class="bar-rank">03</div><div class="bar-label">Kudus</div><div class="bar-track"><div class="bar-fill gap" style="width:63.75%"></div></div><div class="bar-value">31,52 poin</div></div>
+<div class="bar-row"><div class="bar-rank">04</div><div class="bar-label">Semarang</div><div class="bar-track"><div class="bar-fill gap" style="width:53.32%"></div></div><div class="bar-value">26,36 poin</div></div>
+<div class="bar-row"><div class="bar-rank">05</div><div class="bar-label">Magelang</div><div class="bar-track"><div class="bar-fill gap" style="width:52.99%"></div></div><div class="bar-value">26,20 poin</div></div>
+<div class="bar-row"><div class="bar-rank">06</div><div class="bar-label">Salatiga</div><div class="bar-track"><div class="bar-fill gap" style="width:41.42%"></div></div><div class="bar-value">20,48 poin</div></div>
+<div class="bar-row"><div class="bar-rank">07</div><div class="bar-label">Yogyakarta</div><div class="bar-track"><div class="bar-fill gap" style="width:39.91%"></div></div><div class="bar-value">19,73 poin</div></div>
+<div class="bar-row"><div class="bar-rank">08</div><div class="bar-label">Klaten</div><div class="bar-track"><div class="bar-fill gap" style="width:39.77%"></div></div><div class="bar-value">19,66 poin</div></div>
+<div class="bar-row"><div class="bar-rank">09</div><div class="bar-label">Tegal</div><div class="bar-track"><div class="bar-fill gap" style="width:39.36%"></div></div><div class="bar-value">19,46 poin</div></div>
+<div class="bar-row hl"><div class="bar-rank">10</div><div class="bar-label">Sukoharjo</div><div class="bar-track"><div class="bar-fill gap hl" style="width:33.72%"></div></div><div class="bar-value">16,67 poin</div></div>
+<div class="bar-row"><div class="bar-rank">11</div><div class="bar-label">Grobogan</div><div class="bar-track"><div class="bar-fill gap" style="width:24.82%"></div></div><div class="bar-value">12,27 poin</div></div>
+<div class="bar-row"><div class="bar-rank">12</div><div class="bar-label">Surakarta</div><div class="bar-track"><div class="bar-fill gap" style="width:19.54%"></div></div><div class="bar-value">9,66 poin</div></div>
+<div class="bar-row"><div class="bar-rank">13</div><div class="bar-label">Cilacap</div><div class="bar-track"><div class="bar-fill gap" style="width:17.60%"></div></div><div class="bar-value">8,70 poin</div></div>
+</div>
+    </div>
+
+    <h3 class="sub">2.4 &nbsp;Rincian per program: konsentrasi pada pemeliharaan instalasi</h3>
+    <p class="sub-intro">Program <strong>INS &ndash; Pemeliharaan Instalasi</strong> mendominasi 66,1% dari pagu operasi, dengan realisasi bayar 58,27% &mdash; sejalan dengan capaian rata-rata unit secara keseluruhan.</p>
+    <table class="data">
+      <thead><tr><th>Program</th><th>Nilai SKKO</th><th>Porsi</th><th>% Terkontrak</th><th>% Terbayar</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr>
+<td class="tprog">AGA - AGA - Administrasi Niaga</td>
+<td class="tnum">Rp664.745.937</td>
+<td class="tnum">7,8%</td>
+<td class="tnum">83,27%</td>
+<td class="tnum">69,54%</td>
+<td class="tnum g-ok">13,73 pp</td>
+</tr>
+<tr>
+<td class="tprog">INS - INS - Pemeliharaan Instalasi</td>
+<td class="tnum">Rp5.630.487.558</td>
+<td class="tnum">66,1%</td>
+<td class="tnum">79,86%</td>
+<td class="tnum">58,27%</td>
+<td class="tnum g-warn">21,59 pp</td>
+</tr>
+<tr>
+<td class="tprog">MUM - MUM - Administrasi Umum</td>
+<td class="tnum">Rp1.002.766.616</td>
+<td class="tnum">11,8%</td>
+<td class="tnum">69,21%</td>
+<td class="tnum">69,21%</td>
+<td class="tnum g-ok">0,00 pp</td>
+</tr>
+<tr>
+<td class="tprog">SDM - SDM - Kepegawaian</td>
+<td class="tnum">Rp116.468.982</td>
+<td class="tnum">1,4%</td>
+<td class="tnum">50,00%</td>
+<td class="tnum">50,00%</td>
+<td class="tnum g-ok">0,00 pp</td>
+</tr>
+<tr>
+<td class="tprog">SRN - SRN - Pemeliharaan Sarana</td>
+<td class="tnum">Rp1.101.767.810</td>
+<td class="tnum">12,9%</td>
+<td class="tnum">81,90%</td>
+<td class="tnum">71,68%</td>
+<td class="tnum g-ok">10,22 pp</td>
+</tr>
+<tr class="ttotal">
+<td class="tprog">Total Operasi</td>
+<td class="tnum">Rp8.516.236.903</td>
+<td class="tnum">100,0%</td>
+<td class="tnum">78,73%</td>
+<td class="tnum">62,06%</td>
+<td class="tnum">16,67 pp</td>
+</tr>
+      </tbody>
+    </table>
+    <div class="prose">
+      <p>Dua program dengan pagu terkecil &mdash; <strong>MUM &ndash; Administrasi Umum</strong> dan <strong>SDM &ndash; Kepegawaian</strong> &mdash; justru menunjukkan disiplin realisasi terbaik: gap antara terkontrak dan terbayar di keduanya adalah <strong>nol</strong>, artinya begitu suatu nilai terkontrak, ia langsung tercermin sebagai pembayaran. Pola ini bisa dijadikan rujukan praktik baik (best practice) untuk program dengan gap lebih besar seperti INS dan SRN.</p>
+    </div>
+
+    <h3 class="sub">2.5 &nbsp;Kesimpulan Bab Operasi</h3>
+    <div class="prose">
+      <p>Portofolio Operasi Sukoharjo sehat dan berada konsisten di atas rata-rata Jawa Tengah pada kedua indikator realisasi. Perhatian yang tersisa hanya pada penyerapan sisa pagu yang belum terkontrak (21,27% dari SKKO) agar tidak menumpuk di akhir tahun.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="page">
+    <p class="eyebrow">Bab III</p>
+    <h2 class="chapter"><span class="num">03</span>Sintesis dan Prioritas Aksi</h2>
+    <p class="chapter-intro">Membandingkan kedua portofolio secara berdampingan memperjelas bahwa persoalan Sukoharjo bersifat spesifik pada Investasi, bukan kelemahan struktural unit secara menyeluruh.</p>
+
+    <div class="quadrant">
+      <div class="qcell investasi">
+        <div class="qtitle"><span class="dot" style="background:var(--bad)"></span>Investasi &mdash; "Commitment-cash trap"</div>
+        <p>Terkontrak 97,48% (peringkat 2/13) namun terbayar hanya 36,51% (peringkat 11/13). Gap 60,97 poin &mdash; terbesar di Jawa Tengah. Perencanaan sangat baik, eksekusi pencairan tertinggal.</p>
+      </div>
+      <div class="qcell operasi">
+        <div class="qtitle"><span class="dot" style="background:var(--ok)"></span>Operasi &mdash; "Eksekusi seimbang"</div>
+        <p>Terkontrak 78,73% (peringkat 5/13) dan terbayar 62,06% (peringkat 4/13), keduanya di atas rata-rata. Gap hanya 16,67 poin &mdash; salah satu yang paling terkendali di Jawa Tengah.</p>
+      </div>
+    </div>
+
+    <h3 class="sub">Rekomendasi prioritas</h3>
+    <div class="reco">
+      <div class="rn">1</div>
+      <div>
+        <div class="rt">Audit percepatan pembayaran pada program SAR-Pemasaran dan EDP</div>
+        <div class="rd">Kedua program ini menyumbang mayoritas gap Investasi. Telusuri status fisik pekerjaan, tahap BAST, dan dokumen tagihan yang tertahan pada kedua program secara spesifik &mdash; bukan pada Investasi secara umum &mdash; agar penanganan tepat sasaran.</div>
+        <span class="rmeta">Prioritas &middot; Segera</span>
+      </div>
+    </div>
+    <div class="reco">
+      <div class="rn">2</div>
+      <div>
+        <div class="rt">Investigasi khusus kontrak EDP yang 100% terkontrak namun 0% terbayar</div>
+        <div class="rd">Nilai Rp1.589.305.883 ini adalah kasus paling ekstrem dan paling mudah ditelusuri akar masalahnya karena hanya melibatkan satu program. Pastikan apakah pekerjaan belum commissioning, barang belum diterima, atau dokumen pembayaran belum diajukan.</div>
+        <span class="rmeta">Prioritas &middot; Segera</span>
+      </div>
+    </div>
+    <div class="reco">
+      <div class="rn">3</div>
+      <div>
+        <div class="rt">Terapkan praktik baik program MUM &amp; SDM ke program Investasi</div>
+        <div class="rd">Kedua program Operasi ini mencatat gap nol antara kontrak dan bayar. Pelajari alur administrasi keduanya (jumlah pihak yang memverifikasi, waktu proses BAST) sebagai referensi mempercepat program Investasi yang gap-nya besar.</div>
+        <span class="rmeta">Jangka Menengah</span>
+      </div>
+    </div>
+    <div class="reco">
+      <div class="rn">4</div>
+      <div>
+        <div class="rt">Pantau mingguan proyeksi serapan kas menjelang akhir tahun anggaran</div>
+        <div class="rd">Dengan Rp13.269.592.108 nilai kontrak Investasi yang belum cair, risiko menumpuknya pembayaran di kuartal terakhir cukup tinggi. Susun proyeksi arus kas kontrak-per-kontrak untuk memastikan kapasitas pencairan mencukupi sebelum tutup tahun anggaran.</div>
+        <span class="rmeta">Berkelanjutan</span>
+      </div>
+    </div>
+    <div class="reco">
+      <div class="rn">5</div>
+      <div>
+        <div class="rt">Percepat kontrak sisa pagu Operasi yang belum terikat</div>
+        <div class="rd">Sisa SKKO Rp1.811.811.341 (21,27% dari pagu) sebaiknya segera dituntaskan prosesnya agar tidak membebani kuartal akhir dan menjaga tren realisasi Operasi yang sudah baik.</div>
+        <span class="rmeta">Jangka Menengah</span>
+      </div>
+    </div>
+
+    <div class="methodnote">
+      <p><strong>Catatan metodologi.</strong> % Terkontrak dihitung sebagai <code>Total Komitmen (Nota Dinas + Terkontrak) &divide; Nilai SKKI/SKKO</code>. % Terbayar dihitung sebagai <code>Realisasi Bayar &divide; Nilai SKKI/SKKO</code>. Peringkat dan rata-rata dihitung dari 13 UP3 (mengecualikan UID sebagai agregat unit induk dan UP2D Jateng &amp; DIY sebagai unit non-UP3). Seluruh angka bersumber dari Rekap Anggaran Investasi dan Operasi Jawa Tengah tahun anggaran 2026 yang diberikan.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="page">
+    <span>Analisis Anggaran &middot; UP3 Sukoharjo &middot; 2026</span>
+    <span>☕2026 | JW - Disusun berdasarkan data Aplikasi Keuangan Per 09-09-2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
