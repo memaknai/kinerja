@@ -3,145 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TeraSukoharjo - Master Hub</title>
+  <!-- Redirect Otomatis ke Periode Terbaru (Agustus 2026) -->
+  <meta http-equiv="refresh" content="0; url=2026-08/index.html" />
+  <title>TeraSukoharjo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    // Redirect via JS jika browser memblokir meta refresh
+    window.location.href = "2026-08/index.html";
+  </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: 'Segoe UI', sans-serif; 
-      background: radial-gradient(circle at top right, rgba(45, 106, 79, 0.08), transparent 35%), #f0f4f2; 
-      color: #1b2621; 
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top right, rgba(45, 106, 79, 0.08), transparent 35%), #f0f4f2;
+      color: #1b2621;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
     }
-    .header { 
-      background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%); 
-      color: #f8faf9; 
-      text-align: center; 
-      padding: 40px 20px; 
-    }
-    .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 6px; }
-    .header p { font-size: 16px; opacity: 0.9; }
-
-    .container { 
-      max-width: 900px; 
-      margin: 40px auto; 
-      padding: 0 20px; 
-      flex: 1;
+    .redirect-card {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(27, 67, 50, 0.08);
+      border-top: 5px solid #2d6a4f;
+      max-width: 450px;
       width: 100%;
     }
-    .section-title {
-      font-size: 18px;
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1b4332;
+      margin-bottom: 8px;
+    }
+    p.subtitle {
+      font-size: 16px;
       color: #2d6a4f;
-      margin-bottom: 16px;
-      display: flex;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    p.info {
+      font-size: 14px;
+      color: #52796f;
+      margin-bottom: 20px;
+    }
+    .btn-link {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-    }
-
-    /* BAR NAVIGASI ATAS */
-    .nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      background: #ffffff;
-      padding: 12px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(27, 67, 50, 0.05);
-    }
-    .nav-link {
-      color: #2d6a4f;
+      background: #2d6a4f;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 20px;
       text-decoration: none;
-      font-weight: 600;
       font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      font-weight: 600;
+      transition: background 0.3s ease;
     }
-
-    /* GRID PERIODE (BULAN) */
-    .period-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
+    .btn-link:hover {
+      background: #1b4332;
     }
-    .period-card {
-      background: #ffffff;
-      border-radius: 14px;
-      padding: 20px;
-      text-decoration: none;
-      color: inherit;
-      border-left: 5px solid #2d6a4f;
-      box-shadow: 0 4px 15px rgba(27, 67, 50, 0.05);
-      transition: all 0.25s ease;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .period-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(45, 106, 79, 0.15);
-      background: #f8faf9;
-    }
-    .period-info h3 { font-size: 18px; color: #1b4332; }
-    .period-info p { font-size: 12px; color: #52796f; margin-top: 4px; }
-    .period-badge {
-      background: #e8f5e9;
-      color: #2d6a4f;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .footer { text-align: center; padding: 20px; color: #40916c; font-size: 13px; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <div class="header">
+  <div class="redirect-card">
     <h1>TeraSukoharjo</h1>
-    <p>Pilih Periode Laporan Kinerja</p>
-  </div>
-
-  <div class="container">
-    <!-- NAVIGASI LEVEL ATAS -->
-    <div class="nav-bar">
-      <span class="nav-link"><i class="fa-solid fa-location-dot"></i> Sukoharjo</span>
-      <a href="../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Jawa Tengah</a>
-    </div>
-
-    <!-- DAFTAR PERIODE BULANAN -->
-    <div class="section-title">
-      <i class="fa-regular fa-calendar-days"></i> Arsip Periode
-    </div>
-
-    <div class="period-grid">
-      <!-- Periode Juli 2026 -->
-      <a href="2026-07/index.html" class="period-card">
-        <div class="period-info">
-          <h3>Juli 2026</h3>
-          <p>Laporan & Analisis Kinerja</p>
-        </div>
-        <i class="fa-solid fa-chevron-right" style="color: #2d6a4f;"></i>
-      </a>
-
-      <!-- Periode Agustus 2026 -->
-      <a href="2026-08/index.html" class="period-card">
-        <div class="period-info">
-          <h3>Agustus 2026</h3>
-          <p>Laporan & Analisis Kinerja</p>
-        </div>
-        <span class="period-badge">Terbaru</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="footer">
-    <p>© 2026 JW | Belajar • Bertumbuh • Berdampak</p>
+    <p class="subtitle">Tenteram - Makmur - Sukses</p>
+    <p class="info"><i class="fa-solid fa-spinner fa-spin"></i> Mengarahkan ke periode terbaru (Agustus 2026)...</p>
+    <a href="2026-08/index.html" class="btn-link">
+      Klik di sini jika tidak beralih otomatis <i class="fa-solid fa-arrow-right"></i>
+    </a>
   </div>
 
 </body>
