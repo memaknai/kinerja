@@ -1,171 +1,263 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TeraSukoharjo - Kinerja Keuangan</title>
-    <!-- CDN Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        *{margin:0; padding:0; box-sizing:border-box; }
-        /* BACKGROUND SILVER WHITE */
-        body {font-family: 'Segoe UI', sans-serif; background: radial-gradient(circle at top right, rgba(45, 106, 79, 0.08), transparent 35%), #f0f4f2; color: #1b2621; }
-        
-        /* HEADER GRADASI HIJAU DAUN / FOREST GREEN */
-        .header {background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%); color: #f8faf9; text-align: center; padding: 50px 20px 30px 20px; position: relative; overflow: hidden; animation: fadeDown .8s ease; }
-        .header::before {content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent); animation: shine 5s infinite; }
-        .header h1 { font-size: 42px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 8px; position: relative; z-index: 2; }
-        .header p { font-size: 18px; position: relative; z-index: 2; opacity: 0.9; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TeraSukoharjo - Periode Agustus 2026</title>
+  <!-- CDN Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top right, rgba(45, 106, 79, 0.08), transparent 35%), #f0f4f2;
+      color: #1b2621;
+    }
+    .header {
+      background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%);
+      color: #f8faf9;
+      text-align: center;
+      padding: 50px 20px 30px 20px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeDown .8s ease;
+    }
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      animation: shine 5s infinite;
+    }
+    .header h1 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 2;
+    }
+    .header p {
+      font-size: 18px;
+      position: relative;
+      z-index: 2;
+      opacity: 0.9;
+    }
 
-        /* NAVIGASI ARSIP & WILAYAH */
-        .archive-container { max-width: 1300px; margin: 30px auto 10px auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-        .archive-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .archive-label { font-size: 14px; font-weight: 600; color: #2d6a4f; display: flex; align-items: center; gap: 6px; }
-        .archive-list { display: flex; gap: 8px; flex-wrap: wrap; }
-        .archive-btn { text-decoration: none; background: #e2e8e5; color: #1b4332; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; transition: all 0.3s ease; }
-        .archive-btn:hover { background: #2d6a4f; color: white; }
-        /* Tombol Aktif Hijau Forest */
-        .archive-btn.active { background: #2d6a4f; color: white; font-weight: 600; box-shadow: 0 4px 10px rgba(45, 106, 79, 0.25); }
+    /* NAVIGASI ARSIP & WILAYAH */
+    .archive-container {
+      max-width: 1300px;
+      margin: 30px auto 10px auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .archive-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .archive-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2d6a4f;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        /* CONTAINER & GRID */
-        .container { max-width: 1300px; margin: 20px auto 40px auto; padding: 0 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    /* CONTAINER & GRID */
+    .container {
+      max-width: 1300px;
+      margin: 20px auto 40px auto;
+      padding: 0 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
 
-        /* CARD DENGAN LATAR SILVER WHITE & BORDER HIJAU FOREST */
-        .card {background: #ffffff; border-radius: 20px; padding: 28px; text-decoration: none; color: inherit; border-top: 5px solid #40916c; box-shadow: 0 10px 25px rgba(27, 67, 50, 0.05); transition: transform .35s ease, box-shadow .35s ease; opacity: 0; animation: fadeUp .6s ease forwards; }
-        .card:nth-child(1){animation-delay:.1s;}
-        .card:nth-child(2){animation-delay:.2s;}
-        .card:nth-child(3){animation-delay:.3s;}
-        .card:nth-child(4){animation-delay:.4s;}
-        .card:nth-child(5){animation-delay:.5s;}
-        .card:nth-child(6){animation-delay:.6s;}
-        .card:nth-child(7){animation-delay:.7s;}
-        .card:nth-child(8){animation-delay:.8s;}
-        .card:hover {transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 35px rgba(45, 106, 79, 0.18); }
+    /* CARD DENGAN BORDER HIJAU FOREST */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      border-top: 5px solid #40916c;
+      box-shadow: 0 10px 25px rgba(27, 67, 50, 0.05);
+      transition: transform .35s ease, box-shadow .35s ease;
+      opacity: 0;
+      animation: fadeUp .6s ease forwards;
+    }
+    .card:nth-child(1) { animation-delay: .1s; }
+    .card:nth-child(2) { animation-delay: .2s; }
+    .card:nth-child(3) { animation-delay: .3s; }
+    .card:nth-child(4) { animation-delay: .4s; }
+    .card:nth-child(5) { animation-delay: .5s; }
+    .card:nth-child(6) { animation-delay: .6s; }
+    .card:nth-child(7) { animation-delay: .7s; }
 
-        /* IKON DENGAN AKSEN HIJAU MUDA SOFT */
-        .icon {width: 70px; height: 70px; border-radius: 18px; background: #e8f5e9; display: flex; align-items: center; justify-content: center; color: #2d6a4f; font-size: 30px; margin-bottom: 18px; transition: all .3s ease; }
-        .card:hover .icon { background: #2d6a4f; color: #ffffff; transform: scale(1.1); }
-        .title { font-size: 22px; font-weight: 700; color: #1b4332; margin-bottom: 8px; }
-        .desc { color: #52796f; line-height: 1.6; font-size: 15px; }
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 35px rgba(45, 106, 79, 0.18);
+    }
 
-        .footer { text-align: center; margin: 45px 0 25px 0; color: #40916c; font-size: 13px; }
+    /* IKON DENGAN AKSEN HIJAU MUDA SOFT */
+    .icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      background: #e8f5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2d6a4f;
+      font-size: 30px;
+      margin-bottom: 18px;
+      transition: all .3s ease;
+    }
+    .card:hover .icon {
+      background: #2d6a4f;
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+    .title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1b4332;
+      margin-bottom: 8px;
+    }
+    .desc {
+      color: #52796f;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .footer {
+      text-align: center;
+      margin: 45px 0 25px 0;
+      color: #40916c;
+      font-size: 13px;
+    }
 
-        /* ANIMATION */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(35px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-25px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes shine {
-            from { left: -100%; }
-            to { left: 200%; }
-        }
+    /* ANIMATION */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-25px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes shine { from { left: -100%; } to { left: 200%; } }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 992px){
-            .header h1{ font-size:34px; }
-            .header p{ font-size:16px; }
-        }
-        @media (max-width: 768px){
-            .header{ padding:40px 20px 25px 20px; }
-            .header h1{ font-size:28px; }
-            .header p{ font-size:14px; }
-            .archive-container{ margin-top:20px; justify-content:center; }
-            .grid{ grid-template-columns:1fr; }
-            .card{ padding:22px; }
-            .title{ font-size:20px; }
-            .icon{ width:60px; height:60px; font-size:26px; }
-        }
-    </style>
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) { .header h1 { font-size: 34px; } .header p { font-size: 16px; } }
+    @media (max-width: 768px) {
+      .header { padding: 40px 20px 25px 20px; }
+      .header h1 { font-size: 28px; }
+      .header p { font-size: 14px; }
+      .archive-container { margin-top: 20px; justify-content: center; }
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 22px; }
+      .title { font-size: 20px; }
+      .icon { width: 60px; height: 60px; font-size: 26px; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- HEADER TERASUKOHARJO -->
-    <div class="header">
-        <h1>TeraSukoharjo</h1>
-        <p>Tenteram • Makmur • Sukses</p>
-    </div>
-
-<!-- STRUKTUR NAVIGASI ARSIP & WILAYAH -->
-<div class="archive-container">
-  <!-- Pilih Wilayah (Kini di Sisi Kiri) -->
-  <div class="archive-group">
-    <div class="archive-label">
-      <i class="fa-solid fa-location-dot"></i> Wilayah:
-    </div>
-    <select onchange="if (this.value) location.href = this.value;" style="padding: 6px 14px; border-radius: 20px; border: 1px solid #8d6e63; background: #2d6a4f; color: #faf6f0; font-size: 13px; font-weight: 600; cursor: pointer; outline: none;">
-      <option value="index.html" selected>Sukoharjo</option>
-      <option value="../index.html">Jawa Tengah</option>
-    </select>
+  <!-- HEADER TERASUKOHARJO -->
+  <div class="header">
+    <h1>TeraSukoharjo</h1>
+    <p>Laporan Kinerja Keuangan & Anggaran — Agustus 2026</p>
   </div>
 
-  <!-- Pilih Periode Dropdown Bulan (Kini di Sisi Kanan) -->
-  <div class="archive-group">
-    <div class="archive-label">
-      <i class="fa-regular fa-calendar-days"></i> Pilih Periode:
+  <!-- STRUKTUR NAVIGASI ARSIP & WILAYAH -->
+  <div class="archive-container">
+    <!-- Pilih Wilayah -->
+    <div class="archive-group">
+      <div class="archive-label">
+        <i class="fa-solid fa-location-dot"></i> Wilayah:
+      </div>
+      <select onchange="if (this.value) location.href = this.value;" style="padding: 6px 14px; border-radius: 20px; border: 1px solid #8d6e63; background: #2d6a4f; color: #faf6f0; font-size: 13px; font-weight: 600; cursor: pointer; outline: none;">
+        <option value="index.html" selected>Sukoharjo (Agustus 2026)</option>
+        <option value="../index.html">Sukoharjo (Master Hub)</option>
+        <option value="../../index.html">Jawa Tengah</option>
+      </select>
     </div>
-    <select onchange="if (this.value) location.href = this.value;" style="padding: 6px 14px; border-radius: 20px; border: 1px solid #8d6e63; background: #2d6a4f; color: #faf6f0; font-size: 13px; font-weight: 600; cursor: pointer; outline: none;">
-      <option value="index.html" selected>Agustus 2026</option>
-      <option value="juli-2026.html">September 2026</option>
-           <!-- Tambahkan opsi bulan lainnya sesuai kebutuhan -->
-    </select>
+
+    <!-- Pilih Periode Dropdown Bulan -->
+    <div class="archive-group">
+      <div class="archive-label">
+        <i class="fa-regular fa-calendar-days"></i> Pilih Periode:
+      </div>
+      <select onchange="if (this.value) location.href = this.value;" style="padding: 6px 14px; border-radius: 20px; border: 1px solid #8d6e63; background: #2d6a4f; color: #faf6f0; font-size: 13px; font-weight: 600; cursor: pointer; outline: none;">
+        <option value="../2026-07/index.html">Juli 2026</option>
+        <option value="index.html" selected>Agustus 2026</option>
+      </select>
+    </div>
   </div>
-</div>
-        </div>
+
+  <!-- MAIN DASHBOARD PERIODE AGUSTUS 2026 -->
+  <div class="container">
+    <div class="grid">
+      
+      <!-- 1. Kinerja Keuangan (File Lokal 2026-08) -->
+      <a href="kinkeu-skh-0826.html" class="card">
+        <div class="icon"><i class="fa-solid fa-chart-pie"></i></div>
+        <div class="title">Kinerja Keuangan</div>
+        <div class="desc">Laporan & analisis kinerja keuangan Sukoharjo periode Agustus 2026</div>
+      </a>
+
+      <!-- 2. Realisasi Anggaran (File Lokal 2026-08) -->
+      <a href="anggaran-skh-0826.html" class="card">
+        <div class="icon"><i class="fa-solid fa-wallet"></i></div>
+        <div class="title">Realisasi Anggaran</div>
+        <div class="desc">Laporan realisasi & penyerapan anggaran Sukoharjo periode Agustus 2026</div>
+      </a>
+
+      <!-- 3. PBJT Tenaga Listrik Soloraya (Mengarahkan ke 2026-07) -->
+      <a href="../2026-07/pbjt-listrik-soloraya.html" class="card">
+        <div class="icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="title">PBJT Tenaga Listrik</div>
+        <div class="desc">Pajak Barang & Jasa Tertentu atas Tenaga Listrik Soloraya</div>
+      </a>
+
+      <!-- 4. Kontrak Manajemen UP3 (Mengarahkan ke 2026-07) -->
+      <a href="../2026-07/kmup3-25-26.html" class="card">
+        <div class="icon"><i class="fa-solid fa-file-signature"></i></div>
+        <div class="title">Kontrak Manajemen</div>
+        <div class="desc">Indikator capaian kontrak manajemen UP3 2025 vs 2026</div>
+      </a>
+
+      <!-- 5. Kajian PLN Sukoharjo (Mengarahkan ke 2026-07) -->
+      <a href="../2026-07/kajian-pln-sukoharjo.html" class="card">
+        <div class="icon"><i class="fa-solid fa-building-user"></i></div>
+        <div class="title">Sukoharjo Makmur</div>
+        <div class="desc">Kajian & potensi ketenagalistrikan wilayah Sukoharjo</div>
+      </a>
+
+      <!-- 6. Kajian PLN Karanganyar (Mengarahkan ke 2026-07) -->
+      <a href="../2026-07/kajian-pln-karanganyar.html" class="card">
+        <div class="icon"><i class="fa-solid fa-tree"></i></div>
+        <div class="title">Karanganyar Tenteram</div>
+        <div class="desc">Kajian & potensi kelistrikan wilayah Karanganyar</div>
+      </a>
+
+      <!-- 7. Kajian PLN Wonogiri (Mengarahkan ke 2026-07) -->
+      <a href="../2026-07/kajian-pln-wonogiri.html" class="card">
+        <div class="icon"><i class="fa-solid fa-mountain"></i></div>
+        <div class="title">Wonogiri Sukses</div>
+        <div class="desc">Kajian & potensi kelistrikan wilayah Wonogiri</div>
+      </a>
+
     </div>
 
-    <!-- MAIN DASHBOARD -->
-    <div class="container">
-        <div class="grid">
-            <!-- Kartu PBJT Tenaga Listrik -->
-            <a href="pbjt-listrik-soloray.html" class="card">
-                <div class="icon"><i class="fa-solid fa-bolt"></i></div>
-                <div class="title">PBJT Tenaga Listrik</div>
-                <div class="desc">Pajak Barang & Jasa Tertentu atas Tenaga Listrik Soloraya</div>
-            </a>
-<!-- Kartu Penjualan Tenaga Listrik (BARU) -->
-    <a href="penjualan-skh-0726.html" class="card">
-      <div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-      <div class="title">Penjualan Tenaga Listrik</div>
-      <div class="desc">Analisis penjualan tenaga listrik </div>
-    </a>
-
-    <!-- Kartu Kontrak Manajemen (BARU) -->
-    <a href="kmup3-25-26.html" class="card">
-      <div class="icon"><i class="fa-solid fa-file-signature"></i></div>
-      <div class="title">Kontrak Manajemen</div>
-      <div class="desc">Indikator dalam kontrak manajemen 2025 vs 2026</div>
-    </a>
-            <!-- Kartu Potensi Karanganyar -->
-            <a href="kajian-pln-karanganyar.html" class="card">
-                <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
-                <div class="title">Karanganyar Tenteram</div>
-                <div class="desc">Karanganyar & Potensi kelistrikan</div>
-            </a>
-            <!-- Kartu Potensi Sukoharjo -->
-            <a href="kajian-pln-sukoharjo.html" class="card">
-                <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
-                <div class="title">Sukoharjo Makmur</div>
-                <div class="desc">Sukoharjo & Potensi kelistrikan</div>
-            </a>
-            <!-- Kartu Potensi Wonogiri -->
-            <a href="kajian-pln-wonogiri.html" class="card">
-                <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
-                <div class="title">Wonogiri Sukses</div>
-                <div class="desc">Wonogiri & Potensi kelistrikan</div>
-            </a>
-
-
-        </div>
-
-        <div class="footer">
-            <p>© 2026 JW | Belajar • Bertumbuh • Berdampak</p>
-        </div>
+    <div class="footer">
+      <p>© 2026 JW | Belajar • Bertumbuh • Berdampak</p>
     </div>
+  </div>
 
 </body>
 </html>
