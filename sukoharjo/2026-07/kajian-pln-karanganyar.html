@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Potensi Riil &amp; Optimalisasi Dukungan PLN Wilayah Kerja Karanganyar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10233F;
+    --ink-2:#17325A;
+    --paper:#F6F4EE;
+    --paper-2:#EEEADD;
+    --copper:#AD7A2C;
+    --copper-light:#D9A659;
+    --moss:#3C6E58;
+    --line:#D9D2BF;
+    --line-dark:#33455F;
+    --text:#262521;
+    --text-soft:#5B594F;
+    --white:#FFFFFF;
+    --serif:'Source Serif 4', Georgia, serif;
+    --sans:'IBM Plex Sans', -apple-system, sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--text);
+    line-height:1.6;
+    font-size:16px;
+  }
+  h1,h2,h3,h4{font-family:var(--serif); color:var(--ink); font-weight:600;}
+  a{color:var(--copper);}
+  .mono{font-family:var(--mono);}
+
+  /* ===== LAYOUT SHELL ===== */
+  .shell{display:flex; min-height:100vh;}
+  .sidenav{
+    width:238px; flex-shrink:0;
+    background:var(--ink);
+    color:#C9D2E0;
+    position:sticky; top:0; height:100vh;
+    padding:28px 22px;
+    display:flex; flex-direction:column;
+    justify-content:space-between;
+  }
+  .sidenav .brandmark{
+    font-family:var(--serif); font-size:15px; color:#fff; line-height:1.35;
+    padding-bottom:18px; border-bottom:1px solid rgba(255,255,255,0.14);
+    margin-bottom:18px;
+  }
+  .sidenav .brandmark span{display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--copper-light); margin-top:6px;}
+  .navlist{list-style:none; font-size:13px;}
+  .navlist li{margin-bottom:3px;}
+  .navlist a{
+    display:flex; gap:10px; color:#9FADC4; text-decoration:none;
+    padding:7px 8px; border-radius:2px; transition:.15s;
+  }
+  .navlist a:hover, .navlist a.active{color:#fff; background:rgba(255,255,255,0.06);}
+  .navlist a .n{font-family:var(--mono); color:var(--copper-light); font-size:11.5px; flex-shrink:0; width:18px;}
+  .sidenav .foot{font-size:10.5px; color:#71809A; line-height:1.5; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1);}
+
+  .main{flex:1; min-width:0;}
+  section{padding:88px 72px; max-width:980px; margin:0 auto; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .kicker{font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; color:var(--copper); margin-bottom:10px;}
+  .kicker .num{color:var(--text-soft);}
+  h2.section-title{font-size:32px; line-height:1.28; max-width:800px; margin-bottom:26px;}
+  h3.sub{font-size:20px; margin:34px 0 12px; color:var(--ink-2);}
+  p{margin-bottom:14px; color:var(--text); max-width:760px;}
+  p.lede{font-size:18px; color:var(--text-soft); max-width:760px; margin-bottom:28px;}
+  ul.plain, ol.plain{margin:0 0 16px 0; padding-left:20px; max-width:740px;}
+  ul.plain li, ol.plain li{margin-bottom:9px;}
+  strong{color:var(--ink-2); font-weight:600;}
+
+  /* ===== COVER ===== */
+  .cover{
+    background:var(--ink); color:#EDEFF3; padding:0; border:none;
+    min-height:100vh; display:flex; flex-direction:column; justify-content:space-between;
+    position:relative; overflow:hidden; max-width:none;
+  }
+  .cover .contour{position:absolute; inset:0; opacity:.55; pointer-events:none;}
+  .cover-top{position:relative; z-index:2; padding:56px 72px 0;}
+  .cover-top .tag{font-family:var(--mono); font-size:12px; letter-spacing:.08em; color:var(--copper-light); border:1px solid rgba(217,166,89,.4); display:inline-block; padding:5px 12px;}
+  .cover-mid{position:relative; z-index:2; padding:0 72px;}
+  .cover-mid h1{font-size:58px; line-height:1.12; color:#fff; max-width:820px; font-weight:600;}
+  .cover-mid h1 em{color:var(--copper-light); font-style:italic;}
+  .cover-mid .dek{font-size:19px; color:#B9C2D4; max-width:620px; margin-top:22px; font-family:var(--serif); font-style:italic;}
+  .cover-bottom{position:relative; z-index:2; padding:0 72px 52px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;}
+  .cover-meta{display:flex; gap:44px; flex-wrap:wrap;}
+  .cover-meta div{font-family:var(--mono); font-size:11px; color:#7C8AA3; text-transform:uppercase; letter-spacing:.06em;}
+  .cover-meta div b{display:block; font-family:var(--sans); font-size:13.5px; color:#E7EAF0; text-transform:none; letter-spacing:0; margin-top:5px; font-weight:500;}
+  .cover-line{height:1px; background:rgba(255,255,255,.14); margin:0 72px;}
+
+  /* ===== STAT CARDS ===== */
+  .statrow{display:flex; gap:0; margin:8px 0 36px; flex-wrap:wrap; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .stat{flex:1; min-width:170px; padding:22px 24px; border-right:1px solid var(--line);}
+  .stat:last-child{border-right:none;}
+  .stat .v{font-family:var(--mono); font-size:30px; color:var(--ink); font-weight:600; letter-spacing:-0.02em;}
+  .stat .l{font-size:12.5px; color:var(--text-soft); margin-top:6px; line-height:1.4;}
+
+  /* ===== INSIGHT BLOCKS ===== */
+  .insight-list{border-left:2px solid var(--copper); padding-left:22px; margin:26px 0; max-width:760px;}
+  .insight-list .item{margin-bottom:20px;}
+  .insight-list .item b{display:block; color:var(--ink-2); font-family:var(--serif); font-size:17px; margin-bottom:3px;}
+
+  /* ===== CLUSTER CARDS (no rounded-card kit; use asymmetric bordered blocks) ===== */
+  .cluster{
+    display:grid; grid-template-columns:64px 1fr; gap:22px;
+    padding:26px 0; border-top:1px solid var(--line);
+  }
+  .cluster:last-child{border-bottom:1px solid var(--line);}
+  .cluster .idx{font-family:var(--mono); font-size:26px; color:var(--copper-light); font-weight:600;}
+  .cluster h4{font-size:19px; margin-bottom:8px;}
+  .cluster .tagrow{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap;}
+  .tagrow span{font-family:var(--mono); font-size:10.5px; color:var(--moss); border:1px solid var(--moss); padding:3px 9px; letter-spacing:.02em;}
+
+  /* ===== TABLE ===== */
+  table{width:100%; border-collapse:collapse; margin:18px 0 28px; font-size:14.5px;}
+  thead th{
+    text-align:left; font-family:var(--mono); font-size:11px; letter-spacing:.04em;
+    color:var(--text-soft); text-transform:uppercase; padding:10px 14px;
+    border-bottom:2px solid var(--ink); background:transparent;
+  }
+  tbody td{padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tbody tr:hover{background:var(--paper-2);}
+  td.tag-hi{color:var(--copper); font-weight:600; font-family:var(--mono); font-size:12.5px;}
+  td.tag-med{color:var(--moss); font-weight:600; font-family:var(--mono); font-size:12.5px;}
+
+  /* ===== 2x2 MATRIX ===== */
+  .matrix-wrap{display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap; margin:24px 0 8px;}
+  .matrix{
+    position:relative; width:460px; height:400px; flex-shrink:0;
+    border-left:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink);
+    margin:20px 30px 40px 10px;
+  }
+  .matrix .gridline{position:absolute; background:var(--line);}
+  .matrix .gv{left:50%; top:0; bottom:0; width:1px;}
+  .matrix .gh{top:50%; left:0; right:0; height:1px;}
+  .matrix .axis-label{position:absolute; font-family:var(--mono); font-size:11px; color:var(--text-soft); letter-spacing:.02em;}
+  .axis-y{left:-176px; top:50%; transform:rotate(-90deg) translateX(50%); transform-origin:left center; width:180px; text-align:center;}
+  .axis-x{bottom:-32px; left:50%; transform:translateX(-50%); width:280px; text-align:center;}
+  .quad-label{position:absolute; font-size:10.5px; color:var(--text-soft); font-family:var(--mono); opacity:.65;}
+  .dot{
+    position:absolute; width:15px; height:15px; border-radius:50%;
+    background:var(--copper); border:2px solid var(--ink); transform:translate(-50%,-50%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .dot.moss{background:var(--moss);}
+  .dot-label{
+    position:absolute; font-size:12px; font-weight:600; color:var(--ink-2);
+    white-space:nowrap; transform:translate(-50%, -140%);
+  }
+  .matrix-legend{max-width:280px; padding-top:20px;}
+  .matrix-legend .li{display:flex; gap:10px; margin-bottom:14px; font-size:13.5px;}
+  .matrix-legend .sw{width:11px; height:11px; border-radius:50%; margin-top:4px; flex-shrink:0;}
+
+  /* ===== ROADMAP ===== */
+  .roadmap{margin:30px 0 10px; position:relative; padding-left:26px;}
+  .roadmap::before{content:""; position:absolute; left:5px; top:6px; bottom:6px; width:1.5px; background:var(--line-dark);}
+  .rm-phase{position:relative; padding-bottom:34px;}
+  .rm-phase::before{content:""; position:absolute; left:-26px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--paper); border:2.5px solid var(--copper);}
+  .rm-phase .when{font-family:var(--mono); font-size:11.5px; color:var(--copper); letter-spacing:.04em; text-transform:uppercase; margin-bottom:6px;}
+  .rm-phase h4{font-size:18px; margin-bottom:8px;}
+
+  /* ===== CALLOUT ===== */
+  .callout{
+    background:var(--ink); color:#DCE2EC; padding:32px 36px; margin:30px 0;
+    max-width:760px; position:relative; border-left:3px solid var(--copper-light);
+  }
+  .callout p{color:#DCE2EC; font-family:var(--serif); font-size:18px; font-style:italic; margin:0; max-width:none;}
+  .callout .src{font-family:var(--mono); font-size:11px; color:#8493AB; margin-top:12px; font-style:normal;}
+
+  /* ===== FOOTER / SOURCES ===== */
+  .sources{font-size:13.5px; color:var(--text-soft);}
+  .sources ol{padding-left:20px;}
+  .sources li{margin-bottom:8px;}
+  .sources a{color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--line);}
+  .sources a:hover{color:var(--copper);}
+  .final-note{font-size:12.5px; color:var(--text-soft); border-top:1px solid var(--line); padding-top:20px; margin-top:30px;}
+
+  @media (max-width:880px){
+    .sidenav{display:none;}
+    section{padding:56px 24px;}
+    .cover-mid h1{font-size:38px;}
+    .cover-top, .cover-mid, .cover-bottom{padding-left:24px; padding-right:24px;}
+    .cover-line{margin:0 24px;}
+    .matrix{width:100%; margin-left:0; height:340px;}
+    .axis-y{left:-150px;}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- SIDE NAVIGATION -->
+  <nav class="sidenav">
+    <div>
+      <div class="brandmark">Kajian Strategis Kelistrikan<span>ULP KARANGANYAR — SEP 2026</span></div>
+      <ul class="navlist" id="navlist">
+        <li><a href="#ringkasan"><span class="n">01</span>Ringkasan Eksekutif</a></li>
+        <li><a href="#lingkup"><span class="n">02</span>Ruang Lingkup</a></li>
+        <li><a href="#potret"><span class="n">03</span>Potret Wilayah</a></li>
+        <li><a href="#klaster"><span class="n">04</span>Peta Potensi Riil</a></li>
+        <li><a href="#diagnostik"><span class="n">05</span>Diagnostik &amp; Risiko</a></li>
+        <li><a href="#rekomendasi"><span class="n">06</span>Rekomendasi Dukungan</a></li>
+        <li><a href="#prioritas"><span class="n">07</span>Prioritisasi</a></li>
+        <li><a href="#roadmap"><span class="n">08</span>Peta Jalan</a></li>
+        <li><a href="#penutup"><span class="n">09</span>Penutup</a></li>
+        <li><a href="#referensi"><span class="n">10</span>Referensi</a></li>
+      </ul>
+    </div>
+    <div class="foot">☕2026 | JW - Disusun sebagai bahan diskusi internal.<br>Data sekunder per Sep 2026, bersumber dari BPS, Pemkab Karanganyar, PLN, dan media terverifikasi.</div>
+  </nav>
+
+  <main class="main">
+
+    <!-- COVER -->
+    <section class="cover" id="cover">
+      <svg class="contour" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-50,650 C150,560 250,700 400,610 C550,520 650,640 800,560 C950,480 1050,600 1250,520" stroke="#2A3E60" stroke-width="1.4" fill="none"/>
+        <path d="M-50,700 C150,610 250,750 400,660 C550,570 650,690 800,610 C950,530 1050,650 1250,570" stroke="#2A3E60" stroke-width="1.4" fill="none"/>
+        <path d="M-50,750 C150,660 250,800 400,710 C550,620 650,740 800,660 C950,580 1050,700 1250,620" stroke="#2A3E60" stroke-width="1.4" fill="none"/>
+        <path d="M-50,800 C150,710 250,850 400,760 C550,670 650,790 800,710 C950,630 1050,750 1250,670" stroke="#233252" stroke-width="1.4" fill="none"/>
+        <path d="M-50,850 C150,760 250,900 400,810 C550,720 650,840 800,760 C950,680 1050,800 1250,720" stroke="#1D2A45" stroke-width="1.4" fill="none"/>
+        <!-- circuit traces bleeding from contour into grid nodes -->
+        <path d="M780,555 L780,470 L860,470 L860,410 L940,410" stroke="#AD7A2C" stroke-width="1.5" fill="none" opacity="0.75"/>
+        <path d="M860,470 L860,540 L920,540" stroke="#AD7A2C" stroke-width="1.5" fill="none" opacity="0.6"/>
+        <path d="M550,565 L550,490 L610,490 L610,430" stroke="#AD7A2C" stroke-width="1.5" fill="none" opacity="0.55"/>
+        <circle cx="940" cy="410" r="4" fill="#D9A659"/>
+        <circle cx="920" cy="540" r="4" fill="#D9A659"/>
+        <circle cx="610" cy="430" r="4" fill="#D9A659"/>
+        <circle cx="860" cy="470" r="3" fill="#D9A659"/>
+        <circle cx="780" cy="555" r="3" fill="#D9A659"/>
+      </svg>
+      <div class="cover-top">
+        <span class="tag">KAJIAN &amp; INSIGHT — INTERNAL STRATEGIC REVIEW</span>
+      </div>
+      <div class="cover-mid">
+        <h1>Menyalakan Potensi Lereng Lawu:<br><em>Optimalisasi Peran PLN</em> di Wilayah Kerja ULP Karanganyar</h1>
+        <p class="dek">Analisis potensi riil ekonomi wilayah dan opsi dukungan kelistrikan yang dapat dioptimalkan PLN — di luar sabuk industri Colomadu, Kebakkramat, Gondangrejo, dan Palur.</p>
+      </div>
+      <div class="cover-line"></div>
+      <div class="cover-bottom">
+        <div class="cover-meta">
+          <div>Wilayah Kajian<b>13–14 Kecamatan, Kab. Karanganyar</b></div>
+          <div>Fokus Unit<b>PLN ULP Karanganyar (UP3 Sukoharjo)</b></div>
+          <div>Periode Data<b>2023 – Triwulan I 2026</b></div>
+        </div>
+        <div class="cover-meta">
+          <div>Disusun<b>September 2026</b></div>
+          <div>Klasifikasi<b>Bahan Diskusi Internal</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 RINGKASAN EKSEKUTIF -->
+    <section id="ringkasan">
+      <div class="kicker"><span class="num">01 /</span> RINGKASAN EKSEKUTIF</div>
+      <h2 class="section-title">Wilayah non-industri Karanganyar bukan wilayah "sisa" — ia menyimpan tiga mesin pertumbuhan yang belum digarap tuntas: pariwisata pegunungan, agribisnis dataran tinggi, dan transisi energi.</h2>
+      <p class="lede">Ketika kawasan industri besar (Gondangrejo, Kebakkramat, Jaten-Palur, Colomadu) menyerap sebagian besar perhatian investasi dan kapasitas jaringan, 13–14 kecamatan sisanya — mulai dari Tawangmangu di kaki Gunung Lawu hingga Jumapolo di selatan — justru menyimpan potensi yang secara struktural berbeda dan sebagian besar belum termonetisasi optimal.</p>
+
+      <div class="statrow">
+        <div class="stat"><div class="v">~680 rb</div><div class="l">Estimasi penduduk di 13–14 kecamatan wilayah kajian (dari total 961.969 jiwa Kab. Karanganyar, 2024)</div></div>
+        <div class="stat"><div class="v">5,54%</div><div class="l">Pertumbuhan ekonomi Kab. Karanganyar 2024 — konsisten di atas rata-rata Jawa Tengah &amp; nasional</div></div>
+        <div class="stat"><div class="v">Rp5,2 T</div><div class="l">Realisasi investasi Kabupaten 2025, naik tipis — pariwisata & UMKM belum menarik investor besar</div></div>
+        <div class="stat"><div class="v">11→24</div><div class="l">Unit SPKLU di Karanganyar (Nov 2025), direncanakan bertambah 13 unit pada akhir 2025</div></div>
+      </div>
+
+      <div class="insight-list">
+        <div class="item"><b>1. Kapasitas jaringan sudah relatif aman, permintaan yang perlu dibentuk.</b>RUPTL 2025–2034 memproyeksikan permintaan listrik nasional naik 67% hingga 2034, sebagian besar didorong kawasan industri, KEK, destinasi wisata prioritas, dan kendaraan listrik — bukan pertumbuhan organik semata. Wilayah kajian punya dua dari empat pendorong tersebut (wisata &amp; EV) yang justru paling lemah realisasinya secara lokal.</div>
+        <div class="item"><b>2. Pariwisata adalah kesenjangan investasi paling nyata.</b>DPMPTSP Karanganyar secara eksplisit menyatakan belum ada investor besar masuk ke sektor pariwisata, padahal Tawangmangu, Candi Sukuh, dan Candi Cetho adalah aset dengan traksi kunjungan yang mapan. PLN dapat menjadi enabler infrastruktur yang mempercepat investasi ini.</div>
+        <div class="item"><b>3. Isu geothermal Jenawi adalah risiko sekaligus peluang kepercayaan publik.</b>Rencana eksplorasi panas bumi baru di Jenawi (pasca pembatalan WKP Gunung Lawu) tengah menghadapi resistensi sosial yang kuat. PLN berkepentingan menjaga jarak strategis sekaligus menyiapkan opsi interkoneksi jika proyek ini berlanjut, tanpa terseret konflik sosial yang bukan ranahnya.</div>
+        <div class="item"><b>4. Digitalisasi layanan sudah berjalan, giliran memperluas ke B2B &amp; sektor produktif.</b>Transformasi PLN Mobile dan responsivitas gangguan (target 1 jam) sudah menjadi cerita sukses layanan retail. Peluang berikutnya ada pada layanan bernilai tambah bagi pelaku usaha: pompanisasi pertanian, kelistrikan UMKM/IKM, dan skema energi hijau untuk hotel/vila wisata.</div>
+      </div>
+    </section>
+
+    <!-- 02 RUANG LINGKUP -->
+    <section id="lingkup">
+      <div class="kicker"><span class="num">02 /</span> RUANG LINGKUP &amp; METODOLOGI</div>
+      <h2 class="section-title">Definisi wilayah kajian ditetapkan secara eksplisit untuk menghindari tumpang tindih dengan area kerja unit layanan tetangga.</h2>
+      <p>Kabupaten Karanganyar terdiri atas 17 kecamatan. Empat di antaranya — <strong>Colomadu, Kebakkramat, Gondangrejo,</strong> dan simpul urban-industri <strong>Palur</strong> (bagian dari Kecamatan Jaten yang berbatasan dengan Kota Solo dan Kabupaten Sukoharjo) — dikecualikan dari kajian ini karena merupakan kawasan padat industri dan perkotaan yang datanya, secara administratif kelistrikan, umumnya dilayani unit/rayon yang berbeda dan telah menjadi fokus kajian investasi tersendiri oleh Pemkab.</p>
+      <p>Dengan pengecualian tersebut, wilayah kajian mencakup <strong>13 kecamatan penuh</strong> — Jatipuro, Jatiyoso, Jumapolo, Jumantono, Matesih, Tawangmangu, Ngargoyoso, Karangpandan, Karanganyar (kota kabupaten), Tasikmadu, Mojogedang, Kerjo, dan Jenawi — <strong>ditambah bagian Kecamatan Jaten di luar simpul Palur.</strong> Ini adalah asumsi kerja yang digunakan secara konsisten di seluruh kajian; bila definisi wilayah kerja ULP Karanganyar berbeda secara administratif dari asumsi ini, kerangka analisis dan rekomendasi tetap dapat disesuaikan tanpa mengubah substansi.</p>
+      <h3 class="sub">Sumber &amp; pendekatan</h3>
+      <p>Kajian disusun dari data sekunder terbuka per September 2026: publikasi BPS Kabupaten Karanganyar, dokumen Peta Potensi Investasi Kabupaten Karanganyar 2025 (DPMPTSP), pemberitaan resmi PLN ULP Karanganyar/UP3 Sukoharjo, dokumen RUPTL PLN 2025–2034, serta liputan media arus utama dan lokal yang terverifikasi. Karena granularitas data resmi PLN pada level ULP tidak seluruhnya terbuka untuk publik, sejumlah angka disajikan pada level kabupaten dan diberi catatan proporsi bila relevan — pendekatan yang lebih jujur dibanding memaksakan presisi yang tidak didukung data.</p>
+    </section>
+
+    <!-- 03 POTRET WILAYAH -->
+    <section id="potret">
+      <div class="kicker"><span class="num">03 /</span> POTRET WILAYAH</div>
+      <h2 class="section-title">Ekonomi tumbuh stabil di atas rata-rata provinsi, tetapi struktur pertumbuhannya masih bersandar pada industri yang justru terkonsentrasi di luar wilayah kajian.</h2>
+      <p>Kabupaten Karanganyar mencatat PDRB atas dasar harga berlaku Rp51,33 triliun pada 2024, tumbuh 5,54% dari Rp47,2 triliun setahun sebelumnya — konsisten di kisaran 5,53–5,54% pada 2023–2024 dan lebih tinggi dari rata-rata Jawa Tengah maupun nasional. PDRB per kapita tercatat Rp53,36 juta/tahun, peringkat ke-10 di antara kabupaten/kota Jawa Tengah.</p>
+      <p>Namun struktur penopangnya timpang secara spasial: sektor industri pengolahan menyumbang 45,28% PDRB — kontribusi terbesar dari 17 lapangan usaha — dan sektor ini justru terkonsentrasi di lima kecamatan yang termasuk dalam kategori "Daerah Pengembangan Industri Besar" versi RTRW Kabupaten: <strong>Gondangrejo, Tasikmadu, Kebakkramat, Jaten, dan Mojogedang.</strong> Tiga di antaranya berada di luar cakupan kajian ini. Sektor pertanian-kehutanan-perikanan serta akomodasi-makan-minum — dua sektor yang justru menjadi identitas ekonomi wilayah dataran tinggi — masuk dalam lima besar kontributor PDRB, namun jauh di bawah industri pengolahan.</p>
+
+      <h3 class="sub">Kelembagaan kelistrikan eksisting</h3>
+      <p>PLN ULP Karanganyar beroperasi di bawah PLN UP3 Sukoharjo, dengan orientasi layanan yang telah bergeser ke model digital: pelaporan gangguan terpusat lewat PLN Mobile dengan target respons petugas maksimal satu jam, serta ekosistem SPKLU yang tumbuh dari basis nasional 3.982 unit — 11 di antaranya berlokasi di Karanganyar per November 2025, dengan rencana penambahan 13 unit pada akhir tahun yang sama. Fakta menarik lain: Pemkab Karanganyar pada 2023–2025 justru menarik kembali sebagian penerangan jalan umum (PJU) dari sistem tenaga surya (PJU-TS) ke jaringan PLN konvensional, dengan alasan biaya dan ketersediaan suku cadang PJU-TS yang tidak reliabel — sebuah sinyal kepercayaan pada keandalan grid PLN, sekaligus peluang bisnis pemeliharaan PJU yang eksplisit.</p>
+
+      <div class="callout">
+        <p>"Pengusaha melihat banyak faktor, tidak hanya tempat, tetapi juga akses dan tenaga kerja... untuk sektor pariwisata, hingga saat ini belum ada investor besar yang masuk."</p>
+        <div class="src">— Sekretaris DPMPTSP Kabupaten Karanganyar, terkait realisasi investasi 2025 (Rp5,218 triliun)</div>
+      </div>
+    </section>
+
+    <!-- 04 KLASTER POTENSI -->
+    <section id="klaster">
+      <div class="kicker"><span class="num">04 /</span> PETA POTENSI RIIL</div>
+      <h2 class="section-title">Lima klaster ekonomi dengan tingkat kesiapan dan kebutuhan dukungan kelistrikan yang berbeda-beda.</h2>
+      <p class="lede">Bukan semua klaster membutuhkan dukungan yang sama. Sebagian butuh keandalan pasokan (reliabilitas), sebagian butuh produk baru (skema tarif, EV, hijau), dan sebagian butuh PLN sebagai mitra pembuka jalan investasi swasta.</p>
+
+      <div class="cluster">
+        <div class="idx">01</div>
+        <div>
+          <h4>Pariwisata Alam &amp; Warisan Budaya — kesenjangan investasi terbesar</h4>
+          <p>Tawangmangu, Ngargoyoso, Karangpandan, dan Matesih menaungi destinasi dengan traksi kunjungan mapan: kawasan wisata alam kaki Gunung Lawu, Candi Sukuh dan Candi Cetho (situs Hindu era akhir Majapahit), pasar wisata, hingga puluhan usaha penginapan dan glamping. DPMPTSP secara terbuka mengakui sektor ini "belum diminati investor besar" meski potensinya diakui signifikan — kesenjangan yang justru membuka ruang PLN untuk berperan sebagai fasilitator infrastruktur dasar yang mempercepat keputusan investasi swasta.</p>
+          <div class="tagrow"><span>Kebutuhan: Keandalan pasokan</span><span>Kapasitas daya untuk resor/vila</span><span>EV tourism corridor</span></div>
+        </div>
+      </div>
+
+      <div class="cluster">
+        <div class="idx">02</div>
+        <div>
+          <h4>Agribisnis Dataran Tinggi — elektrifikasi produktif yang belum tergarap</h4>
+          <p>Kecamatan Jumantono, Jatipuro, dan Jumapolo ditetapkan RTRW sebagai kawasan industri menengah, sementara lereng Lawu (Ngargoyoso, Tawangmangu, Jenawi) adalah sentra hortikultura, kopi, dan tanaman perkebunan dataran tinggi. Elektrifikasi pertanian — pompanisasi irigasi bertenaga listrik, cold storage hasil panen, dan pengolahan pascapanen (roasting kopi, pengeringan) — adalah area yang secara nasional menjadi salah satu pendorong pertumbuhan penjualan listrik PLN, namun implementasinya di wilayah ini masih terbatas pada skala kecil dan tersebar.</p>
+          <div class="tagrow"><span>Kebutuhan: Tarif &amp; skema daya UMKM tani</span><span>Elektrifikasi pompa</span></div>
+        </div>
+      </div>
+
+      <div class="cluster">
+        <div class="idx">03</div>
+        <div>
+          <h4>Transisi Energi &amp; Kendaraan Listrik — momentum sudah ada, perlu diperluas</h4>
+          <p>Jaringan SPKLU tumbuh (11 unit, +13 direncanakan) dan PLN aktif melakukan edukasi EV bersama Fakultas Teknik UNS ke sekolah-sekolah kejuruan di Karanganyar. Ekonomi operasional EV yang jauh lebih murah (~Rp247/km vs ~Rp1.000/km kendaraan BBM) adalah argumen kuat, namun jangkauan SPKLU saat ini kemungkinan besar masih terkonsentrasi di jalur utama/perkotaan, belum menjangkau koridor wisata Tawangmangu-Ngargoyoso yang justru berpotensi tinggi untuk EV tourism (city car dan bus wisata listrik).</p>
+          <div class="tagrow"><span>Kebutuhan: Perluasan SPKLU koridor wisata</span><span>Home charging vila/homestay</span></div>
+        </div>
+      </div>
+
+      <div class="cluster">
+        <div class="idx">04</div>
+        <div>
+          <h4>Isu Panas Bumi Jenawi — dukungan interkoneksi dengan jarak strategis</h4>
+          <p>Setelah Wilayah Kerja Panas Bumi (WKP) Gunung Lawu resmi dicabut pada 2023 karena sensitivitas nilai historis-spiritual (candi purbakala), Kementerian ESDM mengumumkan area Survei Pendahuluan dan Eksplorasi (PSPE) baru di Jenawi pada September 2025, dengan estimasi kapasitas hingga 86 MW. Proyek ini masih tahap survei, bukan konstruksi, namun telah memicu penolakan dari DPRD Jateng, organisasi masyarakat sipil, dan aktivis lingkungan yang mengangkat pengalaman buruk PLTP lain di Indonesia. <strong>Ini bukan proyek PLN</strong> — namun jika PSPE berlanjut ke tahap eksploitasi, PLN adalah off-taker alamiah melalui skema RUPTL, sehingga kesiapan teknis (studi interkoneksi jaringan) sebaiknya disiapkan tanpa melibatkan diri dalam kontestasi sosial-politik proyek hulu.</p>
+          <div class="tagrow"><span>Kebutuhan: Monitoring &amp; kesiapan interkoneksi jangka panjang</span></div>
+        </div>
+      </div>
+
+      <div class="cluster">
+        <div class="idx">05</div>
+        <div>
+          <h4>UMKM &amp; Ekonomi Kreatif — basis ekonomi riil yang diakui Pemkab sendiri</h4>
+          <p>Pemkab Karanganyar secara eksplisit memosisikan UMKM sebagai penopang ekonomi daerah dan daya tarik investasi ("semakin hidup UMKM, semakin menarik daerah ini bagi investor"). Sentra IKM seluas 300 ha tersebar di berbagai kecamatan, mencakup produk fesyen, kuliner, kriya, jamu/herbal, hingga kesenian reog dan karawitan. Kebutuhan kelistrikan sektor ini kecil secara individual namun masif secara agregat, dan sangat sensitif terhadap keandalan pasokan skala mikro (gangguan singkat dapat merusak produksi jamu/pengolahan makanan).</p>
+          <div class="tagrow"><span>Kebutuhan: Keandalan skala mikro</span><span>Pembiayaan sambungan daya IKM</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 DIAGNOSTIK -->
+    <section id="diagnostik">
+      <div class="kicker"><span class="num">05 /</span> DIAGNOSTIK</div>
+      <h2 class="section-title">Ketegangan strategis utama: kapasitas dan citra layanan PLN sudah solid, tetapi belum secara sengaja diarahkan untuk membuka investasi di sektor non-industri.</h2>
+
+      <table>
+        <thead><tr><th style="width:22%">Dimensi</th><th style="width:39%">Kekuatan yang Dapat Dimanfaatkan</th><th style="width:39%">Kesenjangan / Risiko</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Keandalan &amp; layanan</strong></td><td>Respons gangguan bertarget 1 jam; kepercayaan Pemkab terbukti dari migrasi PJU-TS kembali ke grid PLN.</td><td>Topografi pegunungan (Tawangmangu–Jenawi) berisiko lebih tinggi terhadap gangguan jaringan (pohon tumbang, cuaca ekstrem) — belum ada data publik SAIDI/SAIFI spesifik area ini untuk memverifikasi.</td></tr>
+          <tr><td><strong>Investasi &amp; ekonomi</strong></td><td>Pertumbuhan ekonomi kabupaten konsisten di atas rata-rata provinsi; akses tol Solo–Ngawi mendukung mobilitas.</td><td>Realisasi investasi 2025 hanya naik tipis; sektor pariwisata nihil investor besar; ketergantungan tinggi pada industri tekstil yang sensitif terhadap dinamika global.</td></tr>
+          <tr><td><strong>Energi &amp; transisi hijau</strong></td><td>Momentum nasional RUPTL 2025–2034 mendorong EBT &amp; EV; SPKLU sudah tumbuh di Karanganyar.</td><td>Potensi panas bumi Jenawi terjebak resistensi sosial; belum ada program EBT skala kecil (PLTS atap, mikrohidro) yang terdokumentasi untuk sektor wisata/pertanian wilayah kajian.</td></tr>
+          <tr><td><strong>Reputasi &amp; hubungan sosial</strong></td><td>Kolaborasi edukasi EV dengan UNS menunjukkan model kemitraan yang dapat direplikasi ke isu lain (efisiensi energi UMKM, elektrifikasi pertanian).</td><td>Ketegangan sosial di Jenawi terkait geothermal berisiko "menular" secara persepsi ke PLN sebagai bagian dari ekosistem ketenagalistrikan, meski proyek tersebut di luar kendali PLN.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 06 REKOMENDASI -->
+    <section id="rekomendasi">
+      <div class="kicker"><span class="num">06 /</span> REKOMENDASI STRATEGIS</div>
+      <h2 class="section-title">Enam inisiatif dukungan yang realistis dieksekusi oleh unit layanan pelanggan, dikelompokkan menurut klaster ekonomi yang dilayani.</h2>
+
+      <table>
+        <thead><tr><th style="width:26%">Inisiatif</th><th style="width:16%">Klaster Sasaran</th><th style="width:16%">Sifat Dukungan</th><th style="width:42%">Rasional</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Koridor Listrik Wisata Lawu</strong> — penguatan keandalan feeder &amp; perluasan SPKLU di jalur Karanganyar–Karangpandan–Tawangmangu–Ngargoyoso</td><td>Pariwisata</td><td class="tag-hi">Infrastruktur</td><td>Menjawab langsung kesenjangan investasi pariwisata; keandalan pasokan adalah prasyarat dasar sebelum investor hotel/resor mempertimbangkan lokasi.</td></tr>
+          <tr><td><strong>Skema Daya Prioritas UMKM &amp; IKM</strong> — kemudahan pengajuan tambah daya dan pembiayaan sambungan bertahap untuk sentra IKM</td><td>UMKM/IKM</td><td class="tag-med">Produk/Layanan</td><td>Selaras dengan narasi Pemkab yang menjadikan UMKM sebagai daya tarik investasi utama; dampak agregat besar meski nilai per-pelanggan kecil.</td></tr>
+          <tr><td><strong>Paket Elektrifikasi Pertanian Produktif</strong> — pompanisasi irigasi, cold storage komunal, dan pengolahan pascapanen kopi/hortikultura</td><td>Agribisnis</td><td class="tag-med">Produk/Layanan</td><td>Selaras dengan pola nasional RUPTL yang menargetkan pertumbuhan penjualan dari sektor produktif, bukan hanya rumah tangga.</td></tr>
+          <tr><td><strong>Kemitraan PLTS Atap untuk Hotel &amp; Vila</strong> — skema energi hijau (REC/PLTS atap on-grid) untuk pelaku usaha wisata skala menengah</td><td>Pariwisata, Energi Hijau</td><td class="tag-hi">Produk/Layanan</td><td>Memberi nilai tambah "wisata hijau" yang dapat dipasarkan pelaku usaha, sekaligus selaras dekarbonisasi RUPTL 2025–2034.</td></tr>
+          <tr><td><strong>Monitoring Interkoneksi Panas Bumi Jenawi</strong> — kajian teknis internal kesiapan grid tanpa keterlibatan pada tahap advokasi sosial</td><td>Energi/Geothermal</td><td class="tag-med">Kesiapan Teknis</td><td>Menjaga posisi netral PLN dari konflik sosial, sambil tetap siap jika proyek hulu berlanjut ke tahap komersial dalam 5–10 tahun ke depan.</td></tr>
+          <tr><td><strong>Perluasan Program Edukasi &amp; Digital ke Pelaku Usaha</strong> — replikasi model kemitraan UNS untuk pelatihan efisiensi energi bagi UMKM &amp; kelompok tani</td><td>UMKM, Agribisnis</td><td class="tag-med">Reputasi/Kemitraan</td><td>Memanfaatkan kredibilitas program edukasi EV yang sudah berjalan untuk memperluas cakupan ke sektor produktif lain.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 07 PRIORITISASI -->
+    <section id="prioritas">
+      <div class="kicker"><span class="num">07 /</span> PRIORITISASI</div>
+      <h2 class="section-title">Dua inisiatif layak dieksekusi lebih dulu: dampaknya besar dan kompleksitas implementasinya relatif terkendali bagi unit layanan pelanggan.</h2>
+
+      <div class="matrix-wrap">
+        <div class="matrix">
+          <div class="gridline gv"></div>
+          <div class="gridline gh"></div>
+          <div class="axis-label axis-y">DAMPAK TERHADAP PERTUMBUHAN WILAYAH →</div>
+          <div class="axis-label axis-x">KOMPLEKSITAS IMPLEMENTASI BAGI ULP →</div>
+          <div class="quad-label" style="top:8px; left:10px;">DAMPAK TINGGI · MUDAH</div>
+          <div class="quad-label" style="top:8px; right:10px; text-align:right;">DAMPAK TINGGI · KOMPLEKS</div>
+          <div class="quad-label" style="bottom:8px; left:10px;">DAMPAK RENDAH · MUDAH</div>
+          <div class="quad-label" style="bottom:8px; right:10px; text-align:right;">DAMPAK RENDAH · KOMPLEKS</div>
+
+          <div class="dot" style="left:28%; top:22%;"></div>
+          <div class="dot-label" style="left:28%; top:22%;">Skema Daya UMKM/IKM</div>
+
+          <div class="dot" style="left:38%; top:32%;"></div>
+          <div class="dot-label" style="left:38%; top:32%;">Elektrifikasi Pertanian</div>
+
+          <div class="dot" style="left:68%; top:20%;"></div>
+          <div class="dot-label" style="left:68%; top:20%;">Koridor Listrik Wisata Lawu</div>
+
+          <div class="dot moss" style="left:62%; top:45%;"></div>
+          <div class="dot-label" style="left:62%; top:45%;">PLTS Atap Hotel/Vila</div>
+
+          <div class="dot moss" style="left:30%; top:62%;"></div>
+          <div class="dot-label" style="left:30%; top:62%;">Edukasi &amp; Kemitraan</div>
+
+          <div class="dot moss" style="left:80%; top:78%;"></div>
+          <div class="dot-label" style="left:80%; top:78%;">Interkoneksi Geothermal</div>
+        </div>
+        <div class="matrix-legend">
+          <div class="li"><div class="sw" style="background:var(--copper);"></div><div><strong>Prioritas jangka pendek</strong> — dampak ekonomi lebih langsung, dapat dijalankan dengan sumber daya ULP saat ini.</div></div>
+          <div class="li"><div class="sw" style="background:var(--moss);"></div><div><strong>Prioritas jangka menengah–panjang</strong> — membutuhkan koordinasi lintas pihak (UP3, Pemkab, mitra hulu) atau menunggu kepastian proyek eksternal.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 ROADMAP -->
+    <section id="roadmap">
+      <div class="kicker"><span class="num">08 /</span> PETA JALAN</div>
+      <h2 class="section-title">Eksekusi bertahap dalam tiga horizon waktu, dimulai dari inisiatif berdampak cepat sebelum masuk ke kemitraan yang lebih kompleks.</h2>
+
+      <div class="roadmap">
+        <div class="rm-phase">
+          <div class="when">Horizon 1 · 0–12 bulan</div>
+          <h4>Perkuat fondasi layanan di klaster prioritas</h4>
+          <p>Petakan titik rawan gangguan di koridor wisata Karangpandan–Tawangmangu–Ngargoyoso; luncurkan jalur cepat pengajuan tambah daya untuk sentra IKM; mulai dialog awal dengan asosiasi pelaku usaha wisata dan kelompok tani terkait kebutuhan daya spesifik mereka.</p>
+        </div>
+        <div class="rm-phase">
+          <div class="when">Horizon 2 · 1–3 tahun</div>
+          <h4>Bangun produk &amp; kemitraan bernilai tambah</h4>
+          <p>Realisasikan penambahan SPKLU di simpul-simpul wisata utama; luncurkan skema PLTS atap on-grid untuk hotel/vila skala menengah bekerja sama dengan asosiasi perhotelan setempat; perluas paket elektrifikasi pertanian produktif (pompanisasi, cold storage) di Jumapolo–Jumantono–Jatipuro.</p>
+        </div>
+        <div class="rm-phase">
+          <div class="when">Horizon 3 · 3–5 tahun</div>
+          <h4>Siapkan opsi jangka panjang &amp; skala ulang program</h4>
+          <p>Perbarui kajian teknis interkoneksi bila PSPE Jenawi bergerak ke tahap eksploitasi; evaluasi dan replikasi program edukasi energi ke lebih banyak sekolah kejuruan dan kelompok usaha; kaji potensi elektrifikasi bus wisata listrik untuk koridor Lawu berbasis data okupansi tahun-tahun sebelumnya.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 PENUTUP -->
+    <section id="penutup">
+      <div class="kicker"><span class="num">09 /</span> PENUTUP</div>
+      <h2 class="section-title">Peran PLN di wilayah ini bukan sekadar penyedia daya, melainkan salah satu prasyarat yang menentukan apakah investasi pariwisata dan agribisnis akhirnya benar-benar datang.</h2>
+      <p>Data menunjukkan pola yang konsisten: ekonomi Kabupaten Karanganyar tumbuh sehat, tetapi motor utamanya — industri manufaktur — secara geografis berada di luar wilayah kajian ini. Sementara itu, sektor-sektor yang justru menjadi identitas 13–14 kecamatan yang dikaji (pariwisata alam-budaya, agribisnis dataran tinggi, UMKM) diakui sendiri oleh pemerintah daerah sebagai sektor yang "potensial namun belum diminati investor besar". Kesenjangan ini adalah ruang gerak yang nyata bagi PLN ULP Karanganyar: memosisikan diri bukan sebagai penunggu permintaan, melainkan sebagai salah satu enabler yang secara proaktif menyiapkan infrastruktur kelistrikan yang membuat keputusan investasi swasta menjadi lebih mudah diambil.</p>
+      <p>Langkah paling realistis untuk memulai adalah dua inisiatif berdampak tinggi dan kompleksitas terkendali: penguatan koridor listrik wisata Lawu, dan skema daya prioritas untuk UMKM/IKM. Keduanya dapat dijalankan dengan sumber daya yang relatif ada di tingkat ULP, sambil membangun basis data dan hubungan kemitraan yang dibutuhkan untuk inisiatif yang lebih kompleks di horizon berikutnya.</p>
+      <div class="final-note">Catatan: kajian ini disusun dari data sekunder publik dan wawancara media yang telah dipublikasikan; tidak menggantikan kajian teknis kelistrikan (studi beban, SAIDI/SAIFI, kapasitas trafo per penyulang) yang idealnya dilakukan bersama tim teknis UP3 Sukoharjo dan Distribusi Jawa Tengah &amp; DIY sebelum keputusan investasi infrastruktur diambil.</div>
+    </section>
+
+    <!-- REFERENSI -->
+    <section id="referensi">
+      <div class="kicker"><span class="num">10 /</span> REFERENSI</div>
+      <h2 class="section-title">Sumber Data</h2>
+      <div class="sources">
+        <ol>
+          <li>BPS Kabupaten Karanganyar — Produk Domestik Regional Bruto Menurut Lapangan Usaha 2020–2024. <a href="https://karanganyarkab.bps.go.id/en/publication/2025/04/11/8307eb39b9393e35d19d238e/produk-domestik-regional-bruto-kabupaten-karanganyar-menurut-lapangan-usaha-2020-2024.html" target="_blank">karanganyarkab.bps.go.id</a></li>
+          <li>Databoks/Katadata — PDRB ADHB per Kapita &amp; Sektor Utama Penggerak Perekonomian Kab. Karanganyar 2024. <a href="https://databoks.katadata.co.id/ekonomi-makro/statistik/ff6ed1914c78d0c/sektor-utama-penggerak-perekonomian-di-kabupaten-karanganyar-pada-2024" target="_blank">databoks.katadata.co.id</a></li>
+          <li>Pemkab Karanganyar (DPMPTSP) — Peta Potensi Investasi Kabupaten Karanganyar 2025 &amp; Portal POINT Karanganyar. <a href="https://point.karanganyarkab.go.id/" target="_blank">point.karanganyarkab.go.id</a></li>
+          <li>Espos.id — Investasi Karanganyar 2025 Tembus Rp5,218 Triliun, Naik Tipis (April 2026); Roadshow Kendaraan Listrik PLN–UNS di SMKN 2 Karanganyar (November 2025). <a href="https://solopos.espos.id/" target="_blank">solopos.espos.id</a></li>
+          <li>KRJogja — Investasi Karanganyar 2025 Capai Rp5,218 Triliun, Kenaikan Masih Tipis (April 2026). <a href="https://www.krjogja.com/solo/1247371219/investasi-karanganyar-2025-capai-rp5218-triliun-kenaikan-masih-tipis" target="_blank">krjogja.com</a></li>
+          <li>RMOL Jateng — Karanganyar Genjot Investasi Rp5,2 Triliun, SGS Jadi Panggung Promosi Daerah (2025). <a href="https://www.rmoljawatengah.id/karanganyar-genjot-investasi-rp52-triliun-sgs-jadi-panggung-promosi-daerah" target="_blank">rmoljawatengah.id</a></li>
+          <li>ANTARA Jateng &amp; ZonaPasar — Migrasi PJU Tenaga Surya kembali ke Jaringan PLN, Kab. Karanganyar (2023–2025). <a href="https://jateng.antaranews.com/berita/511887/aliran-listrik-pln-kembali-benderangkan-jalan-karanganyar" target="_blank">jateng.antaranews.com</a></li>
+          <li>ThinkGeoEnergy — Gunung Lawu No Longer Identified as a Geothermal Working Area (Oktober 2025). <a href="https://www.thinkgeoenergy.com/gunung-lawu-in-indonesia-no-longer-identified-as-a-geothermal-working-area/" target="_blank">thinkgeoenergy.com</a></li>
+          <li>Kompas.com — Rencana Bahlil Lelang Proyek Geothermal di Gunung Lawu Tuai Penolakan (September 2025). <a href="https://regional.kompas.com/read/2025/09/30/175636978/rencana-bahlil-lelang-proyek-geothermal-di-gunung-lawu-tuai-penolakan?page=all" target="_blank">regional.kompas.com</a></li>
+          <li>Suara Merdeka Solo — Penolakan Proyek Geothermal Gunung Lawu di Kecamatan Jenawi (Oktober 2025). <a href="https://solo.suaramerdeka.com/solo-raya/0516072506/asrar-tolak-proyek-geothermal-di-gunung-lawu-karena-ganggu-ekosistem-juga-aspek-sosial-budaya-dan-spiritual" target="_blank">solo.suaramerdeka.com</a></li>
+          <li>PT PLN (Persero) — Rencana Usaha Penyediaan Tenaga Listrik (RUPTL) 2025–2034, dokumen Provinsi Jawa Tengah. <a href="https://siganteng.esdm.jatengprov.go.id/upload/statis/RUPTL2025_Jatengongrid.pdf" target="_blank">siganteng.esdm.jatengprov.go.id</a></li>
+          <li>Katadata — PLN Ramal Permintaan Listrik Naik 67% pada 2034 Imbas Industri hingga Pusat Data (Juni 2025). <a href="https://katadata.co.id/berita/energi/683d667b40653/pln-ramal-permintaan-listrik-naik-67-pada-2034-imbas-industri-hingga-pusat-data" target="_blank">katadata.co.id</a></li>
+          <li>Wikipedia — Karanganyar Regency (data administratif &amp; demografis, estimasi pertengahan 2024). <a href="https://en.wikipedia.org/wiki/Karanganyar_Regency" target="_blank">en.wikipedia.org</a></li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Scroll-spy sederhana untuk highlight navigasi aktif
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.navlist a');
+  const setActive = () => {
+    let current = sections[0]?.id;
+    const offset = 140;
+    sections.forEach(sec => {
+      if (window.scrollY + offset >= sec.offsetTop) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', setActive);
+  setActive();
+</script>
+</body>
+</html>
