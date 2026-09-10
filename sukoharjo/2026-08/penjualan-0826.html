@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis Penjualan UP3 Sukoharjo — Jan 2025–Agu 2026</title>
+<style>
+  :root{
+    --navy:#051C2C;
+    --blue:#00A9F4;
+    --cyan:#E6F2F8;
+    --gray:#F5F7FA;
+    --line:#E6E6E6;
+    --red:#D0021B;
+    --green:#007A3D;
+    --muted:#5A6B7B;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:#F4F6F8;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--navy);
+    line-height:1.5;
+  }
+  .report{
+    max-width:1180px;
+    margin:0 auto;
+    background:#fff;
+    box-shadow:0 8px 30px rgba(5,28,44,.08);
+  }
+  .header{
+    background:var(--navy);
+    color:#fff;
+    padding:48px 56px;
+  }
+  .header .eyebrow{
+    font-size:12px;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+    color:#8EC9E8;
+    margin-bottom:10px;
+  }
+  .header h1{
+    font-size:32px;
+    line-height:1.2;
+    margin:0;
+    font-weight:600;
+    letter-spacing:-.5px;
+  }
+  .header p{
+    color:#B9D6E8;
+    margin:12px 0 0;
+    font-size:15px;
+  }
+  .section{
+    padding:32px 56px;
+    border-bottom:1px solid var(--line);
+  }
+  h2{
+    font-size:22px;
+    margin:0 0 16px;
+    padding-left:12px;
+    border-left:4px solid var(--blue);
+    font-weight:600;
+  }
+  h3{
+    font-size:16px;
+    margin:24px 0 8px;
+    font-weight:600;
+  }
+  p{margin:0 0 12px;}
+  ul{margin:8px 0 16px 20px; padding:0;}
+  li{margin:6px 0;}
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin:24px 0;
+  }
+  .kpi{
+    background:var(--gray);
+    padding:16px;
+    border-top:3px solid var(--blue);
+  }
+  .kpi .label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    color:var(--muted);
+  }
+  .kpi .value{
+    font-size:24px;
+    font-weight:600;
+    margin-top:4px;
+  }
+  .kpi .delta{
+    font-size:13px;
+    color:var(--red);
+    margin-top:4px;
+  }
+  .kpi .delta.pos{color:var(--green);}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+    margin:16px 0 8px;
+  }
+  th{
+    background:var(--navy);
+    color:#fff;
+    text-align:left;
+    padding:8px 10px;
+    font-weight:500;
+    vertical-align:bottom;
+  }
+  td{
+    padding:8px 10px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  tr:nth-child(even) td{background:#FAFBFC;}
+  .num{
+    text-align:right;
+    font-variant-numeric:tabular-nums;
+    white-space:nowrap;
+  }
+  .callout{
+    background:var(--cyan);
+    border-left:4px solid var(--blue);
+    padding:16px 20px;
+    margin:20px 0;
+    font-size:14px;
+  }
+  .callout-red{
+    background:#FFF1F0;
+    border-left:4px solid var(--red);
+    padding:16px 20px;
+    margin:20px 0;
+    font-size:14px;
+  }
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .tag{
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:10px;
+    font-size:11px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .tag.red{background:#FFE5E5;color:var(--red);}
+  .tag.green{background:#E3F5E9;color:var(--green);}
+  .tag.blue{background:#E6F2F8;color:#005A8C;}
+  .bar-container{display:flex;align-items:center;gap:8px;margin:4px 0;}
+  .bar-label{width:72px;font-size:12px;color:var(--muted);}
+  .bar{height:16px;background:var(--blue);border-radius:2px;min-width:2px;}
+  .bar.red{background:var(--red);}
+  .footer{
+    padding:24px 56px;
+    font-size:12px;
+    color:#7A8A99;
+    background:var(--gray);
+  }
+  .small{font-size:12px;color:var(--muted);}
+  @media (max-width:800px){
+    .header,.section,.footer{padding-left:24px;padding-right:24px;}
+    .kpi-grid{grid-template-columns:1fr 1fr;}
+    .two-col{grid-template-columns:1fr;}
+    table{font-size:12px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .report{box-shadow:none;max-width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="report">
+
+  <div class="header">
+    <div class="eyebrow">Analisis Penjualan Tenaga Listrik</div>
+    <h1>Analisis Tren & Insiden Penurunan Penjualan TM<br>UP3 Sukoharjo · Januari 2025 – Agustus 2026</h1>
+    <p>Fokus khusus: penurunan Agustus 2026</p>
+  </div>
+
+  <div class="section">
+    <h2>1. Ringkasan Eksekutif</h2>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="label">Total 2026 (Jan–Agu)</div>
+        <div class="value">437,9 GWh</div>
+        <div class="delta">8 bulan berjalan</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Porsi Industri 2026</div>
+        <div class="value">88,5%</div>
+        <div class="delta">387,6 GWh dari total</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Porsi Grogol 2026</div>
+        <div class="value">58,6%</div>
+        <div class="delta">256,4 GWh dari total</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Agu 2026 vs Jul 2026</div>
+        <div class="value">-7,13%</div>
+        <div class="delta">-4,33 GWh MoM</div>
+      </div>
+    </div>
+
+    <div class="callout-red">
+      <strong>Insight utama:</strong> Penurunan Agustus 2026 bukan penurunan broad-based. Total turun <strong>-4.331.936 kWh (-7,13% MoM)</strong>, tetapi hampir seluruhnya disebabkan oleh <strong>sektor industri</strong>, khususnya <strong>Wonogiri</strong> dan <strong>Jatisrono</strong>. Industri Wonogiri saja turun <strong>-3.049.864 kWh (-33,5% MoM)</strong> dan menyumbang sekitar <strong>70,4%</strong> dari total penurunan.
+    </div>
+
+    <ul>
+      <li><strong>Struktur portofolio 2026 sangat terkonsentrasi:</strong> industri 88,5% dari total; Grogol 58,6% dari total area. Artinya, fluktuasi total sangat ditentukan oleh sedikit pelanggan besar.</li>
+      <li><strong>Pola musiman berulang:</strong> Maret rendah, April rebound, Mei dip, Juni–Juli peak, Agustus softening, Oktober peak, November trough, Desember rebound. Pola ini muncul di 2025 dan 2026.</li>
+      <li><strong>Agustus 2026 adalah seasonal softening yang exaggerated:</strong> secara historis Agustus memang turun dari Juli, tetapi 2025 hanya <strong>-2,86%</strong>, sedangkan 2026 <strong>-7,13%</strong> — sekitar 2,5 kali lebih dalam.</li>
+      <li><strong>YTD Jan–Agu 2026 masih relatif flat:</strong> 437,89 GWh vs 438,07 GWh pada 2025 (<strong>-0,04%</strong>). Jadi belum ada indikasi collapse sistemik, tetapi ada pergeseran risiko ke area tertentu.</li>
+      <li><strong>Rekomendasi deteksi dini:</strong> lakukan customer-level diagnostic pada pelanggan industri besar di Wonogiri dan Jatisrono, validasi jadwal baca meter, dan pasang alert threshold MoM &lt; -10% / YoY &lt; -5% pada level area-kategori.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>2. Tren Bulanan & Pola Musiman</h2>
+    <p>Total penjualan bergerak mengikuti siklus industri. Pola yang berulang: <strong>Q1 melemah</strong> (terutama Maret), <strong>April rebound</strong>, <strong>Mei dip</strong>, <strong>Juni–Juli naik</strong>, <strong>Agustus softening</strong>, <strong>Oktober peak</strong>, <strong>November trough</strong>, lalu <strong>Desember rebound</strong>.</p>
+
+    <h3>Exhibit 1 — Tren total penjualan bulanan</h3>
+    <div style="margin:16px 0;">
+      <div class="bar-container"><div class="bar-label">Jan 25</div><div class="bar" style="width:93.9%"></div><div class="small">57,59 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Feb 25</div><div class="bar" style="width:89.9%"></div><div class="small">55,13 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Mar 25</div><div class="bar" style="width:85.7%"></div><div class="small">52,60 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Apr 25</div><div class="bar" style="width:76.8%"></div><div class="small">47,09 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Mei 25</div><div class="bar" style="width:90.9%"></div><div class="small">55,75 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Jun 25</div><div class="bar" style="width:86.0%"></div><div class="small">52,79 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Jul 25</div><div class="bar" style="width:96.8%"></div><div class="small">59,41 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Agu 25</div><div class="bar" style="width:94.1%"></div><div class="small">57,71 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Sep 25</div><div class="bar" style="width:95.0%"></div><div class="small">58,27 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Okt 25</div><div class="bar" style="width:100%"></div><div class="small">61,35 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Nov 25</div><div class="bar" style="width:91.6%"></div><div class="small">56,22 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Des 25</div><div class="bar" style="width:96.3%"></div><div class="small">59,09 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Jan 26</div><div class="bar" style="width:93.6%"></div><div class="small">57,42 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Feb 26</div><div class="bar" style="width:87.1%"></div><div class="small">53,45 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Mar 26</div><div class="bar" style="width:73.4%;background:#D0021B;"></div><div class="small">45,03 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Apr 26</div><div class="bar" style="width:89.4%"></div><div class="small">54,87 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Mei 26</div><div class="bar" style="width:85.1%"></div><div class="small">52,19 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Jun 26</div><div class="bar" style="width:94.0%"></div><div class="small">57,65 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Jul 26</div><div class="bar" style="width:99.1%"></div><div class="small">60,80 GWh</div></div>
+      <div class="bar-container"><div class="bar-label">Agu 26</div><div class="bar" style="width:92.0%;background:#D0021B;"></div><div class="small">56,47 GWh</div></div>
+    </div>
+
+    <h3>Tabel tren bulanan</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Bulan</th>
+          <th class="num">Total (kWh)</th>
+          <th class="num">MoM</th>
+          <th class="num">YoY</th>
+          <th>Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Jan 2025</td><td class="num">57.592.968</td><td class="num">—</td><td class="num">—</td><td>Baseline</td></tr>
+        <tr><td>Feb 2025</td><td class="num">55.133.025</td><td class="num">-4,27%</td><td class="num">—</td><td>Softening</td></tr>
+        <tr><td>Mar 2025</td><td class="num">52.596.621</td><td class="num">-4,60%</td><td class="num">—</td><td>Q1 low</td></tr>
+        <tr><td>Apr 2025</td><td class="num">47.092.234</td><td class="num">-10,47%</td><td class="num">—</td><td>Trough 2025</td></tr>
+        <tr><td>Mei 2025</td><td class="num">55.752.413</td><td class="num">+18,39%</td><td class="num">—</td><td>Rebound</td></tr>
+        <tr><td>Jun 2025</td><td class="num">52.785.387</td><td class="num">-5,32%</td><td class="num">—</td><td>Dip</td></tr>
+        <tr><td>Jul 2025</td><td class="num">59.410.274</td><td class="num">+12,55%</td><td class="num">—</td><td>Peak</td></tr>
+        <tr><td>Agu 2025</td><td class="num">57.708.272</td><td class="num">-2,86%</td><td class="num">—</td><td>Softening normal</td></tr>
+        <tr><td>Sep 2025</td><td class="num">58.272.525</td><td class="num">+0,98%</td><td class="num">—</td><td>Stabil</td></tr>
+        <tr><td>Okt 2025</td><td class="num">61.346.932</td><td class="num">+5,28%</td><td class="num">—</td><td>Peak tertinggi</td></tr>
+        <tr><td>Nov 2025</td><td class="num">56.216.764</td><td class="num">-8,36%</td><td class="num">—</td><td>Trough</td></tr>
+        <tr><td>Des 2025</td><td class="num">59.094.240</td><td class="num">+5,12%</td><td class="num">—</td><td>Rebound</td></tr>
+        <tr><td>Jan 2026</td><td class="num">57.423.087</td><td class="num">-2,83%</td><td class="num">-0,29%</td><td>Flat YoY</td></tr>
+        <tr><td>Feb 2026</td><td class="num">53.448.861</td><td class="num">-6,92%</td><td class="num">-3,05%</td><td>Lemah</td></tr>
+        <tr><td>Mar 2026</td><td class="num">45.031.580</td><td class="num">-15,75%</td><td class="num">-14,38%</td><td>Trough terburuk</td></tr>
+        <tr><td>Apr 2026</td><td class="num">54.866.677</td><td class="num">+21,84%</td><td class="num">+16,51%</td><td>Rebound kuat</td></tr>
+        <tr><td>Mei 2026</td><td class="num">52.194.267</td><td class="num">-4,87%</td><td class="num">-6,38%</td><td>Dip</td></tr>
+        <tr><td>Jun 2026</td><td class="num">57.654.069</td><td class="num">+10,46%</td><td class="num">+9,22%</td><td>Naik</td></tr>
+        <tr><td>Jul 2026</td><td class="num">60.800.590</td><td class="num">+5,46%</td><td class="num">+2,34%</td><td>Peak 2026</td></tr>
+        <tr><td>Agu 2026</td><td class="num">56.468.654</td><td class="num">-7,13%</td><td class="num">-2,15%</td><td>Red flag</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Pola berulang atau sebab lain?</strong> Pola bulanan secara umum <strong>berulang</strong>: Q1 lemah, April rebound, Juni–Juli naik, Agustus softening, Oktober peak, November turun. Namun, <strong>besaran penurunan Agustus 2026 tidak normal</strong>. Karena tidak ada hari besar nasional besar di Agustus 2026 dan area lain relatif stabil, penurunan ini lebih tepat dikategorikan sebagai <strong>anomali customer-specific/operasional</strong>, bukan semata musiman.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. Struktur Portofolio: Area & Kategori</h2>
+
+    <h3>Exhibit 2 — Kontribusi area (2026 Jan–Agu)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th class="num">Total 2026 (kWh)</th>
+          <th class="num">Share 2026</th>
+          <th class="num">Agu 2026 MoM</th>
+          <th class="num">Agu 2026 YoY</th>
+          <th>Insight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Sukoharjo</td><td class="num">88.599.991</td><td class="num">20,23%</td><td class="num">-1,12%</td><td class="num">+3,78%</td><td>Stabil bulan ini, tetapi YTD -8,96%</td></tr>
+        <tr><td>Grogol</td><td class="num">256.389.856</td><td class="num">58,55%</td><td class="num">-2,21%</td><td class="num">+1,75%</td><td>Backbone, relatif stabil</td></tr>
+        <tr><td>Wonogiri</td><td class="num">74.769.187</td><td class="num">17,07%</td><td class="num">-31,20%</td><td class="num">-24,45%</td><td><span class="tag red">Red flag</span> episentrum penurunan</td></tr>
+        <tr><td>Jatisrono</td><td class="num">13.154.785</td><td class="num">3,00%</td><td class="num">-17,79%</td><td class="num">-18,67%</td><td><span class="tag red">Volatile</span> turun tajam</td></tr>
+        <tr><td>Karanganyar</td><td class="num">14.226.072</td><td class="num">3,25%</td><td class="num">-0,51%</td><td class="num">+20,18%</td><td><span class="tag green">Growth</span> YoY kuat</td></tr>
+        <tr style="font-weight:600;"><td>Total 2026</td><td class="num">437.887.785</td><td class="num">100,00%</td><td class="num">-7,13%</td><td class="num">-2,15%</td><td>Turun akibat 2 area industri</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Exhibit 3 — Kontribusi kategori (2026 Jan–Agu)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Kategori</th>
+          <th class="num">Total 2026 (kWh)</th>
+          <th class="num">Share 2026</th>
+          <th class="num">Agu 2026 MoM</th>
+          <th class="num">Agu 2026 YoY</th>
+          <th>Insight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Sosial</td><td class="num">17.035.279</td><td class="num">3,89%</td><td class="num">+3,26%</td><td class="num">+7,44%</td><td><span class="tag green">Tumbuh</span></td></tr>
+        <tr><td>Rumah Tangga</td><td class="num">0</td><td class="num">0,00%</td><td class="num">—</td><td class="num">—</td><td>Tidak terdata / nihil</td></tr>
+        <tr><td>Bisnis</td><td class="num">31.035.220</td><td class="num">7,09%</td><td class="num">-1,14%</td><td class="num">-7,02%</td><td>Tekan, tetapi kecil</td></tr>
+        <tr><td>Industri</td><td class="num">387.638.934</td><td class="num">88,53%</td><td class="num">-8,01%</td><td class="num">-2,05%</td><td><span class="tag red">Driver utama</span></td></tr>
+        <tr><td>Pemerintah</td><td class="num">1.486.297</td><td class="num">0,34%</td><td class="num">-0,66%</td><td class="num">+2,96%</td><td>Stabil</td></tr>
+        <tr><td>Traksi</td><td class="num">1.419.615</td><td class="num">0,32%</td><td class="num">+3,43%</td><td class="num">-8,70%</td><td>Kecil</td></tr>
+        <tr><td>Curah</td><td class="num">0</td><td class="num">0,00%</td><td class="num">—</td><td class="num">—</td><td>Tidak terdata / nihil</td></tr>
+        <tr><td>Multiguna</td><td class="num">272.440</td><td class="num">0,06%</td><td class="num">+2.622%</td><td class="num">-99,44%</td><td><span class="tag red">Anomali data</span> perlu validasi</td></tr>
+        <tr style="font-weight:600;"><td>Total 2026</td><td class="num">437.887.785</td><td class="num">100,00%</td><td class="num">-7,13%</td><td class="num">-2,15%</td><td>Industri menentukan arah</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>4. Bedah Khusus: Penurunan Agustus 2026</h2>
+
+    <div class="callout-red">
+      <strong>Kesimpulan diagnosis:</strong> Penurunan Agustus 2026 adalah <strong>industrial-led decline</strong>, terpusat di <strong>Wonogiri</strong> dan <strong>Jatisrono</strong>. Non-industri justru net positif. Ini mengarah pada hipotesis <strong>gangguan/penurunan konsumsi pelanggan industri besar</strong>, bukan pelemahan permintaan umum.
+    </div>
+
+    <h3>Exhibit 4 — Dekomposisi penurunan MoM Juli → Agustus 2026</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Komponen</th>
+          <th class="num">Delta (kWh)</th>
+          <th class="num">Kontribusi terhadap penurunan</th>
+          <th>Interpretasi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Industri Wonogiri</td><td class="num">-3.049.864</td><td class="num">70,4%</td><td>Episentrum; turun -33,5% MoM</td></tr>
+        <tr><td>Industri Grogol</td><td class="num">-763.644</td><td class="num">17,6%</td><td>Turun -2,5% MoM; masih wajar</td></tr>
+        <tr><td>Industri Jatisrono</td><td class="num">-381.632</td><td class="num">8,8%</td><td>Turun -17,8% MoM</td></tr>
+        <tr><td>Industri Sukoharjo</td><td class="num">-145.211</td><td class="num">3,4%</td><td>Turun -1,2% MoM</td></tr>
+        <tr><td>Industri Karanganyar</td><td class="num">-21.289</td><td class="num">0,5%</td><td>Turun -1,5% MoM</td></tr>
+        <tr><td>Non-industri net</td><td class="num">+29.704</td><td class="num">-0,7%</td><td>Offset positif dari Sosial, Traksi, Multiguna</td></tr>
+        <tr style="font-weight:600;"><td>Total</td><td class="num">-4.331.936</td><td class="num">100,0%</td><td>Turun -7,13% MoM</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Exhibit 5 — Perbandingan Agustus 2026 vs Agustus 2025</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Dimensi</th>
+          <th class="num">Agu 2025</th>
+          <th class="num">Agu 2026</th>
+          <th class="num">Delta</th>
+          <th class="num">YoY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Total UP3</td><td class="num">57.708.272</td><td class="num">56.468.654</td><td class="num">-1.239.618</td><td class="num">-2,15%</td></tr>
+        <tr><td>Sukoharjo</td><td class="num">11.610.054</td><td class="num">12.048.262</td><td class="num">+438.208</td><td class="num">+3,78%</td></tr>
+        <tr><td>Grogol</td><td class="num">33.560.432</td><td class="num">34.147.174</td><td class="num">+586.742</td><td class="num">+1,75%</td></tr>
+        <tr><td>Wonogiri</td><td class="num">8.856.515</td><td class="num">6.691.474</td><td class="num">-2.165.041</td><td class="num">-24,45%</td></tr>
+        <tr><td>Jatisrono</td><td class="num">2.167.874</td><td class="num">1.763.018</td><td class="num">-404.856</td><td class="num">-18,67%</td></tr>
+        <tr><td>Karanganyar</td><td class="num">1.513.397</td><td class="num">1.818.726</td><td class="num">+305.329</td><td class="num">+20,18%</td></tr>
+        <tr><td>Industri</td><td class="num">51.157.112</td><td class="num">50.107.288</td><td class="num">-1.049.824</td><td class="num">-2,05%</td></tr>
+        <tr><td>Bisnis</td><td class="num">4.103.386</td><td class="num">3.815.534</td><td class="num">-287.852</td><td class="num">-7,02%</td></tr>
+        <tr><td>Sosial</td><td class="num">2.039.883</td><td class="num">2.191.577</td><td class="num">+151.694</td><td class="num">+7,44%</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Mengapa Agustus 2026 berbeda dari Agustus 2025?</h3>
+    <ul>
+      <li><strong>Wonogiri industri:</strong> turun dari 8.022.786 kWh (Agu 2025) menjadi 6.053.023 kWh (Agu 2026), atau <strong>-24,55% YoY</strong>. Secara MoM, turun dari 9.102.887 kWh (Jul 2026) menjadi 6.053.023 kWh, atau <strong>-33,5%</strong>.</li>
+      <li><strong>Jatisrono industri:</strong> turun dari 2.167.874 kWh (Agu 2025) menjadi 1.763.018 kWh (Agu 2026), atau <strong>-18,67% YoY</strong>; MoM turun <strong>-17,8%</strong>.</li>
+      <li><strong>Grogol & Sukoharjo relatif aman:</strong> Grogol YoY +1,75%, Sukoharjo YoY +3,78%. Ini menguatkan bahwa masalah bukan sistemik di seluruh UP3.</li>
+      <li><strong>Non-industri positif:</strong> Sosial +7,44% YoY; Pemerintah +2,96%; Traksi +3,43% MoM. Jadi penurunan murni dari industri.</li>
+      <li><strong>Multiguna anomali:</strong> turun dari 43.696 kWh (Agu 2025) menjadi 245 kWh (Agu 2026), dan pada Jul 2026 hanya 9 kWh. Ini indikasi kemungkinan reklasifikasi data, bukan penurunan konsumsi riil.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>5. Hipotesis Akar Masalah</h2>
+    <div class="two-col">
+      <div>
+        <h3>Hipotesis utama</h3>
+        <ul>
+          <li><strong>Outage / maintenance pelanggan industri besar</strong> di Wonogiri dan Jatisrono.</li>
+          <li><strong>Penurunan produksi</strong> karena permintaan ekspor/domestik, bahan baku, atau modal kerja.</li>
+          <li><strong>Perpindahan sebagian beban ke self-generation</strong> (captive power) oleh pelanggan besar.</li>
+          <li><strong>Perubahan tipe/daya tersambung</strong> atau reklasifikasi tarif.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Hipotesis data/administratif</h3>
+        <ul>
+          <li><strong>Cut-off baca meter</strong> Agustus 2026 lebih awal atau jumlah hari baca lebih sedikit.</li>
+          <li><strong>Koreksi tagihan</strong> atau restatement pemakaian Juli–Agustus.</li>
+          <li><strong>Anomali Multiguna</strong>: kehilangan 43.600 kWh Sukoharjo sejak Jul 2026.</li>
+          <li><strong>Rumah Tangga & Curah nol</strong> — perlu pastikan apakah memang tidak ada penjualan atau tidak dilaporkan.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Prioritas validasi:</strong> Karena Wonogiri industri menyumbang 70,4% penurunan, langkah pertama adalah meminta <strong>data per pelanggan industri Wonogiri</strong> untuk Juli dan Agustus 2026, lalu bandingkan dengan Agustus 2025. Cek juga Jatisrono. Tanpa data pelanggan, akar masalah tidak bisa dipastikan.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>6. Implikasi Bisnis & Rekomendasi Deteksi Dini</h2>
+
+    <h3>A. Dashboard early warning</h3>
+    <ul>
+      <li>Buat monitoring <strong>harian/mingguan per area-kategori</strong>, bukan hanya bulanan.</li>
+      <li>Pasang threshold: <strong>MoM &lt; -10%</strong> atau <strong>YoY &lt; -5%</strong> pada level area-kategori → otomatis masuk watchlist.</li>
+      <li>Tambahkan indikator <strong>customer concentration</strong>: jika 1 pelanggan &gt; 20% area, wajib ada alert khusus.</li>
+    </ul>
+
+    <h3>B. Customer-level diagnostic</h3>
+    <ul>
+      <li>Identifikasi <strong>top 10 pelanggan industri Wonogiri dan Jatisrono</strong>.</li>
+      <li>Bandingkan pemakaian Jul 2026, Agu 2026, dan Agu 2025 per pelanggan.</li>
+      <li>Cek: outage log, jadwal maintenance, load factor, power factor, kapasitas tersambung, dan status pembayaran.</li>
+      <li>Lakukan kunjungan lapangan untuk pelanggan dengan penurunan &gt; 30% MoM.</li>
+    </ul>
+
+    <h3>C. Validasi data</h3>
+    <ul>
+      <li>Audit jadwal baca meter Agustus 2026 vs Juli 2026.</li>
+      <li>Validasi anomali Multiguna: mengapa Sukoharjo 43.600 kWh hilang sejak Jul 2026?</li>
+      <li>Pastikan kategori Rumah Tangga dan Curah memang nol, bukan tidak dilaporkan.</li>
+    </ul>
+
+    <h3>D. Skenario pemulihan</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Skenario</th>
+          <th>Asumsi</th>
+          <th class="num">Dampak bulanan</th>
+          <th>Implikasi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Optimis</td>
+          <td>Wonogiri industri kembali ke level Jul 2026 (~9,1 GWh)</td>
+          <td class="num">+3,05 GWh</td>
+          <td>Total bisa kembali ke ~59,5 GWh</td>
+        </tr>
+        <tr>
+          <td>Base</td>
+          <td>Wonogiri stabil di level Agu 2026 (~6,05 GWh)</td>
+          <td class="num">-3,05 GWh vs Jul</td>
+          <td>Run-rate tahunan lebih rendah ~36 GWh</td>
+        </tr>
+        <tr>
+          <td>Pesimis</td>
+          <td>Penurunan menyebar ke Grogol/Sukoharjo</td>
+          <td class="num">&lt; -5 GWh</td>
+          <td>Total bulanan bisa &lt; 50 GWh</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>7. Kesimpulan</h2>
+    <ul>
+      <li><strong>Secara tren:</strong> pola musiman berulang, tetapi Agustus 2026 adalah anomali karena turun jauh lebih dalam dari pola normal.</li>
+      <li><strong>Secara struktur:</strong> industri 88,5% dan Grogol 58,6% (2026) — risiko terkonsentrasi tinggi.</li>
+      <li><strong>Secara penyebab:</strong> penurunan Agustus 2026 didorong oleh industri Wonogiri (-3,05 GWh MoM) dan Jatisrono (-0,38 GWh MoM). Non-industri net positif.</li>
+      <li><strong>Secara YoY:</strong> Wonogiri -24,45% dan Jatisrono -18,67%, sementara Grogol, Sukoharjo, Karanganyar tumbuh. Ini bukan penurunan merata.</li>
+      <li><strong>Langkah kritis:</strong> validasi data pelanggan industri besar Wonogiri/Jatisrono, audit baca meter, dan bangun dashboard early warning area-kategori.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Pesan utama untuk manajemen:</strong> Jangan membaca Agustus 2026 sebagai pelemahan pasar umum. Bacalah sebagai <strong>sinyal risiko pelanggan besar</strong>. Jika tidak divalidasi, penurunan ini bisa berulang dan mengganggu target tahunan meskipun YTD masih flat.
+    </div>
+  </div>
+
+  <div class="footer">
+    Disusun berdasarkan data penjualan-tm.csv. Angka dalam kWh; konversi GWh = 1.000.000 kWh. Analisis ini bersifat diagnostik awal dan perlu divalidasi dengan data pelanggan, outage, dan administrasi tagihan.
+  </div>
+
+</div>
+</body>
+</html>
