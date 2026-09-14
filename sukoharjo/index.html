@@ -6,106 +6,127 @@
   <title>Laporan Kinerja - TeraSukoharjo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
     body {
-
-      <div id="disclaimer-modal" class="modal-overlay">
-  <div class="modal-box">
-    <h2>Perhatian & Imbauan Penggunaan Data</h2>
-    <p>
-      Data dan informasi yang tersaji di portal <strong>TeraSukoharjo</strong> bersifat internal/terbatas. 
-      Mohon dapat dipergunakan secara bijak, bijaksana, dan hanya untuk kepentingan dinas/analisis yang sah.
-    </p>
-    <ul>
-      <li>Dilarang menyebarluaskan data tanpa izin pihak berwenang.</li>
-      <li>Gunakan informasi dengan penuh rasa tanggung jawab.</li>
-    </ul>
-    <button id="btn-accept" onclick="closeDisclaimer()">Saya Mengerti & Setuju</button>
-  </div>
-</div>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at top right, rgba(45, 106, 79, 0.08), transparent 35%), #f0f4f2;
-      color: #1b2621;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: radial-gradient(circle at top right, rgba(45, 106, 79, 0.08), transparent 35%), #f0f4f2; 
+      color: #1b2621; 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 20px; 
     }
     .card {
+      background: #ffffff; 
+      padding: 30px; 
+      border-radius: 20px; 
+      box-shadow: 0 10px 25px rgba(27, 67, 50, 0.08); 
+      border-top: 5px solid #2d6a4f; 
+      max-width: 480px; 
+      width: 100%; 
+      text-align: center; 
+    }
+    h1 { font-size: 28px; font-weight: 800; color: #1b4332; margin-bottom: 4px; }
+    .subtitle { font-size: 14px; color: #2d6a4f; font-weight: 600; margin-bottom: 24px; }
+    .form-group { display: flex; flex-direction: column; text-align: left; margin-bottom: 16px; }
+    label { font-size: 13px; font-weight: 700; color: #2d6a4f; margin-bottom: 6px; }
+    select { 
+      padding: 10px 12px; 
+      border-radius: 10px; 
+      border: 1px solid #c2d5cb; 
+      background-color: #f8faf9; 
+      font-size: 14px; 
+      color: #1b2621; 
+      outline: none; 
+    }
+    select:focus { border-color: #2d6a4f; }
+    .btn-submit { 
+      width: 100%; 
+      margin-top: 10px; 
+      background: #2d6a4f; 
+      color: #ffffff; 
+      padding: 12px; 
+      border: none; 
+      border-radius: 10px; 
+      font-size: 14px; 
+      font-weight: 700; 
+      cursor: pointer; 
+      transition: background 0.2s ease; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 8px; 
+    }
+    .btn-submit:hover { background: #1b4332; }
+    .info-redirect { margin-top: 15px; font-size: 12px; color: #52796f; }
+
+    /* CSS Modal Peringatan */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65);
+      display: none; /* Sembunyikan default, diatur lewat JS */
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .modal-box {
       background: #ffffff;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(27, 67, 50, 0.08);
-      border-top: 5px solid #2d6a4f;
-      max-width: 480px;
+      padding: 24px;
+      border-radius: 16px;
+      max-width: 440px;
       width: 100%;
       text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
-    h1 {
-      font-size: 28px;
-      font-weight: 800;
-      color: #1b4332;
-      margin-bottom: 4px;
+    .modal-box h2 {
+      color: #d32f2f;
+      font-size: 18px;
+      margin-bottom: 12px;
     }
-    .subtitle {
-      font-size: 14px;
-      color: #2d6a4f;
-      font-weight: 600;
-      margin-bottom: 24px;
+    .modal-box p {
+      font-size: 13px;
+      color: #333333;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      margin-bottom: 16px;
-    }
-    label {
+    .btn-accept {
+      background: #2d6a4f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
       font-size: 13px;
       font-weight: 700;
-      color: #2d6a4f;
-      margin-bottom: 6px;
-    }
-    select {
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid #c2d5cb;
-      background-color: #f8faf9;
-      font-size: 14px;
-      color: #1b2621;
-      outline: none;
-    }
-    select:focus {
-      border-color: #2d6a4f;
-    }
-    .btn-submit {
-      width: 100%;
-      margin-top: 10px;
-      background: #2d6a4f;
-      color: #ffffff;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
     }
-    .btn-submit:hover {
+    .btn-accept:hover {
       background: #1b4332;
-    }
-    .info-redirect {
-      margin-top: 15px;
-      font-size: 12px;
-      color: #52796f;
     }
   </style>
 </head>
 <body>
+
+  <!-- Modal Peringatan Akses Internal -->
+  <div id="warningModal" class="modal-overlay">
+    <div class="modal-box">
+      <h2>PERINGATAN AKSES INTERNAL</h2>
+      <p>
+        Portal ini berisi data kerahasiaan internal. Mohon bijak dalam penggunaan dan hindari membagikan dokumen/informasi di dalamnya kepada pihak luar yang tidak berkepentingan.
+      </p>
+      <button class="btn-accept" onclick="closeModal()">Saya Mengerti & Lanjutkan</button>
+    </div>
+  </div>
 
   <div class="card">
     <h1>TeraSukoharjo</h1>
@@ -125,7 +146,6 @@
       <select id="periodeSelect">
         <option value="2026-08">Agustus 2026</option>
         <option value="2026-07">Juli 2026</option>
-
       </select>
     </div>
 
@@ -140,14 +160,24 @@
 
   <script>
     const PERIODE_TERBARU = "2026-08";
-
-    // Set nilai default dropdown ke periode terbaru
     document.getElementById("periodeSelect").value = PERIODE_TERBARU;
+
+    // Logika Modal (Hanya muncul sekali)
+    const modal = document.getElementById("warningModal");
+    const hasSeenWarning = localStorage.getItem("warningAccepted");
+
+    if (!hasSeenWarning) {
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      localStorage.setItem("warningAccepted", "true");
+      modal.style.display = "none";
+    }
 
     function bukaLaporan() {
       const unit = document.getElementById("unitSelect").value;
       const periode = document.getElementById("periodeSelect").value;
-
       if (unit === "sukoharjo") {
         window.location.href = `${periode}/index.html`;
       } else {
@@ -155,17 +185,17 @@
       }
     }
 
-    // Auto-redirect otomatis saat halaman dibuka (jika tanpa query manual ?noauto=true)
+    // Auto-redirect jika pengguna sudah pernah menyetujui peringatan
     const urlParams = new URLSearchParams(window.location.search);
     if (!urlParams.has('noauto')) {
-      // Memberikan sedikit jeda (1,5 detik) agar UI sempat terlihat sebelum redirect
       setTimeout(() => {
-        window.location.href = `${PERIODE_TERBARU}/index.html`;
+        if (localStorage.getItem("warningAccepted")) {
+          window.location.href = `${PERIODE_TERBARU}/index.html`;
+        }
       }, 1500);
     } else {
       document.getElementById("redirectStatus").style.display = "none";
     }
   </script>
-
 </body>
 </html>
