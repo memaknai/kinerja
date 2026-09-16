@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis Kinerja Penjualan Tenaga Listrik TR — UP3 Sukoharjo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0B1E30;
+    --navy-900:#10263D;
+    --navy-800:#173954;
+    --navy-700:#1F4A6B;
+    --paper:#F5F3EE;
+    --paper-2:#FFFFFF;
+    --ink:#152230;
+    --ink-soft:#4A5A68;
+    --line:#DCD9D0;
+    --amber:#D98E1F;
+    --amber-soft:#F0C77E;
+    --green:#2E6B4F;
+    --red:#B0433A;
+    --grid-blue:#EAF0F4;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    font-size:16px;
+  }
+  h1,h2,h3,.disp{font-family:'Fraunces',serif;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 48px;}
+  @media(max-width:720px){.wrap{padding:0 22px;}}
+
+  /* ===== HERO ===== */
+  .hero{
+    background:radial-gradient(1200px 500px at 15% -10%, #1C4463 0%, var(--navy-900) 55%, var(--navy-950) 100%);
+    color:#EFEAE0;
+    padding:76px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; right:-120px; top:-80px;
+    width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle, rgba(217,142,31,0.18) 0%, rgba(217,142,31,0) 70%);
+  }
+  .hero .eyebrow{
+    color:var(--amber-soft);
+    font-size:13.5px; letter-spacing:.02em; font-weight:600;
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .hero .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;}
+  .hero h1{
+    font-size:44px; font-weight:600; line-height:1.16; margin:0 0 18px; max-width:820px;
+    color:#FBF9F4;
+  }
+  .hero p.lede{
+    font-size:18px; color:#C7D2DA; max-width:640px; margin:0 0 40px; font-weight:400;
+  }
+  .hero-stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  @media(max-width:820px){.hero-stats{grid-template-columns:repeat(2,1fr);}}
+  .hero-stat{background:rgba(11,30,48,0.55); padding:24px 22px;}
+  .hero-stat .num{font-family:'Fraunces',serif; font-size:30px; font-weight:600; color:#FBF9F4; display:flex; align-items:baseline; gap:8px;}
+  .hero-stat .num small{font-size:15px; font-weight:600; color:var(--amber-soft);}
+  .hero-stat .lbl{font-size:12.5px; color:#9FB0BD; margin-top:6px; letter-spacing:.01em;}
+
+  /* ===== SECTIONS ===== */
+  section{padding:56px 0;}
+  section.tight{padding:36px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:28px; border-bottom:1px solid var(--line); padding-bottom:16px;}
+  .section-head h2{font-size:27px; font-weight:600; margin:0; color:var(--navy-950);}
+  .section-head .idx{font-size:13px; color:var(--ink-soft); font-weight:600; white-space:nowrap;}
+  .section-intro{font-size:16px; color:var(--ink-soft); max-width:760px; margin:-14px 0 30px;}
+
+  /* Executive summary */
+  .exec-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media(max-width:760px){.exec-grid{grid-template-columns:1fr;}}
+  .exec-card{
+    background:var(--paper-2); border:1px solid var(--line); border-left:3px solid var(--amber);
+    padding:22px 24px; border-radius:2px;
+  }
+  .exec-card .k{font-size:13px; font-weight:700; color:var(--navy-800); text-transform:uppercase; letter-spacing:.03em; margin-bottom:8px;}
+  .exec-card p{margin:0; font-size:15px; color:var(--ink); font-weight:400;}
+  .exec-card b{color:var(--navy-950); font-weight:700;}
+
+  /* KPI cards */
+  .kpi-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
+  @media(max-width:940px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+  .kpi{background:var(--paper-2); border:1px solid var(--line); padding:20px 18px; border-radius:2px;}
+  .kpi .lbl{font-size:12.5px; color:var(--ink-soft); font-weight:600; text-transform:uppercase; letter-spacing:.02em; margin-bottom:10px;}
+  .kpi .v25{font-size:12.5px; color:var(--ink-soft);}
+  .kpi .v26{font-family:'Fraunces',serif; font-size:23px; font-weight:600; color:var(--navy-950); margin:2px 0 8px;}
+  .badge{display:inline-flex; align-items:center; gap:4px; font-size:12.5px; font-weight:700; padding:2px 8px; border-radius:20px;}
+  .badge.up{background:#E4F0E9; color:var(--green);}
+  .badge.down{background:#F5E4E2; color:var(--red);}
+
+  /* Bar chart rows */
+  .barlist{display:flex; flex-direction:column; gap:14px;}
+  .barrow{display:grid; grid-template-columns:150px 1fr 96px; align-items:center; gap:14px;}
+  @media(max-width:640px){.barrow{grid-template-columns:96px 1fr 74px; gap:8px;}}
+  .barrow .name{font-size:13.5px; font-weight:600; color:var(--navy-950);}
+  .barrow .track{background:var(--grid-blue); border-radius:3px; height:22px; position:relative; overflow:hidden;}
+  .barrow .fill{position:absolute; left:0; top:0; bottom:0; border-radius:3px; background:linear-gradient(90deg, var(--navy-700), var(--navy-900));}
+  .barrow .fill.amber{background:linear-gradient(90deg,var(--amber-soft),var(--amber));}
+  .barrow .val{font-size:13.5px; font-weight:700; text-align:right; color:var(--navy-950);}
+
+  /* Table */
+  table.data{width:100%; border-collapse:collapse; font-size:14.5px;}
+  table.data caption{caption-side:top; text-align:left; font-size:13px; color:var(--ink-soft); margin-bottom:10px;}
+  table.data th{
+    text-align:right; font-weight:700; color:#fff; background:var(--navy-900);
+    padding:11px 14px; font-size:12.5px; text-transform:uppercase; letter-spacing:.02em;
+  }
+  table.data th:first-child{text-align:left;}
+  table.data td{padding:11px 14px; border-bottom:1px solid var(--line); text-align:right; color:var(--ink);}
+  table.data td:first-child{text-align:left; font-weight:600; color:var(--navy-950);}
+  table.data tr:nth-child(even) td{background:#FBFAF7;}
+  table.data tr.total td{background:var(--grid-blue); font-weight:700; border-top:2px solid var(--navy-800); color:var(--navy-950);}
+  .pos{color:var(--green); font-weight:700;}
+  .neg{color:var(--red); font-weight:700;}
+
+  /* Insight callout */
+  .callout{
+    background:var(--navy-950); color:#EFEAE0; border-radius:2px; padding:30px 32px; margin:30px 0;
+    display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:flex-start;
+  }
+  @media(max-width:640px){.callout{grid-template-columns:1fr;}}
+  .callout .tag{font-family:'Fraunces',serif; font-size:15px; color:var(--amber-soft); font-weight:600; white-space:nowrap;}
+  .callout p{margin:0 0 10px; font-size:15.5px; color:#DCE3E8;}
+  .callout p:last-child{margin-bottom:0;}
+  .callout strong{color:#fff;}
+
+  /* two-col layout */
+  .cols-2{display:grid; grid-template-columns:1.1fr .9fr; gap:36px;}
+  @media(max-width:860px){.cols-2{grid-template-columns:1fr;}}
+
+  /* unit cards */
+  .unit-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:12px;}
+  @media(max-width:940px){.unit-grid{grid-template-columns:repeat(2,1fr);}}
+  .unit-card{border:1px solid var(--line); background:var(--paper-2); padding:16px; border-radius:2px;}
+  .unit-card .u-name{font-weight:700; font-size:14px; color:var(--navy-950); margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid var(--line);}
+  .unit-card .u-row{display:flex; justify-content:space-between; font-size:12.5px; color:var(--ink-soft); margin-top:6px;}
+  .unit-card .u-row b{color:var(--ink); font-weight:700;}
+
+  /* recommendations */
+  .rec-list{display:flex; flex-direction:column; gap:0;}
+  .rec-item{display:grid; grid-template-columns:44px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--line);}
+  .rec-item:last-child{border-bottom:none;}
+  .rec-item .rn{font-family:'Fraunces',serif; font-size:26px; color:var(--amber); font-weight:600;}
+  .rec-item h3{margin:0 0 6px; font-size:16.5px; color:var(--navy-950); font-weight:700;}
+  .rec-item p{margin:0; font-size:14.5px; color:var(--ink-soft); max-width:640px;}
+
+  footer{background:var(--navy-950); color:#93A3AF; padding:32px 0; font-size:12.5px;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .foot-note{font-size:12.5px; color:var(--ink-soft); margin-top:10px;}
+
+  .legend{display:flex; gap:18px; font-size:12.5px; color:var(--ink-soft); margin-bottom:18px; flex-wrap:wrap;}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .legend i{width:10px;height:10px;border-radius:2px; display:inline-block;}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>LAPORAN ANALISIS KINERJA PENJUALAN TR&nbsp;·&nbsp; UP3 SUKOHARJO</div>
+    <h1>Pertumbuhan pendapatan 15,98% ditopang harga jual, bukan volume konsumsi</h1>
+    <p class="lede">Perbandingan kumulatif Januari–Agustus 2025 terhadap periode yang sama tahun 2026, mencakup lima unit layanan dan delapan segmen pelanggan di wilayah UP3 Sukoharjo.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">Rp 913,3 M <small>+15,98%</small></div><div class="lbl">Pendapatan kumulatif 2026</div></div>
+      <div class="hero-stat"><div class="num">872,4 jt <small>+3,79%</small></div><div class="lbl">kWh terjual</div></div>
+      <div class="hero-stat"><div class="num">782.568 <small>+2,95%</small></div><div class="lbl">Pelanggan aktif</div></div>
+      <div class="hero-stat"><div class="num">Rp 1.047 <small>+11,75%</small></div><div class="lbl">Harga jual rata-rata /kWh</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ EXECUTIVE SUMMARY ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Ringkasan Eksekutif</h2><div class="idx">01 — Temuan Utama</div></div>
+    <div class="exec-grid">
+      <div class="exec-card">
+        <div class="k">Kesenjangan volume vs. pendapatan</div>
+        <p>Pendapatan tumbuh <b>15,98%</b> sementara volume penjualan hanya naik <b>3,79%</b>. Selisih ini bersumber dari kenaikan harga jual rata-rata sebesar <b>11,75%</b> — mengindikasikan pertumbuhan didorong oleh faktor tarif/harga, bukan oleh peningkatan konsumsi riil pelanggan.</p>
+      </div>
+      <div class="exec-card">
+        <div class="k">Rumah tangga: mesin utama, tapi bukan dari konsumsi</div>
+        <p>Segmen Rumah Tangga menyumbang <b>78% dari total kenaikan pendapatan</b> (~Rp 98,2 M dari Rp 125,8 M), padahal volume kWh segmen ini nyaris stagnan (<b>+1,14%</b>) dengan harga jual naik tajam <b>+18,79%</b> — jauh di atas segmen lain.</p>
+      </div>
+      <div class="exec-card">
+        <div class="k">Bisnis tumbuh dari sisi jumlah pelanggan</div>
+        <p>Segmen Bisnis mencatat pertumbuhan pelanggan tercepat, <b>+16,69%</b>, terutama di Wonogiri dan Jatisrono (>20%) — sinyal ekspansi aktivitas usaha/UMKM di wilayah tersebut, dengan volume kWh ikut naik solid <b>+11,69%</b>.</p>
+      </div>
+      <div class="exec-card">
+        <div class="k">Pemerintah satu-satunya segmen menyusut</div>
+        <p>Segmen Pemerintah adalah satu-satunya yang terkontraksi (kWh <b>-0,89%</b>, pendapatan <b>-1,08%</b>), sementara kelima unit layanan tumbuh merata di kisaran <b>14–17%</b> pendapatan tanpa ada wilayah yang tertinggal signifikan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KINERJA KESELURUHAN ============ -->
+<section style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head"><h2>Kinerja Keseluruhan UP3 Sukoharjo</h2><div class="idx">02 — Kumulatif Agt 2025 vs Agt 2026</div></div>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="lbl">Jumlah Pelanggan</div>
+        <div class="v25">2025: 760.147</div>
+        <div class="v26">782.568</div>
+        <span class="badge up">▲ 2,95%</span>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Daya Tersambung (VA)</div>
+        <div class="v25">2025: 869,4 jt</div>
+        <div class="v26">926,5 jt</div>
+        <span class="badge up">▲ 6,57%</span>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Penjualan (kWh)</div>
+        <div class="v25">2025: 840,6 jt</div>
+        <div class="v26">872,4 jt</div>
+        <span class="badge up">▲ 3,79%</span>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Pendapatan (Rp)</div>
+        <div class="v25">2025: 787,4 M</div>
+        <div class="v26">913,3 M</div>
+        <span class="badge up">▲ 15,98%</span>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Harga Jual (Rp/kWh)</div>
+        <div class="v25">2025: 936,7</div>
+        <div class="v26">1.046,8</div>
+        <span class="badge up">▲ 11,75%</span>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:32px;">
+      <div class="tag">Cara membaca</div>
+      <div>
+        <p>Daya tersambung tumbuh paling cepat di antara metrik volume (<strong>+6,57%</strong>), lebih dari dua kali laju pertumbuhan pelanggan (+2,95%). Ini wajar terjadi bila pelanggan eksisting menaikkan daya langganan — namun kenaikan daya <em>tidak</em> berbanding lurus dengan kenaikan konsumsi kWh (+3,79%), yang berarti kapasitas terpasang belum sepenuhnya termanfaatkan.</p>
+        <p>Dengan kata lain, <strong>hampir tiga perempat dari pertumbuhan pendapatan Rp 125,8 miliar berasal dari kenaikan harga jual per kWh</strong>, bukan dari tambahan energi yang benar-benar terjual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANALISIS SEGMEN ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Analisis per Segmen Pelanggan</h2><div class="idx">03 — Delapan Golongan Tarif</div></div>
+    <p class="section-intro">Rumah Tangga mendominasi struktur pendapatan (64% dari total 2026) dan menjadi satu-satunya segmen dengan efek kenaikan harga jual yang signifikan — jauh melampaui segmen komersial dan industri yang harga jualnya relatif stabil.</p>
+
+    <table class="data">
+      <caption>Pertumbuhan pelanggan, volume, dan pendapatan per segmen — kumulatif Agt 2025 → Agt 2026</caption>
+      <thead>
+        <tr>
+          <th>Segmen</th>
+          <th>Pelanggan 2026</th>
+          <th>Δ Pelanggan</th>
+          <th>Δ Volume (kWh)</th>
+          <th>Δ Harga Jual</th>
+          <th>Δ Pendapatan</th>
+          <th>Pangsa Pendapatan 2026</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Rumah Tangga</td><td>711.394</td><td class="pos">+2,11%</td><td class="pos">+1,14%</td><td class="pos">+18,79%</td><td class="pos">+20,15%</td><td>64,1%</td></tr>
+        <tr><td>Bisnis</td><td>45.765</td><td class="pos">+16,69%</td><td class="pos">+11,69%</td><td class="neg">-0,44%</td><td class="pos">+11,19%</td><td>20,2%</td></tr>
+        <tr><td>Pemerintah</td><td>4.806</td><td class="pos">+5,14%</td><td class="neg">-0,89%</td><td class="neg">-0,19%</td><td class="neg">-1,08%</td><td>6,0%</td></tr>
+        <tr><td>Industri</td><td>661</td><td class="pos">+10,54%</td><td class="pos">+11,16%</td><td class="neg">-0,09%</td><td class="pos">+11,05%</td><td>5,9%</td></tr>
+        <tr><td>Sosial</td><td>19.879</td><td class="pos">+4,48%</td><td class="pos">+13,46%</td><td class="pos">+0,66%</td><td class="pos">+14,20%</td><td>3,7%</td></tr>
+        <tr><td>Multiguna</td><td>45</td><td class="pos">+4,65%</td><td class="pos">+11,72%</td><td class="pos">+0,98%</td><td class="pos">+12,81%</td><td>0,16%</td></tr>
+        <tr><td>Curah</td><td>18</td><td>0,00%</td><td class="pos">+60,34%</td><td class="neg">-1,98%</td><td class="pos">+57,16%</td><td>0,001%</td></tr>
+        <tr><td>Traksi</td><td>0</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0,0%</td></tr>
+        <tr class="total"><td>Total UP3 Sukoharjo</td><td>782.568</td><td>+2,95%</td><td>+3,79%</td><td>+11,75%</td><td>+15,98%</td><td>100%</td></tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:36px;">
+      <div class="legend"><span><i style="background:linear-gradient(90deg,var(--navy-700),var(--navy-900))"></i>Kontribusi terhadap kenaikan pendapatan (Rp)</span></div>
+      <div class="barlist">
+        <div class="barrow"><div class="name">Rumah Tangga</div><div class="track"><div class="fill" style="width:78%"></div></div><div class="val">78,1%</div></div>
+        <div class="barrow"><div class="name">Bisnis</div><div class="track"><div class="fill" style="width:14.7%"></div></div><div class="val">14,7%</div></div>
+        <div class="barrow"><div class="name">Industri</div><div class="track"><div class="fill" style="width:4.2%"></div></div><div class="val">4,2%</div></div>
+        <div class="barrow"><div class="name">Sosial</div><div class="track"><div class="fill" style="width:3.3%"></div></div><div class="val">3,3%</div></div>
+        <div class="barrow"><div class="name">Multiguna</div><div class="track"><div class="fill" style="width:0.5%; background:var(--ink-soft)"></div></div><div class="val">0,1%</div></div>
+        <div class="barrow"><div class="name">Pemerintah</div><div class="track"><div class="fill" style="width:0.5%; background:var(--red)"></div></div><div class="val">-0,5%</div></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="tag">Insight</div>
+      <div>
+        <p>Dekomposisi pertumbuhan Rumah Tangga (+20,15% pendapatan) menunjukkan <strong>±94% berasal dari efek kenaikan harga jual</strong> (+18,79%) dan hanya sebagian kecil dari pertumbuhan konsumsi (+1,14%). Pola serupa — harga naik dua digit sementara volume nyaris flat — tidak terjadi pada segmen lain, yang harga jualnya bergerak di kisaran ±1%.</p>
+        <p>Segmen Bisnis dan Industri sebaliknya tumbuh murni dari sisi volume dan jumlah pelanggan, dengan harga jual relatif stabil — pola pertumbuhan yang lebih organik dan berkelanjutan dibanding Rumah Tangga.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANALISIS UNIT LAYANAN ============ -->
+<section style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head"><h2>Analisis per Unit Layanan (Rayon)</h2><div class="idx">04 — Lima Wilayah Kerja</div></div>
+    <p class="section-intro">Pertumbuhan pendapatan relatif merata di seluruh unit (14–17%), menandakan kinerja regional yang konsisten — tidak ada satu unit pun yang menjadi outlier negatif.</p>
+
+    <div class="unit-grid">
+      <div class="unit-card">
+        <div class="u-name">Sukoharjo</div>
+        <div class="u-row"><span>Pangsa pendapatan</span><b>25,0%</b></div>
+        <div class="u-row"><span>Δ Pelanggan</span><b class="pos">+3,07%</b></div>
+        <div class="u-row"><span>Δ Volume</span><b class="pos">+3,69%</b></div>
+        <div class="u-row"><span>Δ Pendapatan</span><b class="pos">+17,19%</b></div>
+        <div class="u-row"><span>Harga jual 2026</span><b>Rp 1.060</b></div>
+      </div>
+      <div class="unit-card">
+        <div class="u-name">Grogol</div>
+        <div class="u-row"><span>Pangsa pendapatan</span><b>21,7%</b></div>
+        <div class="u-row"><span>Δ Pelanggan</span><b class="pos">+4,39%</b></div>
+        <div class="u-row"><span>Δ Volume</span><b class="pos">+3,16%</b></div>
+        <div class="u-row"><span>Δ Pendapatan</span><b class="pos">+14,06%</b></div>
+        <div class="u-row"><span>Harga jual 2026</span><b>Rp 1.251</b></div>
+      </div>
+      <div class="unit-card">
+        <div class="u-name">Wonogiri</div>
+        <div class="u-row"><span>Pangsa pendapatan</span><b>17,4%</b></div>
+        <div class="u-row"><span>Δ Pelanggan</span><b class="pos">+2,49%</b></div>
+        <div class="u-row"><span>Δ Volume</span><b class="pos">+3,93%</b></div>
+        <div class="u-row"><span>Δ Pendapatan</span><b class="pos">+15,36%</b></div>
+        <div class="u-row"><span>Harga jual 2026</span><b>Rp 931</b></div>
+      </div>
+      <div class="unit-card">
+        <div class="u-name">Jatisrono</div>
+        <div class="u-row"><span>Pangsa pendapatan</span><b>13,4%</b></div>
+        <div class="u-row"><span>Δ Pelanggan</span><b class="pos">+2,71%</b></div>
+        <div class="u-row"><span>Δ Volume</span><b class="pos">+3,90%</b></div>
+        <div class="u-row"><span>Δ Pendapatan</span><b class="pos">+16,04%</b></div>
+        <div class="u-row"><span>Harga jual 2026</span><b>Rp 893</b></div>
+      </div>
+      <div class="unit-card">
+        <div class="u-name">Karanganyar</div>
+        <div class="u-row"><span>Pangsa pendapatan</span><b>22,5%</b></div>
+        <div class="u-row"><span>Δ Pelanggan</span><b class="pos">+2,77%</b></div>
+        <div class="u-row"><span>Δ Volume</span><b class="pos">+4,23%</b></div>
+        <div class="u-row"><span>Δ Pendapatan</span><b class="pos">+16,99%</b></div>
+        <div class="u-row"><span>Harga jual 2026</span><b>Rp 1.078</b></div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;">
+      <div class="legend"><span><i style="background:linear-gradient(90deg,var(--amber-soft),var(--amber))"></i>Pertumbuhan pendapatan per unit (%)</span></div>
+      <div class="barlist">
+        <div class="barrow"><div class="name">Sukoharjo</div><div class="track"><div class="fill amber" style="width:100%"></div></div><div class="val">+17,19%</div></div>
+        <div class="barrow"><div class="name">Karanganyar</div><div class="track"><div class="fill amber" style="width:98.8%"></div></div><div class="val">+16,99%</div></div>
+        <div class="barrow"><div class="name">Jatisrono</div><div class="track"><div class="fill amber" style="width:93.3%"></div></div><div class="val">+16,04%</div></div>
+        <div class="barrow"><div class="name">Wonogiri</div><div class="track"><div class="fill amber" style="width:89.4%"></div></div><div class="val">+15,36%</div></div>
+        <div class="barrow"><div class="name">Grogol</div><div class="track"><div class="fill amber" style="width:81.8%"></div></div><div class="val">+14,06%</div></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="tag">Insight</div>
+      <div>
+        <p>Grogol memiliki harga jual rata-rata tertinggi (<strong>Rp 1.251/kWh</strong>) namun pertumbuhan pendapatannya paling rendah di antara lima unit — konsisten dengan volume kWh yang juga tumbuh paling lambat (+3,16%). Sebaliknya, Sukoharjo memimpin pada hampir semua metrik pertumbuhan sekaligus menjadi kontributor pendapatan terbesar (25%).</p>
+        <p>Rentang harga jual antar-unit cukup lebar — dari Rp 893 (Jatisrono) hingga Rp 1.251 (Grogol) — mencerminkan perbedaan komposisi segmen pelanggan di tiap wilayah, bukan semata perbedaan geografis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOROTAN SEGMEN ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Sorotan: Tiga Pola yang Perlu Perhatian</h2><div class="idx">05 — Deep Dive</div></div>
+    <div class="cols-2">
+      <div>
+        <h3 style="font-size:17px; margin:0 0 10px; color:var(--navy-950);">Rumah Tangga — pertumbuhan berbasis harga di semua unit</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px; margin:0 0 16px;">Pola kenaikan pendapatan tanpa kenaikan volume yang sepadan konsisten terjadi di seluruh lima unit, termasuk Jatisrono yang volumenya justru sedikit menurun.</p>
+        <table class="data">
+          <thead><tr><th>Unit</th><th>Δ Volume (kWh)</th><th>Δ Pendapatan</th></tr></thead>
+          <tbody>
+            <tr><td>Sukoharjo</td><td class="pos">+1,45%</td><td class="pos">+22,00%</td></tr>
+            <tr><td>Grogol</td><td class="pos">+2,47%</td><td class="pos">+20,16%</td></tr>
+            <tr><td>Karanganyar</td><td class="pos">+1,13%</td><td class="pos">+20,87%</td></tr>
+            <tr><td>Wonogiri</td><td class="pos">+0,97%</td><td class="pos">+18,94%</td></tr>
+            <tr><td>Jatisrono</td><td class="neg">-0,43%</td><td class="pos">+17,03%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3 style="font-size:17px; margin:0 0 10px; color:var(--navy-950);">Bisnis — ekspansi pelanggan terkonsentrasi di dua unit</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px; margin:0 0 16px;">Wonogiri dan Jatisrono memimpin penambahan pelanggan bisnis baru, jauh di atas rata-rata UP3 (+16,69%).</p>
+        <table class="data">
+          <thead><tr><th>Unit</th><th>Δ Pelanggan</th><th>Δ Volume (kWh)</th></tr></thead>
+          <tbody>
+            <tr><td>Wonogiri</td><td class="pos">+20,93%</td><td class="pos">+13,24%</td></tr>
+            <tr><td>Jatisrono</td><td class="pos">+20,07%</td><td class="pos">+14,55%</td></tr>
+            <tr><td>Sukoharjo</td><td class="pos">+13,20%</td><td class="pos">+12,26%</td></tr>
+            <tr><td>Karanganyar</td><td class="pos">+12,74%</td><td class="pos">+10,86%</td></tr>
+            <tr><td>Grogol</td><td class="pos">+6,95%</td><td class="pos">+7,85%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="tag">Anomali kecil</div>
+      <div>
+        <p>Segmen <strong>Curah</strong> tumbuh +57,16% pendapatan dan +60,34% volume, namun basisnya sangat kecil (kontribusi <0,01% dari total pendapatan) — pergerakan ini kemungkinan mencerminkan penambahan/perubahan satu-dua pelanggan besar, bukan tren struktural. Segmen <strong>Traksi</strong> tetap nihil di kedua periode, mengindikasikan tidak ada pelanggan aktif pada golongan ini di wilayah UP3 Sukoharjo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REKOMENDASI ============ -->
+<section style="background:var(--navy-950); color:#EFEAE0;">
+  <div class="wrap">
+    <div class="section-head" style="border-bottom-color:rgba(255,255,255,0.16);">
+      <h2 style="color:#FBF9F4;">Implikasi &amp; Rekomendasi Strategis</h2>
+      <div class="idx" style="color:#9FB0BD;">06 — Langkah Berikutnya</div>
+    </div>
+    <div class="rec-list">
+      <div class="rec-item" style="border-bottom-color:rgba(255,255,255,0.14);">
+        <div class="rn">01</div>
+        <div>
+          <h3 style="color:#FBF9F4;">Validasi sumber kenaikan harga jual Rumah Tangga</h3>
+          <p style="color:#B9C4CC;">Telusuri apakah kenaikan +18,79% berasal dari penyesuaian tarif, migrasi golongan daya (mis. pencabutan subsidi 900VA), atau perubahan struktur blok konsumsi — untuk memastikan proyeksi pendapatan ke depan tidak salah dibaca sebagai pertumbuhan konsumsi organik.</p>
+        </div>
+      </div>
+      <div class="rec-item" style="border-bottom-color:rgba(255,255,255,0.14);">
+        <div class="rn">02</div>
+        <div>
+          <h3 style="color:#FBF9F4;">Perkuat momentum segmen Bisnis</h3>
+          <p style="color:#B9C4CC;">Replikasi faktor pendorong pertumbuhan pelanggan bisnis di Wonogiri dan Jatisrono (+20%) ke Grogol, yang tertinggal (+6,95%) — misalnya melalui percepatan penyambungan baru atau program migrasi daya untuk UMKM.</p>
+        </div>
+      </div>
+      <div class="rec-item" style="border-bottom-color:rgba(255,255,255,0.14);">
+        <div class="rn">03</div>
+        <div>
+          <h3 style="color:#FBF9F4;">Investigasi kontraksi segmen Pemerintah</h3>
+          <p style="color:#B9C4CC;">Segmen ini satu-satunya yang menyusut (-1,08% pendapatan). Perlu dicek apakah disebabkan efisiensi konsumsi instansi, migrasi ke golongan lain, atau piutang/pemutusan sementara pada beberapa pelanggan.</p>
+        </div>
+      </div>
+      <div class="rec-item">
+        <div class="rn">04</div>
+        <div>
+          <h3 style="color:#FBF9F4;">Manfaatkan daya tersambung yang belum terpakai</h3>
+          <p style="color:#B9C4CC;">Daya tersambung tumbuh (+6,57%) jauh lebih cepat dari konsumsi (+3,79%), menyiratkan kapasitas idle yang bisa didorong lewat edukasi pemanfaatan daya atau program load-building di segmen Rumah Tangga dan Bisnis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div>UP3 Sukoharjo · Analisis Kinerja Penjualan Tenaga Listrik TR</div>
+      <div class="foot-note">Sumber: penjualantr-0826.xlsx — data kumulatif Januari–Agustus, dibandingkan tahun 2025 vs 2026. Lima unit layanan: Sukoharjo, Grogol, Wonogiri, Jatisrono, Karanganyar. Delapan golongan tarif: Sosial, Rumah Tangga, Bisnis, Industri, Pemerintah, Traksi, Curah, Multiguna.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
