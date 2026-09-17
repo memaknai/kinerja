@@ -163,27 +163,26 @@
     document.getElementById("periodeSelect").value = PERIODE_TERBARU;
 
     // Logika Modal (Hanya muncul sekali)
-    const modal = document.getElementById("warningModal");
-    const hasSeenWarning = localStorage.getItem("warningAccepted");
+  const modal = document.getElementById("warningModal");
+modal.style.display = "flex"; // Selalu munculkan modal saat halaman dimuat
 
-    if (!hasSeenWarning) {
-      modal.style.display = "flex";
-    }
+function closeModal() {
+  modal.style.display = "none";
+}
 
-    function closeModal() {
-      localStorage.setItem("warningAccepted", "true");
-      modal.style.display = "none";
+   function bukaLaporan() {
+  const konfirmasi = confirm("PERINGATAN: Portal ini berisi data kerahasiaan internal.\n\nApakah Anda yakin ingin melanjutkan?");
+  
+  if (konfirmasi) {
+    const unit = document.getElementById("unitSelect").value;
+    const periode = document.getElementById("periodeSelect").value;
+    
+    if (unit === "sukoharjo") {
+      window.location.href = `${periode}/index.html`;
+    } else {
+      window.location.href = `../${unit}/${periode}/index.html`;
     }
-
-    function bukaLaporan() {
-      const unit = document.getElementById("unitSelect").value;
-      const periode = document.getElementById("periodeSelect").value;
-      if (unit === "sukoharjo") {
-        window.location.href = `${periode}/index.html`;
-      } else {
-        window.location.href = `../${unit}/${periode}/index.html`;
-      }
-    }
+  }
 
     // Auto-redirect jika pengguna sudah pernah menyetujui peringatan
     const urlParams = new URLSearchParams(window.location.search);
