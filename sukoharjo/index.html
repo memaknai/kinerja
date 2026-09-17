@@ -161,35 +161,36 @@
 <script>
     const PERIODE_TERBARU = "2026-08";
 
-    // Set default dropdown ke periode terbaru
+    // Set default pilihan ke periode terbaru
     document.getElementById("periodeSelect").value = PERIODE_TERBARU;
 
     // Sembunyikan status loading manual
     document.getElementById("redirectStatus").style.display = "none";
 
-    // Tampilkan Modal
+    // Tampilkan Modal Peringatan
     const modal = document.getElementById("warningModal");
     modal.style.display = "flex";
 
-    // Ketika tombol modal diklik -> langsung buka periode terbaru
-    function closeModal() {
-      modal.style.display = "none";
-      lanjutKePeriodeTerbaru();
-    }
-
-    // Fungsi pengalihan utama
+    // Fungsi utama pengalihan halaman
     function lanjutKePeriodeTerbaru() {
       const unit = document.getElementById("unitSelect").value;
       const periode = document.getElementById("periodeSelect").value;
 
       if (unit === "sukoharjo") {
-        window.location.href = `${periode}/index.html`;
+        // Menggunakan ./ untuk memastikan browser mencari folder di direktori saat ini
+        window.location.assign(`./${periode}/index.html`);
       } else {
-        window.location.href = `../${unit}/${periode}/index.html`;
+        window.location.assign(`../${unit}/${periode}/index.html`);
       }
     }
 
-    // Fungsi jika tombol "Buka Laporan" manual diklik
+    // Dipanggil saat tombol "Saya Mengerti & Lanjutkan" diklik
+    function closeModal() {
+      modal.style.display = "none";
+      lanjutKePeriodeTerbaru();
+    }
+
+    // Dipanggil saat tombol "Buka Laporan" diklik
     function bukaLaporan() {
       lanjutKePeriodeTerbaru();
     }
