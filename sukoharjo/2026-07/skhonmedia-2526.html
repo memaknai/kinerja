@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analisis Publikasi Media — PLN Wilayah Sukoharjo, Karanganyar, Wonogiri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF7; --panel:#FFFFFF; --ink:#12202E; --ink-soft:#4A5A6A;
+  --rule:#DCD7CC; --rule-strong:#B9B2A4; --volt:#E3A008; --risk:#A93226;
+  --good:#12655F; --wash:#F1EEE6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C141C; --panel:#121C26; --ink:#E8E4DB; --ink-soft:#9BA8B4;
+    --rule:#2A3742; --rule-strong:#42525F; --volt:#F0B429; --risk:#E07A6C;
+    --good:#4DB5A8; --wash:#16212C;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C141C; --panel:#121C26; --ink:#E8E4DB; --ink-soft:#9BA8B4;
+  --rule:#2A3742; --rule-strong:#42525F; --volt:#F0B429; --risk:#E07A6C;
+  --good:#4DB5A8; --wash:#16212C;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+h1,h2,h3,h4,.sans{font-family:Archivo,"Helvetica Neue",Arial,sans-serif}
+
+header.hero{
+  position:relative;overflow:hidden;isolation:isolate;
+  background:
+    radial-gradient(760px 420px at 88% -8%, rgba(227,160,8,.20), transparent 60%),
+    radial-gradient(600px 360px at 6% 110%, rgba(18,101,95,.22), transparent 62%),
+    linear-gradient(180deg,#0E1B26 0%,#0A141D 100%);
+  color:#EFEAE0;
+  padding:60px 0 0;
+}
+header.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;opacity:.5;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(239,234,224,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(239,234,224,.055) 1px, transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(180deg, black, transparent 88%);
+}
+header.hero::after{
+  content:"";position:absolute;right:-6%;top:-18%;width:56%;padding-top:56%;z-index:-1;pointer-events:none;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(227,160,8,.16) 0%, transparent 68%);
+}
+header.hero .wrap{position:relative}
+.kicker{
+  font-family:Archivo,sans-serif;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--volt);margin:0 0 20px;font-weight:600;display:inline-flex;align-items:center;gap:10px;
+}
+.kicker::before{content:"";display:inline-block;width:22px;height:1px;background:var(--volt)}
+h1{
+  font-size:clamp(32px,5.4vw,58px);line-height:1.04;font-weight:700;letter-spacing:-.025em;
+  margin:0 0 20px;max-width:17ch;color:#F7F4EC;
+}
+.dek{font-size:clamp(17px,2.1vw,21px);color:#B9C2C9;max-width:60ch;margin:0 0 34px}
+.meta{
+  display:flex;flex-wrap:wrap;gap:28px;padding:20px 0 26px;
+  border-top:1px solid rgba(239,234,224,.16);
+  font-family:Archivo,sans-serif;font-size:13px;color:#8FA0A9;
+}
+.meta b{display:block;color:#F0ECE2;font-weight:600;font-size:14px;margin-top:3px}
+
+.ribbon{padding:32px 0 46px;border-top:1px solid rgba(239,234,224,.12)}
+.ribbon h4{font-size:14px;font-weight:600;margin:0 0 4px;color:#F0ECE2}
+.ribbon p.note{font-size:14px;color:#8FA0A9;margin:0 0 18px;max-width:66ch}
+.ribbon svg text{fill:#8FA0A9}
+.ribbon svg line{stroke:rgba(239,234,224,.18)}
+
+section{padding:52px 0;border-bottom:1px solid var(--rule)}
+.sec-head{display:flex;gap:18px;align-items:baseline;margin-bottom:8px}
+.sec-num{font-family:Archivo,sans-serif;font-size:14px;font-weight:600;color:var(--volt);flex:none;padding-top:6px}
+h2{font-size:clamp(24px,3.4vw,34px);line-height:1.15;letter-spacing:-.02em;font-weight:600;margin:0}
+.lede{font-size:19px;color:var(--ink-soft);max-width:66ch;margin:14px 0 30px}
+p{max-width:72ch}
+h3{font-size:19px;font-weight:600;margin:34px 0 10px;letter-spacing:-.01em}
+
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--panel);border:1px solid var(--rule);padding:22px 22px 24px}
+.card h4{font-size:15px;font-weight:600;margin:0 0 8px}
+.card p{font-size:15px;color:var(--ink-soft);margin:0;max-width:none}
+.stat{font-family:Archivo,sans-serif;font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1;margin:0 0 6px}
+.stat.sm{font-size:30px}
+.stat-label{font-family:Archivo,sans-serif;font-size:13px;color:var(--ink-soft);line-height:1.45;display:block}
+
+.finding{border-top:2px solid var(--ink);padding-top:16px}
+.finding .tag{font-family:Archivo,sans-serif;font-size:12px;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:8px}
+.finding h4{font-size:18px;margin:0 0 8px;line-height:1.3}
+.finding p{font-size:15.5px}
+
+blockquote{margin:24px 0;padding:18px 0 18px 22px;border-left:3px solid var(--volt);font-size:18px;line-height:1.55;max-width:66ch}
+blockquote cite{display:block;font-style:normal;font-family:Archivo,sans-serif;font-size:13px;color:var(--ink-soft);margin-top:10px}
+
+.tablewrap{overflow-x:auto;margin:22px 0 0;border:1px solid var(--rule);background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:14.5px}
+th{font-family:Archivo,sans-serif;font-size:12.5px;font-weight:600;text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule-strong);color:var(--ink-soft);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+.yearband td{background:var(--wash);font-family:Archivo,sans-serif;font-size:12.5px;font-weight:600;color:var(--ink-soft)}
+.pill{font-family:Archivo,sans-serif;font-size:11.5px;font-weight:600;padding:3px 8px;border:1px solid;white-space:nowrap;display:inline-block}
+.p-neg{color:var(--risk);border-color:var(--risk)}
+.p-pos{color:var(--good);border-color:var(--good)}
+.p-net{color:var(--ink-soft);border-color:var(--rule-strong)}
+
+.tl{margin:26px 0 0;border-left:2px solid var(--rule-strong)}
+.tl-item{position:relative;padding:0 0 26px 26px}
+.tl-item::before{content:"";position:absolute;left:-6px;top:8px;width:10px;height:10px;background:var(--paper);border:2px solid var(--ink-soft)}
+.tl-item.hot::before{background:var(--risk);border-color:var(--risk)}
+.tl-item.win::before{background:var(--good);border-color:var(--good)}
+.tl-year{font-family:Archivo,sans-serif;font-size:13px;font-weight:600;color:var(--volt);margin:6px 0 18px -26px;padding-left:26px}
+.tl-date{font-family:Archivo,sans-serif;font-size:12.5px;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:3px}
+.tl-item h4{font-size:16.5px;margin:0 0 5px;font-weight:600}
+.tl-item p{font-size:15px;color:var(--ink-soft);margin:0;max-width:64ch}
+
+ul.clean{list-style:none;padding:0;margin:14px 0 0}
+ul.clean li{padding:11px 0 11px 22px;border-top:1px solid var(--rule);position:relative;font-size:16px;max-width:72ch}
+ul.clean li::before{content:"";position:absolute;left:0;top:20px;width:10px;height:1px;background:var(--volt)}
+ul.clean li:last-child{border-bottom:1px solid var(--rule)}
+
+.horizon{background:var(--wash);border:1px solid var(--rule);padding:24px}
+.horizon h4{font-family:Archivo,sans-serif;font-size:14px;font-weight:600;margin:0 0 4px}
+.horizon .when{font-family:Archivo,sans-serif;font-size:12px;color:var(--volt);font-weight:600;display:block;margin-bottom:12px}
+.horizon ol{margin:0;padding-left:18px;font-size:15px;color:var(--ink-soft)}
+.horizon ol li{margin-bottom:10px}
+.horizon ol li b{color:var(--ink);font-weight:600}
+
+svg{max-width:100%;height:auto;display:block}
+.svg-cap{font-size:13.5px;color:var(--ink-soft);margin:10px 0 0;max-width:70ch}
+
+footer{padding:44px 0 70px;color:var(--ink-soft);font-size:14px}
+footer p{max-width:74ch}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--rule-strong);text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--volt);outline-offset:3px}
+
+@media (max-width:880px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}
+@media (max-width:560px){body{font-size:16px}.wrap{padding:0 18px}.g4{grid-template-columns:1fr}.sec-head{gap:12px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Media Review · Disiapkan untuk Diskusi Internal</p>
+    <h1>Dua puluh bulan pemberitaan, satu minggu yang menentukan</h1>
+    <p class="dek">Analisis publikasi media resmi non-PLN mengenai kelistrikan di Kabupaten Sukoharjo, Karanganyar, dan Wonogiri, periode Januari 2025 – Agustus 2026.</p>
+    <div class="meta">
+      <div>Periode pantauan<b>Jan 2025 – Agu 2026 · 20 bulan</b></div>
+      <div>Wilayah<b>Sukoharjo · Karanganyar · Wonogiri</b></div>
+      <div>Sumber<b>Media daring nasional &amp; regional</b></div>
+      <div>Tanggal laporan<b>17 September 2026</b></div>
+    </div>
+
+    <div class="ribbon">
+      <h4 class="sans">Intensitas dan nada pemberitaan per bulan</h4>
+      <p class="note">Tinggi batang menunjukkan volume relatif pemberitaan dalam sampel; warna menunjukkan nada dominan bulan tersebut. Perpanjangan periode ke 2025 menegaskan satu hal: sepanjang 17 bulan pertama tidak ada satu pun bulan yang mendekati Juni 2026.</p>
+      <svg viewBox="0 0 1000 205" role="img" aria-label="Grafik batang 20 bulan, Januari 2025 hingga Agustus 2026. Sepanjang 2025 volume rendah dengan nada netral dan positif. Lonjakan sangat tajam bernada negatif terjadi pada Juni 2026, diikuti nada positif pada Juli dan Agustus 2026.">
+        <g font-family="Archivo, sans-serif" font-size="11">
+          <line x1="0" y1="150" x2="1000" y2="150" stroke="rgba(239,234,224,.22)"/>
+          <!-- 2025 -->
+          <rect x="6"    y="140" width="34" height="10" fill="#4A5C67"/>
+          <rect x="55.5" y="142" width="34" height="8"  fill="#4A5C67"/>
+          <rect x="105"  y="143" width="34" height="7"  fill="#4A5C67"/>
+          <rect x="154.5" y="144" width="34" height="6"  fill="#4A5C67"/>
+          <rect x="204"  y="141" width="34" height="9"  fill="#4A5C67"/>
+          <rect x="253.5" y="132" width="34" height="18" fill="#3D9188"/>
+          <rect x="303"  y="134" width="34" height="16" fill="#4A5C67"/>
+          <rect x="352.5" y="136" width="34" height="14" fill="#3D9188"/>
+          <rect x="402"  y="138" width="34" height="12" fill="#4A5C67"/>
+          <rect x="451.5" y="141" width="34" height="9"  fill="#4A5C67"/>
+          <rect x="501"  y="130" width="34" height="20" fill="#3D9188"/>
+          <rect x="550.5" y="138" width="34" height="12" fill="#4A5C67"/>
+          <!-- 2026 -->
+          <rect x="600"  y="139" width="34" height="11" fill="#4A5C67"/>
+          <rect x="649.5" y="128" width="34" height="22" fill="#4A5C67"/>
+          <rect x="699"  y="120" width="34" height="30" fill="#C1483B"/>
+          <rect x="748.5" y="126" width="34" height="24" fill="#4A5C67"/>
+          <rect x="798"  y="134" width="34" height="16" fill="#4A5C67"/>
+          <rect x="847.5" y="22"  width="34" height="128" fill="#C1483B"/>
+          <rect x="897"  y="104" width="34" height="46" fill="#3D9188"/>
+          <rect x="946.5" y="78"  width="34" height="72" fill="#3D9188"/>
+
+          <g fill="#8FA0A9" text-anchor="middle">
+            <text x="23" y="166">J</text><text x="72.5" y="166">F</text><text x="122" y="166">M</text>
+            <text x="171.5" y="166">A</text><text x="221" y="166">M</text><text x="270.5" y="166">J</text>
+            <text x="320" y="166">J</text><text x="369.5" y="166">A</text><text x="419" y="166">S</text>
+            <text x="468.5" y="166">O</text><text x="518" y="166">N</text><text x="567.5" y="166">D</text>
+            <text x="617" y="166">J</text><text x="666.5" y="166">F</text><text x="716" y="166">M</text>
+            <text x="765.5" y="166">A</text><text x="815" y="166">M</text><text x="864.5" y="166">J</text>
+            <text x="914" y="166">J</text><text x="963.5" y="166">A</text>
+          </g>
+          <line x1="6" y1="178" x2="584" y2="178" stroke="rgba(239,234,224,.16)"/>
+          <line x1="600" y1="178" x2="980" y2="178" stroke="rgba(239,234,224,.16)"/>
+          <text x="295" y="196" text-anchor="middle" font-weight="600" fill="#8FA0A9">2025</text>
+          <text x="790" y="196" text-anchor="middle" font-weight="600" fill="#8FA0A9">2026</text>
+          <text x="864.5" y="14" text-anchor="middle" font-weight="600" fill="#E0796A">Krisis pemadaman</text>
+          <text x="963" y="70" text-anchor="end" font-weight="600" fill="#4DB5A8">PLTS Gajah Mungkur</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- 1 -->
+<section id="ringkasan">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Ringkasan eksekutif</h2></div>
+  <p class="lede">Dua puluh bulan pemantauan memperlihatkan pola yang tidak terlihat dalam periode pendek: 2025 adalah tahun dengan kendali narasi di tangan PLN, dan 2026 adalah tahun ketika kendali itu berpindah ke tangan narasumber lain.</p>
+
+  <div class="grid g4" style="margin-bottom:34px">
+    <div class="card">
+      <p class="stat">±45</p>
+      <span class="stat-label">item publikasi relevan teridentifikasi dari sekitar 25 outlet non-PLN</span>
+    </div>
+    <div class="card">
+      <p class="stat" style="color:var(--good)">±70%</p>
+      <span class="stat-label">pemberitaan sepanjang 2025 bernada netral atau positif</span>
+    </div>
+    <div class="card">
+      <p class="stat" style="color:var(--risk)">1 bulan</p>
+      <span class="stat-label">Juni 2026 menyumbang lebih banyak berita negatif dibanding 19 bulan lainnya digabung</span>
+    </div>
+    <div class="card">
+      <p class="stat">Rp1,6 T</p>
+      <span class="stat-label">nilai PLTS Terapung Gajah Mungkur, aset narasi positif terbesar periode ini</span>
+    </div>
+  </div>
+
+  <div class="grid g2">
+    <div class="finding">
+      <span class="tag">Temuan 01 · Baseline</span>
+      <h4>Sepanjang 2025, PLN adalah pihak yang mengisi ruang media, bukan yang mengejarnya</h4>
+      <p>Pemberitaan 2025 didominasi agenda yang diinisiasi PLN sendiri: bantuan instalasi listrik sekolah, penyambungan gratis bagi warga prasejahtera, penambahan SPKLU, edukasi kendaraan listrik di sekolah, hingga elektrifikasi pertanian. Ini kondisi ideal yang terbukti bisa dicapai.</p>
+    </div>
+    <div class="finding">
+      <span class="tag">Temuan 02 · Titik balik</span>
+      <h4>Gangguan Pembangkitan Jawa 1 mengubah struktur pemberitaan dalam hitungan hari</h4>
+      <p>Sejak 9 Juni 2026, narasumber utama berpindah dari manajemen PLN ke pelaku usaha, asosiasi pengusaha, dan warga terdampak. Perpindahan ini, bukan durasi padamnya, yang menentukan bobot reputasi peristiwa.</p>
+    </div>
+    <div class="finding">
+      <span class="tag">Temuan 03 · Kerugian terkuantifikasi</span>
+      <h4>Angka kerugian datang dari luar PLN</h4>
+      <p>Pengelola wisata Tawangmangu menyebut biaya solar genset membengkak sekitar Rp1 juta; Apindo Sukoharjo menyatakan seluruh sektor usaha terdampak karena hampir semua proses produksi bergantung listrik. Ketika angka dipegang pihak lain, skala cerita ikut berpindah.</p>
+    </div>
+    <div class="finding">
+      <span class="tag">Temuan 04 · Akar keluhan</span>
+      <h4>Yang dikeluhkan bukan padamnya, melainkan ketidakpastiannya</h4>
+      <p>Warga Karanganyar secara konsisten meminta informasi lebih cepat soal jadwal dan penyebab pemadaman agar bisa mengantisipasi. Ini persoalan kanal dan kecepatan komunikasi, bukan persoalan teknik.</p>
+    </div>
+    <div class="finding">
+      <span class="tag">Temuan 05 · Aset yang kurang dipanen</span>
+      <h4>Program unggulan konsisten berjalan, tetapi berhenti di rubrik korporasi</h4>
+      <p>Dari Light Up The Dream 2025 hingga Batik Ciprat yang menembus final Padmamitra Awards 2026 setelah menyisihkan 190 program, ceritanya kuat dan berkelanjutan. Distribusinya yang sempit membuatnya tidak pernah hadir ketika paling dibutuhkan.</p>
+    </div>
+    <div class="finding">
+      <span class="tag">Temuan 06 · Risiko laten</span>
+      <h4>Keselamatan ketenagalistrikan muncul berulang di dua tahun, tanpa suara PLN</h4>
+      <p>Insiden fatal tercatat pada Juli 2025 di Kebakkramat serta Maret dan April 2026 di Wonogiri. Pada semua kasus, ruang penjelasan diisi kepolisian. PLN kehilangan posisi sebagai otoritas edukasi keselamatan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="metodologi">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Ruang lingkup dan metodologi</h2></div>
+  <p class="lede">Laporan ini disusun dari penelusuran publikasi media daring yang dapat diakses publik, di luar kanal resmi milik PLN.</p>
+
+  <div class="grid g2">
+    <div>
+      <h3>Yang dipantau</h3>
+      <ul class="clean">
+        <li>Publikasi media berbadan hukum pers, nasional dan regional, edisi daring.</li>
+        <li>Seluruh pemberitaan yang menyebut PLN, pemadaman listrik, atau infrastruktur kelistrikan di tiga kabupaten wilayah kerja UP3 Sukoharjo.</li>
+        <li>Rentang 1 Januari 2025 sampai 31 Agustus 2026, dua puluh bulan penuh.</li>
+        <li>Penilaian nada dilakukan pada level artikel: negatif, netral, atau positif terhadap posisi PLN.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Batasan yang perlu disadari</h3>
+      <ul class="clean">
+        <li>Ini sampel terkurasi, bukan sensus. Angka volume bersifat indikatif untuk membaca proporsi dan pola, bukan untuk pelaporan kinerja.</li>
+        <li>Jejak digital pemberitaan 2025 lebih tipis dibanding 2026, sebagian karena artikel lama tergeser agregator. Volume 2025 berpotensi sedikit di bawah kondisi sebenarnya.</li>
+        <li>Media cetak lokal, radio, televisi, dan konten kreator tidak tercakup, padahal ketiganya berpengaruh besar di Soloraya.</li>
+        <li>Percakapan media sosial dan kanal aduan warga tidak dihitung, meski beberapa kali menjadi pemicu berita.</li>
+        <li>Artikel advertorial dihitung terpisah dan tidak diperlakukan setara dengan liputan redaksional.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="peta">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Peta isu dan nada pemberitaan</h2></div>
+  <p class="lede">Lima klaster tema mendominasi dua puluh bulan. Komposisinya berubah drastis antara 2025 dan 2026.</p>
+
+  <svg viewBox="0 0 1000 300" role="img" aria-label="Grafik batang horizontal pangsa tema: pemadaman dan keandalan sekitar 41 persen, transisi energi dan kendaraan listrik 19 persen, TJSL 16 persen, keselamatan 12 persen, tata kelola 12 persen">
+    <g font-family="Archivo, sans-serif" font-size="14">
+      <g fill="var(--ink)">
+        <text x="0" y="28">Pemadaman &amp; keandalan pasokan</text>
+        <text x="0" y="86">Transisi energi &amp; kendaraan listrik</text>
+        <text x="0" y="144">TJSL &amp; pemberdayaan masyarakat</text>
+        <text x="0" y="202">Keselamatan ketenagalistrikan</text>
+        <text x="0" y="260">Tata kelola, P2TL &amp; sinergi daerah</text>
+      </g>
+      <g>
+        <rect x="380" y="14"  width="420" height="20" fill="var(--risk)"/>
+        <rect x="380" y="72"  width="195" height="20" fill="var(--good)"/>
+        <rect x="380" y="130" width="164" height="20" fill="var(--good)"/>
+        <rect x="380" y="188" width="123" height="20" fill="var(--rule-strong)"/>
+        <rect x="380" y="246" width="123" height="20" fill="var(--rule-strong)"/>
+      </g>
+      <g fill="var(--ink-soft)" font-size="13">
+        <text x="812" y="29">≈41%</text>
+        <text x="587" y="87">≈19%</text>
+        <text x="556" y="145">≈16%</text>
+        <text x="515" y="203">≈12%</text>
+        <text x="515" y="261">≈12%</text>
+      </g>
+    </g>
+  </svg>
+  <p class="svg-cap">Pangsa tema dalam sampel dua puluh bulan, dibulatkan. Merah menandai tema dengan nada dominan negatif, hijau positif, abu-abu campuran.</p>
+
+  <h3>Dua tahun, dua wajah yang berbeda</h3>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Dimensi</th><th>2025 (Jan–Des)</th><th>2026 (Jan–Agu)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Volume</b></td><td>Rendah dan rata sepanjang tahun</td><td>Rendah hingga Mei, lalu melonjak tajam</td></tr>
+        <tr><td><b>Nada dominan</b></td><td>Netral dan positif</td><td>Negatif pada Juni–Juli, positif pada Agustus</td></tr>
+        <tr><td><b>Narasumber utama</b></td><td>Manajemen PLN, kepala daerah, dinas terkait</td><td>Pelaku usaha, asosiasi pengusaha, warga terdampak</td></tr>
+        <tr><td><b>Pemicu berita</b></td><td>Agenda yang diinisiasi PLN</td><td>Peristiwa yang menimpa PLN</td></tr>
+        <tr><td><b>Jangkauan</b></td><td>Lokal Soloraya dan kanal bisnis</td><td>Nasional, menembus isu kebijakan</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:22px">Perbandingan ini adalah temuan paling berguna dari perpanjangan periode. Tahun 2025 membuktikan bahwa arus pemberitaan yang sehat bisa dipertahankan selama dua belas bulan berturut-turut. Yang runtuh pada 2026 bukan kemampuan PLN membangun cerita, melainkan ketahanannya ketika cerita datang dari luar.</p>
+</section>
+
+<!-- 4 -->
+<section id="kronologi">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Kronologi peristiwa kunci</h2></div>
+  <p class="lede">Dua puluh bulan, dari tahun yang tenang menuju tahun yang menguji.</p>
+
+  <div class="tl">
+    <p class="tl-year">2025 · Tahun kendali narasi</p>
+    <div class="tl-item">
+      <span class="tl-date">15 Januari &amp; 27 Februari 2025</span>
+      <h4>Arus dasar: pemeliharaan jaringan ULP Wonogiri</h4>
+      <p>Pemadaman terencana sekitar tiga jam untuk perubahan konstruksi, pemeliharaan jaringan, dan perabasan pohon di Baturetno, Batuwarno, Karangtengah, dan sekitarnya. Nada netral, disertai permohonan maaf kepada pelanggan.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">Juni 2025</span>
+      <h4>Ekosistem kendaraan listrik Soloraya diperluas</h4>
+      <p>Espos.id memberitakan 34 unit pengisian SPKLU di wilayah Soloraya, dengan rencana penambahan di Palur, Karanganyar, dan kawasan Tugu Kartasura, Sukoharjo. Wonogiri tercatat telah memiliki dua SPKLU sejak Desember 2024.</p>
+    </div>
+    <div class="tl-item win">
+      <span class="tl-date">25 Juni 2025</span>
+      <h4>Light Up The Dream menyalakan tiga titik di Wonogiri</h4>
+      <p>Penyambungan listrik gratis bersama Yayasan Baitul Mal PLN di Masjid Al Amin, Desa Gendayakan, Paranggupito, serta dua rumah warga di Desa Pijiharjo, Manyaran.</p>
+    </div>
+    <div class="tl-item hot">
+      <span class="tl-date">22 Juli 2025</span>
+      <h4>Insiden fatal sengatan listrik di Kebakkramat</h4>
+      <p>Seorang lansia meninggal setelah ranting yang dipotongnya untuk pakan ternak menyentuh kabel bertegangan. Kepolisian berkoordinasi dengan PLN untuk pemadaman sementara saat evakuasi.</p>
+    </div>
+    <div class="tl-item win">
+      <span class="tl-date">31 Juli 2025</span>
+      <h4>Bantuan instalasi listrik dan paving FABA di SDN Gayam 03</h4>
+      <p>Program TJSL menjelang HUT ke-80 Kemerdekaan. Bupati Sukoharjo Etik Suryani hadir langsung dan menyampaikan apresiasi atas dukungan PLN pada infrastruktur sekolah.</p>
+    </div>
+    <div class="tl-item win">
+      <span class="tl-date">11 November 2025</span>
+      <h4>Elektrifikasi pertanian dibingkai sebagai cerita produktivitas</h4>
+      <p>Konsumsi listrik sektor pertanian di wilayah kerja UP3 Surakarta melampaui 180 GWh sepanjang 2024, naik sekitar 10 persen. Dinas Pertanian Sukoharjo menyebut pompa listrik memungkinkan tiga kali tanam padi per tahun.</p>
+    </div>
+    <div class="tl-item win">
+      <span class="tl-date">19 November 2025</span>
+      <h4>Roadshow kendaraan listrik PLN bersama FT UNS di SMKN 2 Karanganyar</h4>
+      <p>Edukasi transisi energi kepada ratusan pelajar. Contoh kanal positif yang menyasar audiens baru di luar pembaca rubrik korporasi.</p>
+    </div>
+
+    <p class="tl-year" style="margin-top:8px">2026 · Tahun ujian</p>
+    <div class="tl-item">
+      <span class="tl-date">18 Maret 2026</span>
+      <h4>Siaga Ramadan dan Idul Fitri bersama Pemkab Sukoharjo</h4>
+      <p>Koordinasi kesiapan personel, peralatan, dan pengamanan jaringan berlapis. Sekda Sukoharjo menyampaikan terima kasih atas keandalan pasokan selama Lebaran — posisi hubungan yang baik, tiga bulan sebelum krisis.</p>
+    </div>
+    <div class="tl-item hot">
+      <span class="tl-date">4 Maret 2026</span>
+      <h4>Insiden fatal sengatan listrik di Gunung Belah, Wonogiri</h4>
+      <p>Seorang remaja meninggal setelah tersengat listrik dari tiang lampu jalan. Diberitakan Suara Merdeka dan Suara.com Surakarta dengan imbauan kewaspadaan terhadap fasilitas kelistrikan publik.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">2 April 2026</span>
+      <h4>Penguatan P2TL bersama Kejari Wonogiri</h4>
+      <p>Manager UP3 Sukoharjo Indri Megananda menyatakan pencurian listrik masih ditemukan dengan berbagai modus, dan penertiban akan diperkuat karena menyangkut keselamatan publik. Rencana perpanjangan nota kesepahaman P2TL dibahas.</p>
+    </div>
+    <div class="tl-item hot">
+      <span class="tl-date">4 April 2026</span>
+      <h4>Pekerja pemasangan jaringan internet meninggal tersengat listrik</h4>
+      <p>Insiden di Desa Kebonagung, Sidoharjo, Wonogiri. Menyoroti risiko pekerjaan pihak ketiga pada tiang bersama — area yang belum tergarap dalam komunikasi keselamatan.</p>
+    </div>
+    <div class="tl-item hot">
+      <span class="tl-date">9 Juni 2026</span>
+      <h4>Titik balik: gangguan Pembangkitan Jawa 1</h4>
+      <p>Wonogiri, Sukoharjo, dan Karanganyar mengalami pemadaman tiga jam per jalur. PLN menerapkan manajemen beban bergilir agar tidak ada satu lokasi yang padam terlalu lama. Diberitakan Kompas.com secara nasional.</p>
+    </div>
+    <div class="tl-item hot">
+      <span class="tl-date">18 – 22 Juni 2026</span>
+      <h4>Puncak krisis: kerugian ekonomi menjadi sudut utama</h4>
+      <p>Pengelola wisata Tawangmangu, pekerja jasa fotokopi di Tasikmadu, Apindo Sukoharjo, dan Apindo Karanganyar berturut-turut menjadi narasumber. Lampu lalu lintas padam di Kartasura menambah dimensi keselamatan publik.</p>
+    </div>
+    <div class="tl-item hot">
+      <span class="tl-date">29 Juni 2026</span>
+      <h4>Gangguan jaringan tegangan menengah 20 kV</h4>
+      <p>Pemadaman mendadak kembali melanda Karanganyar hingga Wonogiri, tepat ketika publik baru pulih. Memperkuat persepsi bahwa persoalan belum selesai.</p>
+    </div>
+    <div class="tl-item win">
+      <span class="tl-date">14 Juli 2026</span>
+      <h4>Muharram Ceria: kanal positif pertama pascakrisis</h4>
+      <p>Program bersama YBM PLN mencakup santunan anak yatim, bantuan modal usaha, dan renovasi masjid di Karanganyar.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">28 Juli 2026</span>
+      <h4>Pemeliharaan terpadu 5 Pandawa Series 11</h4>
+      <p>ULP Karanganyar menggelar pemeliharaan jaringan terpadu untuk meminimalkan gangguan akibat faktor lingkungan dan penuaan komponen. Langkah proaktif pertama yang dikomunikasikan sebagai cerita, bukan sebagai pengumuman padam.</p>
+    </div>
+    <div class="tl-item win">
+      <span class="tl-date">4 Agustus 2026</span>
+      <h4>Batik Ciprat Wonogiri menembus final Padmamitra Awards</h4>
+      <p>Program pemberdayaan perajin difabel di Kismantoro menyisihkan 190 program se-Indonesia dan mengantar Desa Pucung meraih status Desa Mandiri.</p>
+    </div>
+    <div class="tl-item win">
+      <span class="tl-date">25 Agustus 2026</span>
+      <h4>Groundbreaking PLTS Terapung Gajah Mungkur</h4>
+      <p>Proyek 134,2 MWp senilai sekitar Rp1,6 triliun dimulai bersamaan dengan peluncuran program nasional PLTS 100 GWp, dihadiri Gubernur Jawa Tengah. Diberitakan serentak belasan outlet dengan nada positif.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="krisis">
+  <div class="sec-head"><span class="sec-num">05</span><h2>Anatomi krisis Juni 2026</h2></div>
+  <p class="lede">Memahami bagaimana gangguan teknis berdurasi tiga jam berubah menjadi isu reputasi berdurasi tiga minggu.</p>
+
+  <h3>Empat fase eskalasi</h3>
+  <div class="grid g4">
+    <div class="card">
+      <p class="stat sm">Fase 1</p>
+      <span class="stat-label" style="margin-bottom:10px">Peristiwa · 9 Juni</span>
+      <p>Gangguan pembangkit, manajemen beban diterapkan. Media memberitakan sebagai informasi layanan. Terkendali.</p>
+    </div>
+    <div class="card">
+      <p class="stat sm">Fase 2</p>
+      <span class="stat-label" style="margin-bottom:10px">Klarifikasi · 10–12 Juni</span>
+      <p>PLN menjelaskan penyebab dan menegaskan sistem sudah normal serta unit tetap siaga. Nada netral, respons cepat.</p>
+    </div>
+    <div class="card">
+      <p class="stat sm">Fase 3</p>
+      <span class="stat-label" style="margin-bottom:10px">Dampak · 18–22 Juni</span>
+      <p>Pelaku usaha menjadi narasumber utama. Cerita berpindah dari ruang teknis ke ruang ekonomi rumah tangga.</p>
+    </div>
+    <div class="card">
+      <p class="stat sm">Fase 4</p>
+      <span class="stat-label" style="margin-bottom:10px">Kebijakan · Juli</span>
+      <p>Pertanyaan berubah menjadi soal hak pelanggan dan kompensasi. Isu keluar dari kendali unit daerah.</p>
+    </div>
+  </div>
+
+  <blockquote>
+    Pemadaman berdampak luas, tidak hanya bagi industri besar, tetapi juga pelaku usaha mikro, kecil, dan menengah, karena hampir seluruh proses produksi bergantung pada listrik.
+    <cite>Ketua Apindo Sukoharjo M. Yunus Arianto, sebagaimana diberitakan Harian Jogja, 20 Juni 2026 — diparafrasekan</cite>
+  </blockquote>
+
+  <h3>Empat pelajaran yang bisa ditarik</h3>
+  <ul class="clean">
+    <li><b>Respons teknis PLN cepat, tetapi kalah cepat dari respons dampak.</b> Klarifikasi penyebab keluar dalam hitungan hari; cerita kerugian pelaku usaha keluar dalam hitungan jam. Yang pertama menjelaskan, yang kedua menggerakkan emosi.</li>
+    <li><b>Modal sosial yang dibangun sepanjang 2025 tidak sempat dicairkan.</b> Hubungan baik dengan Pemkab Sukoharjo, Apindo, dan sekolah sudah ada, tetapi tidak diaktifkan sebagai suara pendukung ketika krisis datang. Aset hubungan hanya bernilai bila dipanggil pada saat yang tepat.</li>
+    <li><b>Wilayah wisata adalah titik rawan berlipat.</b> Tawangmangu menggabungkan ketergantungan genset, musim liburan, dan akses mudah wartawan ke narasumber pelaku usaha. Perlu prioritas khusus dalam pola operasi maupun komunikasi.</li>
+    <li><b>Ketiadaan juru bicara tunggal terlihat di teks.</b> Kutipan datang dari Manager ULP Sukoharjo, Manager ULP Karanganyar, dan Manager UP3 secara bergantian di outlet berbeda. Pesannya konsisten, tetapi arsitektur suaranya tidak terbaca sebagai satu institusi.</li>
+  </ul>
+
+  <h3>Temuan tambahan: ULP berbicara di luar lingkup areanya</h3>
+  <p>Tiga kali selama Juni 2026, manager tingkat ULP tampil sebagai narasumber untuk isu di luar wilayah kerjanya. Manager ULP Sukoharjo menjelaskan kondisi tiga kabupaten sekaligus kepada Kompas.com; sejumlah pengumuman ULP Sukoharjo turut mencantumkan wilayah Karanganyar yang sebenarnya punya ULP sendiri; dan Manager ULP Karanganyar memberikan prakiraan durasi pemadaman sistem Jawa yang belakangan tidak selaras dengan pernyataan tingkat UP3 dan unit induk.</p>
+  <p>Dampaknya bertingkat. Untuk dua kasus pertama, risikonya ringan namun membentuk kebiasaan: media terbiasa menghubungi satu nama untuk isu lintas kabupaten, sehingga identitas sumber melekat pada individu, bukan pada posisi. Untuk kasus ketiga, dampaknya nyata — pernyataan prakiraan yang berbeda dari posisi UP3 menciptakan janji yang penagihannya jatuh ke level ULP begitu pemadaman berlanjut, dan mengubah isu dari "gangguan sistem nasional" menjadi "PLN daerah tidak bisa dipegang kata-katanya". Rekomendasi juru bicara tunggal pada bagian 08 perlu disertai aturan tegas: pernyataan berisi prakiraan atau komitmen waktu hanya keluar dari UP3 atau UID, sementara ULP dibatasi pada fakta lapangan di wilayahnya sendiri.</p>
+</section>
+
+<!-- 6 -->
+<section id="aset">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Aset narasi yang dimiliki</h2></div>
+  <p class="lede">Empat cerita kuat yang sudah terbukti berjalan lintas tahun, namun belum bekerja sekeras potensinya.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h4>PLTS Terapung Gajah Mungkur</h4>
+      <p style="margin-bottom:12px">Kapasitas 134,2 MWp, investasi sekitar Rp1,6 triliun, target operasi akhir 2027, proyeksi 218 GWh per tahun atau setara sekitar 37 persen kebutuhan listrik Wonogiri. Listriknya disalurkan melalui jaringan 150 kV menuju Gardu Induk Nguntoronadi.</p>
+      <p><b style="color:var(--ink)">Nilai kehumasan:</b> mengubah posisi Wonogiri dari daerah yang mengeluh kekurangan listrik menjadi daerah yang memproduksi listrik bersih untuk Jawa.</p>
+    </div>
+    <div class="card">
+      <h4>Batik Ciprat Karya Barokah, Kismantoro</h4>
+      <p style="margin-bottom:12px">Pemberdayaan perajin difabel yang didampingi sejak 2022 melalui bantuan alat, pelatihan, dan sertifikasi, mengantar Desa Pucung meraih status Desa Mandiri, dan menembus final Padmamitra Awards 2026.</p>
+      <p><b style="color:var(--ink)">Nilai kehumasan:</b> bukti bahwa TJSL PLN bersifat pemberdayaan terukur, bukan sekadar bantuan sosial.</p>
+    </div>
+    <div class="card">
+      <h4>Listrik untuk Rakyat: LUTD dan bantuan pendidikan</h4>
+      <p style="margin-bottom:12px">Penyambungan gratis bagi warga prasejahtera dan rumah ibadah di pelosok Wonogiri sejak 2025, serta rehabilitasi instalasi listrik dan paving FABA di SDN Gayam 03 Sukoharjo yang diapresiasi langsung bupati.</p>
+      <p><b style="color:var(--ink)">Nilai kehumasan:</b> menghubungkan mandat komersial dengan kehadiran sosial di tingkat desa dan sekolah.</p>
+    </div>
+    <div class="card">
+      <h4>Listrik produktif dan ekosistem kendaraan listrik</h4>
+      <p style="margin-bottom:12px">Konsumsi listrik sektor pertanian Soloraya melampaui 180 GWh pada 2024 dengan pertumbuhan sekitar 10 persen, didukung perluasan SPKLU dan roadshow edukasi kendaraan listrik bersama FT UNS di sekolah menengah kejuruan.</p>
+      <p><b style="color:var(--ink)">Nilai kehumasan:</b> memposisikan listrik sebagai alat produksi dan masa depan, bukan sekadar utilitas yang dikeluhkan saat padam.</p>
+    </div>
+  </div>
+
+  <h3>Persoalannya bukan pada kualitas cerita</h3>
+  <p>Keempat aset di atas kuat secara substansi dan kredibel secara bukti, serta terbukti konsisten selama dua tahun. Persoalannya ada pada tiga hal lain: <b>kanal</b> — mayoritas mendarat di rubrik korporasi yang pembacanya bukan pelanggan rumah tangga; <b>waktu</b> — dirilis tanpa hubungan dengan siklus isu, sehingga tidak pernah hadir ketika paling dibutuhkan; dan <b>bentuk</b> — disajikan sebagai laporan kegiatan, bukan sebagai cerita manusia yang bisa dikutip ulang media lain.</p>
+</section>
+
+<!-- 7 -->
+<section id="risiko">
+  <div class="sec-head"><span class="sec-num">07</span><h2>Peta risiko reputasi ke depan</h2></div>
+  <p class="lede">Lima isu yang paling mungkin menentukan pemberitaan dua belas bulan berikutnya.</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Isu</th><th>Pemicu potensial</th><th>Kemungkinan</th><th>Dampak</th><th>Prioritas</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Pemadaman berulang saat beban puncak</b></td>
+          <td>Musim kemarau, gangguan pembangkit sistem Jawa, cuaca ekstrem</td>
+          <td>Tinggi</td><td>Tinggi</td>
+          <td><span class="pill p-neg">Kritis</span></td>
+        </tr>
+        <tr>
+          <td><b>Insiden keselamatan ketenagalistrikan</b></td>
+          <td>Aktivitas warga dekat jaringan, pekerjaan pihak ketiga di tiang bersama, fasilitas penerangan jalan</td>
+          <td>Sedang</td><td>Sangat tinggi</td>
+          <td><span class="pill p-neg">Kritis</span></td>
+        </tr>
+        <tr>
+          <td><b>Tuntutan kompensasi pelanggan</b></td>
+          <td>Kerangka hak pelanggan yang kini dipahami luas publik dan legislatif</td>
+          <td>Sedang</td><td>Tinggi</td>
+          <td><span class="pill p-neg">Kritis</span></td>
+        </tr>
+        <tr>
+          <td><b>Ekspektasi berlebih atas PLTS Gajah Mungkur</b></td>
+          <td>Publik menyamakan "37 persen kebutuhan Wonogiri" dengan jaminan bebas padam</td>
+          <td>Sedang</td><td>Sedang</td>
+          <td><span class="pill p-net">Pantau</span></td>
+        </tr>
+        <tr>
+          <td><b>Penindakan listrik ilegal</b></td>
+          <td>Proses hukum terhadap pelanggan, berpotensi dibingkai sebagai isu keadilan sosial</td>
+          <td>Rendah</td><td>Sedang</td>
+          <td><span class="pill p-net">Pantau</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Catatan khusus soal keselamatan</h3>
+  <p>Dengan periode yang diperpanjang, keselamatan ketenagalistrikan naik menjadi risiko paling konsisten: tercatat pada 2025 maupun 2026, di dua kabupaten berbeda, dengan penyebab yang berbeda pula — aktivitas pertanian, fasilitas penerangan jalan, dan pekerjaan pihak ketiga. Ini bukan rangkaian kebetulan, melainkan pola. Pada seluruh kasus, PLN tidak hadir sebagai narasumber; ruang penjelasan diisi kepolisian. Kehadiran PLN sebagai otoritas edukasi keselamatan, bukan sebagai pihak yang dimintai pertanggungjawaban, adalah perbedaan posisi yang menentukan.</p>
+</section>
+
+<!-- 8 -->
+<section id="rekomendasi">
+  <div class="sec-head"><span class="sec-num">08</span><h2>Rekomendasi</h2></div>
+  <p class="lede">Tiga horizon, dengan pemilik dan ukuran keberhasilan yang jelas.</p>
+
+  <div class="grid g3" style="margin-bottom:34px">
+    <div class="horizon">
+      <span class="when">0 – 30 hari</span>
+      <h4>Menutup celah paling mahal</h4>
+      <ol>
+        <li><b>Tetapkan juru bicara tunggal UP3</b> untuk semua isu lintas kabupaten, dengan manager ULP hanya bicara pada isu teknis lokal.</li>
+        <li><b>Standarkan pengumuman pemadaman</b> ke satu format: penyebab, wilayah, durasi, estimasi penormalan, kanal aduan. Terbit bersamaan di seluruh ULP.</li>
+        <li><b>Aktifkan kanal WhatsApp resmi</b> per ULP sebagai sumber primer, lalu rujuk kanal itu di setiap rilis agar media mengutipnya, bukan sebaliknya.</li>
+        <li><b>Siapkan lembar posisi kompensasi</b> yang menjelaskan mekanisme otomatis, agar pertanyaan wartawan tidak dijawab secara improvisasi.</li>
+      </ol>
+    </div>
+    <div class="horizon">
+      <span class="when">30 – 90 hari</span>
+      <h4>Memulihkan arus positif 2025</h4>
+      <ol>
+        <li><b>Kalender konten bulanan</b> dengan komposisi tetap: satu cerita keandalan, satu cerita pemberdayaan, satu cerita transisi energi — kembali ke ritme yang terbukti berjalan sepanjang 2025.</li>
+        <li><b>Aktifkan jaringan pendukung</b> — Pemkab, Apindo, sekolah binaan, Kejaksaan — sebagai narasumber pihak ketiga yang bisa berbicara saat isu negatif muncul.</li>
+        <li><b>Kampanye keselamatan ketenagalistrikan</b> bersama kepolisian dan pemerintah desa, dengan PLN memimpin narasi edukasi.</li>
+        <li><b>Forum pelaku usaha</b> bersama Apindo Sukoharjo dan Karanganyar untuk protokol notifikasi dini sektor industri dan pariwisata.</li>
+      </ol>
+    </div>
+    <div class="horizon">
+      <span class="when">90 – 365 hari</span>
+      <h4>Mengubah posisi wilayah</h4>
+      <ol>
+        <li><b>Jadikan PLTS Gajah Mungkur cerita bersambung</b>, bukan peristiwa tunggal: tahap konstruksi, dampak ekonomi lokal, nelayan dan wisata, hingga sinkronisasi 2027.</li>
+        <li><b>Bangun basis data dampak sendiri</b> — pelanggan terlayani, gangguan tertangani, durasi pemulihan — agar PLN memiliki angka ketika media mencari angka.</li>
+        <li><b>Perluas pantauan media</b> ke cetak, radio, televisi lokal, dan kanal kreator, dengan pelaporan bulanan ke manajemen.</li>
+        <li><b>Rencanakan suksesi cerita TJSL</b> agar Batik Ciprat bukan satu-satunya bukti; siapkan dua program binaan lain untuk ajang nasional berikutnya.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>Kerangka pesan yang disarankan</h3>
+  <ul class="clean">
+    <li><b>Pesan payung.</b> Listrik yang andal dibangun bersama warga, dan setiap gangguan dijelaskan terbuka pada hari yang sama.</li>
+    <li><b>Pilar keandalan.</b> Pemeliharaan terencana adalah investasi agar padam mendadak semakin jarang — bukan gangguan, melainkan pencegahan.</li>
+    <li><b>Pilar pemberdayaan.</b> Listrik masuk ke rumah yang belum terjangkau, dan menjadi alat produksi bagi kelompok rentan.</li>
+    <li><b>Pilar transisi energi.</b> Wonogiri berubah dari titik akhir jaringan menjadi titik awal pasokan energi bersih Jawa.</li>
+    <li><b>Pilar keselamatan.</b> Jaga jarak aman dari jaringan; PLN yang mendatangi, bukan warga yang mendekati.</li>
+  </ul>
+</section>
+
+<!-- 9 -->
+<section id="lampiran">
+  <div class="sec-head"><span class="sec-num">09</span><h2>Lampiran: inventaris publikasi</h2></div>
+  <p class="lede">Item terpilih yang menjadi dasar analisis, disusun kronologis dari Januari 2025.</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Tanggal</th><th>Media</th><th>Pokok berita</th><th>Wilayah</th><th>Nada</th></tr>
+      </thead>
+      <tbody>
+        <tr class="yearband"><td colspan="5">2025</td></tr>
+        <tr><td>15 Jan 2025</td><td>Espos.id</td><td>Pemeliharaan jaringan ULP Wonogiri, pemadaman sekitar tiga jam</td><td>Wonogiri</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>27 Feb 2025</td><td>Sijorikepri</td><td>Pemeliharaan jaringan distribusi dan pemangkasan pohon ULP Wonogiri</td><td>Wonogiri</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>8 Jun 2025</td><td>Espos.id</td><td>Penambahan SPKLU Soloraya, rencana Palur dan Tugu Kartasura</td><td>Karanganyar · Sukoharjo</td><td><span class="pill p-pos">Positif</span></td></tr>
+        <tr><td>7 Jun 2025</td><td>Espos.id</td><td>Wonogiri memiliki dua SPKLU sejak Desember 2024</td><td>Wonogiri</td><td><span class="pill p-pos">Positif</span></td></tr>
+        <tr><td>25 Jun 2025</td><td>Soloaja.co</td><td>Light Up The Dream: penyambungan listrik gratis di tiga titik</td><td>Wonogiri</td><td><span class="pill p-pos">Positif</span></td></tr>
+        <tr><td>22 Jul 2025</td><td>Viva Jogja</td><td>Lansia meninggal tersengat listrik saat mencari pakan ternak</td><td>Karanganyar</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>4 Agu 2025</td><td>Harian Jogja</td><td>Bantuan instalasi listrik dan paving FABA di SDN Gayam 03, apresiasi bupati</td><td>Sukoharjo</td><td><span class="pill p-pos">Positif</span></td></tr>
+        <tr><td>11 Nov 2025</td><td>Espos.id Kolom</td><td>Elektrifikasi mendorong produktivitas pertanian Soloraya</td><td>Sukoharjo · Soloraya</td><td><span class="pill p-pos">Positif</span></td></tr>
+        <tr><td>19 Nov 2025</td><td>Espos.id</td><td>Roadshow edukasi kendaraan listrik PLN dan FT UNS di SMKN 2 Karanganyar</td><td>Karanganyar</td><td><span class="pill p-pos">Positif</span></td></tr>
+
+        <tr class="yearband"><td colspan="5">2026</td></tr>
+        <tr><td>4 Mar 2026</td><td>Suara Merdeka</td><td>Remaja meninggal tersengat listrik di kawasan Gunung Belah</td><td>Wonogiri</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>6 Mar 2026</td><td>Suara.com Surakarta</td><td>Rangkaian fakta insiden sengatan listrik tiang penerangan jalan</td><td>Wonogiri</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>18 Mar 2026</td><td>Jateng Pos</td><td>Siaga Ramadan dan Idul Fitri, sinergi PLN dengan Pemkab Sukoharjo</td><td>Sukoharjo</td><td><span class="pill p-pos">Positif</span></td></tr>
+        <tr><td>2 Apr 2026</td><td>Viva Jogja</td><td>Sinergi hukum P2TL dengan Kejari Wonogiri</td><td>Wonogiri</td><td><span class="pill p-pos">Positif</span></td></tr>
+        <tr><td>3 Apr 2026</td><td>Viva Jogja</td><td>Penindakan sambungan listrik ilegal diperkuat ke ranah hukum</td><td>Wonogiri</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>4 Apr 2026</td><td>IndonesiaBuzz</td><td>Pekerja pemasangan jaringan internet meninggal tersengat listrik</td><td>Wonogiri</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>19 Mei 2026</td><td>Murianews</td><td>Jadwal pemadaman sepekan di Kecamatan Grogol dan sekitarnya</td><td>Sukoharjo</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>9 Jun 2026</td><td>Murianews · TribunTrends</td><td>Pemadaman untuk penarikan penyulang baru dan perabasan pohon</td><td>Karanganyar</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>10 Jun 2026</td><td>Kompas.com</td><td>Penjelasan PLN atas pemadaman tiga jam di tiga kabupaten</td><td>Tiga kabupaten</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>11 Jun 2026</td><td>TribunStyle</td><td>Penyebab dan kondisi terkini kelistrikan Soloraya, unit berstatus siaga</td><td>Tiga kabupaten</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>12 Jun 2026</td><td>Kompas.com Tren</td><td>PLN menegaskan peristiwa bukan pemadaman total</td><td>Nasional</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>18 Jun 2026</td><td>Kompas.com Regional</td><td>Pengelola wisata Tawangmangu, biaya solar genset membengkak</td><td>Karanganyar</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>19 Jun 2026</td><td>Kompas.com Regional</td><td>Usaha fotokopi terpaksa menolak konsumen saat listrik padam</td><td>Karanganyar</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>19 Jun 2026</td><td>Solopos / Espos.id</td><td>Warga mengeluhkan pemadaman bergilir dan meminta informasi lebih cepat</td><td>Karanganyar</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>20 Jun 2026</td><td>Solopos / Espos.id</td><td>Dampak pemadaman: perusahaan merugi hingga lalu lintas macet</td><td>Sukoharjo</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>20 Jun 2026</td><td>Harian Jogja</td><td>Apindo Sukoharjo menilai seluruh sektor usaha terdampak; lampu lalu lintas padam di Kartasura</td><td>Sukoharjo</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>21 Jun 2026</td><td>TribunStyle</td><td>Kanal WhatsApp resmi ULP Wonogiri untuk pemantauan jadwal</td><td>Wonogiri</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>22 Jun 2026</td><td>Tribunsolo · Tribunbanyumas · TribunTrends</td><td>Jadwal pemadaman dua sesi, kutipan Manager UP3 Sukoharjo</td><td>Tiga kabupaten</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>22 Jun 2026</td><td>Viva Jogja</td><td>Apindo Karanganyar meminta kepastian pasokan bagi industri</td><td>Karanganyar</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>23 Jun 2026</td><td>TribunTrends</td><td>Pemadaman empat jam untuk pemeliharaan jaringan distribusi</td><td>Sukoharjo</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>29 Jun 2026</td><td>TribunTrends</td><td>Gangguan jaringan tegangan menengah 20 kV lintas kabupaten</td><td>Karanganyar · Wonogiri</td><td><span class="pill p-neg">Negatif</span></td></tr>
+        <tr><td>14 Jul 2026</td><td>Espos.id Bisnis</td><td>Program Muharram Ceria bersama YBM PLN UP3 Sukoharjo</td><td>Karanganyar</td><td><span class="pill p-pos">Positif</span></td></tr>
+        <tr><td>17 Jul 2026</td><td>TribunTrends</td><td>Pemadaman terjadwal ULP Jatisrono untuk perabasan pohon</td><td>Wonogiri</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>28 Jul 2026</td><td>Espos.id Bisnis</td><td>Pemeliharaan jaringan terpadu 5 Pandawa Series 11 ULP Karanganyar</td><td>Karanganyar</td><td><span class="pill p-pos">Positif</span></td></tr>
+        <tr><td>28 Jul 2026</td><td>Kompas.com Money</td><td>Pemerintah meminta penjelasan mekanisme kompensasi pelanggan</td><td>Nasional</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>4 Agu 2026</td><td>Espos.id Bisnis</td><td>Batik Ciprat binaan PLN menembus final Padmamitra Awards 2026</td><td>Wonogiri</td><td><span class="pill p-pos">Positif</span></td></tr>
+        <tr><td>12 Agu 2026</td><td>TribunTrends</td><td>Pemadaman tiga jam untuk perubahan konstruksi jaringan</td><td>Wonogiri</td><td><span class="pill p-net">Netral</span></td></tr>
+        <tr><td>25–26 Agu 2026</td><td>JPNN · Joglosemar · Mettanews · Lingkarjateng · Puskapik · Suryakabar · Erakini · Berita Daerah · Bloranews</td><td>Groundbreaking PLTS Terapung Gajah Mungkur 134,2 MWp senilai Rp1,6 triliun</td><td>Wonogiri</td><td><span class="pill p-pos">Positif</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>Laporan disusun berdasarkan penelusuran publikasi media daring yang dapat diakses publik, di luar kanal resmi PT PLN (Persero). Seluruh kutipan telah diparafrasekan dan merujuk pada pemberitaan media bersangkutan. Angka volume dan pangsa bersifat indikatif atas sampel terkurasi, bukan hasil sensus media penuh, dan sebaiknya diperlakukan sebagai alat baca pola — bukan sebagai laporan kinerja. Jejak digital pemberitaan 2025 lebih tipis dibanding 2026; untuk siklus berikutnya disarankan penambahan cakupan media cetak, penyiaran, dan kanal media sosial.</p>
+  <p style="margin-top:14px">Media Review · Periode Januari 2025 – Agustus 2026</p>
+</footer>
+
+</body>
+</html>
