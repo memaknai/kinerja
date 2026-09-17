@@ -158,22 +158,27 @@
     </p>
   </div>
 
- <script>
+<script>
     const PERIODE_TERBARU = "2026-08";
 
-    // 1. Set default dropdown ke periode terbaru
+    // Set default dropdown ke periode terbaru
     document.getElementById("periodeSelect").value = PERIODE_TERBARU;
 
-    // 2. Logika Modal
+    // Sembunyikan status loading manual
+    document.getElementById("redirectStatus").style.display = "none";
+
+    // Tampilkan Modal
     const modal = document.getElementById("warningModal");
     modal.style.display = "flex";
 
+    // Ketika tombol modal diklik -> langsung buka periode terbaru
     function closeModal() {
       modal.style.display = "none";
+      lanjutKePeriodeTerbaru();
     }
 
-    // 3. Fungsi saat tombol "Buka Laporan" diklik
-    function bukaLaporan() {
+    // Fungsi pengalihan utama
+    function lanjutKePeriodeTerbaru() {
       const unit = document.getElementById("unitSelect").value;
       const periode = document.getElementById("periodeSelect").value;
 
@@ -184,13 +189,10 @@
       }
     }
 
-    // 4. Langsung otomatis ke periode terbaru saat opsi Unit Sukoharjo dipilih
-    document.getElementById("unitSelect").addEventListener("change", function() {
-      if (this.value === "sukoharjo") {
-        window.location.href = `${PERIODE_TERBARU}/index.html`;
-      }
-    });
+    // Fungsi jika tombol "Buka Laporan" manual diklik
+    function bukaLaporan() {
+      lanjutKePeriodeTerbaru();
+    }
   </script>
 </body>
 </html>
-
