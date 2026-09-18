@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Kinerja — UP3 Sukoharjo, Agustus 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0F2A4A;
+    --navy-deep: #0A1D33;
+    --ink: #1A2430;
+    --paper: #FBFAF7;
+    --paper-panel: #FFFFFF;
+    --rule: #DAD6CC;
+    --rule-soft: #E9E6DD;
+    --gold: #B08A3E;
+    --good: #1E7A46;
+    --good-bg: #E7F2EA;
+    --warn: #A85E00;
+    --warn-bg: #FBEDD9;
+    --muted: #5C6672;
+    --font-display: "Newsreader", Georgia, serif;
+    --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --navy: #16304F;
+      --paper: #12161C;
+      --paper-panel: #1A1F27;
+      --rule: #333B47;
+      --rule-soft: #262C35;
+      --ink: #E7E5DD;
+      --muted: #9AA3AE;
+      --good-bg: #163326;
+      --warn-bg: #33260F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --navy: #16304F;
+    --paper: #12161C;
+    --paper-panel: #1A1F27;
+    --rule: #333B47;
+    --rule-soft: #262C35;
+    --ink: #E7E5DD;
+    --muted: #9AA3AE;
+    --good-bg: #163326;
+    --warn-bg: #33260F;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body{
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 32px 96px;
+  }
+
+  /* ===== Masthead ===== */
+  .masthead{
+    background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: #F2F0E8;
+    padding: 64px 32px 48px;
+    margin-bottom: 56px;
+  }
+  .masthead-inner{
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .masthead-kicker{
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: #B9C4D4;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .masthead-kicker span{ color: var(--gold); }
+  .masthead h1{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 1.18;
+    margin: 0 0 20px;
+    max-width: 760px;
+    letter-spacing: -0.01em;
+  }
+  .masthead-sub{
+    font-size: 16.5px;
+    color: #C7CFDA;
+    max-width: 620px;
+    margin: 0 0 32px;
+  }
+  .masthead-meta{
+    display:flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.16);
+    padding-top: 24px;
+  }
+  .masthead-meta div{ min-width: 120px; }
+  .masthead-meta .label{
+    font-size: 11.5px;
+    color: #8FA0B5;
+    margin-bottom: 4px;
+  }
+  .masthead-meta .value{
+    font-size: 19px;
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+
+  /* ===== Section framing ===== */
+  section{ margin-bottom: 56px; }
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 12px;
+  }
+  .section-num{
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .section-head h2{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 25px;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  p.lede{
+    font-size: 16px;
+    color: var(--ink);
+    max-width: 700px;
+    margin: 0 0 8px;
+  }
+  p.lede + p.lede { margin-top: 14px; }
+
+  /* ===== KPI strip ===== */
+  .kpi-strip{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .kpi-cell{
+    background: var(--paper-panel);
+    padding: 22px 20px;
+  }
+  .kpi-cell .num{
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  .kpi-cell .num small{ font-size: 16px; font-weight: 400; color: var(--muted); }
+  .kpi-cell .lbl{
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+  .kpi-cell.accent .num{ color: var(--good); }
+
+  /* ===== Insight cards ===== */
+  .insights{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .insight-card{
+    background: var(--paper-panel);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--navy);
+    padding: 22px 20px 20px;
+  }
+  .insight-card.flag{ border-top-color: var(--warn); }
+  .insight-card .tag{
+    font-size: 11px;
+    letter-spacing: 0.01em;
+    color: var(--muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dot{ width:6px; height:6px; border-radius:50%; background: var(--good); display:inline-block; }
+  .dot.warn{ background: var(--warn); }
+  .insight-card h3{
+    font-family: var(--font-display);
+    font-size: 18.5px;
+    font-weight: 500;
+    margin: 0 0 10px;
+    line-height: 1.32;
+  }
+  .insight-card p{
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  /* ===== Bar visualization ===== */
+  .bars{ background: var(--paper-panel); border: 1px solid var(--rule); padding: 28px 28px 12px; }
+  .bar-row{ margin-bottom: 20px; }
+  .bar-row:last-child{ margin-bottom: 4px; }
+  .bar-row .bar-top{
+    display:flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 7px; font-size: 13.5px;
+  }
+  .bar-row .bar-top .name{ font-weight: 500; }
+  .bar-row .bar-top .pct{ font-family: var(--font-display); font-weight: 500; }
+  .bar-track{ height: 9px; background: var(--rule-soft); position: relative; }
+  .bar-fill{ height: 100%; background: var(--navy); }
+  .bar-fill.warn{ background: var(--warn); }
+  .bar-target-line{
+    position:absolute; top:-3px; bottom:-3px; width:2px; background: var(--ink); opacity: 0.55;
+  }
+  .bar-legend{
+    display:flex; gap: 22px; font-size: 12px; color: var(--muted); margin-top: 18px;
+    border-top: 1px solid var(--rule-soft); padding-top: 14px;
+  }
+  .bar-legend span{ display:flex; align-items:center; gap:6px; }
+  .leg-swatch{ width:12px; height:12px; display:inline-block; }
+  .leg-line{ width:2px; height:12px; background: var(--ink); opacity:0.55; display:inline-block; }
+
+  /* ===== Detail table ===== */
+  table.detail{
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--paper-panel);
+    font-size: 13.5px;
+  }
+  table.detail caption{ display:none; }
+  table.detail thead th{
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--navy);
+    white-space: nowrap;
+  }
+  table.detail thead th.num{ text-align: right; }
+  table.detail tbody td{
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+  }
+  table.detail tbody td.num{ text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  table.detail tr.l1 td{ font-weight: 600; background: var(--rule-soft); }
+  table.detail tr.l1 td:first-child{ color: var(--navy); }
+  :root[data-theme="dark"] table.detail tr.l1 td:first-child,
+  :root:not([data-theme="light"]) table.detail tr.l1 td:first-child { color: #9DB3CC; }
+  table.detail tr.l2 td:first-child{ padding-left: 26px; }
+  table.detail tr.l3 td:first-child{ padding-left: 40px; color: var(--muted); }
+  .pill{
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 3px;
+  }
+  .pill.baik{ background: var(--good-bg); color: var(--good); }
+  .pill.hati{ background: var(--warn-bg); color: var(--warn); }
+  .pill.na{ color: var(--muted); }
+  .overflow-x{ overflow-x: auto; }
+
+  /* ===== Callout ===== */
+  .callout{
+    background: var(--rule-soft);
+    border-left: 3px solid var(--gold);
+    padding: 18px 22px;
+    font-size: 14px;
+    color: var(--ink);
+    margin-top: 20px;
+  }
+  .callout strong{ color: var(--navy); }
+  :root[data-theme="dark"] .callout strong,
+  :root:not([data-theme="light"]) .callout strong{ color: #9DB3CC; }
+
+  /* ===== Priorities ===== */
+  .priorities{ display:flex; flex-direction: column; }
+  .priority{
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .priority:first-child{ padding-top: 0; }
+  .priority:last-child{ border-bottom: none; }
+  .priority .idx{
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .priority h4{
+    font-size: 15.5px;
+    margin: 0 0 6px;
+    font-weight: 600;
+  }
+  .priority p{ font-size: 14px; color: var(--muted); margin: 0; max-width: 640px; }
+
+  footer{
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 720px){
+    .masthead{ padding: 44px 20px 36px; }
+    .masthead h1{ font-size: 30px; }
+    .page{ padding: 0 18px 64px; }
+    .kpi-strip{ grid-template-columns: repeat(2, 1fr); }
+    .insights{ grid-template-columns: 1fr; }
+    .priority{ grid-template-columns: 32px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-kicker">NILAI KINERJA ORGANISASI <span>·</span> UP3 SUKOHARJO</div>
+    <h1>Kinerja Agustus 2026 unggul di hampir seluruh indikator, dengan satu titik yang perlu perhatian: susut distribusi.</h1>
+    <p class="masthead-sub">Resume eksekutif atas realisasi Nilai Kinerja Organisasi (NKO) UP3 &amp; ULP berdasarkan Form KPI tahun berjalan, disusun dari data indikator yang tersedia pada laporan.</p>
+    <div class="masthead-meta">
+      <div>
+        <div class="label">Unit</div>
+        <div class="value">UP3 Sukoharjo</div>
+      </div>
+      <div>
+        <div class="label">Periode</div>
+        <div class="value">Agustus 2026</div>
+      </div>
+      <div>
+        <div class="label">Indikator dianalisis</div>
+        <div class="value">6 kategori utama</div>
+      </div>
+      <div>
+        <div class="label">Status dominan</div>
+        <div class="value">Baik</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- 1. RINGKASAN EKSEKUTIF -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Ringkasan eksekutif</h2>
+    </div>
+    <p class="lede">Dari enam kategori indikator kinerja yang tercatat pada Form KPI Agustus 2026, lima kategori mencapai predikat <strong>Baik</strong> dengan pencapaian rata-rata di atas 100% terhadap target, dan satu kategori — Susut Distribusi Tanpa E-min — berada pada predikat <strong>Hati-hati</strong> karena realisasi susut melebihi target yang ditetapkan.</p>
+    <p class="lede">Total nilai tertimbang dari enam kategori ini adalah <strong>69,66 dari bobot 66,00</strong> yang tercakup pada bagian laporan yang dianalisis, mengindikasikan kinerja unit secara umum melampaui ekspektasi pada indikator-indikator yang terukur.</p>
+
+    <div class="kpi-strip">
+      <div class="kpi-cell accent">
+        <div class="num">69,66 <small>/ 66,00</small></div>
+        <div class="lbl">Total nilai tertimbang vs. bobot indikator yang tercakup</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="num">5 <small>dari 6</small></div>
+        <div class="lbl">Kategori dengan predikat Baik</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="num">110%</div>
+        <div class="lbl">Pencapaian tertinggi — berlaku di sebagian besar sub-indikator</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="num">95,64%</div>
+        <div class="lbl">Pencapaian terendah — Susut Distribusi Tanpa E-min</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. INSIGHT UTAMA -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Insight utama</h2>
+    </div>
+    <div class="insights">
+      <div class="insight-card">
+        <div class="tag"><span class="dot"></span>PENJUALAN &amp; KEANDALAN</div>
+        <h3>Penjualan listrik dan keandalan jaringan menjadi penopang utama nilai NKO.</h3>
+        <p>Penjualan Tenaga Listrik mencatat realisasi 94,92 dari target 84,74 (110%), sedangkan SAIDI, SAIFI, dan ENS seluruhnya melampaui target dengan pencapaian 103–110%, menunjukkan keandalan penyaluran yang membaik dibanding rencana.</p>
+      </div>
+      <div class="insight-card">
+        <div class="tag"><span class="dot"></span>PELANGGAN &amp; INVESTASI</div>
+        <h3>Percepatan penyambungan pelanggan melampaui target secara signifikan.</h3>
+        <p>Daya tersambung terealisasi 44,36 dari target 17,57 (pencapaian 110%, terbatas oleh cap penilaian meski realisasi aktual lebih dari 2,5x target), diiringi pendapatan biaya penyambungan dan pertumbuhan pelanggan Lisdes yang juga solid.</p>
+      </div>
+      <div class="insight-card flag">
+        <div class="tag"><span class="dot warn"></span>PERLU PERHATIAN</div>
+        <h3>Susut distribusi menjadi satu-satunya indikator di bawah target.</h3>
+        <p>Realisasi susut 6,41% melampaui target 6,14% (pencapaian hanya 95,64%). Dengan bobot 12 — terbesar kedua setelah penjualan — indikator ini paling berpengaruh menahan laju kenaikan nilai NKO secara keseluruhan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PENCAPAIAN VS TARGET -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Pencapaian terhadap target, per kategori</h2>
+    </div>
+    <p class="lede">Garis vertikal menandai ambang 100% (target tercapai). Batang yang melewati garis berarti realisasi melampaui target.</p>
+    <div class="bars">
+      <div class="bar-row">
+        <div class="bar-top"><span class="name">Penjualan Tenaga Listrik</span><span class="pct">110%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"></div><div class="bar-target-line" style="left:90.9%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="name">Susut Distribusi Tanpa E-min</span><span class="pct">95,64%</span></div>
+        <div class="bar-track"><div class="bar-fill warn" style="width:86.9%"></div><div class="bar-target-line" style="left:90.9%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="name">Keandalan Penyaluran (SAIDI/SAIFI/ENS, rata-rata)</span><span class="pct">~105,6%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:96%"></div><div class="bar-target-line" style="left:90.9%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="name">Eksekusi RUPTL &amp; Investasi (rata-rata)</span><span class="pct">~105%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:95.5%"></div><div class="bar-target-line" style="left:90.9%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="name">Percepatan Penyambungan Pelanggan (rata-rata)</span><span class="pct">~109,4%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:99.5%"></div><div class="bar-target-line" style="left:90.9%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="name">Peningkatan Pelayanan Pelanggan</span><span class="pct">110%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"></div><div class="bar-target-line" style="left:90.9%"></div></div>
+      </div>
+      <div class="bar-legend">
+        <span><span class="leg-swatch" style="background:var(--navy)"></span>Pencapaian ≥ 100%</span>
+        <span><span class="leg-swatch" style="background:var(--warn)"></span>Pencapaian &lt; 100%</span>
+        <span><span class="leg-line"></span>Ambang target (100%)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. RINCIAN INDIKATOR -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Rincian seluruh indikator</h2>
+    </div>
+    <p class="lede">Data sebagaimana tercantum pada Form KPI UP3 Sukoharjo, periode Agustus 2026.</p>
+    <div class="overflow-x">
+    <table class="detail">
+      <thead>
+        <tr>
+          <th>Indikator kinerja</th>
+          <th class="num">Bobot</th>
+          <th class="num">Target</th>
+          <th class="num">Realisasi</th>
+          <th class="num">Pencapaian</th>
+          <th class="num">Nilai</th>
+          <th>Predikat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="l1"><td>1. Penjualan Tenaga Listrik</td><td class="num">14</td><td class="num">84,74</td><td class="num">94,92</td><td class="num">110%</td><td class="num">15,40</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l1"><td>2. Susut Distribusi Tanpa E-min (sesuai kewenangan)</td><td class="num">12</td><td class="num">6,14</td><td class="num">6,41</td><td class="num">95,64%</td><td class="num">11,48</td><td><span class="pill hati">Hati-hati</span></td></tr>
+        <tr class="l1"><td>3. Keandalan Penyaluran Tenaga Listrik</td><td class="num">12</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">12,54</td><td><span class="pill na">—</span></td></tr>
+        <tr class="l2"><td>a. SAIDI (sesuai kewenangan)</td><td class="num">5</td><td class="num">40,51</td><td class="num">39,29</td><td class="num">103,02%</td><td class="num">5,15</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l2"><td>b. SAIFI (sesuai kewenangan)</td><td class="num">5</td><td class="num">0,62</td><td class="num">0,60</td><td class="num">103,84%</td><td class="num">5,19</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l2"><td>c. ENS (sesuai kewenangan)</td><td class="num">2</td><td class="num">145,09</td><td class="num">113,01</td><td class="num">110%</td><td class="num">2,20</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l1"><td>4. Penyelesaian Eksekusi RUPTL dan Investasi</td><td class="num">10</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">10,50</td><td><span class="pill na">—</span></td></tr>
+        <tr class="l2"><td>a. Penambahan Aset RUPTL</td><td class="num">5</td><td class="num">–</td><td class="num">–</td><td class="num">110%</td><td class="num">5,50</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l3"><td>a.1 Penambahan Aset RUPTL JTM</td><td class="num">1,67</td><td class="num">10,39</td><td class="num">13,13</td><td class="num">110%</td><td class="num">1,83</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l3"><td>a.2 Penambahan Aset RUPTL JTR</td><td class="num">1,67</td><td class="num">13,45</td><td class="num">16,83</td><td class="num">110%</td><td class="num">1,83</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l3"><td>a.3 Penambahan Aset RUPTL TRAFO</td><td class="num">1,67</td><td class="num">4,09</td><td class="num">5,59</td><td class="num">110%</td><td class="num">1,83</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l2"><td>b. Penambahan Aset Penyelesaian Fisik Investasi</td><td class="num">5</td><td class="num">100</td><td class="num">100</td><td class="num">100%</td><td class="num">5,00</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l1"><td>5. Percepatan Penyambungan Pelanggan</td><td class="num">10</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">10,94</td><td><span class="pill na">—</span></td></tr>
+        <tr class="l2"><td>a. Jumlah Penambahan Pelanggan &amp; Penambahan Daya Tersambung</td><td class="num">2</td><td class="num">–</td><td class="num">–</td><td class="num">110%</td><td class="num">2,20</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l3"><td>— Penambahan Pelanggan</td><td class="num">0,50</td><td class="num">12.968</td><td class="num">14.998</td><td class="num">110%</td><td class="num">0,55</td><td><span class="pill na">—</span></td></tr>
+        <tr class="l3"><td>— Daya Tersambung</td><td class="num">1,50</td><td class="num">17,57</td><td class="num">44,36</td><td class="num">110%</td><td class="num">1,65</td><td><span class="pill na">—</span></td></tr>
+        <tr class="l2"><td>b. Pendapatan Biaya Penyambungan</td><td class="num">2</td><td class="num">29,55</td><td class="num">45,53</td><td class="num">110%</td><td class="num">2,20</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l2"><td>c. Penambahan Jumlah Pelanggan Lisdes</td><td class="num">4</td><td class="num">7</td><td class="num">9</td><td class="num">110%</td><td class="num">4,40</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l2"><td>d. Peningkatan kWh Penjualan dari Pelanggan Lisdes</td><td class="num">2</td><td class="num">1.330</td><td class="num">1.425,40</td><td class="num">107,17%</td><td class="num">2,14</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l1"><td>6. Peningkatan Pelayanan Pelanggan</td><td class="num">8</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">8,80</td><td><span class="pill na">—</span></td></tr>
+        <tr class="l2"><td>a. Feedback Rating Negatif pada PLN Mobile – Gangguan</td><td class="num">2</td><td class="num">40</td><td class="num">25</td><td class="num">110%</td><td class="num">2,20</td><td><span class="pill baik">Baik</span></td></tr>
+        <tr class="l2"><td>b. Response Time atas Gangguan (di luar Clear Tamper)</td><td class="num">2</td><td class="num">30</td><td class="num">22,06</td><td class="num">110%</td><td class="num">2,20</td><td><span class="pill baik">Baik</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout">
+      <strong>Catatan cakupan data.</strong> Jumlah bobot pada bagian laporan yang tersedia adalah 66 dari kemungkinan total 100 pada Form KPI penuh (14+12+12+10+10+8). Ini mengindikasikan tabel sumber kemungkinan berlanjut ke indikator lain di luar halaman yang dianalisis — resume ini disusun murni dari data yang terlihat.
+    </div>
+  </section>
+
+  <!-- 5. PRIORITAS TINDAK LANJUT -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Prioritas tindak lanjut</h2>
+    </div>
+    <div class="priorities">
+      <div class="priority">
+        <div class="idx">1</div>
+        <div>
+          <h4>Investigasi akar penyebab kenaikan susut distribusi</h4>
+          <p>Realisasi 6,41% vs target 6,14% menunjukkan losses lebih tinggi dari rencana. Dengan bobot 12 (terbesar kedua), perbaikan pada indikator ini akan memberi dampak terbesar terhadap kenaikan nilai NKO periode berikutnya — tinjau titik-titik jaringan dengan susut non-teknis tertinggi dan efektivitas program penertiban.</p>
+        </div>
+      </div>
+      <div class="priority">
+        <div class="idx">2</div>
+        <div>
+          <h4>Tinjau ulang metodologi target Daya Tersambung</h4>
+          <p>Realisasi 44,36 terhadap target 17,57 (lebih dari 2,5x) jauh melampaui pola pencapaian indikator lain yang umumnya 100–110%. Pola ini layak ditelaah untuk memastikan proses penetapan target sudah selaras dengan potensi riil, agar penilaian kinerja periode mendatang tetap representatif.</p>
+        </div>
+      </div>
+      <div class="priority">
+        <div class="idx">3</div>
+        <div>
+          <h4>Pertahankan momentum pada keandalan jaringan dan layanan pelanggan</h4>
+          <p>SAIDI, SAIFI, ENS, serta indikator pelayanan pelanggan (feedback negatif dan response time) seluruhnya konsisten di atas 100%. Dokumentasikan praktik operasional yang mendukung pencapaian ini sebagai acuan replikasi ke unit atau ULP lain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Resume disusun dari Form KPI UP3 Sukoharjo — Periode data terbaru: Agustus 2026.</span>
+    <span>Diolah untuk keperluan tinjauan internal.</span>
+  </footer>
+
+</div>
+</body>
+</html>
