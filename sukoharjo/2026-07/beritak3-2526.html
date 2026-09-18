@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keselamatan Kelistrikan Karanganyar–Sukoharjo–Wonogiri | Jan 2025–Ags 2026</title>
+<style>
+  :root{
+    --ink:#161B22;
+    --navy:#1B2A41;
+    --navy-2:#28405E;
+    --paper:#FBFAF8;
+    --panel:#FFFFFF;
+    --line:#DEDCD4;
+    --line-2:#E9E7DF;
+    --amber:#B5651D;
+    --amber-2:#D98324;
+    --red:#8C2F1D;
+    --muted:#5B5A54;
+    --tag-bg:#F0EEE6;
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 28px;}
+
+  /* ===== Masthead ===== */
+  header.masthead{
+    background:linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%);
+    color:#F4F2EA;
+    padding:64px 0 52px;
+    border-bottom:6px solid var(--amber);
+  }
+  .kicker{
+    font-family:var(--sans);
+    font-size:13px;
+    letter-spacing:.04em;
+    color:#C9D3E0;
+    margin:0 0 18px;
+  }
+  .kicker span{color:var(--amber-2);font-weight:700;}
+  h1.title{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:44px;
+    line-height:1.14;
+    margin:0 0 20px;
+    max-width:760px;
+    letter-spacing:.1px;
+  }
+  .subtitle{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:19px;
+    color:#D9DEE7;
+    max-width:640px;
+    margin:0 0 30px;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:28px;
+    margin-top:30px;
+    border-top:1px solid rgba(244,242,234,.18);
+    padding-top:22px;
+  }
+  .meta-item{font-size:13px;color:#B9C2D0;}
+  .meta-item b{display:block;color:#F4F2EA;font-size:15px;font-weight:600;margin-top:3px;}
+
+  /* ===== Sections ===== */
+  section{padding:52px 0;border-bottom:1px solid var(--line-2);}
+  section:last-of-type{border-bottom:none;}
+  h2.section-head{
+    font-family:var(--serif);
+    font-size:28px;
+    font-weight:400;
+    margin:0 0 8px;
+    color:var(--navy);
+  }
+  .section-sub{
+    color:var(--muted);
+    font-size:15px;
+    max-width:640px;
+    margin:0 0 32px;
+  }
+  h3.sub-head{
+    font-family:var(--sans);
+    font-size:15px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--amber);
+    margin:0 0 14px;
+  }
+
+  /* ===== Executive summary numbers ===== */
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-bottom:36px;
+  }
+  .stat-cell{background:var(--panel);padding:26px 20px;}
+  .stat-num{
+    font-family:var(--serif);
+    font-size:40px;
+    color:var(--navy);
+    line-height:1;
+  }
+  .stat-num.warn{color:var(--red);}
+  .stat-label{
+    margin-top:10px;
+    font-size:12.5px;
+    color:var(--muted);
+    line-height:1.4;
+  }
+  .exec-callout{
+    background:var(--navy);
+    color:#F4F2EA;
+    padding:26px 28px;
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.6;
+    border-left:5px solid var(--amber);
+    margin-bottom:8px;
+  }
+  .exec-callout b{color:var(--amber-2);font-weight:600;}
+
+  /* ===== Two column ===== */
+  .cols{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;}
+  @media (max-width:760px){ .cols{grid-template-columns:1fr;} .stat-grid{grid-template-columns:repeat(2,1fr);} }
+
+  p{margin:0 0 14px;color:#2A2E33;font-size:15px;}
+  ul.clean{margin:0 0 14px;padding-left:18px;}
+  ul.clean li{margin-bottom:9px;font-size:15px;color:#2A2E33;}
+
+  /* ===== Chart block ===== */
+  .chart-box{background:var(--panel);border:1px solid var(--line);padding:24px 26px 10px;margin-bottom:26px;}
+  .bar-row{display:flex;align-items:center;margin-bottom:14px;}
+  .bar-label{width:230px;font-size:13.5px;color:var(--ink);flex-shrink:0;padding-right:12px;}
+  .bar-track{flex:1;background:var(--tag-bg);height:22px;position:relative;}
+  .bar-fill{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;}
+  .bar-fill span{font-size:12.5px;color:#fff;font-weight:600;}
+  .cat-sengat{background:var(--red);}
+  .cat-fire{background:var(--amber);}
+  .cat-infra{background:var(--navy-2);}
+
+  .timeline-chart{display:flex;align-items:flex-end;gap:18px;height:170px;padding:14px 8px 0;}
+  .tcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .tbar{width:100%;max-width:52px;background:var(--navy-2);position:relative;}
+  .tbar b{position:absolute;top:-22px;left:0;right:0;text-align:center;font-size:14px;color:var(--navy);font-family:var(--serif);}
+  .tlabel{margin-top:10px;font-size:12px;color:var(--muted);text-align:center;}
+
+  /* ===== Table ===== */
+  table.cases{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:10px;}
+  table.cases th{
+    text-align:left;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    color:#F4F2EA;
+    background:var(--navy);
+    padding:11px 12px;
+    font-weight:600;
+  }
+  table.cases td{
+    padding:12px 12px;
+    border-bottom:1px solid var(--line-2);
+    vertical-align:top;
+    color:#2A2E33;
+  }
+  table.cases tr:nth-child(even) td{background:#F4F2EA;}
+  .tag{
+    display:inline-block;
+    font-size:10.5px;
+    font-weight:700;
+    padding:3px 8px;
+    border-radius:2px;
+    color:#fff;
+    white-space:nowrap;
+  }
+  .tag-fatal{background:var(--red);}
+  .tag-fire{background:var(--amber);}
+  .tag-infra{background:var(--navy-2);}
+  .impact{font-weight:600;}
+  .src{color:var(--muted);font-size:12px;}
+  .note-star{color:var(--muted);font-style:italic;font-size:12px;}
+
+  /* ===== Insight cards ===== */
+  .insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media (max-width:760px){.insight-grid{grid-template-columns:1fr;}}
+  .insight-card{background:var(--panel);padding:24px 22px;}
+  .insight-num{font-family:var(--serif);font-size:26px;color:var(--amber);margin-bottom:10px;}
+  .insight-card h4{margin:0 0 10px;font-size:15.5px;color:var(--navy);}
+  .insight-card p{font-size:13.5px;color:var(--muted);margin:0;}
+
+  /* ===== Recommendations ===== */
+  .rec{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:18px;
+    padding:18px 0;
+    border-top:1px solid var(--line-2);
+  }
+  .rec:first-of-type{border-top:none;}
+  .rec-who{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--amber);font-weight:700;padding-top:2px;}
+  .rec-body h4{margin:0 0 6px;font-size:16px;color:var(--navy);font-weight:600;}
+  .rec-body p{margin:0;font-size:14px;color:#2A2E33;}
+
+  /* ===== Footer / methodology ===== */
+  footer{
+    background:var(--navy);
+    color:#B9C2D0;
+    padding:40px 0 46px;
+    font-size:13px;
+  }
+  footer h5{color:#F4F2EA;font-size:13px;text-transform:uppercase;letter-spacing:.04em;margin:0 0 10px;}
+  footer p{color:#B9C2D0;font-size:12.5px;margin:0 0 10px;}
+  footer .src-list{columns:2;column-gap:32px;font-size:12px;color:#9AA6B8;padding-left:16px;}
+  footer .src-list li{margin-bottom:6px;break-inside:avoid;}
+  .disclaimer{
+    border-top:1px solid rgba(244,242,234,.15);
+    margin-top:26px;
+    padding-top:18px;
+    font-size:12px;
+    color:#8B96A8;
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker">LAPORAN ANALISIS &nbsp;·&nbsp; K3 KELISTRIKAN SOLORAYA SELATAN &nbsp;·&nbsp; <span>DATA MEDIA PUBLIK</span></p>
+    <h1 class="title">Ketika Listrik Padam, Bahaya Justru Menyala: Potret Keselamatan Kerja Kelistrikan di Karanganyar, Sukoharjo &amp; Wonogiri</h1>
+    <p class="subtitle">Kompilasi dan analisis kejadian tersengat listrik, kebakaran korsleting, dan gangguan infrastruktur kelistrikan dari pemberitaan media resmi, Januari 2025 – Agustus 2026.</p>
+    <div class="meta-row">
+      <div class="meta-item">Cakupan wilayah<b>Karanganyar · Sukoharjo · Wonogiri</b></div>
+      <div class="meta-item">Periode<b>Jan 2025 – Ags 2026</b></div>
+      <div class="meta-item">Kejadian teridentifikasi<b>12 kasus + 1 data agregat</b></div>
+      <div class="meta-item">Korban jiwa tercatat<b>3 orang</b></div>
+    </div>
+  </div>
+</header>
+
+<section id="exec">
+  <div class="wrap">
+    <h3 class="sub-head">Ringkasan Eksekutif</h3>
+    <h2 class="section-head">Tiga kabupaten, satu pola risiko yang berulang</h2>
+    <p class="section-sub">Penelusuran atas pemberitaan Solopos/Espos, Tribun, Suara Merdeka, Tempo, Kompas, TVOne, RRI, dan BeritaSatu menemukan 12 kejadian keselamatan kelistrikan yang berbeda di tiga kabupaten sepanjang Januari 2025–Agustus 2026, dengan lonjakan tajam pada paruh pertama 2026.</p>
+
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-num warn">3</div>
+        <div class="stat-label">Korban jiwa akibat sengatan listrik — seluruhnya terjadi di Kabupaten Wonogiri</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Kasus kebakaran yang dipicu dugaan korsleting listrik, mayoritas di Sukoharjo</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Kegagalan infrastruktur kelistrikan berskala luas (cuaca ekstrem &amp; kecelakaan lalu lintas) di Karanganyar</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">6</div>
+        <div class="stat-label">dari 12 kasus terjadi dalam rentang April–Juli 2026 saja — lebih dari separuh total temuan</div>
+      </div>
+    </div>
+
+    <div class="exec-callout">
+      Pola yang muncul konsisten di tiga kabupaten: risiko kelistrikan di Soloraya selatan bukan didominasi kegagalan pembangkit besar, melainkan oleh <b>tiga titik lemah yang berulang</b> — pekerja informal yang bekerja dekat kabel bertegangan tanpa prosedur K3, jaringan distribusi udara yang rentan terhadap cuaca ekstrem dan benturan kendaraan, serta instalasi rumah tangga yang terbakar tepat setelah pemadaman-penyalaan kembali (restart surge).
+    </div>
+  </div>
+</section>
+
+<section id="landscape">
+  <div class="wrap">
+    <h3 class="sub-head">Lanskap Regional</h3>
+    <h2 class="section-head">Sebaran kasus per kabupaten &amp; kategori</h2>
+    <p class="section-sub">Sukoharjo mencatat jumlah insiden tertinggi (6 kasus), didominasi kebakaran korsleting; Wonogiri mencatat jumlah kasus lebih sedikit namun tingkat fatalitas tertinggi; Karanganyar didominasi oleh gangguan infrastruktur berskala luas.</p>
+
+    <div class="cols">
+      <div>
+        <div class="chart-box">
+          <div class="bar-row">
+            <div class="bar-label">Sengatan listrik (kecelakaan kerja &amp; publik)</div>
+            <div class="bar-track"><div class="bar-fill cat-sengat" style="width:83%"><span>5 kasus · 3 tewas</span></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Kebakaran akibat korsleting</div>
+            <div class="bar-track"><div class="bar-fill cat-fire" style="width:83%"><span>5 kasus</span></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Kegagalan infrastruktur jaringan</div>
+            <div class="bar-track"><div class="bar-fill cat-infra" style="width:35%"><span>2 kasus</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="chart-box">
+          <div class="bar-row">
+            <div class="bar-label">Sukoharjo</div>
+            <div class="bar-track"><div class="bar-fill cat-fire" style="width:100%"><span>6 kasus</span></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Karanganyar</div>
+            <div class="bar-track"><div class="bar-fill cat-infra" style="width:50%"><span>3 kasus</span></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Wonogiri</div>
+            <div class="bar-track"><div class="bar-fill cat-sengat" style="width:50%"><span>3 kasus · 3 tewas</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-head" style="margin-top:36px;">Distribusi Waktu Kejadian</h3>
+    <div class="chart-box">
+      <div class="timeline-chart">
+        <div class="tcol"><div class="tbar" style="height:22%;"><b>1</b></div><div class="tlabel">H1 2025<br>(Jan–Jun)</div></div>
+        <div class="tcol"><div class="tbar" style="height:22%;"><b>1</b></div><div class="tlabel">H2 2025<br>(Jul–Des)</div></div>
+        <div class="tcol"><div class="tbar" style="height:100%;"><b>5</b></div><div class="tlabel">H1 2026<br>(Jan–Jun)</div></div>
+        <div class="tcol"><div class="tbar" style="height:44%;"><b>2</b></div><div class="tlabel">H2 2026<br>(Jul–Ags, parsial)</div></div>
+      </div>
+      <p class="note-star" style="margin-top:14px;">* 3 kasus tambahan (kebakaran pabrik Bendosari, kebakaran Kampung Jamu Nguter, sengatan listrik pekerja WiFi Gatak) tidak memiliki tanggal publikasi spesifik di sumber sehingga dikeluarkan dari grafik ini, namun tetap tercantum pada tabel kasus.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <h3 class="sub-head">Daftar Kejadian</h3>
+    <h2 class="section-head">Kronologi 12 kasus, Januari 2025 – Agustus 2026</h2>
+    <p class="section-sub">Disusun kronologis. Sumber: Solopos/Espos.id, Tribun Solo, Suara Merdeka, Tempo, Kompas, TVOne, RRI, BeritaSatu, Tribun Trends.</p>
+
+    <table class="cases">
+      <thead>
+        <tr>
+          <th style="width:9%;">Tanggal</th>
+          <th style="width:16%;">Lokasi</th>
+          <th style="width:10%;">Kabupaten</th>
+          <th style="width:12%;">Kategori</th>
+          <th style="width:33%;">Ringkasan Kejadian</th>
+          <th style="width:12%;">Dampak</th>
+          <th style="width:8%;">Sumber</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>7 Mei 2025</td>
+          <td>Ds. Kerjo Lor, Kec. Ngadirojo</td>
+          <td>Wonogiri</td>
+          <td><span class="tag tag-fatal">Sengatan · Fatal</span></td>
+          <td>Pekerja renovasi kandang burung walet naik ke atap yang berada tepat di bawah jaringan kabel PLN; terdengar ledakan dan korban terjatuh dalam kondisi terbakar.</td>
+          <td class="impact">1 tewas</td>
+          <td class="src">TVOne</td>
+        </tr>
+        <tr>
+          <td>2 Okt 2025</td>
+          <td>Kec. Jaten &amp; Gondangrejo</td>
+          <td>Karanganyar</td>
+          <td><span class="tag tag-infra">Infrastruktur</span></td>
+          <td>Hujan deras dan angin kencang merobohkan 11 tiang listrik PLN serta menumbangkan pohon besar; 8 rumah warga rusak akibat terpaan angin.</td>
+          <td class="impact">0 tewas · gangguan pasokan meluas</td>
+          <td class="src">Kompas, Viva, Espos</td>
+        </tr>
+        <tr>
+          <td>4 Mar 2026</td>
+          <td>Gunung Belah, Kel. Wuryorejo</td>
+          <td>Wonogiri</td>
+          <td><span class="tag tag-fatal">Sengatan · Fatal</span></td>
+          <td>Remaja bersandar pada tiang lampu penerangan jalan yang diduga bocor arus; rekannya yang berupaya menolong ikut tersengat.</td>
+          <td class="impact">1 tewas · 1 tersengat (selamat)</td>
+          <td class="src">Suara Merdeka</td>
+        </tr>
+        <tr>
+          <td>4 Apr 2026</td>
+          <td>Ds. Kebonagung, Kec. Sidoharjo</td>
+          <td>Wonogiri</td>
+          <td><span class="tag tag-fatal">Sengatan · Fatal</span></td>
+          <td>Pekerja pemasangan jaringan WiFi memanjat tiang dan kepalanya menyentuh kabel listrik bertegangan tinggi di dekat tiang PLN; korban terpental dan pakaian sempat terbakar.</td>
+          <td class="impact">1 tewas</td>
+          <td class="src">Tempo, Suara Merdeka</td>
+        </tr>
+        <tr>
+          <td>Tanggal tidak dirinci (2025/2026)</td>
+          <td>Jl. Gawok, Ds. Blimbing, Kec. Gatak</td>
+          <td>Sukoharjo</td>
+          <td><span class="tag tag-fatal">Sengatan · Cedera</span></td>
+          <td>Pekerja pemasangan instalasi kabel WiFi di dekat jembatan tersengat listrik tegangan tinggi.</td>
+          <td class="impact">Luka bakar</td>
+          <td class="src">Espos.id</td>
+        </tr>
+        <tr>
+          <td>22 Jun 2026</td>
+          <td>Wilayah kerja ULP Karanganyar</td>
+          <td>Karanganyar</td>
+          <td><span class="tag tag-infra">Infrastruktur</span></td>
+          <td>Truk mengalami rem blong dan menabrak tiang listrik jenis C12 hingga roboh serta merusak konstruksi jaringan CC8 pada dini hari.</td>
+          <td class="impact">Pemadaman massal, pemulihan awal ±29% pelanggan</td>
+          <td class="src">Tribun Trends</td>
+        </tr>
+        <tr>
+          <td>23 Jun 2026</td>
+          <td>Ds. Mayang, Kec. Gatak</td>
+          <td>Sukoharjo</td>
+          <td><span class="tag tag-fatal">Sengatan · Cedera</span></td>
+          <td>Warga memangkas pohon tinggi menggunakan alat bergagang besi ("gretel") yang tanpa sengaja menyentuh kabel listrik di dekat pohon; korban sempat tersangkut di ketinggian 3 meter.</td>
+          <td class="impact">Luka bakar tangan &amp; kaki, selamat</td>
+          <td class="src">Tribun Solo</td>
+        </tr>
+        <tr>
+          <td>29 Jun 2026</td>
+          <td>Dusun Tawang, Ds. Wonorejo, Kec. Jatiyoso</td>
+          <td>Karanganyar</td>
+          <td><span class="tag tag-fire">Kebakaran</span></td>
+          <td>Rumah terbakar diduga akibat korsleting listrik tidak lama setelah aliran listrik kembali menyala pasca pemadaman bergilir.</td>
+          <td class="impact">Rumah &amp; kandang ludes, 2 ekor sapi mati</td>
+          <td class="src">Espos, BeritaSatu</td>
+        </tr>
+        <tr>
+          <td>Tanggal tidak dirinci (2025/2026)</td>
+          <td>Ds. Sidorejo, Kec. Bendosari</td>
+          <td>Sukoharjo</td>
+          <td><span class="tag tag-fire">Kebakaran</span></td>
+          <td>Pabrik plastik CV Karunia Plastik terbakar diduga akibat korsleting; tujuh personel Damkar lintas kabupaten dikerahkan untuk memadamkan api.</td>
+          <td class="impact">Bangunan produksi rusak</td>
+          <td class="src">Espos.id</td>
+        </tr>
+        <tr>
+          <td>2 Jul 2026</td>
+          <td>Ds. Wirun</td>
+          <td>Sukoharjo</td>
+          <td><span class="tag tag-fire">Kebakaran</span></td>
+          <td>Rumah terbakar diduga korsleting listrik; dua anak sempat terjebak di dalam rumah sebelum berhasil dievakuasi warga.</td>
+          <td class="impact">Rumah rusak, tanpa korban jiwa</td>
+          <td class="src">Espos.id</td>
+        </tr>
+        <tr>
+          <td>19 Jul 2026</td>
+          <td>Ds. Pranan, Kec. Polokarto</td>
+          <td>Sukoharjo</td>
+          <td><span class="tag tag-fire">Kebakaran</span></td>
+          <td>Gudang penyimpanan rongsokan mobil terbakar diduga dipicu korsleting listrik.</td>
+          <td class="impact">Kerugian ditaksir ±Rp60 juta</td>
+          <td class="src">Espos.id</td>
+        </tr>
+        <tr>
+          <td>Tanggal tidak dirinci (2025/2026)</td>
+          <td>Kampung Jamu, Kec. Nguter</td>
+          <td>Sukoharjo</td>
+          <td><span class="tag tag-fire">Kebakaran</span></td>
+          <td>Rumah warga terbakar diduga akibat korsleting listrik.</td>
+          <td class="impact">Tidak dirinci</td>
+          <td class="src">Espos.id</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note-star">Catatan data agregat: Satpol PP Sukoharjo mencatat 140 kejadian kebakaran sepanjang 2025 di seluruh kabupaten dengan total kerugian ±Rp9 miliar; korsleting listrik adalah salah satu penyebab yang berulang muncul dalam laporan individual di atas, meski tidak seluruh dari 140 kasus tersebut bersumber dari listrik.</p>
+  </div>
+</section>
+
+<section id="insight">
+  <div class="wrap">
+    <h3 class="sub-head">Analisis &amp; Insight</h3>
+    <h2 class="section-head">Tiga temuan yang perlu direspons</h2>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="insight-num">01</div>
+        <h4>Pekerja informal adalah kelompok paling rentan, bukan petugas PLN bersertifikasi</h4>
+        <p>Seluruh kasus fatal (Ngadirojo, Gunung Belah, Sidoharjo) melibatkan pekerja lepas atau warga biasa — tukang renovasi, teknisi WiFi lepas, remaja di ruang publik — yang bekerja dekat jaringan bertegangan tanpa alat pelindung diri, jarak aman, atau pemadaman jaringan (LOTO) terlebih dahulu. Tidak satu pun kasus fatal melibatkan petugas resmi PLN dengan prosedur kerja standar.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">02</div>
+        <h4>Titik rawan kebakaran adalah momen tepat setelah listrik menyala kembali</h4>
+        <p>Kasus Jatiyoso menunjukkan pola "restart surge": korsleting muncul segera setelah pemadaman bergilir berakhir dan aliran listrik pulih. Dengan frekuensi pemadaman bergilir yang meningkat di Karanganyar sepanjang 2026, risiko lonjakan tegangan saat penyalaan kembali menjadi faktor pemicu yang belum banyak diantisipasi pemilik rumah maupun perusahaan.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">03</div>
+        <h4>Jaringan distribusi udara tetap menjadi titik lemah struktural</h4>
+        <p>Dua insiden Karanganyar — robohnya 11 tiang akibat cuaca ekstrem dan tabrakan truk terhadap tiang C12 — menunjukkan jaringan distribusi udara di jalur padat dan rawan cuaca ekstrem rentan terhadap gangguan eksternal, dengan dampak pemulihan yang lambat (baru ±29% pelanggan tersambung kembali pada jam-jam awal pemulihan).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="benchmark">
+  <div class="wrap">
+    <h3 class="sub-head">Konteks Nasional</h3>
+    <h2 class="section-head">Tren tiga kabupaten ini konsisten dengan pola nasional</h2>
+    <div class="cols">
+      <div>
+        <p>Kementerian Ketenagakerjaan mencatat 319.224 klaim Jaminan Kecelakaan Kerja (JKK) ke BPJS Ketenagakerjaan sepanjang 2025 secara nasional, dengan 9.834 kasus berujung kematian. Pulau Jawa menyumbang sekitar 45% dari total kasus kecelakaan kerja nasional pada 2025.</p>
+        <p>Menteri Ketenagakerjaan menegaskan bahwa pendekatan yang selama ini reaktif — berfokus pada kompensasi setelah kejadian — perlu bergeser ke investasi promotif dan preventif di hulu, karena pendekatan reaktif dinilai tidak berkelanjutan secara aktuarial.</p>
+      </div>
+      <div class="exec-callout" style="align-self:start;">
+        Temuan di Karanganyar, Sukoharjo, dan Wonogiri adalah <b>cerminan skala kecil</b> dari tantangan K3 nasional: kecelakaan kerja informal dan infrastruktur kelistrikan yang menua sama-sama menjadi sumber risiko yang belum tertangani secara sistematis di tingkat kabupaten.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recommendations">
+  <div class="wrap">
+    <h3 class="sub-head">Rekomendasi</h3>
+    <h2 class="section-head">Langkah prioritas bagi pemangku kepentingan</h2>
+
+    <div class="rec">
+      <div class="rec-who">PLN &amp; Pemda</div>
+      <div class="rec-body">
+        <h4>Petakan dan tandai titik jaringan berisiko tinggi</h4>
+        <p>Prioritaskan inspeksi dan pemangkasan vegetasi di sepanjang jalur distribusi dekat permukiman padat serta jalur kendaraan berat (rute truk), khususnya di Jaten, Gondangrejo, dan Jatiyoso yang telah dua kali tercatat mengalami gangguan besar dalam periode ini.</p>
+      </div>
+    </div>
+    <div class="rec">
+      <div class="rec-who">PLN &amp; Pemda</div>
+      <div class="rec-body">
+        <h4>Terapkan prosedur penyalaan bertahap pasca pemadaman</h4>
+        <p>Sosialisasikan kepada pelanggan untuk mematikan alat elektronik saat listrik padam dan menyalakannya kembali secara bertahap, guna menekan risiko korsleting akibat lonjakan tegangan saat pemulihan — pola yang teridentifikasi dalam kasus Jatiyoso.</p>
+      </div>
+    </div>
+    <div class="rec">
+      <div class="rec-who">Disnaker &amp; Asosiasi Vendor Jaringan/Konstruksi</div>
+      <div class="rec-body">
+        <h4>Wajibkan izin kerja dekat jaringan bertegangan bagi pekerja lepas</h4>
+        <p>Mayoritas korban fatal adalah pekerja informal (renovasi bangunan, instalasi WiFi) yang tidak berkoordinasi dengan PLN sebelum bekerja dekat jaringan. Vendor jasa pemasangan internet dan kontraktor renovasi perlu diwajibkan memiliki prosedur izin kerja dan jarak aman minimum sebelum bekerja di ketinggian dekat kabel listrik.</p>
+      </div>
+    </div>
+    <div class="rec">
+      <div class="rec-who">BPBD &amp; Damkar</div>
+      <div class="rec-body">
+        <h4>Perkuat edukasi instalasi rumah tangga di wilayah rawan kebakaran</h4>
+        <p>Dengan korsleting sebagai penyebab dominan pada kasus kebakaran yang teridentifikasi di Sukoharjo, kampanye periksa instalasi listrik rumah tangga secara berkala — sebagaimana telah diimbau Damkar Sukoharjo pasca insiden pabrik tepung — perlu diperluas ke tingkat desa melalui kerja sama dengan perangkat desa dan PLN setempat.</p>
+      </div>
+    </div>
+    <div class="rec">
+      <div class="rec-who">Masyarakat</div>
+      <div class="rec-body">
+        <h4>Hindari kontak dengan objek dekat jaringan listrik pasca cuaca ekstrem</h4>
+        <p>Kasus Gunung Belah dan robohnya tiang di Jaten menunjukkan bahaya dapat muncul dari fasilitas umum (tiang lampu jalan, tiang roboh) yang tampak aman. Warga perlu diedukasi untuk tidak mendekati atau menyentuh tiang maupun kabel yang roboh dan segera melaporkannya ke PLN atau BPBD.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h5>Metodologi</h5>
+    <p>Laporan ini disusun melalui penelusuran pemberitaan media daring resmi dan kanal berita regional Soloraya periode Januari 2025–Agustus 2026, menggunakan kata kunci seputar sengatan listrik, korsleting, kebakaran, dan gangguan jaringan PLN di Kabupaten Karanganyar, Sukoharjo, dan Wonogiri. Daftar ini kemungkinan tidak mencakup seluruh kejadian yang terjadi di lapangan — khususnya insiden berskala kecil yang tidak diliput media atau hanya beredar melalui laporan internal PLN/kepolisian yang tidak dipublikasikan. Data agregat nasional digunakan sebagai konteks pembanding, bukan basis perhitungan proporsi lokal.</p>
+
+    <h5 style="margin-top:22px;">Sumber Utama</h5>
+    <ul class="src-list">
+      <li>Kompas.com — "Hujan Deras dan Angin Kencang, 11 Tiang Listrik di Karanganyar Roboh" (2/10/2025)</li>
+      <li>Viva Jogja — "Angin Kencang Terjang Karanganyar, 11 Tiang Listrik Ambruk" (2/10/2025)</li>
+      <li>Espos.id — "Angin Kencang Terjang Karanganyar, 8 Rumah Rusak dan 11 Tiang Listrik Roboh" (3/10/2025)</li>
+      <li>TVOne News — "Seorang Pekerja di Wonogiri Tewas Tersengat Listrik saat Renovasi Rumah Burung Sriti" (8/5/2025)</li>
+      <li>Suara Merdeka Solo — "Remaja Wonogiri Tewas Tersengat Listrik Saat Bersandar di Tiang Lampu Jalan Gunung Belah" (5/3/2026)</li>
+      <li>Suara.com Surakarta — "7 Fakta Tragis Pemuda Tersengat Listrik di Wonogiri" (6/3/2026)</li>
+      <li>Tempo.co — "Pemuda di Wonogiri Tewas Tersengat Listrik saat Pasang WiFi" (4/4/2026)</li>
+      <li>Suara Merdeka Banyumas — "Pasang Jaringan Wifi, Seorang Pekerja di Wonogiri Meninggal Dunia Tersengat Listrik" (6/4/2026)</li>
+      <li>Tribun Trends — "Jadwal Pemadaman Listrik Karanganyar... Akibat Truk" (22/6/2026)</li>
+      <li>Tribun Solo — "Ngeri! Tersengat Listrik Saat Pangkas Pohon, Pria di Sukoharjo..." (23/6/2026)</li>
+      <li>Espos.id — "Diduga Korsleting usai Pemadaman Listrik, Rumah dan 2 Sapi di Jatiyoso Terbakar" (30/6/2026)</li>
+      <li>BeritaSatu — "Habis Listrik Padam, Terbit Kebakaran: Rumah di Karanganyar Ludes" (30/6/2026)</li>
+      <li>Espos.id — "Bukan Korek Api, Penyebab Kebakaran Rumah di Wirun Sukoharjo Diduga Korsleting" (2/7/2026)</li>
+      <li>Espos.id — "Diduga Korsleting, Kebakaran Ludeskan Gudang Rongsok Mobil di Pranan Sukoharjo" (19/7/2026)</li>
+      <li>Espos.id — arsip tag Kebakaran Sukoharjo &amp; Kebakaran Karanganyar (CV Karunia Plastik Bendosari; Kampung Jamu Nguter)</li>
+      <li>Espos.id — arsip tag Kecelakaan Kerja (insiden Jl. Gawok, Ds. Blimbing, Gatak)</li>
+      <li>Antara News — "Menaker Tegaskan BPJS Ketenagakerjaan Menjadi Penggerak Utama K3" (data JKK nasional 2025)</li>
+      <li>Databoks Katadata — "Sebaran Kasus Kecelakaan Kerja di RI 2025, Jatim Terbanyak"</li>
+    </ul>
+
+    <div class="disclaimer">
+      Disusun untuk kebutuhan pemantauan internal berbasis data terbuka. Bukan dokumen resmi PLN, Disnaker, atau BPBD. Rincian teknis (nomor tiang, kronologi persis) mengikuti keterangan pers yang dikutip media pada tanggal publikasi masing-masing artikel dan dapat berubah seiring investigasi lanjutan oleh pihak berwajib.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
