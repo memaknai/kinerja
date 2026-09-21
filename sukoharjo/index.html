@@ -6,65 +6,93 @@
   <title>Laporan Kinerja - TeraSukoharjo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      background: radial-gradient(circle at top right, rgba(45, 106, 79, 0.08), transparent 35%), #f0f4f2; 
-      color: #1b2621; 
-      min-height: 100vh; 
-      display: flex; 
-      flex-direction: column; 
-      justify-content: center; 
-      align-items: center; 
-      padding: 20px; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top right, rgba(45, 106, 79, 0.08), transparent 35%), #f0f4f2;
+      color: #1b2621;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
     .card {
-      background: #ffffff; 
-      padding: 30px; 
-      border-radius: 20px; 
-      box-shadow: 0 10px 25px rgba(27, 67, 50, 0.08); 
-      border-top: 5px solid #2d6a4f; 
-      max-width: 480px; 
-      width: 100%; 
-      text-align: center; 
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(27, 67, 50, 0.08);
+      border-top: 5px solid #2d6a4f;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
     }
-    h1 { font-size: 28px; font-weight: 800; color: #1b4332; margin-bottom: 4px; }
-    .subtitle { font-size: 14px; color: #2d6a4f; font-weight: 600; margin-bottom: 24px; }
-    .form-group { display: flex; flex-direction: column; text-align: left; margin-bottom: 16px; }
-    label { font-size: 13px; font-weight: 700; color: #2d6a4f; margin-bottom: 6px; }
-    select { 
-      padding: 10px 12px; 
-      border-radius: 10px; 
-      border: 1px solid #c2d5cb; 
-      background-color: #f8faf9; 
-      font-size: 14px; 
-      color: #1b2621; 
-      outline: none; 
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #1b4332;
+      margin-bottom: 4px;
     }
-    select:focus { border-color: #2d6a4f; }
-    .btn-submit { 
-      width: 100%; 
-      margin-top: 10px; 
-      background: #2d6a4f; 
-      color: #ffffff; 
-      padding: 12px; 
-      border: none; 
-      border-radius: 10px; 
-      font-size: 14px; 
-      font-weight: 700; 
-      cursor: pointer; 
-      transition: background 0.2s ease; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: 8px; 
+    .subtitle {
+      font-size: 14px;
+      color: #2d6a4f;
+      font-weight: 600;
+      margin-bottom: 24px;
     }
-    .btn-submit:hover { background: #1b4332; }
-    .info-redirect { margin-top: 15px; font-size: 12px; color: #52796f; }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin-bottom: 16px;
+    }
+    label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #2d6a4f;
+      margin-bottom: 6px;
+    }
+    select {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #c2d5cb;
+      background-color: #f8faf9;
+      font-size: 14px;
+      color: #1b2621;
+      outline: none;
+    }
+    select:focus {
+      border-color: #2d6a4f;
+    }
+    .btn-submit {
+      width: 100%;
+      margin-top: 10px;
+      background: #2d6a4f;
+      color: #ffffff;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-submit:hover {
+      background: #1b4332;
+    }
+    .info-redirect {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #52796f;
+    }
 
     /* CSS Modal Peringatan */
     .modal-overlay {
@@ -100,11 +128,17 @@
       line-height: 1.5;
       margin-bottom: 20px;
     }
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
     .btn-accept {
       background: #2d6a4f;
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 10px 18px;
       border-radius: 8px;
       font-size: 13px;
       font-weight: 700;
@@ -112,6 +146,19 @@
     }
     .btn-accept:hover {
       background: #1b4332;
+    }
+    .btn-exit {
+      background: #d32f2f;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-exit:hover {
+      background: #9a0007;
     }
   </style>
 </head>
@@ -124,7 +171,10 @@
       <p>
         Portal ini dibuat untuk kepentingan internal. Mohon bijak dalam penggunaan dan hindari membagikan dokumen/informasi di dalamnya kepada pihak luar yang tidak berkepentingan.
       </p>
-      <button class="btn-accept" onclick="closeModal()">Saya Mengerti & Lanjutkan</button>
+      <div class="modal-actions">
+        <button class="btn-accept" onclick="closeModal()">Saya Mengerti & Lanjutkan</button>
+        <button class="btn-exit" onclick="keluarLaman()">Keluar</button>
+      </div>
     </div>
   </div>
 
@@ -158,7 +208,7 @@
     </p>
   </div>
 
-<script>
+  <script>
     const PERIODE_TERBARU = "2026-08";
 
     // Set default pilihan ke periode terbaru
@@ -177,7 +227,6 @@
       const periode = document.getElementById("periodeSelect").value;
 
       if (unit === "sukoharjo") {
-        // Menggunakan ./ untuk memastikan browser mencari folder di direktori saat ini
         window.location.assign(`./${periode}/index.html`);
       } else {
         window.location.assign(`../${unit}/${periode}/index.html`);
@@ -188,6 +237,11 @@
     function closeModal() {
       modal.style.display = "none";
       lanjutKePeriodeTerbaru();
+    }
+
+    // Dipanggil saat tombol "Keluar" diklik
+    function keluarLaman() {
+      window.location.href = "https://www.google.com";
     }
 
     // Dipanggil saat tombol "Buka Laporan" diklik
