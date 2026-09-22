@@ -339,14 +339,21 @@
   </div>
 
   <!-- SCRIPT MODAL -->
-  <script>
-    function closeModal() {
-      document.getElementById('warningModal').style.display = 'none';
-    }
+<script>
+  function closeModal() {
+    document.getElementById('warningModal').style.display = 'none';
+  }
 
-    function exitPage() {
-      window.location.href = 'https://www.google.com';
-    }
-  </script>
+  function exitPage() {
+    // Mencoba menutup tab/jendela aktif
+    window.open('', '_self', '');
+    window.close();
+
+    // Fallback jika browser memblokir perintah window.close()
+    setTimeout(function() {
+      window.location.href = "about:blank";
+    }, 100);
+  }
+</script>
 </body>
 </html>
