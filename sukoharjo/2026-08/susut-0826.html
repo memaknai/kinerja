@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis Susut Distribusi UP3 Sukoharjo 2024–2026</title>
+<style>
+  :root{
+    --navy:#051C2C;
+    --blue:#2251FF;
+    --light-blue:#E6EEFF;
+    --teal:#00A9A5;
+    --gray-bg:#F5F7FA;
+    --gray-line:#D9DEE5;
+    --gray-text:#4A5568;
+    --amber:#F2A900;
+    --red:#D64545;
+    --deep-red:#A11B1B;
+    --purple:#6B4FE0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    color:var(--navy);
+    background:#fff;
+    line-height:1.65;
+    font-size:15px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .container{max-width:1080px;margin:0 auto;padding:0 40px;}
+
+  /* HEADER */
+  header{
+    background:linear-gradient(135deg,#051C2C 0%,#0A2A44 60%,#0F3454 100%);
+    color:#fff;
+    padding:66px 0 56px;
+    border-bottom:6px solid var(--blue);
+    position:relative;
+    overflow:hidden;
+  }
+  header:before{
+    content:"";
+    position:absolute;top:-50%;right:-10%;
+    width:600px;height:600px;
+    background:radial-gradient(circle,rgba(34,81,255,.22) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  header .container{position:relative;z-index:1;}
+  header .eyebrow{
+    text-transform:uppercase;letter-spacing:3px;font-size:11.5px;
+    color:#8FB0FF;margin-bottom:16px;display:inline-block;
+    padding:5px 12px;background:rgba(34,81,255,.15);
+    border:1px solid rgba(143,176,255,.3);border-radius:2px;
+  }
+  header h1{
+    font-size:34px;font-weight:600;line-height:1.24;
+    margin-bottom:18px;max-width:820px;letter-spacing:-0.3px;
+  }
+  header p.sub{
+    font-size:16px;color:#C7D2E0;max-width:780px;
+    font-weight:300;line-height:1.6;
+  }
+  .meta-bar{
+    display:flex;flex-wrap:wrap;gap:40px;
+    margin-top:36px;padding-top:26px;
+    border-top:1px solid rgba(255,255,255,.15);
+    font-size:12.5px;
+  }
+  .meta-bar div span{
+    display:block;color:#8FB0FF;text-transform:uppercase;
+    letter-spacing:1.5px;font-size:10.5px;margin-bottom:4px;
+  }
+
+  /* SECTIONS */
+  section{padding:52px 0;border-bottom:1px solid var(--gray-line);}
+  .section-num{
+    font-size:12px;color:var(--blue);font-weight:700;
+    letter-spacing:2px;text-transform:uppercase;
+    margin-bottom:10px;display:inline-block;
+    padding:4px 10px;background:var(--light-blue);border-radius:2px;
+  }
+  h2{
+    font-size:24px;font-weight:600;margin-bottom:20px;
+    line-height:1.3;letter-spacing:-0.2px;
+  }
+  h3{
+    font-size:17px;font-weight:600;margin:28px 0 12px;
+    color:var(--navy);
+  }
+  h4{font-size:15px;font-weight:600;margin-bottom:8px;}
+  p{margin-bottom:14px;color:#1F2D3D;}
+  .lead{font-size:16px;color:var(--gray-text);margin-bottom:16px;}
+
+  .transition{
+    margin-top:28px;padding:16px 0 0;
+    border-top:1px solid var(--gray-line);
+    font-size:13.5px;color:var(--gray-text);
+    font-style:italic;line-height:1.7;
+  }
+  .transition:before{
+    content:"→ ";color:var(--blue);font-weight:700;
+    font-style:normal;margin-right:4px;
+  }
+
+  /* EXEC SUMMARY */
+  .exec{
+    background:linear-gradient(180deg,#F5F7FA 0%,#FFFFFF 100%);
+    border:1px solid var(--gray-line);
+    border-top:4px solid var(--blue);
+    padding:30px 34px;
+  }
+  .exec h3{margin-top:0;font-size:19px;margin-bottom:4px;}
+  .exec ul{list-style:none;margin:14px 0 0;}
+  .exec li{
+    padding:13px 0 13px 28px;position:relative;
+    font-size:14.5px;border-bottom:1px dashed var(--gray-line);
+    line-height:1.6;
+  }
+  .exec li:last-child{border-bottom:none;}
+  .exec li:before{
+    content:"▪";position:absolute;left:0;color:var(--blue);
+    font-size:18px;line-height:1;top:14px;
+  }
+
+  /* CALLOUTS */
+  .callout{
+    background:var(--light-blue);border-left:4px solid var(--blue);
+    padding:18px 24px;margin:22px 0;font-size:14px;line-height:1.65;
+    border-radius:0 4px 4px 0;
+  }
+  .callout strong{color:var(--blue);}
+  .callout.warn{background:#FFF4DC;border-left-color:var(--amber);}
+  .callout.warn strong{color:#B07800;}
+  .callout.risk{background:#FBE9E9;border-left-color:var(--red);}
+  .callout.risk strong{color:var(--red);}
+  .callout.neutral{background:#F0F4FA;border-left-color:var(--navy);}
+  .callout.neutral strong{color:var(--navy);}
+  .callout.promo{
+    background:linear-gradient(135deg,#F3F0FF 0%,#E6EEFF 100%);
+    border-left-color:var(--purple);
+  }
+  .callout.promo strong{color:var(--purple);}
+
+  .method-note{
+    background:#FAFBFC;border:1px dashed var(--gray-line);
+    border-left:4px solid var(--navy);
+    padding:16px 22px;margin:20px 0;
+    font-size:13px;color:#2A3B4D;line-height:1.7;
+    border-radius:0 4px 4px 0;
+  }
+  .method-note .mn-label{
+    display:inline-block;font-size:10.5px;font-weight:700;
+    text-transform:uppercase;letter-spacing:1.5px;
+    color:var(--navy);margin-bottom:6px;
+  }
+  .method-note p{font-size:13px;margin-bottom:6px;color:#2A3B4D;}
+  .method-note p:last-child{margin-bottom:0;}
+
+  /* GRID */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:22px 0;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:22px 0;}
+  .card{
+    background:var(--gray-bg);border-top:3px solid var(--blue);
+    padding:20px;transition:transform .2s,box-shadow .2s;
+    border-radius:0 0 4px 4px;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(5,28,44,.08);}
+  .card h4{font-size:14.5px;margin-bottom:8px;}
+  .card p{font-size:13px;color:var(--gray-text);margin-bottom:6px;line-height:1.6;}
+  .card .tag{
+    display:inline-block;font-size:10px;text-transform:uppercase;
+    letter-spacing:1.5px;color:var(--blue);font-weight:700;
+    margin-bottom:6px;
+  }
+  .card.warn{border-top-color:var(--amber);}
+  .card.warn .tag{color:var(--amber);}
+  .card.risk{border-top-color:var(--red);}
+  .card.risk .tag{color:var(--red);}
+  .card.good{border-top-color:var(--teal);}
+  .card.good .tag{color:var(--teal);}
+  .card.promo{border-top-color:var(--purple);}
+  .card.promo .tag{color:var(--purple);}
+
+  /* KPI */
+  .kpi-strip{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1px;background:var(--gray-line);
+    margin:28px 0;border:1px solid var(--gray-line);
+    border-radius:2px;overflow:hidden;
+  }
+  .kpi{
+    background:#fff;padding:22px 18px;transition:background .2s;
+  }
+  .kpi:hover{background:#FAFBFC;}
+  .kpi .num{
+    font-size:27px;font-weight:700;color:var(--navy);
+    line-height:1;margin-bottom:8px;
+    font-variant-numeric:tabular-nums;
+  }
+  .kpi .num.neg{color:var(--red);}
+  .kpi .num.pos{color:var(--teal);}
+  .kpi .num.amber{color:var(--amber);}
+  .kpi .num.purple{color:var(--purple);}
+  .kpi .lbl{
+    font-size:11px;color:var(--gray-text);text-transform:uppercase;
+    letter-spacing:1px;line-height:1.4;
+  }
+  .kpi .sub{font-size:10.5px;color:#8895A7;margin-top:5px;line-height:1.4;}
+
+  /* TABLES */
+  table{
+    width:100%;border-collapse:collapse;
+    margin:18px 0;font-size:13.5px;
+  }
+  thead th{
+    background:var(--navy);color:#fff;text-align:left;
+    padding:11px 14px;font-weight:600;font-size:11.5px;
+    text-transform:uppercase;letter-spacing:.8px;line-height:1.4;
+  }
+  tbody td{
+    padding:10px 14px;border-bottom:1px solid var(--gray-line);
+    color:#1F2D3D;font-variant-numeric:tabular-nums;
+    line-height:1.5;transition:background .15s;
+  }
+  tbody tr:nth-child(even){background:var(--gray-bg);}
+  tbody tr:hover td{background:#E6EEFF;}
+  tbody tr.highlight{background:#FFF4DC;font-weight:600;}
+  tbody tr.highlight:hover td{background:#FFE9B8;}
+  .num-cell{text-align:right;}
+  .center{text-align:center;}
+  .bad{color:var(--red);font-weight:600;}
+  .good{color:var(--teal);font-weight:600;}
+  .amber{color:#B07800;font-weight:600;}
+  .purple{color:var(--purple);font-weight:600;}
+
+  /* CHART */
+  .chart{margin:24px 0;}
+  .chart-title{
+    font-size:11.5px;font-weight:700;text-transform:uppercase;
+    letter-spacing:1.5px;color:var(--gray-text);margin-bottom:14px;
+  }
+  .bar-row{display:flex;align-items:center;margin-bottom:8px;font-size:13px;}
+  .bar-label{width:160px;flex-shrink:0;color:#1F2D3D;font-weight:500;}
+  .bar-track{
+    flex:1;background:var(--gray-bg);height:24px;position:relative;
+    border-radius:2px;overflow:hidden;
+  }
+  .bar-fill{
+    height:100%;background:var(--blue);
+    display:flex;align-items:center;justify-content:flex-end;
+    padding-right:10px;color:#fff;font-size:11px;font-weight:600;
+    transition:width .8s cubic-bezier(.2,.8,.2,1);
+    border-radius:2px;
+  }
+  .bar-fill.teal{background:linear-gradient(90deg,#00847F 0%,#00A9A5 100%);}
+  .bar-fill.amber{background:linear-gradient(90deg,#D18A00 0%,#F2A900 100%);}
+  .bar-fill.red{background:linear-gradient(90deg,#A11B1B 0%,#D64545 100%);}
+  .bar-fill.deepred{background:linear-gradient(90deg,#7A0F0F 0%,#A11B1B 100%);}
+  .bar-fill.purple{background:linear-gradient(90deg,#4B36A8 0%,#6B4FE0 100%);}
+
+  /* TIMELINE */
+  .timeline{
+    margin:28px 0;padding:28px 24px;
+    background:linear-gradient(180deg,#FAFBFC 0%,#FFFFFF 100%);
+    border:1px solid var(--gray-line);border-radius:6px;
+  }
+  .timeline-title{
+    font-size:12px;font-weight:700;text-transform:uppercase;
+    letter-spacing:1.5px;color:var(--gray-text);margin-bottom:22px;
+  }
+  .tl-axis{
+    display:grid;grid-template-columns:repeat(8,1fr);
+    gap:8px;position:relative;
+  }
+  .tl-axis:before{
+    content:"";position:absolute;top:34px;left:0;right:0;
+    height:2px;background:var(--gray-line);z-index:0;
+  }
+  .tl-point{position:relative;z-index:1;text-align:center;}
+  .tl-month{
+    font-size:10.5px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.5px;color:var(--gray-text);margin-bottom:8px;
+  }
+  .tl-dot{
+    width:18px;height:18px;border-radius:50%;
+    background:var(--gray-line);margin:0 auto 8px;
+    border:3px solid #fff;box-shadow:0 0 0 1px var(--gray-line);
+    transition:transform .2s;
+  }
+  .tl-point:hover .tl-dot{transform:scale(1.2);}
+  .tl-point.spike .tl-dot{background:var(--purple);box-shadow:0 0 0 1px var(--purple);}
+  .tl-point.trough .tl-dot{background:var(--red);box-shadow:0 0 0 1px var(--red);}
+  .tl-point.normal .tl-dot{background:var(--teal);box-shadow:0 0 0 1px var(--teal);}
+  .tl-label{font-size:11px;font-weight:600;color:var(--navy);line-height:1.4;}
+  .tl-sublabel{font-size:10px;color:var(--gray-text);line-height:1.3;margin-top:2px;}
+  .tl-legend{
+    display:flex;flex-wrap:wrap;gap:18px;
+    margin-top:24px;padding-top:18px;
+    border-top:1px dashed var(--gray-line);
+    font-size:11.5px;color:var(--gray-text);
+  }
+  .tl-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .tl-legend i{width:11px;height:11px;border-radius:50%;display:inline-block;}
+
+  /* FLOW */
+  .flow-diagram{
+    display:grid;grid-template-columns:1fr auto 1fr;
+    gap:20px;align-items:center;
+    margin:22px 0;padding:24px;
+    background:linear-gradient(135deg,#F8FAFC 0%,#FFFFFF 100%);
+    border:1px solid var(--gray-line);border-radius:6px;
+  }
+  .flow-box{
+    background:#fff;border:2px solid var(--gray-line);
+    border-radius:6px;padding:18px 16px;text-align:center;
+    transition:transform .2s,border-color .2s;
+  }
+  .flow-box:hover{transform:translateY(-2px);}
+  .flow-box.highlight{border-color:var(--purple);box-shadow:0 4px 16px rgba(107,79,224,.12);}
+  .flow-box h5{
+    font-size:12px;font-weight:700;text-transform:uppercase;
+    letter-spacing:1px;color:var(--gray-text);margin-bottom:6px;
+  }
+  .flow-box .val{
+    font-size:22px;font-weight:700;color:var(--navy);
+    font-variant-numeric:tabular-nums;line-height:1.1;margin-bottom:6px;
+  }
+  .flow-box .desc{font-size:11.5px;color:var(--gray-text);line-height:1.5;}
+  .flow-box.purple .val{color:var(--purple);}
+  .flow-box.red .val{color:var(--red);}
+  .flow-arrow{font-size:22px;color:var(--gray-line);text-align:center;}
+
+  /* UNIT PROFILE */
+  .unit-profile{
+    border:1px solid var(--gray-line);margin:20px 0;
+    background:#fff;transition:box-shadow .2s;
+    border-radius:4px;overflow:hidden;
+  }
+  .unit-profile:hover{box-shadow:0 8px 24px rgba(5,28,44,.06);}
+  .unit-profile .up-head{
+    background:linear-gradient(90deg,var(--navy) 0%,#0A2A44 100%);
+    color:#fff;padding:14px 22px;
+    display:flex;justify-content:space-between;
+    align-items:center;flex-wrap:wrap;gap:10px;
+  }
+  .unit-profile .up-head h4{font-size:16px;margin:0;color:#fff;}
+  .unit-profile .up-head .badge{
+    font-size:10.5px;padding:4px 11px;
+    text-transform:uppercase;letter-spacing:1.2px;
+    font-weight:700;border-radius:2px;
+  }
+  .badge.worst{background:var(--deep-red);}
+  .badge.high{background:var(--red);}
+  .badge.mid{background:var(--amber);color:#3A2A00;}
+  .badge.best{background:var(--teal);}
+  .unit-profile .up-body{
+    padding:20px 22px;
+    display:grid;grid-template-columns:1.3fr 1fr;gap:28px;
+  }
+  .unit-profile .up-body p{font-size:13px;margin-bottom:10px;line-height:1.65;}
+  .up-metrics{list-style:none;}
+  .up-metrics li{
+    display:flex;justify-content:space-between;
+    padding:8px 0;border-bottom:1px dashed var(--gray-line);
+    font-size:12.5px;
+  }
+  .up-metrics li span:last-child{
+    font-weight:700;font-variant-numeric:tabular-nums;
+    text-align:right;margin-left:10px;
+  }
+
+  /* RECOMMENDATION */
+  .rec{
+    border-left:3px solid var(--blue);padding:14px 18px;
+    margin-bottom:14px;background:#FAFBFC;
+    border-radius:0 4px 4px 0;
+    transition:background .2s,transform .2s;
+  }
+  .rec:hover{background:#F0F4FA;transform:translateX(3px);}
+  .rec .rec-head{
+    display:flex;justify-content:space-between;
+    align-items:baseline;margin-bottom:5px;gap:12px;flex-wrap:wrap;
+  }
+  .rec h4{font-size:14.5px;line-height:1.4;}
+  .rec .impact{
+    font-size:10.5px;font-weight:700;text-transform:uppercase;
+    letter-spacing:1px;padding:3px 9px;
+    background:var(--light-blue);color:var(--blue);
+    white-space:nowrap;border-radius:2px;
+  }
+  .rec .impact.high{background:#FFE9E9;color:var(--red);}
+  .rec .impact.med{background:#FFF4DC;color:#B07800;}
+  .rec p{font-size:13px;color:var(--gray-text);margin:0;line-height:1.65;}
+
+  /* ROADMAP */
+  .roadmap{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:0;margin:26px 0;border-top:3px solid var(--navy);
+  }
+  .phase{
+    padding:18px 16px 18px 0;
+    border-right:1px solid var(--gray-line);
+    transition:background .2s;
+  }
+  .phase:hover{background:#FAFBFC;}
+  .phase:last-child{border-right:none;}
+  .phase .ph-num{
+    font-size:10.5px;font-weight:700;letter-spacing:2px;
+    color:var(--blue);text-transform:uppercase;
+  }
+  .phase h4{font-size:14.5px;margin:6px 0 8px;}
+  .phase ul{list-style:none;font-size:12px;color:var(--gray-text);}
+  .phase li{padding-left:12px;position:relative;margin-bottom:5px;line-height:1.5;}
+  .phase li:before{
+    content:"";position:absolute;left:0;top:8px;
+    width:4px;height:4px;background:var(--blue);
+  }
+
+  /* FOOTER */
+  footer{
+    background:linear-gradient(135deg,#051C2C 0%,#0A2A44 100%);
+    color:#8FA3B8;padding:40px 0;font-size:12px;line-height:1.65;
+  }
+  footer strong{color:#fff;}
+  .disclaimer{
+    font-style:italic;font-size:11.5px;
+    color:#5E7183;margin-top:16px;line-height:1.6;
+  }
+
+  /* APPENDIX */
+  .appendix{
+    background:linear-gradient(180deg,#FAFBFC 0%,#FFFFFF 100%);
+    border-top:4px solid var(--navy);padding:52px 0;
+  }
+  .appendix .section-num{color:var(--navy);background:#E6EEFF;}
+  .appendix h3{font-size:15.5px;margin-top:28px;}
+  .appendix .step{
+    display:flex;gap:18px;margin-bottom:20px;
+    padding-bottom:20px;border-bottom:1px dashed var(--gray-line);
+  }
+  .appendix .step:last-child{border-bottom:none;padding-bottom:0;}
+  .appendix .step .step-num{
+    flex-shrink:0;width:36px;height:36px;
+    background:linear-gradient(135deg,var(--navy) 0%,#0A2A44 100%);
+    color:#fff;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;font-weight:700;
+  }
+  .appendix .step .step-body{flex:1;}
+  .appendix .step .step-body h4{font-size:14.5px;margin-bottom:6px;color:var(--navy);}
+  .appendix .step .step-body p{font-size:13px;color:#2A3B4D;margin-bottom:6px;line-height:1.7;}
+  .appendix .step .step-body p:last-child{margin-bottom:0;}
+
+  .tier-head{
+    display:flex;align-items:baseline;gap:12px;margin:32px 0 6px;
+  }
+  .tier-head .tier-badge{
+    flex-shrink:0;font-size:10.5px;font-weight:700;
+    text-transform:uppercase;letter-spacing:1.5px;
+    padding:3px 11px;background:var(--navy);color:#fff;
+    border-radius:2px;
+  }
+  .tier-head h3{margin:0;font-size:16px;}
+
+  /* ANIMATION */
+  @keyframes fadeInUp{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .anim{animation:fadeInUp .6s ease-out both;}
+  .anim-1{animation-delay:.05s;}
+  .anim-2{animation-delay:.1s;}
+  .anim-3{animation-delay:.15s;}
+
+  @media(max-width:880px){
+    .grid-2,.grid-3,.kpi-strip,.roadmap{grid-template-columns:1fr;}
+    .unit-profile .up-body{grid-template-columns:1fr;}
+    .bar-label{width:120px;font-size:12px;}
+    header h1{font-size:24px;}
+    .container{padding:0 22px;}
+    .tl-axis{grid-template-columns:repeat(4,1fr);gap:14px;row-gap:22px;}
+    .tl-axis:before{display:none;}
+    .flow-diagram{grid-template-columns:1fr;gap:10px;}
+    .flow-arrow{transform:rotate(90deg);}
+    .appendix .step{flex-direction:column;gap:10px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="eyebrow anim anim-1">SUSUT TENAGA LISTRIK</div>
+    <h1 class="anim anim-2">Analisis Susut Distribusi UP3 Sukoharjo 2024–2026: Diagnosis, Batas Realistis, dan Peta Jalan Perbaikan</h1>
+    <p class="sub anim anim-3">Analisis atas data susut distribusi bulanan 32 bulan pada lima unit layanan di bawah UP3 Sukoharjo — disertai diagnosis per unit, penilaian batas alami susut, dan rekomendasi taktis dengan mempertimbangkan keterbatasan struktural serta efek kebijakan tarif.</p>
+    <div class="meta-bar">
+      <div><span>Periode</span>Jan 2024 – Agu 2026</div>
+      <div><span>Cakupan</span>5 Unit Layanan + UP3</div>
+      <div><span>Metrik</span>Susut Distribusi (%)</div>
+      <div><span>Pendekatan</span>Peer-Adjusted Benchmarking</div>
+    </div>
+  </div>
+</header>
+
+<!-- EXECUTIVE SUMMARY -->
+<section style="padding-top:42px;padding-bottom:42px;">
+  <div class="container">
+    <div class="exec">
+      <h3>Ringkasan Eksekutif</h3>
+      <ul>
+        <li><strong>Kinerja UP3 relatif stabil tiga tahun.</strong> 2024: 6,09%; 2025: 6,02%; 2026 (8 bulan): 6,40%. Tidak ada penurunan kinerja signifikan — yang berubah adalah fluktuasi, bukan level.</li>
+        <li><strong>Fluktuasi ekstrem 2025 bukan masalah tata kelola.</strong> Anomali Jan–Feb 2025 (susut negatif) dan lonjakan April 2025 dijelaskan oleh promo diskon tarif 50% — bukan oleh kesalahan pencatatan. Secara setahun penuh, efek ini saling menghapus.</li>
+        <li><strong>Kesenjangan antar unit sebagian besar struktural.</strong> Grogol (3,79%) memiliki keunggulan alami dari komposisi pelanggan industri. Jatisrono (9,62%) memiliki batas alami susut (<em>loss floor</em>) yang jauh lebih tinggi — sekitar 6,5–7,5%.</li>
+        <li><strong>Prioritas perbaikan: tata kelola, bukan investasi jaringan.</strong> Target realistis 18 bulan adalah menurunkan UP3 dari 6,40% ke <strong>5,5–5,9%</strong>, dengan fokus pada penertiban pelanggan dan disiplin pencatatan.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BAB 1 -->
+<section>
+  <div class="container">
+    <div class="section-num">01 · Dasar</div>
+    <h2>Apa itu Susut Listrik dan Mengapa Penting</h2>
+    <p class="lead">Susut listrik adalah selisih antara energi yang disalurkan ke jaringan dengan energi yang terjual ke pelanggan. Selisih ini merepresentasikan energi yang "hilang" sepanjang proses distribusi dan penagihan.</p>
+
+    <p>Secara industri, susut dinyatakan sebagai persentase terhadap energi yang disalurkan. Tingkat sehat umumnya <strong>5–8%</strong>; di atas <strong>10%</strong> menandakan persoalan struktural yang serius.</p>
+
+    <p>Setiap <strong>1 ppt (poin persentase)</strong> penurunan susut berarti tambahan energi terjual sebesar 1% dari total energi disalurkan. Pada skala UP3, ini setara dengan tambahan pendapatan miliaran rupiah per tahun — tanpa perlu membangun pembangkit baru. Karena itu susut disebut sebagai <em>"pembangkit tersembunyi"</em> yang paling murah untuk dioptimalkan.</p>
+
+    <h3>Dua Kategori Susut</h3>
+    <div class="grid-2">
+      <div class="card">
+        <span class="tag">Kategori A</span>
+        <h4>Susut Teknis</h4>
+        <p>Rugi fisik yang tidak terhindarkan — rugi tembaga (I²R) pada konduktor, rugi inti besi trafo, rugi dielektrik. Butuh investasi untuk dikurangi, dan memiliki batas alami.</p>
+      </div>
+      <div class="card warn">
+        <span class="tag">Kategori B</span>
+        <h4>Susut Non-Teknis</h4>
+        <p>Rugi karena faktor komersial — pencurian, sambungan ilegal, meteran dimanipulasi, kesalahan pencatatan. Merespons tata kelola dan penegakan hukum, bukan belanja modal.</p>
+      </div>
+    </div>
+
+    <h3>Konteks Khusus: Prabayar vs Pascabayar</h3>
+    <p>Ada satu perbedaan metodologis yang fundamental dan menjadi kunci memahami anomali 2025:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Jenis Pelanggan</th>
+          <th>Dasar "kWh Terjual"</th>
+          <th>Sifat Pencatatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pascabayar</strong></td>
+          <td>Hasil baca meter bulanan</td>
+          <td class="good">Accrual — mendekati konsumsi aktual</td>
+        </tr>
+        <tr>
+          <td><strong>Prabayar</strong></td>
+          <td>Pembelian token</td>
+          <td class="amber">Cash — uang masuk, bukan energi terpakai</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Pada kondisi normal, kedua basis ini hampir seimbang. Namun ketika ada <strong>insentif ekonomi besar</strong> — misalnya promo diskon tarif — pelanggan prabayar dapat membeli token jauh lebih banyak dari konsumsi bulanan mereka, menyimpannya untuk bulan berikutnya. Ini menciptakan distorsi <em>timing</em> yang signifikan.</p>
+
+    <div class="callout promo">
+      <strong>Konteks laporan ini:</strong> Pada Januari–Februari 2025, terdapat promo diskon tarif 50% yang mendorong lonjakan pembelian token. Efeknya terlihat jelas dalam data — dan menjadi temuan utama Bab 02.
+    </div>
+
+    <div class="transition">
+      Bab berikutnya membahas konteks promo tersebut secara khusus, karena tanpa memahaminya, angka 2025 akan menyesatkan.
+    </div>
+  </div>
+</section>
+
+<!-- BAB 2 - KONTEKS PROMO -->
+<section>
+  <div class="container">
+    <div class="section-num">02 · Konteks Penting</div>
+    <h2>Promo 50% Jan–Feb 2025: Penjelasan "Krisis" yang Ternyata Bukan Krisis</h2>
+    <p class="lead">Data 2025 menunjukkan anomali ekstrem: susut negatif di Jan–Feb, kemudian lonjakan tajam di April. Tanpa konteks, ini tampak seperti krisis tata kelola. Dengan konteks promo, ini adalah efek mekanis yang bisa dijelaskan.</p>
+
+    <h3>Mekanisme Stockpiling–Payback</h3>
+
+    <div class="flow-diagram">
+      <div class="flow-box highlight">
+        <h5>Jan–Feb 2025</h5>
+        <div class="val">↑↑</div>
+        <div class="desc">Pembelian token melonjak karena promo 50%. "kWh terjual" over-recognized — susut tampak negatif.</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box red">
+        <h5>Mar–Apr 2025</h5>
+        <div class="val">↓↓</div>
+        <div class="desc">Pelanggan masih punya saldo token. Pembelian turun, konsumsi tetap — susut tampak melonjak.</div>
+      </div>
+    </div>
+
+    <h3>Timeline Efek Promo pada Data UP3</h3>
+
+    <div class="timeline">
+      <div class="timeline-title">Pola Stockpiling–Payback pada Data Susut UP3 Sukoharjo</div>
+      <div class="tl-axis">
+        <div class="tl-point normal">
+          <div class="tl-month">Des 2024</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Normal</div>
+          <div class="tl-sublabel">6,0%</div>
+        </div>
+        <div class="tl-point spike">
+          <div class="tl-month">Jan 2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Spike</div>
+          <div class="tl-sublabel">−6,0%</div>
+        </div>
+        <div class="tl-point spike">
+          <div class="tl-month">Feb 2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Spike</div>
+          <div class="tl-sublabel">−5,9%</div>
+        </div>
+        <div class="tl-point normal">
+          <div class="tl-month">Mar 2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Pulih</div>
+          <div class="tl-sublabel">7,4%</div>
+        </div>
+        <div class="tl-point trough">
+          <div class="tl-month">Apr 2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Trough</div>
+          <div class="tl-sublabel">11,7%</div>
+        </div>
+        <div class="tl-point normal">
+          <div class="tl-month">Mei 2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Pulih</div>
+          <div class="tl-sublabel">10,9%</div>
+        </div>
+        <div class="tl-point normal">
+          <div class="tl-month">Jun 2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Pulih</div>
+          <div class="tl-sublabel">9,4%</div>
+        </div>
+        <div class="tl-point normal">
+          <div class="tl-month">Des 2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Normal</div>
+          <div class="tl-sublabel">7,5%</div>
+        </div>
+      </div>
+      <div class="tl-legend">
+        <span><i style="background:var(--purple);"></i> Spikes — stockpiling karena promo</span>
+        <span><i style="background:var(--red);"></i> Trough — payback effect</span>
+        <span><i style="background:var(--teal);"></i> Periode normal</span>
+      </div>
+    </div>
+
+    <h3>Mengapa Pakai Full-Year, Bukan Mar–Des</h3>
+    <p>Pertanyaan wajar: kalau Mar–Des 2025 tampak buruk (8,41%), kenapa tidak pakai periode itu sebagai basis kinerja?</p>
+
+    <p>Jawabannya: <strong>Mar–Des masih mengandung efek payback</strong>. Pelanggan yang menumpuk token di Jan–Feb baru "menghabiskan" saldonya di Mar–Apr. Selama periode itu, pembelian tetap rendah, sehingga "kWh terjual" masih under-recognized. Angka Mar–Des karenanya <strong>terlalu tinggi</strong> sebagai cerminan kinerja.</p>
+
+    <div class="callout">
+      <strong>Prinsip:</strong> ketika distorsi adalah pergeseran <em>waktu</em> (timing shift), bukan perubahan <em>level</em>, maka distorsi akan saling menghapus sepanjang tahun. Karena itu <strong>full-year adalah basis yang lebih adil</strong> untuk menilai kinerja 2025.
+    </div>
+
+    <h3>Perbandingan Basis Perhitungan</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Basis</th>
+          <th class="num-cell">UP3 2025</th>
+          <th>Kegunaan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td><strong>Full-year (12 bulan)</strong></td>
+          <td class="num-cell">6,02%</td>
+          <td>Basis utama perbandingan tahunan</td>
+        </tr>
+        <tr>
+          <td>Mar–Des (10 bulan)</td>
+          <td class="num-cell amber">8,41%</td>
+          <td>Referensi periode terdampak — <strong>bukan</strong> basis kinerja</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <strong>Kesimpulan penting:</strong> Setelah koreksi, 2025 (6,02%) secara agregat <strong>setara</strong> dengan 2024 (6,09%). Narasi "2025 sebagai tahun disrupsi" perlu diganti dengan "2025 setara 2024 secara agregat; fluktuasi bulanan disebabkan promo, bukan penurunan kinerja".
+    </div>
+
+    <div class="transition">
+      Dengan koreksi ini, bab berikutnya menyajikan kinerja tiga tahun dengan basis yang lebih jujur.
+    </div>
+  </div>
+</section>
+
+<!-- BAB 3 - KINERJA 3 TAHUN -->
+<section>
+  <div class="container">
+    <div class="section-num">03 · Kinerja</div>
+    <h2>Kinerja UP3 Sukoharjo 2024–2026</h2>
+    <p class="lead">Dengan basis full-year yang sudah dikoreksi terhadap efek promo, kinerja UP3 Sukoharjo tiga tahun terakhir dapat dibaca lebih jernih.</p>
+
+    <div class="kpi-strip">
+      <div class="kpi"><div class="num">6,09%</div><div class="lbl">2024</div><div class="sub">Full-year (12 bulan)</div></div>
+      <div class="kpi"><div class="num">6,02%</div><div class="lbl">2025</div><div class="sub">Full-year (12 bulan)</div></div>
+      <div class="kpi"><div class="num amber">6,40%</div><div class="lbl">2026</div><div class="sub">Januari–Agustus (8 bulan)</div></div>
+      <div class="kpi"><div class="num good">3,79%</div><div class="lbl">Grogol 2026</div><div class="sub">Unit terbaik — struktural</div></div>
+    </div>
+
+    <h3>Rata-Rata Susut Tahunan per Unit</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Unit Layanan</th>
+          <th class="num-cell">2024</th>
+          <th class="num-cell">2025</th>
+          <th class="num-cell">2026 (Jan–Agu)</th>
+          <th class="num-cell">CV 2026*</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>JATISRONO</td>
+          <td class="num-cell bad">9,39%</td>
+          <td class="num-cell bad">8,92%</td>
+          <td class="num-cell bad">9,62%</td>
+          <td class="num-cell">~14%</td>
+        </tr>
+        <tr class="highlight">
+          <td>KARANGANYAR</td>
+          <td class="num-cell amber">7,73%</td>
+          <td class="num-cell amber">7,61%</td>
+          <td class="num-cell amber">7,63%</td>
+          <td class="num-cell">~14%</td>
+        </tr>
+        <tr>
+          <td>SUKOHARJO</td>
+          <td class="num-cell">4,53%</td>
+          <td class="num-cell">4,53%</td>
+          <td class="num-cell amber">5,36%</td>
+          <td class="num-cell">~21%</td>
+        </tr>
+        <tr>
+          <td>WONOGIRI</td>
+          <td class="num-cell">4,24%</td>
+          <td class="num-cell">4,18%</td>
+          <td class="num-cell good">4,15%</td>
+          <td class="num-cell bad">~44%</td>
+        </tr>
+        <tr>
+          <td>GROGOL</td>
+          <td class="num-cell good">3,74%</td>
+          <td class="num-cell good">3,60%</td>
+          <td class="num-cell good">3,79%</td>
+          <td class="num-cell">~16%</td>
+        </tr>
+        <tr style="background:#E6EEFF;font-weight:700;">
+          <td>UP3 SUKOHARJO</td>
+          <td class="num-cell">6,09%</td>
+          <td class="num-cell">6,02%</td>
+          <td class="num-cell">6,40%</td>
+          <td class="num-cell">~15%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--gray-text);margin-top:-6px;">*CV = <em>Coefficient of Variation</em> — mengukur volatilitas bulanan. CV &gt;20% menandakan pencatatan tidak stabil; CV &gt;30% mengindikasikan anomali data. Nilai CV bersifat aproksimasi.</p>
+
+    <div class="callout warn">
+      <strong>Perhatikan Wonogiri 2026.</strong> CV-nya sangat tinggi (~44%) karena ada satu <em>outlier</em> di Juni 2026 (0,80% — sekitar 5× lebih rendah dari biasanya). Anomali ini <strong>tidak terkait promo</strong> dan perlu diverifikasi.
+    </div>
+
+    <h3>Visualisasi 2026 (Januari–Agustus)</h3>
+    <div class="chart">
+      <div class="chart-title">Perbandingan Unit (skala maks. 10%)</div>
+      <div class="bar-row">
+        <div class="bar-label">JATISRONO</div>
+        <div class="bar-track"><div class="bar-fill deepred" style="width:96%">9,62%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">KARANGANYAR</div>
+        <div class="bar-track"><div class="bar-fill red" style="width:76%">7,63%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">UP3 SUKOHARJO</div>
+        <div class="bar-track"><div class="bar-fill amber" style="width:64%">6,40%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">SUKOHARJO</div>
+        <div class="bar-track"><div class="bar-fill" style="width:54%">5,36%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">WONOGIRI</div>
+        <div class="bar-track"><div class="bar-fill teal" style="width:42%">4,15%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">GROGOL</div>
+        <div class="bar-track"><div class="bar-fill teal" style="width:38%">3,79%</div></div>
+      </div>
+    </div>
+
+    <div class="transition">
+      Perbandingan antar unit belum adil sebelum mempertimbangkan perbedaan struktural. Bab berikutnya membahas mengapa.
+    </div>
+  </div>
+</section>
+
+<!-- BAB 4 - LOSS FLOOR -->
+<section>
+  <div class="container">
+    <div class="section-num">04 · Batas Alami</div>
+    <h2>Mengapa Target &lt;5% Tidak Bisa Dicapai Semua Unit</h2>
+    <p class="lead">Setiap unit memiliki <strong>batas alami susut</strong> yang berbeda — ditentukan oleh karakteristik jaringan, komposisi pelanggan, dan kondisi geografis. Mengabaikan realitas ini akan menghasilkan target yang tidak dapat dipenuhi.</p>
+
+    <h3>Faktor Struktural per Unit</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Faktor</th>
+          <th class="center">Grogol</th>
+          <th class="center">Wonogiri</th>
+          <th class="center">Sukoharjo</th>
+          <th class="center">Karanganyar</th>
+          <th class="center">Jatisrono</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pelanggan dominan</td>
+          <td class="center good">Industri</td>
+          <td class="center">Campuran</td>
+          <td class="center amber">Rumah Tangga</td>
+          <td class="center amber">Rumah Tangga</td>
+          <td class="center bad">Rumah Tangga</td>
+        </tr>
+        <tr>
+          <td>Stabilitas beban</td>
+          <td class="center good">Tinggi</td>
+          <td class="center">Sedang</td>
+          <td class="center amber">Rendah</td>
+          <td class="center amber">Rendah</td>
+          <td class="center bad">Rendah</td>
+        </tr>
+        <tr>
+          <td>Panjang feeder</td>
+          <td class="center good">Pendek</td>
+          <td class="center">Sedang</td>
+          <td class="center amber">Panjang</td>
+          <td class="center bad">Panjang</td>
+          <td class="center bad">Sangat Panjang</td>
+        </tr>
+        <tr>
+          <td>Kepadatan beban</td>
+          <td class="center good">Tinggi</td>
+          <td class="center">Sedang</td>
+          <td class="center">Sedang</td>
+          <td class="center amber">Rendah</td>
+          <td class="center bad">Rendah</td>
+        </tr>
+        <tr>
+          <td>Kerentanan pencurian</td>
+          <td class="center good">Rendah</td>
+          <td class="center">Sedang</td>
+          <td class="center amber">Sedang–Tinggi</td>
+          <td class="center bad">Tinggi</td>
+          <td class="center bad">Sangat Tinggi</td>
+        </tr>
+        <tr style="background:#E6EEFF;font-weight:700;">
+          <td>Estimasi <em>loss floor</em></td>
+          <td class="center">3,0–3,5%</td>
+          <td class="center">3,5–4,0%</td>
+          <td class="center">4,5–5,0%</td>
+          <td class="center">6,0–6,5%</td>
+          <td class="center">6,5–7,5%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="method-note">
+      <span class="mn-label">Catatan Metodologis</span>
+      <p>Klasifikasi dan estimasi <em>loss floor</em> di atas bersifat <strong>indikatif</strong> — disusun dari konvensi industri dan penalaran teknis, <strong>belum dikalibrasi dengan data operasional aktual</strong> UP3 Sukoharjo. Tidak boleh dijadikan dasar KPI formal tanpa validasi. Kerangka validasi ada di lampiran.</p>
+    </div>
+
+    <h3>Dua Jalur Perbaikan</h3>
+
+    <div class="grid-2">
+      <div class="card good">
+        <span class="tag">Jalur 1 · Tanpa Belanja Modal</span>
+        <h4>Non-Teknis</h4>
+        <p>Penertiban pelanggan, disiplin pencatatan, penegakan hukum. Dapat dieksekusi 0–12 bulan dengan anggaran operasional.</p>
+        <p><strong>Potensi:</strong> 1,5–2,5 ppt per unit.</p>
+      </div>
+      <div class="card warn">
+        <span class="tag">Jalur 2 · Butuh Belanja Modal</span>
+        <h4>Teknis</h4>
+        <p>Rekonduktoring, rekonfigurasi, penambahan trafo sisipan. Bergerak lambat: 0,3–0,8 ppt per tahun.</p>
+        <p><strong>Keterbatasan:</strong> anggaran terbatas, <em>diminishing returns</em>.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Kesimpulan strategis:</strong> Dengan anggaran terbatas, prioritaskan <strong>Jalur 1</strong> yang memberi <em>return</em> lebih cepat. Jalur 2 dijalankan selektif hanya di titik kritis.
+    </div>
+
+    <div class="transition">
+      Bab berikutnya menyajikan profil tiap unit dengan mempertimbangkan batas struktural dan konteks kebijakan ini.
+    </div>
+  </div>
+</section>
+
+<!-- BAB 5 - PER UNIT -->
+<section>
+  <div class="container">
+    <div class="section-num">05 · Diagnosis</div>
+    <h2>Profil dan Diagnosis Tiap Unit</h2>
+
+    <!-- JATISRONO -->
+    <div class="unit-profile">
+      <div class="up-head">
+        <h4>JATISRONO — Prioritas Utama</h4>
+        <span class="badge worst">Kritis</span>
+      </div>
+      <div class="up-body">
+        <div>
+          <p><strong>Outlier struktural</strong> dalam portofolio: rata-rata susutnya konsisten 1,5–2× rata-rata UP3. Sebagian dari tingginya angka ini bersifat struktural — jaringan panjang, pelanggan tersebar, kerentanan pencurian tinggi. <em>Loss floor</em> 6,5–7,5%.</p>
+          <p><strong>Diagnosis:</strong> masalah ganda — keterbatasan struktural <em>dan</em> kelemahan pengendalian pelanggan. Perlu intervensi simultan pada tata kelola (prioritas) dan jaringan (selektif).</p>
+        </div>
+        <ul class="up-metrics">
+          <li><span>Rata-rata 2026</span><span class="bad">9,62%</span></li>
+          <li><span>Estimasi <em>loss floor</em></span><span>6,5–7,5%</span></li>
+          <li><span>Gap vs <em>floor</em></span><span class="bad">+2,1 s.d. +3,1 ppt</span></li>
+          <li><span>Prioritas</span><span>Penertiban pelanggan</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- KARANGANYAR -->
+    <div class="unit-profile">
+      <div class="up-head">
+        <h4>KARANGANYAR — Persisten Tinggi</h4>
+        <span class="badge high">Tinggi</span>
+      </div>
+      <div class="up-body">
+        <div>
+          <p>Pola <strong>persisten di level tinggi</strong> selama tiga tahun, tanpa perbaikan struktural. <em>Loss floor</em> 6,0–6,5%, sehingga ruang perbaikan manajerial relatif terbatas (1,1–1,6 ppt).</p>
+          <p><strong>Diagnosis:</strong> kemungkinan besar didominasi susut non-teknis dengan pola musiman. Perlu audit pelanggan terarah pada area riwayat susut tinggi.</p>
+        </div>
+        <ul class="up-metrics">
+          <li><span>Rata-rata 2026</span><span class="amber">7,63%</span></li>
+          <li><span>Estimasi <em>loss floor</em></span><span>6,0–6,5%</span></li>
+          <li><span>Gap vs <em>floor</em></span><span class="amber">+1,1 s.d. +1,6 ppt</span></li>
+          <li><span>Prioritas</span><span>Audit pelanggan</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SUKOHARJO -->
+    <div class="unit-profile">
+      <div class="up-head">
+        <h4>SUKOHARJO — Volatilitas Tinggi</h4>
+        <span class="badge mid">Perhatian</span>
+      </div>
+      <div class="up-body">
+        <div>
+          <p>Berada di zona menengah, namun CV-nya tinggi (~21%) — indikasi persoalan kedisiplinan pencatatan. Pola cermin Juni–Juli 2024 dengan Grogol (Sukoharjo turun, Grogol naik) <strong>tidak terkait promo</strong> karena terjadi sebelum promo.</p>
+          <p><strong>Diagnosis:</strong> bukan infrastruktur, melainkan konsistensi eksekusi pencatatan dan pengawasan lapangan.</p>
+        </div>
+        <ul class="up-metrics">
+          <li><span>Rata-rata 2026</span><span class="amber">5,36%</span></li>
+          <li><span>Estimasi <em>loss floor</em></span><span>4,5–5,0%</span></li>
+          <li><span>CV 2026</span><span class="bad">~21% (tidak stabil)</span></li>
+          <li><span>Prioritas</span><span>Stabilkan pencatatan</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- WONOGIRI -->
+    <div class="unit-profile">
+      <div class="up-head">
+        <h4>WONOGIRI — Fundamental Sehat</h4>
+        <span class="badge best">Pantau Data</span>
+      </div>
+      <div class="up-body">
+        <div>
+          <p>Kinerja stabil 4,1–4,2% pada 2024–2025 dengan CV rendah. Namun pada 2026, muncul <strong>anomali Juni (0,80%)</strong> — sekitar 5× lebih rendah dari rata-rata. Ini <strong>tidak terkait promo</strong> dan perlu diverifikasi.</p>
+          <p><strong>Diagnosis:</strong> fundamental sehat. Apabila <em>outlier</em> Juni dikeluarkan, kinerja 2026 sesungguhnya tetap baik. Perlu perbaikan pada siklus pencatatan bulanan.</p>
+        </div>
+        <ul class="up-metrics">
+          <li><span>Rata-rata 2026</span><span class="good">4,15%</span></li>
+          <li><span>CV 2026 (dengan <em>outlier</em>)</span><span class="bad">~44%</span></li>
+          <li><span>CV 2026 (tanpa Juni)</span><span class="amber">~28%</span></li>
+          <li><span>Prioritas</span><span>Verifikasi <em>outlier</em></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GROGOL -->
+    <div class="unit-profile">
+      <div class="up-head">
+        <h4>GROGOL — Benchmark dengan Keunggulan Struktural</h4>
+        <span class="badge best">Tolok Ukur</span>
+      </div>
+      <div class="up-body">
+        <div>
+          <p>Kinerja terbaik tiga tahun berturut-turut. <strong>Namun keunggulan ini tidak sepenuhnya dari manajemen.</strong> Komposisi pelanggan industri dominan, feeder pendek, dan kepadatan beban tinggi menciptakan <em>structural advantage</em> yang tidak dapat direplikasi di unit rural.</p>
+          <p><strong>Diagnosis:</strong> model operasional sehat yang patut dipelajari, tetapi tidak semua praktiknya dapat direplikasi. Yang dapat diadopsi adalah <em>disiplin pencatatan dan tata kelola internalnya</em>.</p>
+        </div>
+        <ul class="up-metrics">
+          <li><span>Rata-rata 2026</span><span class="good">3,79%</span></li>
+          <li><span>Estimasi <em>loss floor</em></span><span>3,0–3,5%</span></li>
+          <li><span>Posisi vs <em>floor</em></span><span class="good">Sudah mendekati</span></li>
+          <li><span>Prioritas</span><span>Jaga + replikasi disiplin</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="transition">
+      Dari lima profil ini, lima pola berulang muncul. Bab berikutnya merangkumnya.
+    </div>
+  </div>
+</section>
+
+<!-- BAB 6 - INSIGHT -->
+<section>
+  <div class="container">
+    <div class="section-num">06 · Sintesis</div>
+    <h2>Lima Insight Utama</h2>
+
+    <div class="grid-2">
+      <div class="card promo">
+        <span class="tag">Insight 1</span>
+        <h4>Promo Menjelaskan "Krisis" 2025 — Bukan Tata Kelola</h4>
+        <p>Anomali Jan–Feb 2025 (susut negatif) dan lonjakan April 2025 dijelaskan oleh promo 50% yang memicu <em>stockpiling</em> token prabayar. Setelah koreksi full-year, 2025 (6,02%) setara dengan 2024 (6,09%). <strong>Bukan penurunan kinerja riil.</strong></p>
+      </div>
+      <div class="card risk">
+        <span class="tag">Insight 2</span>
+        <h4>Tiga Lapisan Masalah, Tiga Strategi Berbeda</h4>
+        <p>Masalah UP3 Sukoharjo bukan satu, melainkan tiga: <strong>lapisan struktural</strong> (perbedaan alami antar unit), <strong>efek kebijakan</strong> (distorsi dari promo), dan <strong>kualitas data</strong> (pencatatan tidak stabil). Mencampuradukkan ketiganya akan menghasilkan solusi yang salah.</p>
+      </div>
+      <div class="card warn">
+        <span class="tag">Insight 3</span>
+        <h4>Kualitas Data adalah Risiko Tersendiri</h4>
+        <p>CV UP3 2026 (~15%) masih cukup tinggi. Wonogiri (~44%) dan Sukoharjo (~21%) adalah yang paling tidak stabil. Ada anomali yang <strong>tidak dapat dijelaskan oleh promo</strong> — pola cermin 2024 dan <em>outlier</em> Wonogiri Juni 2026 — yang perlu ditelusuri.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Insight 4</span>
+        <h4>Grogol Mengajarkan Disiplin, Bukan Resep Struktur</h4>
+        <p>Keunggulan Grogol sebagian besar struktural dan tidak dapat direplikasi. Yang dapat diadopsi adalah <em>disiplin pencatatan</em> dan <em>tata kelola internalnya</em> — bukan resep tentang "cara mendapatkan pelanggan industri".</p>
+      </div>
+      <div class="card warn">
+        <span class="tag">Insight 5</span>
+        <h4>Pemulihan 2026 Belum Merata</h4>
+        <p>UP3 secara agregat stabil, tetapi Sukoharjo justru memburuk dibanding 2024 (dari 4,53% ke 5,36%). Pemulihan tidak terjadi merata — intervensi tidak boleh digeneralisasi di level UP3.</p>
+      </div>
+    </div>
+
+    <div class="transition">
+      Insight tanpa tindakan tidak berarti. Bab berikutnya menerjemahkannya menjadi rekomendasi taktis.
+    </div>
+  </div>
+</section>
+
+<!-- BAB 7 - REKOMENDASI -->
+<section>
+  <div class="container">
+    <div class="section-num">07 · Rekomendasi</div>
+    <h2>Enam Langkah Taktis</h2>
+
+    <div class="rec">
+      <div class="rec-head"><h4>1. Dokumentasikan Konteks Kebijakan dalam Analisis Rutin</h4><span class="impact high">Segera</span></div>
+      <p>Catat setiap <em>confounding event</em> (promo, perubahan tarif, kebijakan lain) dalam laporan susut bulanan. Pembaca enam bulan ke depan tidak akan tahu ada promo 50% kecuali laporan menyebutkannya. Ini bagian dari integritas analitik.</p>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head"><h4>2. Verifikasi Anomali yang Tidak Dijelaskan Promo</h4><span class="impact high">0–3 Bulan</span></div>
+      <p>Investigasi formal atas dua anomali: <strong>pola cermin Juni–Juli 2024</strong> (Sukoharjo ↓ saat Grogol ↑) dan <strong>outlier Wonogiri Juni 2026</strong> (0,80%). Keduanya tidak dapat dijelaskan oleh promo dan berpotensi mengindikasikan masalah pencatatan.</p>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head"><h4>3. Program Turnaround Jatisrono</h4><span class="impact high">Segera</span></div>
+      <p>Bentuk tim tugas khusus untuk Jatisrono dengan target realistis: dari 9,62% menjadi <strong>&lt;8,0% dalam 12 bulan</strong>, <strong>≤7,5% dalam 18 bulan</strong>. Fokus: penertiban pelanggan, didukung audit teknis jaringan selektif.</p>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head"><h4>4. Loss Heatmapping</h4><span class="impact high">0–3 Bulan</span></div>
+      <p>Identifikasi gardu dan penyulang dengan susut tertinggi di Jatisrono, Karanganyar, dan Sukoharjo. Prioritaskan 20% titik yang menyumbang 80% masalah. <strong>Menghemat anggaran investasi terbatas.</strong></p>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head"><h4>5. Penertiban Pelanggan Prioritas</h4><span class="impact high">4–9 Bulan</span></div>
+      <p>Fokus pada wilayah riwayat susut non-teknis tinggi: audit pelanggan, penertiban sambungan ilegal, kalibrasi dan penggantian meter bermasalah. <em>Return</em> jauh lebih cepat dari investasi jaringan.</p>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head"><h4>6. KPI Susut dengan Target Peer-Adjusted</h4><span class="impact high">0–6 Bulan</span></div>
+      <p>Jadikan susut KPI utama setiap manajer unit, <strong>dengan target disesuaikan <em>loss floor</em> masing-masing</strong>. Tambahkan KPI pendukung: CV pencatatan, akurasi data, jumlah pelanggan tertib. <em>Reward-punishment</em> harus mencerminkan kompleksitas struktural.</p>
+    </div>
+
+    <div class="transition">
+      Enam langkah ini diurutkan menjadi peta jalan 18 bulan di bab berikutnya.
+    </div>
+  </div>
+</section>
+
+<!-- BAB 8 - ROADMAP -->
+<section>
+  <div class="container">
+    <div class="section-num">08 · Peta Jalan</div>
+    <h2>Rencana Eksekusi 18 Bulan</h2>
+
+    <div class="roadmap">
+      <div class="phase">
+        <div class="ph-num">Fase 1 · 0–3 Bulan</div>
+        <h4>Stabilisasi</h4>
+        <ul>
+          <li>Verifikasi anomali 2024 &amp; 2026</li>
+          <li>Dokumentasi konteks kebijakan</li>
+          <li><em>Loss heatmapping</em></li>
+          <li>Tim tugas Jatisrono</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="ph-num">Fase 2 · 4–9 Bulan</div>
+        <h4>Intervensi Terarah</h4>
+        <ul>
+          <li>Penertiban pelanggan prioritas</li>
+          <li>Perbaikan pencatatan</li>
+          <li>Replikasi SOP Grogol</li>
+          <li><em>Dashboard</em> KPI <em>peer-adjusted</em></li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="ph-num">Fase 3 · 10–15 Bulan</div>
+        <h4>Investasi Selektif</h4>
+        <ul>
+          <li>Rekondisi titik kritis</li>
+          <li>Smart meter prioritas</li>
+          <li>Integrasi data <em>billing</em></li>
+          <li>Analitik prediktif susut</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="ph-num">Fase 4 · 16–18 Bulan</div>
+        <h4>Institusionalisasi</h4>
+        <ul>
+          <li>KPI formal per unit</li>
+          <li>Program <em>reward</em></li>
+          <li>Review kuartalan</li>
+          <li>Replikasi lintas UP3</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Target Realistis 18 Bulan</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Unit</th>
+          <th class="num-cell">2026 (Jan–Agu)</th>
+          <th class="num-cell">Target 18 Bulan</th>
+          <th class="center">Dasar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Grogol</td>
+          <td class="num-cell good">3,79%</td>
+          <td class="num-cell good">3,5–3,8%</td>
+          <td class="center">Jaga posisi</td>
+        </tr>
+        <tr>
+          <td>Wonogiri</td>
+          <td class="num-cell good">4,15%</td>
+          <td class="num-cell good">3,9–4,3%</td>
+          <td class="center">Stabilkan pencatatan</td>
+        </tr>
+        <tr>
+          <td>Sukoharjo</td>
+          <td class="num-cell amber">5,36%</td>
+          <td class="num-cell amber">4,7–5,0%</td>
+          <td class="center">Turunkan non-teknis</td>
+        </tr>
+        <tr>
+          <td>Karanganyar</td>
+          <td class="num-cell amber">7,63%</td>
+          <td class="num-cell amber">6,3–6,8%</td>
+          <td class="center">Fokus penertiban pelanggan</td>
+        </tr>
+        <tr>
+          <td>Jatisrono</td>
+          <td class="num-cell bad">9,62%</td>
+          <td class="num-cell bad">7,2–7,8%</td>
+          <td class="center">Menuju <em>floor</em> bertahap</td>
+        </tr>
+        <tr style="background:#E6EEFF;font-weight:700;">
+          <td>UP3 SUKOHARJO</td>
+          <td class="num-cell amber">6,40%</td>
+          <td class="num-cell amber">5,5–5,9%</td>
+          <td class="center">Realistis dengan anggaran terbatas</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Target hasil 18 bulan:</strong> UP3 dari 6,40% menjadi <strong>5,5–5,9%</strong>. Gap terhadap Grogol dipersempit dari 2,61 ppt menjadi &lt;2,0 ppt — dengan catatan Grogol tetap memiliki keunggulan struktural.
+    </div>
+
+    <div class="callout warn">
+      <strong>Pesan untuk manajemen:</strong> Target ambisius tanpa mempertimbangkan keterbatasan struktural <em>dan</em> efek kebijakan akan menghasilkan keputusan yang salah sasaran serta demoralisasi tim. <strong>Realistis bukan berarti tidak ambisius</strong> — realistis berarti memahami batas, lalu mengoptimalkan di dalamnya.
+    </div>
+  </div>
+</section>
+
+<!-- LAMPIRAN -->
+<section class="appendix">
+  <div class="container">
+    <div class="section-num">Lampiran · Metodologi</div>
+    <h2>Dasar Klasifikasi dan Cara Memvalidasinya</h2>
+    <p class="lead">Lampiran ini menjelaskan dari mana klasifikasi dalam Bab 04 berasal, bagaimana ia dapat divalidasi, dan data apa saja yang dibutuhkan untuk membuat <em>loss floor</em> benar-benar dapat dipertanggungjawabkan.</p>
+
+    <h3>Asal-Usul Klasifikasi</h3>
+    <p>Klasifikasi faktor struktural dan estimasi <em>loss floor</em> dalam Bab 04 disusun dari tiga sumber:</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag">Sumber 1</span>
+        <h4>Konvensi Industri</h4>
+        <p>Threshold umum dari literatur ketenagalistrikan (IEC, IEEE, studi Bank Dunia, publikasi PLN).</p>
+      </div>
+      <div class="card">
+        <span class="tag">Sumber 2</span>
+        <h4>Penalaran Teknis</h4>
+        <p>Rugi I²R berbanding lurus dengan panjang konduktor dan kuadrat arus. Konversi ke threshold adalah pilihan analitis.</p>
+      </div>
+      <div class="card warn">
+        <span class="tag">Sumber 3</span>
+        <h4>Konsistensi Internal</h4>
+        <p>Sebagian skor disusun agar konsisten dengan pola susut aktual. Ini berisiko <em>circular reasoning</em>.</p>
+      </div>
+    </div>
+
+    <div class="callout risk">
+      <strong>Peringatan:</strong> Klasifikasi Bab 04 adalah <strong>hipotesis awal</strong>, bukan kesimpulan. Berguna sebagai kerangka berpikir dan daftar faktor yang perlu dikumpulkan datanya, tetapi <strong>belum layak dijadikan dasar KPI formal</strong> tanpa validasi.
+    </div>
+
+    <h3>Tiga Langkah Validasi</h3>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>Kumpulkan Data Aktual per Unit</h4>
+        <p>Untuk setiap unit (idealnya 8–10 unit sejenis): susut tahunan rata-rata, <em>load factor</em>, panjang feeder (dari GIS), kepadatan beban, pangsa kWh industri, rasio pelanggan prabayar, dan data sosio-ekonomi dari BPS. Tanpa data ini, klasifikasi hanya kualitatif.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>Lakukan Analisis Regresi</h4>
+        <p>Bentuk model: <em>Susut = α + β₁·LF + β₂·(1/panjang_feeder) + β₃·pangsa_industri + β₄·kepadatan + ε</em>. Koefisien β yang signifikan menunjukkan faktor mana yang benar-benar mempengaruhi susut. Residual = kinerja manajerial murni.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>Kalibrasi Threshold dari Distribusi Data</h4>
+        <p>Tentukan threshold dari distribusi data aktual — bukan dari literatur umum. Gunakan kuartil (misalnya kuartil atas LF = "tinggi"). Hasilnya adalah threshold spesifik untuk UP3 Sukoharjo.</p>
+      </div>
+    </div>
+
+    <h3>Data yang Dibutuhkan untuk <em>Loss Floor</em> Realistis</h3>
+
+    <div class="tier-head">
+      <span class="tier-badge">Tier 1</span>
+      <h3>Data yang Mengubah Jawaban Secara Material</h3>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="tag">Data 1</span>
+        <h4>Model Jaringan + Load Flow Study</h4>
+        <p>Topologi dari GIS, data <em>nameplate</em> trafo, profil beban 24 jam dari SCADA/AMR, tegangan operasi aktual. Dengan ini, rugi teknis dapat dihitung langsung per penyulang — bukan ditaksir.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Data 2</span>
+        <h4>Neraca Energi Terlokalisasi</h4>
+        <p>kWh disalurkan per penyulang, kWh terjual per gardu, jumlah pelanggan per gardu. Ini satu-satunya cara memisahkan susut teknis dan non-teknis secara empiris.</p>
+      </div>
+    </div>
+
+    <div class="tier-head">
+      <span class="tier-badge">Tier 2</span>
+      <h3>Data Pengkalibrasi</h3>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Sumber</th>
+          <th>Kegunaan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><em>Load factor</em> per penyulang</strong></td>
+          <td>SCADA, AMR</td>
+          <td>Faktor penentu utama rugi I²R</td>
+        </tr>
+        <tr>
+          <td><strong>Komposisi pelanggan per kWh</strong></td>
+          <td>Billing</td>
+          <td>Profil beban dan kerentanan pencurian</td>
+        </tr>
+        <tr>
+          <td><strong>Riwayat temuan P2TL</strong></td>
+          <td>Operasi</td>
+          <td>Proksi langsung susut non-teknis</td>
+        </tr>
+        <tr>
+          <td><strong>Rasio prabayar/pascabayar</strong></td>
+          <td>Billing</td>
+          <td>Menentukan kerentanan distorsi timing</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tier-head">
+      <span class="tier-badge">Tier 3</span>
+      <h3>Data Konteks</h3>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Sumber</th>
+          <th>Kegunaan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Data lintas UP3</strong> (8–20 unit)</td>
+          <td>Internal</td>
+          <td>Regresi untuk koefisien faktor struktural</td>
+        </tr>
+        <tr>
+          <td><strong>PDRB, kemiskinan, urbanisasi</strong></td>
+          <td>BPS</td>
+          <td>Proksi kerentanan pencurian</td>
+        </tr>
+        <tr>
+          <td><strong>Kalender kebijakan</strong></td>
+          <td>Internal</td>
+          <td>Identifikasi <em>confounding events</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Urutan Pengumpulan yang Praktis</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="center">Prioritas</th>
+          <th>Data</th>
+          <th class="center">Usaha</th>
+          <th class="center">Dampak</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td class="center"><strong>1</strong></td>
+          <td>Neraca energi per penyulang</td>
+          <td class="center">Sedang</td>
+          <td class="center good">Sangat tinggi</td>
+        </tr>
+        <tr class="highlight">
+          <td class="center"><strong>2</strong></td>
+          <td>Panjang feeder dan tipe konduktor</td>
+          <td class="center">Rendah</td>
+          <td class="center good">Tinggi</td>
+        </tr>
+        <tr class="highlight">
+          <td class="center"><strong>3</strong></td>
+          <td><em>Load factor</em> aktual per penyulang</td>
+          <td class="center">Sedang</td>
+          <td class="center good">Tinggi</td>
+        </tr>
+        <tr>
+          <td class="center"><strong>4</strong></td>
+          <td>Data <em>nameplate</em> trafo</td>
+          <td class="center">Rendah</td>
+          <td class="center amber">Sedang</td>
+        </tr>
+        <tr>
+          <td class="center"><strong>5</strong></td>
+          <td>Riwayat P2TL</td>
+          <td class="center">Rendah</td>
+          <td class="center amber">Sedang</td>
+        </tr>
+        <tr>
+          <td class="center"><strong>6</strong></td>
+          <td><em>Load flow study</em> lengkap</td>
+          <td class="center bad">Tinggi</td>
+          <td class="center good">Sangat tinggi</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Catatan praktis:</strong> Langkah 1–3 sudah cukup untuk mengubah <em>loss floor</em> dari hipotesis menjadi estimasi yang dapat dipertanggungjawabkan. Langkah 6 memberi lompatan kualitas terbesar tetapi paling mahal.
+    </div>
+
+    <h3>Pelajaran dari <em>Confounding Events</em></h3>
+
+    <p>Kasus promo 50% memberikan pelajaran metodologis yang berlaku umum:</p>
+
+    <div class="grid-2">
+      <div class="card promo">
+        <span class="tag">Pelajaran 1</span>
+        <h4>Selalu Cek Kalender Kebijakan</h4>
+        <p>Sebelum menganalisis anomali, periksa apakah ada promo, perubahan tarif, atau kebijakan lain. Ini <em>known unknowns</em> yang harus di-<em>flag</em> di awal.</p>
+      </div>
+      <div class="card promo">
+        <span class="tag">Pelajaran 2</span>
+        <h4>Prabayar vs Pascabayar Tidak Bisa Dicampur</h4>
+        <p>Definisi "kWh terjual" berbeda: pascabayar berbasis <em>accrual</em>, prabayar berbasis <em>cash</em>. Ini isu metodologis mendasar, bukan detail teknis.</p>
+      </div>
+      <div class="card promo">
+        <span class="tag">Pelajaran 3</span>
+        <h4>Jangan Simpulkan Manipulasi dari Pola Statistik</h4>
+        <p>Pola cermin, nilai negatif, dan lonjakan serentak bisa muncul dari mekanisme bisnis yang sah. Perlu bukti tambahan: log sistem, wawancara, audit.</p>
+      </div>
+      <div class="card promo">
+        <span class="tag">Pelajaran 4</span>
+        <h4>Sertakan Catatan Konteks dalam Laporan</h4>
+        <p>Pembaca enam bulan ke depan tidak akan tahu ada promo kecuali laporan menyebutkannya. Catatan konteks adalah bagian dari integritas analitik.</p>
+      </div>
+    </div>
+
+    <h3>Metode Koreksi untuk Periode Terdampak Kebijakan</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Metode</th>
+          <th>Deskripsi</th>
+          <th class="center">Kapan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>A · Rata-rata Bergerak 3 Bulan</strong></td>
+          <td>Ganti angka bulanan dengan MA-3; distorsi saling menghapus.</td>
+          <td class="center good">Analisis tren</td>
+        </tr>
+        <tr>
+          <td><strong>B · Reklasifikasi Saldo Token</strong></td>
+          <td><em>Konsumsi ≈ Pembelian + (Saldo awal − Saldo akhir)</em></td>
+          <td class="center amber">Jika data saldo ada</td>
+        </tr>
+        <tr>
+          <td><strong>C · Full-Year</strong></td>
+          <td>Gunakan agregat setahun penuh; distorsi timing saling menghapus.</td>
+          <td class="center good">Perbandingan tahunan</td>
+        </tr>
+        <tr>
+          <td><strong>D · Segmentasi Prabayar/Pascabayar</strong></td>
+          <td>Hitung susut terpisah per segmen; pascabayar sebagai <em>benchmark</em>.</td>
+          <td class="center">Validasi — paling akurat</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Rekomendasi:</strong> gunakan <strong>Metode C (full-year)</strong> sebagai basis utama — sudah diterapkan dalam laporan ini. Metode D untuk validasi jika data tersedia.</p>
+
+    <h3>Prinsip Penutup</h3>
+    <div class="callout neutral">
+      <p style="margin-bottom:8px;"><strong>Jangan pernah menyajikan angka yang tidak dapat dipertanggungjawabkan sumbernya — dan jangan pernah
