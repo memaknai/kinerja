@@ -6,7 +6,11 @@
     <title>Laporan Kinerja - TeraSukoharjo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: radial-gradient(circle at top right, rgba(45, 106, 79, 0.08), transparent 35%), #f0f4f2;
@@ -28,10 +32,30 @@
             width: 100%;
             text-align: center;
         }
-        h1 { font-size: 28px; font-weight: 800; color: #1b4332; margin-bottom: 4px; }
-        .subtitle { font-size: 14px; color: #2d6a4f; font-weight: 600; margin-bottom: 24px; }
-        .form-group { display: flex; flex-direction: column; text-align: left; margin-bottom: 16px; }
-        label { font-size: 13px; font-weight: 700; color: #2d6a4f; margin-bottom: 6px; }
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1b4332;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #2d6a4f;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #2d6a4f;
+            margin-bottom: 6px;
+        }
         select {
             padding: 10px 12px;
             border-radius: 10px;
@@ -41,7 +65,9 @@
             color: #1b2621;
             outline: none;
         }
-        select:focus { border-color: #2d6a4f; }
+        select:focus {
+            border-color: #2d6a4f;
+        }
         .btn-submit {
             width: 100%;
             margin-top: 10px;
@@ -59,28 +85,81 @@
             justify-content: center;
             gap: 8px;
         }
-        .btn-submit:hover { background: #1b4332; }
-        .info-redirect { margin-top: 15px; font-size: 12px; color: #52796f; }
+        .btn-submit:hover {
+            background: #1b4332;
+        }
+        .info-redirect {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #52796f;
+            display: none;
+        }
         /* CSS Modal Peringatan */
         .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-color: rgba(0, 0, 0, 0.65);
-            display: none;
-            justify-content: center; align-items: center;
-            z-index: 9999; padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
         }
         .modal-box {
-            background: #ffffff; padding: 24px; border-radius: 16px;
-            max-width: 440px; width: 100%; text-align: center;
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 16px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
-        .modal-box h2 { color: #d32f2f; font-size: 18px; margin-bottom: 12px; }
-        .modal-box p { font-size: 13px; color: #333333; line-height: 1.5; margin-bottom: 20px; }
-        .modal-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-        .btn-accept { background: #2d6a4f; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; }
-        .btn-accept:hover { background: #1b4332; }
-        .btn-exit { background: #d32f2f; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; }
-        .btn-exit:hover { background: #9a0007; }
+        .modal-box h2 {
+            color: #d32f2f;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .modal-box p {
+            font-size: 13px;
+            color: #333333;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-accept {
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn-accept:hover {
+            background: #1b4332;
+        }
+        .btn-exit {
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn-exit:hover {
+            background: #9a0007;
+        }
     </style>
 </head>
 <body>
@@ -113,7 +192,7 @@
         <div class="form-group">
             <label for="periodeSelect"><i class="fa-solid fa-calendar-days"></i> Pilih Periode</label>
             <select id="periodeSelect">
-                <option value="2026-09">September 2026</option>
+                <option value="2026-09" selected>September 2026</option>
                 <option value="2026-08">Agustus 2026</option>
                 <option value="2026-07">Juli 2026</option>
             </select>
@@ -122,32 +201,17 @@
         <button class="btn-submit" onclick="bukaLaporan()">
             Buka Laporan <i class="fa-solid fa-arrow-right"></i>
         </button>
+
         <p class="info-redirect" id="redirectStatus">
-            <i class="fa-solid fa-spinner fa-spin"></i> Mengarahkan ke periode terbaru...
+            <i class="fa-solid fa-spinner fa-spin"></i> Mengarahkan ke laporan...
         </p>
     </div>
 
     <script>
-        const PERIODE_TERBARU = "2026-09"; // Diperbarui ke September 2026
-        document.getElementById("periodeSelect").value = PERIODE_TERBARU;
-        document.getElementById("redirectStatus").style.display = "none";
-
         const modal = document.getElementById("warningModal");
-        modal.style.display = "flex";
-
-        function lanjutKePeriodeTerbaru() {
-            const unit = document.getElementById("unitSelect").value;
-            const periode = document.getElementById("periodeSelect").value;
-            if (unit === "sukoharjo") {
-                window.location.assign(`./${periode}/index.html`);
-            } else {
-                window.location.assign(`../${unit}/${periode}/index.html`);
-            }
-        }
 
         function closeModal() {
             modal.style.display = "none";
-            lanjutKePeriodeTerbaru();
         }
 
         function keluarLaman() {
@@ -155,7 +219,16 @@
         }
 
         function bukaLaporan() {
-            lanjutKePeriodeTerbaru();
+            const unit = document.getElementById("unitSelect").value;
+            const periode = document.getElementById("periodeSelect").value;
+            
+            document.getElementById("redirectStatus").style.display = "block";
+
+            if (unit === "sukoharjo") {
+                window.location.assign(`./${periode}/index.html`);
+            } else {
+                window.location.assign(`../${unit}/${periode}/index.html`);
+            }
         }
     </script>
 </body>
