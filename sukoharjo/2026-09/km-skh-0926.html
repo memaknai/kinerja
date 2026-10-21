@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Analisis Kinerja Sukoharjo · Sep 2026 (NKO 105,38)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f4ef;--sf:#fff;--tx:#1b2433;--mu:#667085;--ln:#e4e0d6;--nv:#14233f;--ac:#b08d3c;--ok:#2e7d5b;--wr:#c98a1b;--cr:#b4382f;--okb:#e3f1ea;--wrb:#fbefd6;--crb:#f8e1de;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1522;--sf:#162033;--tx:#e8ebf2;--mu:#9aa5b8;--ln:#27344d;--nv:#0a1220;--ac:#d4b25f;--ok:#5cc49a;--wr:#e5b04d;--cr:#ee7c72;--okb:#14352a;--wrb:#3a2d12;--crb:#3d1c19;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1522;--sf:#162033;--tx:#e8ebf2;--mu:#9aa5b8;--ln:#27344d;--nv:#0a1220;--ac:#d4b25f;--ok:#5cc49a;--wr:#e5b04d;--cr:#ee7c72;--okb:#14352a;--wrb:#3a2d12;--crb:#3d1c19;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.65 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+header{background:var(--nv);color:#f3efe3;padding:56px 0 44px;border-bottom:3px solid var(--ac)}
+header .e{letter-spacing:.18em;font-size:11px;text-transform:uppercase;color:#d4b25f}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.2}
+h1{font-size:clamp(28px,5vw,44px);margin:10px 0 8px;color:#fff}
+header p{margin:0;color:#c9d0de;max-width:640px}
+h2{font-size:26px;margin:52px 0 6px}
+h2+p.s{color:var(--mu);margin:0 0 20px}
+.k{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:-30px}
+.c{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:16px 18px}
+.k .c b{display:block;font:700 30px 'Playfair Display',Georgia,serif;color:var(--nv)}
+:root[data-theme="dark"] .k .c b{color:var(--ac)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .k .c b{color:var(--ac)}}
+.k .c span{font-size:12px;color:var(--mu)}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.f{border-left:4px solid var(--ac)}.f.cr{border-color:var(--cr)}.f.wr{border-color:var(--wr)}.f.ok{border-color:var(--ok)}
+.f h3{font-size:17px;margin:0 0 6px}.f p{margin:6px 0;font-size:14px}
+.tg{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px}
+.tg.cr{background:var(--crb);color:var(--cr)}.tg.wr{background:var(--wrb);color:var(--wr)}.tg.ok{background:var(--okb);color:var(--ok)}
+.ts{overflow-x:auto;border:1px solid var(--ln);border-radius:10px;background:var(--sf)}
+table{border-collapse:collapse;width:100%;min-width:860px;font-size:13px}
+th{background:var(--nv);color:#f3efe3;text-align:left;font-weight:500;padding:10px;font-size:11.5px;letter-spacing:.04em}
+td{padding:8px 10px;border-top:1px solid var(--ln);vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.gh td{background:color-mix(in srgb,var(--ac) 14%,var(--sf));font-weight:600;font-family:'Playfair Display',Georgia,serif;font-size:14px}
+td.nt{color:var(--mu);font-size:12px;min-width:200px}
+.bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+.bar i{flex:0 0 190px;font-style:normal}.bar div{height:14px;border-radius:3px;background:var(--cr)}.bar b{font-variant-numeric:tabular-nums;min-width:44px}
+.sp svg{width:100%;height:auto}.sp h3{font-size:15px;margin:0 0 2px}.sp small{color:var(--mu)}
+ol.r{padding-left:20px}ol.r li{margin:10px 0}
+footer{margin:56px 0 40px;font-size:12.5px;color:var(--mu);border-top:1px solid var(--ln);padding-top:18px}
+@media(max-width:600px){.bar i{flex-basis:120px}}
+</style>
+</head>
+<body>
+<header><div class="w">
+<div class="e">Analisis Monitoring Kinerja · Realisasi Kumulatif Jan–Sep 2026</div>
+<h1>Kinerja Tahun 2026 — Sukoharjo</h1>
+<p>NKO September <b>105,38</b>. Skor sudah di atas 100, tetapi telaah kritis menunjukkan dari mana skor itu dibangun, di mana poin masih bocor, dan apa yang perlu dijaga di triwulan IV.</p>
+</div></header>
+<div class="w">
+<div class="k">
+<div class="c"><b>105,38</b><span>NKO resmi Sep 2026</span></div>
+<div class="c"><b id="n-ok">–</b><span>Indikator Baik</span></div>
+<div class="c"><b id="n-wr">–</b><span>Hati-hati</span></div>
+<div class="c"><b id="n-cr">–</b><span>Masalah</span></div>
+<div class="c"><b id="leak">–</b><span>Poin bocor (di bawah bobot)</span></div>
+<div class="c"><b id="bonus">–</b><span>Poin bonus (di atas bobot)</span></div>
+</div>
+
+<h2>Ringkasan Eksekutif</h2>
+<p class="s">Pesan utama untuk pengambil keputusan.</p>
+<div class="c f">
+<p><b>Capaian 105,38 kuat, tetapi sebagian besar “dibeli” oleh kelebihan capaian.</b> Seluruh indikator dijumlahkan di atas bobot 100, namun skor ini mengandung ±<span id="b2">–</span> poin bonus dari indikator yang melampaui bobot (batas 110%) dan ±<span id="l2">–</span> poin yang bocor di empat indikator. Tanpa bonus, skor dasar hanya ±99. Jadi margin di atas 100 tipis dan bergantung pada indikator yang tetap di batas atas, terutama penjualan (+1,40 poin).</p>
+<p><b>Tiga hal menentukan Q4:</b> (1) susut 6,39% yang stagnan di atas target (bocor 0,52 poin, separuh dari seluruh kebocoran), (2) gangguan TM yang kembali naik tiga bulan terakhir menjelang musim hujan, dan (3) NAC yang melonjak di September hingga menjadi satu-satunya indikator “Masalah”.</p>
+</div>
+
+<h2>Skor per Kelompok Indikator</h2>
+<p class="s">Skor resmi vs bobot. Kelompok di bawah bobot ditandai merah.</p>
+<div class="c" id="grp"></div>
+
+<h2>Temuan Kritis</h2>
+<p class="s">Diurutkan menurut kebocoran poin dan urgensi waktu.</p>
+<div class="g2">
+<div class="c f cr"><span class="tg cr">Prioritas 1 · −0,52 poin</span><h3>Susut distribusi stagnan di atas target</h3>
+<p>Realisasi 6,39% vs target 6,07% (selisih 0,32 poin persen), capaian 96%. Bobot 12 menjadikannya kebocoran terbesar. Sejak Maret naik dari 5,86% ke puncak 6,76% (Mei), lalu mendatar ±6,4% sepanjang Juli–September.</p>
+<p><b>Kritik:</b> P2TL melampaui target (8,79 juta kWh, capaian 110%) dan ganti meter berjalan baik, namun susut tidak turun. Hasil penertiban tampaknya tercatat sebagai pendapatan temuan, belum menurunkan susut struktural. Perlu dekomposisi susut teknis vs non-teknis per penyulang/trafo.</p></div>
+
+<div class="c f cr"><span class="tg cr">Prioritas 2 · −0,24 poin</span><h3>NAC: satu-satunya indikator “Masalah”</h3>
+<p>Capaian 76%. Realisasi Rp 11.440,90 juta, hampir menyentuh pagu tahunan Rp 11.666,05 juta (sisa Rp 225 juta). Pola bertahap: nol Januari–Mei, Rp 6.529,67 juta sejak Juni, lalu +Rp 4.911 juta hanya di September (+75%).</p>
+<p><b>Kritik:</b> bobot kecil (1), tetapi dengan sisa pagu 1,9% untuk tiga bulan, tambahan biaya apa pun di Q4 berisiko melewati SKAO. Perlu pengendalian komitmen ketat dan konfirmasi SKAO terbit.</p></div>
+
+<div class="c f wr"><span class="tg wr">Prioritas 3 · −0,24 poin</span><h3>Gangguan TM kembali naik</h3>
+<p>888 kali (78,6% dari target tahunan 1.130), capaian 95%: sekitar 5% di atas batas berjalan. Gangguan bulanan Juli–September naik berturut-turut: 46 → 55 → 70 (+52%), setelah sempat turun dari puncak Maret (179).</p>
+<p><b>Risiko:</b> Q4 adalah musim hujan. Dengan laju Q3 proyeksi akhir ±1.059 (94% target tahunan), tetapi tren naik dapat menggerus bantalan itu.</p></div>
+
+<div class="c f wr"><span class="tg wr">Pantau · −0,05 poin</span><h3>Efektivitas pemeliharaan, MVOD, saldo</h3>
+<p><b>Efektivitas pemeliharaan</b> 97,7% (capaian 98%), di bawah 100 sejak Juli. <b>MVOD</b> turun empat bulan beruntun dari batas 110 (Jan–Mei) ke 104,9; masih Baik, arah menurun. <b>Saldo rata-rata</b> (polaritas 1) naik dua bulan: 12.275 → 12.292 → 12.322 juta; ruang di bawah target 12.390 menyusut dari Rp 115 juta ke Rp 68 juta, dan bisa terlampaui Desember bila tren +30 juta/bulan berlanjut.</p></div>
+
+<div class="c f ok"><span class="tg ok">Kekuatan</span><h3>Pertumbuhan komersial dan keandalan</h3>
+<p>Penjualan 114,64 GWh (skor 15,40 vs bobot 14), pelanggan baru 16.722, pendapatan biaya penyambungan Rp 50,74 miliar, P2TL 8,79 juta kWh. SAIDI 107%, SAIFI 109%, ENS 110% (di batas atas). Response time gangguan 21,9 menit (target 30).</p></div>
+
+<div class="c f"><span class="tg" style="background:var(--wrb);color:var(--wr)">Kualitas target &amp; data</span><h3>Target longgar, anomali, dan data belum lengkap</h3>
+<p><span id="n110">–</span> indikator berada di batas 110%: bonus tambahan tidak bernilai dan menandakan target yang kurang menantang (contoh: auto dispatch 28,32% vs target 13,43%; daya tersambung 47,47 MVA = 2,84 kVA/pelanggan vs 1,33 tersirat dalam target 28,54 MVA).</p>
+<p>Aset RUPTL JTM: 64% realisasi masuk di September (+23,77 kms) setelah nol Januari–Maret, pola penumpukan di akhir periode. “Fisik investasi” konstan 100 sejak Januari dan auto dispatch datar Agustus–September: perlu validasi. KPI 13 kosong (eksposur pengurang hingga −9 poin), label “#NAME?” pada empat baris, dan simbol Σ pada rumus terbaca “?”.</p></div>
+</div>
+
+<h2>Tren Indikator Sorotan</h2>
+<p class="s">Garis putus-putus = target (gangguan TM: rata-rata batas bulanan tahunan).</p>
+<div class="g2" id="spk"></div>
+
+<h2>Scorecard Lengkap (Nilai Resmi)</h2>
+<p class="s">Skor dan capaian berasal dari berkas. Proyeksi = realisasi + laju Q3 (Jul–Sep) × 3 bulan terhadap target tahunan, bersifat indikatif.</p>
+<div class="ts"><table><thead><tr><th>Indikator</th><th class="n">Bobot</th><th class="n">Target</th><th class="n">Real. Sep</th><th class="n">Real/Target</th><th class="n">Skor</th><th class="n">Capaian</th><th class="n">Proyeksi Des</th><th>Status</th><th>Catatan</th></tr></thead><tbody id="tb"></tbody></table></div>
+
+<h2>Rekomendasi Prioritas Q4</h2>
+<p class="s">Urutan berdasarkan kebocoran poin dan sempitnya waktu.</p>
+<ol class="r">
+<li><b>Bedah susut (Okt–Nov).</b> Pisahkan susut teknis vs non-teknis per penyulang/trafo; arahkan P2TL dan ganti meter ke area susut tertinggi, bukan sekadar mengejar kWh temuan. Menurunkan susut ke ≤6,07% mengamankan 0,52 poin.</li>
+<li><b>Kunci NAC.</b> Tahan komitmen baru, pastikan SKAO terbit sebelum biaya diakui, dan persetujuan berjenjang untuk sisa Rp 225 juta.</li>
+<li><b>Tekan gangguan TM sebelum puncak hujan.</b> Pemangkasan pohon, inspeksi termovisi, dan kesiapan recloser/PDKB di penyulang dengan gangguan tertinggi Juli–September; pantau mingguan terhadap batas berjalan.</li>
+<li><b>Jaga bonus dan batas bawah.</b> Pertahankan penjualan, SAIDI/SAIFI/ENS (bantalan tahunan tipis: SAIDI ±1 menit, SAIFI ±0,03), MVOD, efektivitas pemeliharaan, dan saldo rata-rata (Rp 68 juta).</li>
+<li><b>Validasi data.</b> Periksa nilai konstan (fisik investasi, auto dispatch, MTTR), postingan EAM bulanan agar tidak menumpuk, dan lengkapi KPI 13 agar eksposur pengurang terlihat.</li>
+<li><b>Kalibrasi target 2027.</b> Naikkan target indikator yang jenuh di 110% (auto dispatch, daya tersambung, pelunasan PRR, JTM, transaksi PLN Mobile).</li>
+</ol>
+
+<footer><b>Metodologi &amp; keterbatasan.</b> Skor, capaian, dan status diambil langsung dari kolom NILAI berkas km-0926_1.csv (NKO 105,38). Target berjalan bertahap yang dipakai perhitungan resmi tidak tercantum, sehingga proyeksi akhir tahun terhadap target tahunan hanya indikatif dan tidak memperhitungkan musim hujan atau kejadian luar biasa. “Poin bocor” = bobot − skor pada indikator di bawah bobot; “poin bonus” = NKO − 100 + poin bocor. Komponen pengurang KPI 13 tidak terisi sehingga tidak tercermin di NKO.</footer>
+</div>
+
+<script>
+// [grup,nama,bobot,target,real,proyeksi,skor,capaian,status,catatan]
+const G=["1 · Penjualan Tenaga Listrik","2 · Susut Distribusi","3 · Keandalan Penyaluran","4 · Eksekusi RUPTL & Investasi","5 · Percepatan Penyambungan","6 · Pelayanan Pelanggan","7 · Keandalan JTM","8 · Emergency Response Time","9 · Management Cash In","10 · Pengendalian Anggaran","11 · Transaksi Energi","12 · Digitalisasi"];
+const GS=[[15.40,14],[11.48,12],[12.97,12],[10.50,10],[10.88,10],[8.80,8],[6.96,7],[6.40,6],[6.21,6],[5.16,5],[6.51,6],[4.12,4]];
+const D=[
+[0,"Penjualan tenaga listrik (GWh)",14,129.5,114.64,158.59,15.40,110,"Baik","Sep +19,7 GWh, bulan terkuat setelah Maret"],
+[1,"Susut distribusi tanpa E-min (%)",12,6.07,6.39,null,11.48,96,"Hati-hati","Puncak 6,76% (Mei); mendatar ±6,4% sejak Juli"],
+[2,"SAIDI (menit/plg)",5,60.67,42.46,59.66,5.33,107,"Baik","Bantalan akhir tahun ±1 menit"],
+[2,"SAIFI (kali/plg)",5,0.92,0.63,0.89,5.43,109,"Baik","Bantalan ±0,03 kali"],
+[2,"ENS (MWh)",2,217.32,122.34,176.93,2.20,110,"Baik","Proyeksi 81% pagu"],
+[3,"Aset RUPTL JTM (kms)",1.67,19.01,36.9,null,1.83,110,"Baik","64% masuk di September"],
+[3,"Aset RUPTL JTR (kms)",1.67,22.41,20.67,29.44,1.83,110,"Baik","Kurang 1,74 kms dari target tahunan"],
+[3,"Aset RUPTL Trafo (MVA)",1.67,6.77,5.92,8.84,1.83,110,"Baik","Kurang 0,85 MVA dari target tahunan"],
+[3,"Penyelesaian fisik investasi (%)",5,100,100,null,5.00,100,"Baik","Konstan 100 sejak Januari; validasi"],
+[4,"Penambahan pelanggan",0.5,21420,16722,22571,0.55,110,"Baik","Kurang 4.698"],
+[4,"Penambahan daya tersambung (MVA)",1.5,28.54,47.47,62.38,1.65,110,"Baik","Target diduga keliru"],
+[4,"Pendapatan biaya penyambungan (Rp M)",2,46.93,50.74,67.98,2.20,110,"Baik","Sudah melampaui target tahunan"],
+[4,"Pelanggan Lisdes",4,9,9,9,4.40,110,"Baik","Tuntas sejak Feb; bobot 4"],
+[4,"kWh penjualan Lisdes",2,3212,1831,3048,2.08,104,"Baik","Proyeksi 95% target tahunan"],
+[5,"Feedback negatif PLN Mobile (kali)",2,60,28,35,2.20,110,"Baik","Membaik sejak Juli"],
+[5,"Response time gangguan (menit)",2,30,21.86,null,2.20,110,"Baik","Margin 27% di bawah target"],
+[5,"Success rate auto dispatch (%)",2,13.43,28.32,null,2.20,110,"Baik","Target longgar; datar Agu–Sep"],
+[5,"Transaksi PLN Mobile (ribu kali)",1.2,291,400,573,1.32,110,"Baik","137% target tahunan"],
+[5,"Rupiah transaksi PLN Mobile (Rp M)",0.8,52,64,86,0.88,110,"Baik","123% target tahunan"],
+[6,"Gangguan TM (kali)",5,1130,888,1059,4.76,95,"Hati-hati","Jul–Sep naik: 46 → 55 → 70"],
+[6,"Kerusakan peralatan distribusi (unit)",2,37,24,34,2.20,110,"Baik","Naik 5 &amp; 4 unit pada Agu/Sep"],
+[7,"MVOD (%)",4,100,104.9,null,4.20,105,"Baik","Turun 4 bulan beruntun dari 110"],
+[7,"MTTR Siaga 1 TM (%)",2,100,110,null,2.20,110,"Baik","Stabil di batas atas"],
+[8,"Saldo rata-rata akhir bulan (Rp juta)",2,12390,12322.35,null,2.01,101,"Baik","Bantalan tinggal Rp 68 juta; tren naik"],
+[8,"Pelunasan PRR, Ex-PRR, piutang prabayar (Rp juta)",2,144,240.93,300.79,2.20,110,"Baik","167% target tahunan"],
+[8,"Usulan penghapusan PRR",2,0.02,0,null,2.00,100,"Baik","Sem I tuntas; Sem II (usulan 2027) tercatat 0"],
+[9,"Penggunaan anggaran investasi (%)",2,"95–100",100,null,2.20,110,"Baik","Dalam rentang (Agu 97,82)"],
+[9,"Usulan penghapusan ATTB (Rp juta)",2,2466,878.69,null,2.20,110,"Baik","Tanpa progres sejak Juni"],
+[9,"Pengendalian NAC (Rp juta)",1,11666.05,11440.9,null,0.76,76,"Masalah","Sisa Rp 225 juta; +4.911 juta di Sep"],
+[10,"Perolehan kWh P2TL",3,8211915,8788008,12040156,3.30,110,"Baik","Lonjakan Juni +2,83 juta kWh"],
+[10,"Penyelesaian ganti meter (unit)",2,10347,9468,12835,2.20,110,"Baik","Laju stabil ±1.100/bln"],
+[10,"Tindak lanjut LBKB (%)",1,99,100,null,1.01,101,"Baik","Terisi sejak Juli"],
+[11,"Pengembangan aset distribusi (%)",2,100,108.53,null,2.17,109,"Baik","Naik sejak Juni"],
+[11,"Efektivitas pemeliharaan (%)",2,100,97.7,null,1.95,98,"Hati-hati","Di bawah 100 sejak Juli"]
+];
+const fm=x=>typeof x=="string"?x:x==null?"—":x.toLocaleString("id-ID",{maximumFractionDigits:Math.abs(x)>=1000?0:2});
+const cs={Baik:"ok","Hati-hati":"wr",Masalah:"cr"};
+let cnt={Baik:0,"Hati-hati":0,Masalah:0},leak=0,n110=0,h="",lg=-1;
+D.forEach(d=>{const [g,n,w,T,R,P,sk,cp,st,nt]=d;
+ cnt[st]++;if(sk<w-0.004)leak+=w-sk;if(cp>=110)n110++;
+ const ra=typeof T=="number"?fm(R/T*100)+"%":"—";
+ const pj=P==null?"—":fm(P)+" ("+fm(P/T*100)+"%)";
+ if(g!=lg){h+=`<tr class="gh"><td colspan="10">${G[g]} · skor ${GS[g][0].toFixed(2).replace(".",",")} / bobot ${GS[g][1]}</td></tr>`;lg=g}
+ h+=`<tr><td>${n}</td><td class="n">${w}</td><td class="n">${fm(T)}</td><td class="n">${fm(R)}</td><td class="n">${ra}</td><td class="n"><b>${sk.toFixed(2).replace(".",",")}</b></td><td class="n">${cp}%</td><td class="n">${pj}</td><td><span class="tg ${cs[st]}">${st}</span></td><td class="nt">${nt}</td></tr>`});
+document.getElementById("tb").innerHTML=h;
+const lk=leak.toFixed(2).replace(".",","),bn=(105.38-100+leak).toFixed(2).replace(".",",");
+const $=i=>document.getElementById(i);
+$("n-ok").textContent=cnt.Baik;$("n-wr").textContent=cnt["Hati-hati"];$("n-cr").textContent=cnt.Masalah;
+$("leak").textContent=lk;$("bonus").textContent=bn;$("b2").textContent=bn;$("l2").textContent=lk;$("n110").textContent=n110+" dari "+D.length;
+$("grp").innerHTML=GS.map((s,i)=>{const r=s[0]/s[1],c=r<1?"var(--cr)":"var(--ok)";return `<div class="bar"><i>${G[i]}</i><div style="width:${Math.min(r,1.15)/1.15*50}%;background:${c}"></div><b>${s[0].toFixed(2).replace(".",",")} / ${s[1]}</b></div>`}).join("");
+const sp=(t,sub,a,tg,fmt)=>{
+ const lo=Math.min(...a,tg),hi=Math.max(...a,tg),p=(hi-lo)*.15||1,y=v=>100-(v-lo+p)/(hi-lo+2*p)*90,x=i=>20+i*(260/8);
+ const pts=a.map((v,i)=>x(i)+","+y(v)).join(" "),m="JFMAMJJAS";
+ return `<div class="c sp"><h3>${t}</h3><small>${sub}</small><svg viewBox="0 0 300 120"><line x1="20" x2="280" y1="${y(tg)}" y2="${y(tg)}" stroke="var(--ac)" stroke-dasharray="4 3"/><polyline points="${pts}" fill="none" stroke-width="2" style="stroke:var(--tx)"/>${a.map((v,i)=>`<circle cx="${x(i)}" cy="${y(v)}" r="2.5" fill="var(--cr)"/><text x="${x(i)}" y="116" font-size="8" text-anchor="middle" fill="var(--mu)">${m[i]}</text>`).join("")}<text x="280" y="${y(a[8])-6}" font-size="9" text-anchor="end" fill="var(--tx)">${fmt(a[8])}</text></svg></div>`};
+$("spk").innerHTML=
+ sp("Susut distribusi (%)","Target 6,07; Sep 6,39",[5.86,5.87,6.3,6.39,6.76,6.42,6.41,6.41,6.39],6.07,v=>v)+
+ sp("Gangguan TM per bulan (kali)","Batas rata-rata bulanan ±94; Jul–Sep naik",[70,86,179,144,143,95,46,55,70],94.2,v=>v)+
+ sp("MVOD (%)","Target 100; terkikis dari batas 110",[110,110,110,110,110,106.75,106.68,106.15,104.9],100,v=>v)+
+ sp("Saldo rata-rata (Rp juta)","Target 12.390; makin rendah makin baik",[12308.11,12296.54,12302.68,12298.61,12294.55,12280.58,12275.06,12292.07,12322.35],12390,v=>fm(v));
+</script>
+</body>
+</html>
