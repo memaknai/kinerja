@@ -1,0 +1,703 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Analisis Piutang Sukoharjo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: lembar laporan satu kolom lebar 1120px; masthead, nav lengket, lalu bagian bernomor menurut alur analisis (ringkasan, skor, peringkat, komposisi, segmen, penagihan, risiko, data, aksi). */
+:root{
+  --bg:#f2f5f7; --surface:#ffffff; --surface-2:#e9eef2;
+  --ink:#0d1b26; --ink-2:#445666; --ink-3:#5b6c7a;
+  --line:#d5dde3;
+  --accent:#0a6a93; --accent-soft:#dbeaf2; --accent-ink:#ffffff;
+  --prev:#8b9eae;
+  --hero-1:#052f45; --hero-2:#0a5c82; --hero-3:#0e7894;
+  --hero-ink:#ffffff; --hero-ink-2:#cfe6f0; --hero-accent:#f5c518;
+  --hero-chip:rgba(255,255,255,.12); --hero-line:rgba(255,255,255,.24);
+  --good:#1c7a4b; --good-soft:#dcf0e5;
+  --warn:#a65f00; --warn-soft:#fbebd0;
+  --bad:#b3261e; --bad-soft:#f8dedb;
+  --font-display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e161c; --surface:#151f27; --surface-2:#1d2a34;
+    --ink:#e8eef2; --ink-2:#aebdc9; --ink-3:#8c9dab;
+    --line:#2a3944;
+    --accent:#4db3e0; --accent-soft:#16384a; --accent-ink:#06202d;
+    --prev:#6c8090;
+    --hero-1:#061a26; --hero-2:#0c3a52; --hero-3:#0e5f78;
+    --hero-ink:#ffffff; --hero-ink-2:#bfd8e4; --hero-accent:#f5c518;
+    --hero-chip:rgba(255,255,255,.10); --hero-line:rgba(255,255,255,.20);
+    --good:#4cc38a; --good-soft:#143627;
+    --warn:#e3a43f; --warn-soft:#3b2d12;
+    --bad:#f0786f; --bad-soft:#40201e;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e161c; --surface:#151f27; --surface-2:#1d2a34;
+  --ink:#e8eef2; --ink-2:#aebdc9; --ink-3:#8c9dab;
+  --line:#2a3944;
+  --accent:#4db3e0; --accent-soft:#16384a; --accent-ink:#06202d;
+  --prev:#6c8090;
+    --hero-1:#061a26; --hero-2:#0c3a52; --hero-3:#0e5f78;
+    --hero-ink:#ffffff; --hero-ink-2:#bfd8e4; --hero-accent:#f5c518;
+    --hero-chip:rgba(255,255,255,.10); --hero-line:rgba(255,255,255,.20);
+  --good:#4cc38a; --good-soft:#143627;
+  --warn:#e3a43f; --warn-soft:#3b2d12;
+  --bad:#f0786f; --bad-soft:#40201e;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--font-body); font-size:15px; line-height:1.6;
+  padding-block:0 56px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-text-size-adjust:100%;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--hero-1)}
+.wrap{max-width:1120px;margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* masthead: pita penuh selebar layar, gradien biru kelistrikan dengan aksen kuning dan tiga angka kunci */
+.hero{
+  margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));
+  margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  padding-block:44px 34px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  color:var(--hero-ink);
+  background:
+    radial-gradient(circle at 88% 12%,rgba(255,255,255,.13),transparent 42%),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px),
+    linear-gradient(120deg,var(--hero-1),var(--hero-2) 58%,var(--hero-3));
+  border-bottom:4px solid var(--hero-accent);
+}
+.hero .in{max-width:1120px;margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--hero-ink-2);font-weight:600;margin:0 0 10px}
+.eyebrow::before{content:"";display:block;width:44px;height:4px;border-radius:2px;background:var(--hero-accent);margin-bottom:14px}
+h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,4.6vw,44px);line-height:1.12;margin:0 0 12px;text-wrap:balance;letter-spacing:-.01em;color:var(--hero-ink);max-width:22ch}
+.sub{color:var(--hero-ink-2);max-width:68ch;margin:0 0 22px;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}
+.chip{background:var(--hero-chip);border:1px solid var(--hero-line);border-radius:8px;padding:9px 15px;min-width:0}
+.chip b{display:block;font-family:var(--font-display);font-size:22px;line-height:1.15;font-weight:700;font-variant-numeric:tabular-nums;color:var(--hero-ink)}
+.chip span{display:block;font-size:12px;color:var(--hero-ink-2)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:var(--hero-ink-2)}
+.meta b{color:var(--hero-ink);font-weight:600}
+
+/* nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.top .in{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.top a{white-space:nowrap;text-decoration:none;color:var(--ink-2);font-size:13px;font-weight:500;padding:6px 11px;border-radius:6px}
+nav.top a:hover{background:var(--surface-2);color:var(--ink)}
+
+section{padding-top:44px;scroll-margin-top:60px}
+h2{font-family:var(--font-display);font-size:clamp(22px,3vw,28px);line-height:1.2;margin:0 0 6px;text-wrap:balance;font-weight:700}
+.lead{color:var(--ink-2);max-width:72ch;margin:0 0 22px}
+h3{font-size:15px;margin:0 0 8px;font-weight:600}
+p{margin:0 0 12px}
+.small{font-size:13px;color:var(--ink-3)}
+
+/* verdict + kpis */
+.verdict{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.good{background:var(--good-soft);color:var(--good)}
+.pill.neutral{background:var(--surface-2);color:var(--ink-2)}
+.verdict h3{font-family:var(--font-display);font-size:21px;line-height:1.3;margin:10px 0 12px;font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.kpi .l{font-size:12px;color:var(--ink-3);font-weight:500;margin:0 0 4px}
+.kpi .v{font-family:var(--font-display);font-size:28px;line-height:1.1;font-weight:700;font-variant-numeric:tabular-nums;margin:0}
+.kpi .v small{font-size:14px;font-weight:600;font-family:var(--font-body);color:var(--ink-2)}
+.kpi .d{font-size:12.5px;color:var(--ink-2);margin:6px 0 0}
+.kpi .d b{font-weight:600}
+.up-bad{color:var(--bad)} .up-good{color:var(--good)} .up-warn{color:var(--warn)}
+
+.findings{margin:22px 0 0;display:grid;gap:10px;padding:0;list-style:none;counter-reset:f}
+.findings li{counter-increment:f;display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.findings li::before{content:counter(f);font-family:var(--font-mono);font-size:13px;color:var(--accent);background:var(--accent-soft);width:28px;height:28px;border-radius:6px;display:grid;place-items:center}
+.findings b{font-weight:600}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);font-weight:600;background:var(--surface-2);white-space:nowrap}
+td.n,th.n{text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tr.hl td{background:var(--accent-soft);font-weight:600}
+tr.tot td{font-weight:600;background:var(--surface-2)}
+td .sub-l{display:block;font-size:12px;color:var(--ink-3);font-weight:400}
+
+/* charts */
+.charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;min-width:0}
+.chart.full{grid-column:1/-1}
+.chart h3{margin:0 0 2px}
+.chart .cap{font-size:12.5px;color:var(--ink-3);margin:0 0 14px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink-2);margin:0 0 12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.row{display:grid;grid-template-columns:minmax(92px,150px) minmax(0,1fr) auto;gap:10px;align-items:center;padding:3px 0}
+.row .lb{font-size:13px;color:var(--ink-2);min-width:0}
+.row .lb.hl{color:var(--ink);font-weight:600}
+.row .val{font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--ink);min-width:54px;text-align:right}
+.track{position:relative;height:16px;background:transparent}
+.bar{height:100%;border-radius:0 4px 4px 0;min-width:2px;background:var(--prev)}
+.bar.acc{background:var(--accent)}
+.bar.out{background:transparent;border:1.5px dashed var(--ink-3);border-left-width:0}
+.bar.neg{background:var(--ink-3)}
+.pairs .grp{padding:7px 0;border-top:1px solid var(--line)}
+.pairs .grp:first-of-type{border-top:0}
+.pairs .gl{font-size:13px;font-weight:600;margin:0 0 3px}
+.pairs .sl{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:8px;align-items:center;padding:2px 0}
+.pairs .sl span.t{font-size:11.5px;color:var(--ink-3)}
+.tip{position:fixed;z-index:50;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.4;padding:7px 10px;border-radius:6px;max-width:260px}
+
+/* segment cards */
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;min-width:0}
+.card header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center;margin-bottom:10px}
+.card h3{font-family:var(--font-display);font-size:18px;margin:0}
+.card ul{margin:8px 0 0;padding-left:18px}
+.card li{margin-bottom:5px}
+.stat{display:flex;flex-wrap:wrap;gap:6px 22px;margin:4px 0 10px}
+.stat div{min-width:0}
+.stat .k{font-size:11.5px;color:var(--ink-3);display:block}
+.stat .x{font-family:var(--font-mono);font-size:13.5px;font-weight:500}
+
+.note{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0 0;font-size:14px}
+.note.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.note b{font-weight:600}
+
+/* actions */
+.plan{display:grid;gap:12px}
+.act{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.act .when{font-size:12px;color:var(--ink-3);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.act .when b{display:block;font-family:var(--font-display);font-size:17px;color:var(--ink);text-transform:none;letter-spacing:0;margin-top:2px}
+.act ul{margin:6px 0 0;padding-left:18px}
+.act li{margin-bottom:4px}
+.tgt{font-size:13px;color:var(--ink-2);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+footer p{max-width:90ch}
+code{font-family:var(--font-mono);font-size:12.5px;background:var(--surface-2);padding:1px 5px;border-radius:4px}
+
+@media (max-width:860px){
+  .verdict{grid-template-columns:minmax(0,1fr)}
+  .charts,.cards{grid-template-columns:minmax(0,1fr)}
+  .act{grid-template-columns:minmax(0,1fr);gap:6px}
+}
+@media (max-width:480px){
+  .kpi .v{font-size:24px}
+  .row{grid-template-columns:minmax(78px,104px) minmax(0,1fr) auto;gap:8px}
+  .panel,.chart,.card{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<header class="hero"><div class="in">
+  <p class="eyebrow">Monitoring Kinerja Piutang Listrik · UP3 Sukoharjo</p>
+  <h1>Piutang membesar 4,3%, kualitasnya memburuk lebih cepat</h1>
+  <p class="sub">Analisis realisasi September 2026 terhadap posisi Desember 2025, dengan fokus pada UP3 Sukoharjo dan perbandingannya dengan 12 UP3 lain di Jawa Tengah.</p>
+  <div class="chips">
+    <div class="chip"><b>Rp151,87 M</b><span>Piutang Sep 2026 · +4,30% dari Des</span></div>
+    <div class="chip"><b>25,47 hari</b><span>Hari piutang · peringkat 3 terburuk dari 12</span></div>
+    <div class="chip"><b>9,72%</b><span>Piutang bermasalah · Des 2025: 9,11%</span></div>
+  </div>
+  <div class="meta">
+    <span><b>Periode:</b> 1 Jan – 30 Sep 2026 (273 hari)</span>
+    <span><b>Pembanding:</b> posisi akhir Des 2025</span>
+    <span><b>Disusun:</b> 20 Oktober 2026</span>
+    <span><b>Sumber:</b> berkas monitoring piutang pelanggan</span>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+<nav class="top" aria-label="Navigasi bagian"><div class="in">
+  <a href="#ringkasan">Ringkasan</a><a href="#skor">Skor</a><a href="#peringkat">Peringkat</a><a href="#komposisi">Komposisi</a><a href="#segmen">Segmen</a><a href="#penagihan">Penagihan</a><a href="#risiko">Risiko</a><a href="#data">Kualitas data</a><a href="#aksi">Rekomendasi</a>
+</div></nav>
+
+<!-- ================= RINGKASAN ================= -->
+<section id="ringkasan">
+  <h2>Ringkasan eksekutif</h2>
+  <p class="lead">Angka saldo terlihat moderat. Yang perlu dibaca lebih kritis adalah isi saldonya: sisa tagihan yang sudah lewat jatuh tempo naik lebih cepat daripada saldo, dan hampir seluruhnya berasal dari dua kelompok yang bisa ditunjuk satu per satu.</p>
+
+  <div class="verdict">
+    <div class="panel">
+      <span class="pill warn">Status: waspada</span>
+      <h3>Saldo naik wajar, tetapi pemulihan tunggakan melemah dan hari piutang masih di atas pembanding.</h3>
+      <p>Saldo piutang pada tabel peringkat naik <b>Rp6,26 miliar (+4,30%)</b> menjadi Rp151,87 miliar. Kenaikan ini lebih rendah daripada rata-rata UP3 lain di luar Semarang (+4,94%). Namun hari piutang Sukoharjo <b>25,47 hari</b>, tertinggi ketiga dari 12 UP3 yang memiliki piutang.</p>
+      <p>Pada rincian per jenis rekening, piutang bermasalah (rekening berjalan ditambah tunggakan) naik <b>10,6%</b> menjadi Rp15,64 miliar, hampir tiga kali laju saldo total (+3,7%). Jumlah lembar tunggakan melonjak dari 341 menjadi 879.</p>
+      <p style="margin:0">Dua sumber masalahnya jelas: <b>33 pelanggan Umum</b> dengan tunggakan Rp14,02 miliar yang nyaris tidak bergerak, dan <b>pelanggan TNI/Polri</b> yang berhenti membayar rekening berjalan tepat waktu.</p>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><p class="l">Piutang Sep 2026 (basis peringkat)</p><p class="v">151,87 <small>M</small></p><p class="d">Des 2025: 145,61 M · <b class="up-warn">+4,30%</b></p></div>
+      <div class="kpi"><p class="l">Hari piutang (273 hari)</p><p class="v">25,47 <small>hari</small></p><p class="d">Peringkat <b class="up-bad">3 terburuk</b> dari 12 · gabungan 24,09 tanpa Yogyakarta</p></div>
+      <div class="kpi"><p class="l">Piutang bermasalah (rincian)</p><p class="v">15,64 <small>M</small></p><p class="d">9,72% saldo, Des 9,11% · <b class="up-bad">+10,6%</b></p></div>
+      <div class="kpi"><p class="l">Lembar tunggakan</p><p class="v">879</p><p class="d">Des 2025: 341 · <b class="up-bad">×2,6</b> · seluruh tambahan dari TNI/Polri</p></div>
+    </div>
+  </div>
+
+  <ol class="findings">
+    <li><div><b>Hari piutang di atas pembanding, dengan nilai kas yang bisa dihitung.</b> Setiap 1 hari piutang Sukoharjo setara Rp5,84 miliar penjualan. Selisih 1,38 hari terhadap gabungan tanpa Yogyakarta berarti Rp8,0 miliar kas tertahan, dan selisih 5,26 hari terhadap Purwokerto (20,21 hari, terbaik) berarti Rp30,7 miliar.</div></li>
+    <li><div><b>33 pelanggan Umum menahan 93% tunggakan.</b> Nilainya Rp14,02 miliar (rata-rata Rp425 juta per pelanggan), setara 8,7% seluruh saldo dan 2,4 hari penjualan. Nilainya hampir sama dengan awal Desember 2025 (Rp14,03 miliar). Yang berkurang hanya rekening kecil: jumlah lembar turun dari 171 ke 33 pada September, tetapi nilainya hanya turun Rp0,11 miliar.</div></li>
+    <li><div><b>TNI/Polri berubah dari pembayar baik menjadi sumber tunggakan baru.</b> Saldo naik 3,7 kali (Rp0,45 miliar menjadi Rp1,64 miliar), tunggakan dari 303 menjadi 846 lembar. Rekening berjalan yang terbayar turun dari 95,6% (Des) menjadi 13,2% (Sep) menurut nilai. Segmen ini hanya 1% saldo, tetapi menyumbang 20,8% kenaikan saldo.</div></li>
+    <li><div><b>Pemulihan tunggakan melemah tajam.</b> Pelunasan tunggakan bulan Sep hanya Rp214 juta (1,4% dari saldo awal tunggakan), turun 71% dari Rp738 juta pada Des (5,0%). Pelunasan total terhadap saldo awal bergeser dari 91,5% ke 89,6%.</div></li>
+    <li><div><b>Perbandingan dengan Desember agak memberatkan, tetapi arah bulanan mulai membaik.</b> Desember adalah titik rendah tunggakan (lembar tunggakan turun dari 1.010 ke 341 selama bulan itu). Dari Agustus ke September, tunggakan turun 1,6% (Rp15,34 menjadi Rp15,10 miliar) dan lembarnya dari 1.302 ke 879. Perbaikan ini belum terbukti berlanjut.</div></li>
+    <li><div><b>Data perlu direkonsiliasi sebelum dipakai untuk target.</b> Saldo pada tabel peringkat lebih rendah Rp9,7 miliar (Des) dan Rp9,2 miliar (Sep) daripada saldo pada rincian per segmen, dan tidak ada rincian umur piutang per pelanggan (lihat bagian Kualitas data).</div></li>
+  </ol>
+</section>
+
+<!-- ================= SKOR ================= -->
+<section id="skor">
+  <h2>Scorecard: Desember 2025 vs September 2026</h2>
+  <p class="lead">Seluruh angka berasal dari rincian UP3 Sukoharjo kecuali baris yang diberi label basis peringkat. Angka September pada rincian tersimpan dalam notasi ilmiah berpresisi 5 digit, sehingga nilai bertanda ≈ memiliki ketelitian sekitar Rp10 juta.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Indikator</th><th class="n">Des 2025</th><th class="n">Sep 2026</th><th class="n">Perubahan</th><th>Penilaian</th></tr></thead>
+    <tbody>
+      <tr><td>Saldo piutang, basis peringkat<span class="sub-l">dipakai untuk hari piutang dan perbandingan UP3</span></td><td class="n">Rp145,61 M</td><td class="n">Rp151,87 M</td><td class="n">+Rp6,26 M · +4,30%</td><td><span class="pill warn">Moderat</span></td></tr>
+      <tr><td>Saldo piutang, basis rincian</td><td class="n">Rp155,29 M</td><td class="n">Rp161,03 M</td><td class="n">+Rp5,74 M · +3,70%</td><td><span class="pill warn">Moderat</span></td></tr>
+      <tr><td>Proksi hari piutang saldo akhir<span class="sub-l">saldo akhir ÷ penjualan harian rata-rata Rp5,84 M</span></td><td class="n">24,93 hari</td><td class="n">26,00 hari</td><td class="n">+1,07 hari</td><td><span class="pill warn">Naik</span></td></tr>
+      <tr><td>Pencetakan rekening (tagihan bulan itu)</td><td class="n">Rp139,90 M</td><td class="n">≈Rp143,96 M</td><td class="n">+2,9%</td><td><span class="pill neutral">Pertumbuhan penjualan</span></td></tr>
+      <tr><td>Rata-rata saldo per lembar</td><td class="n">Rp370.735</td><td class="n">Rp384.126</td><td class="n">+3,6%</td><td><span class="pill neutral">Netral</span></td></tr>
+      <tr><td>Rekening berjalan belum lunas</td><td class="n">142 lbr · Rp108 jt</td><td class="n">723 lbr · Rp548 jt</td><td class="n">×5,1 (nilai)</td><td><span class="pill bad">Memburuk</span></td></tr>
+      <tr><td>Rekening tunggakan</td><td class="n">341 lbr · Rp14,04 M</td><td class="n">879 lbr · Rp15,10 M</td><td class="n">+538 lbr · +7,5%</td><td><span class="pill bad">Memburuk</span></td></tr>
+      <tr><td>Piutang bermasalah (berjalan + tunggakan)</td><td class="n">Rp14,15 M · 9,11%</td><td class="n">Rp15,64 M · 9,72%</td><td class="n">+10,6%</td><td><span class="pill bad">Memburuk</span></td></tr>
+      <tr><td>Tunggakan Umum<span class="sub-l">kelompok pelanggan besar</span></td><td class="n">38 lbr · Rp13,93 M</td><td class="n">33 lbr · Rp14,02 M</td><td class="n">+Rp0,09 M</td><td><span class="pill bad">Macet di nilai</span></td></tr>
+      <tr><td>Tunggakan TNI/Polri</td><td class="n">303 lbr · Rp0,11 M</td><td class="n">846 lbr · Rp1,07 M</td><td class="n">×9,8 (nilai)</td><td><span class="pill bad">Memburuk</span></td></tr>
+      <tr><td>Pelunasan terhadap saldo awal bulan</td><td class="n">91,5%</td><td class="n">≈89,6%</td><td class="n">−1,9 poin</td><td><span class="pill warn">Melemah</span></td></tr>
+      <tr><td>Pelunasan tunggakan dalam bulan</td><td class="n">Rp738 jt (5,0%)</td><td class="n">Rp214 jt (1,4%)</td><td class="n">−71%</td><td><span class="pill bad">Melemah tajam</span></td></tr>
+      <tr><td>Rekening susulan terhadap pencetakan<span class="sub-l">tagihan tambahan dari periode lalu</span></td><td class="n">Rp2,24 M · 1,60%</td><td class="n">Rp1,19 M · 0,83%</td><td class="n">−46,7%</td><td><span class="pill good">Membaik</span></td></tr>
+      <tr><td>Dipindahkan ke piutang ragu-ragu</td><td class="n">18 lbr · Rp2,9 jt</td><td class="n">24 lbr · Rp42,3 jt</td><td class="n">×14,5</td><td><span class="pill warn">Mulai bergerak</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= PERINGKAT ================= -->
+<section id="peringkat">
+  <h2>Posisi Sukoharjo di antara UP3 Jawa Tengah</h2>
+  <p class="lead">Hari piutang dihitung dari rata-rata saldo Des 2025 dan Sep 2026, dikali 273 hari, dibagi penjualan tenaga listrik periode yang sama. Semakin kecil semakin baik.</p>
+
+  <div class="charts">
+    <div class="chart">
+      <h3>Hari piutang per UP3</h3>
+      <p class="cap">Hari, periode Jan–Sep 2026. Sukoharjo diberi warna aksen.</p>
+      <div id="ch-dso"></div>
+    </div>
+    <div class="chart">
+      <h3>Pertumbuhan saldo piutang Des → Sep</h3>
+      <p class="cap">Persen, basis tabel peringkat.</p>
+      <div id="ch-growth"></div>
+    </div>
+  </div>
+
+  <div class="tw" style="margin-top:18px"><table>
+    <thead><tr><th>UP3</th><th class="n">Piutang Des 2025 (Rp M)</th><th class="n">Piutang Sep 2026 (Rp M)</th><th class="n">Δ (Rp M)</th><th class="n">Δ %</th><th class="n">Penjualan (Rp M)</th><th class="n">Hari piutang</th><th class="n">Peringkat (1 = terburuk)</th></tr></thead>
+    <tbody id="rank-body"></tbody>
+  </table></div>
+
+  <div class="note"><b>Bacaan kritis.</b> Sukoharjo menyumbang 5,74% penjualan tetapi memegang 6,19% piutang, artinya piutangnya berat sebelah sekitar 0,45 poin. Laju kenaikan saldo (4,30%) termasuk rendah (peringkat 4 terendah dari 12), jadi masalah Sukoharjo ada pada tingkat piutang yang sudah tinggi, bukan pada lonjakan baru.</div>
+  <div class="note warn"><b>Angka Gabungan menyesatkan.</b> Yogyakarta tercatat piutang Rp0 tetapi penjualan Rp1,17 triliun, sehingga hari piutang gabungan (23,08) terlalu rendah. Tanpa Yogyakarta nilainya 24,09 hari. Kenaikan gabungan +9,28% juga didorong Semarang (+28,2%, atau 56,7% dari seluruh kenaikan); tanpa Semarang kenaikannya +4,94%.</div>
+</section>
+
+<!-- ================= KOMPOSISI ================= -->
+<section id="komposisi">
+  <h2>Apa yang menggerakkan saldo</h2>
+  <p class="lead">Basis rincian: saldo akhir naik Rp5,74 miliar. Tiga perempat berasal dari pelanggan Umum yang memang berpenjualan besar. Yang tidak proporsional adalah TNI/Polri, dan di sisi jenis rekening, tunggakan serta rekening berjalan.</p>
+
+  <div class="charts">
+    <div class="chart">
+      <h3>Kontribusi per segmen terhadap kenaikan saldo</h3>
+      <p class="cap">Rp miliar, total +5,74. Persentase = bagian dari total kenaikan.</p>
+      <div id="ch-contrib"></div>
+    </div>
+    <div class="chart">
+      <h3>Saldo akhir menurut jenis rekening</h3>
+      <p class="cap">Rp juta. Sekitar 90% saldo adalah tagihan bulan itu yang belum jatuh tempo, sehingga wajar.</p>
+      <div class="tw" style="border:0;border-radius:0"><table>
+        <thead><tr><th>Jenis rekening</th><th class="n">Des 2025</th><th class="n">Sep 2026</th><th class="n">Δ</th></tr></thead>
+        <tbody>
+          <tr><td>Rekening baru<span class="sub-l">tagihan periode yang baru dicetak</span></td><td class="n">141.142,3</td><td class="n">145.385,5</td><td class="n">+3,0%</td></tr>
+          <tr><td>Rekening berjalan<span class="sub-l">sisa tagihan periode sebelumnya</span></td><td class="n">108,3</td><td class="n">548,4</td><td class="n">+406%</td></tr>
+          <tr><td>Rekening tunggakan<span class="sub-l">tagihan lewat jatuh tempo</span></td><td class="n">14.038,6</td><td class="n">15.096,0</td><td class="n">+7,5%</td></tr>
+          <tr class="tot"><td>Jumlah</td><td class="n">155.289,2</td><td class="n">161.029,9</td><td class="n">+3,7%</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="chart">
+      <h3>Tunggakan menurut segmen, nilai</h3>
+      <p class="cap">Rp miliar.</p>
+      <div class="legend"><span><i style="background:var(--prev)"></i>Des 2025</span><span><i style="background:var(--accent)"></i>Sep 2026</span></div>
+      <div id="ch-tung-rp" class="pairs"></div>
+    </div>
+    <div class="chart">
+      <h3>Tunggakan menurut segmen, jumlah lembar</h3>
+      <p class="cap">Lembar rekening. Seluruh penambahan lembar berasal dari TNI/Polri.</p>
+      <div class="legend"><span><i style="background:var(--prev)"></i>Des 2025</span><span><i style="background:var(--accent)"></i>Sep 2026</span></div>
+      <div id="ch-tung-lbr" class="pairs"></div>
+    </div>
+  </div>
+  <div class="note"><b>Definisi.</b> Pengertian rekening baru, berjalan, dan tunggakan di atas mengikuti pembacaan struktur laporan. Konfirmasikan batas umur tiap kategori dengan SOP piutang yang berlaku, karena laporan tidak menyertakan tanggal jatuh tempo.</div>
+</section>
+
+<!-- ================= SEGMEN ================= -->
+<section id="segmen">
+  <h2>Analisis per segmen pelanggan</h2>
+  <p class="lead">Lima segmen dengan kondisi yang sangat berbeda. Dua segmen perlu tindakan, tiga segmen sehat.</p>
+
+  <div class="tw" style="margin-bottom:18px"><table>
+    <thead><tr><th>Segmen</th><th class="n">Lembar Des</th><th class="n">Lembar Sep</th><th class="n">Saldo Des (Rp M)</th><th class="n">Saldo Sep (Rp M)</th><th class="n">Δ (Rp M)</th><th class="n">Δ %</th><th class="n">Bagian kenaikan</th></tr></thead>
+    <tbody>
+      <tr><td>Umum</td><td class="n">416.080</td><td class="n">415.598</td><td class="n">146,61</td><td class="n">150,91</td><td class="n">+4,30</td><td class="n">+2,93%</td><td class="n">74,9%</td></tr>
+      <tr class="hl"><td>TNI/Polri</td><td class="n">549</td><td class="n">1.306</td><td class="n">0,45</td><td class="n">1,64</td><td class="n">+1,19</td><td class="n">+265,6%</td><td class="n">20,8%</td></tr>
+      <tr><td>Instansi Vertikal</td><td class="n">241</td><td class="n">256</td><td class="n">1,02</td><td class="n">1,22</td><td class="n">+0,20</td><td class="n">+19,8%</td><td class="n">3,5%</td></tr>
+      <tr><td>Pemda</td><td class="n">1.929</td><td class="n">1.980</td><td class="n">6,41</td><td class="n">6,47</td><td class="n">+0,06</td><td class="n">+0,9%</td><td class="n">1,0%</td></tr>
+      <tr><td>BUMN</td><td class="n">69</td><td class="n">71</td><td class="n">0,79</td><td class="n">0,78</td><td class="n">−0,01</td><td class="n">−1,0%</td><td class="n">−0,1%</td></tr>
+      <tr class="tot"><td>Jumlah</td><td class="n">418.868</td><td class="n">419.211</td><td class="n">155,29</td><td class="n">161,03</td><td class="n">+5,74</td><td class="n">+3,70%</td><td class="n">100%</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="cards">
+    <article class="card">
+      <header><h3>Umum</h3><span class="pill bad">Prioritas 1</span></header>
+      <div class="stat">
+        <div><span class="k">Tunggakan</span><span class="x">33 lbr · Rp14,02 M</span></div>
+        <div><span class="k">Rata-rata per pelanggan</span><span class="x">Rp425 jt</span></div>
+        <div><span class="k">Bagian tunggakan UP3</span><span class="x">92,9%</span></div>
+      </div>
+      <p>Pelanggan massal membayar disiplin: sekitar 99,8% lembar rekening berjalan lunas pada September. Pelanggan kecil yang menunggak juga tertagih (122 dari 171 lembar lunas, 16 dipindah ke ragu-ragu).</p>
+      <ul>
+        <li>Sisa 33 lembar bernilai Rp14,02 miliar tidak tersentuh. Dengan tunggakan Rp14,03 miliar pada awal Desember 2025, nilai ini praktis macet sedikitnya 10 bulan.</li>
+        <li>Rata-rata tunggakan per lembar naik dari Rp366 juta menjadi Rp425 juta karena lembar kecil keluar, sementara yang besar bertahan.</li>
+        <li>Rekening berjalan Umum yang belum lunas naik dari 132 ke 482 lembar (Rp95 juta ke Rp273 juta): indikator awal yang perlu dijaga agar tidak menjadi tunggakan.</li>
+        <li>Rekening Umum mengendapkan 2,4 hari penjualan. Menuntaskannya setara memangkas hari piutang dari 26,0 ke sekitar 23,6 (proksi saldo akhir).</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <header><h3>TNI/Polri</h3><span class="pill bad">Prioritas 2</span></header>
+      <div class="stat">
+        <div><span class="k">Tunggakan</span><span class="x">846 lbr · Rp1,07 M</span></div>
+        <div><span class="k">Rekening berjalan terbayar</span><span class="x">95,6% → 13,2%</span></div>
+        <div><span class="k">Tunggakan dari saldo segmen</span><span class="x">24,5% → 65,3%</span></div>
+      </div>
+      <p>Perubahan paling tajam di seluruh laporan. Pada Desember 226 dari 236 lembar rekening berjalan lunas; pada September hanya 15 dari 239.</p>
+      <ul>
+        <li>Rata-rata tunggakan Rp1,27 juta per lembar, jadi ini masalah banyak satuan kerja kecil, bukan satu debitur besar.</li>
+        <li>Penagihan tunggakan lama masih berjalan (284 dari 1.130 lembar lunas, Rp134 juta), tetapi rekening baru jatuh tempo tidak ikut terbayar. Pola ini mengarah ke pembayaran yang tertunda, bukan penolakan.</li>
+        <li>Posisi Desember 2025 (303 lembar) kemungkinan dipengaruhi pembayaran akhir tahun anggaran. Dari Agustus ke September jumlahnya turun 1.130 → 846, tanda awal pemulihan yang perlu dikonfirmasi dengan data Oktober.</li>
+        <li>Kebutuhan data: daftar satuan kerja, jadwal pencairan anggaran, dan status dokumen tagihan.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <header><h3>Pemda</h3><span class="pill good">Sehat</span></header>
+      <div class="stat">
+        <div><span class="k">Saldo</span><span class="x">Rp6,47 M · 1.980 lbr</span></div>
+        <div><span class="k">Tunggakan</span><span class="x">Rp0</span></div>
+        <div><span class="k">Rekening berjalan lunas</span><span class="x">≈100%</span></div>
+      </div>
+      <p>Segmen terbesar kedua setelah Umum, dan konsisten tanpa tunggakan baik pada Desember maupun September. Saldo hanya naik 0,9%. Sebanyak 11 lembar rekening berjalan (Rp5,6 juta) belum lunas pada September, nilai yang kecil namun perlu dipantau karena pada Desember tidak ada.</p>
+    </article>
+
+    <article class="card">
+      <header><h3>Instansi Vertikal dan BUMN</h3><span class="pill good">Sehat</span></header>
+      <div class="stat">
+        <div><span class="k">Ins. Vertikal</span><span class="x">Rp1,22 M · tunggakan Rp0</span></div>
+        <div><span class="k">BUMN</span><span class="x">Rp0,78 M · tunggakan Rp0</span></div>
+      </div>
+      <p>Instansi Vertikal naik 19,8% karena pencetakan rekening naik 19,4% (Rp1,02 miliar ke Rp1,22 miliar), bukan karena keterlambatan: sekitar 99,6% rekening berjalan lunas, dengan 6 lembar (Rp5,1 juta) tersisa.</p>
+      <p style="margin:0">BUMN tertagih penuh. Selisih 15 lembar yang tidak dibayar tunai (Rp39,9 juta) dibukukan sebagai beban kantor, yaitu penyelesaian internal, dan nilainya stabil dibanding Desember (Rp41,8 juta).</p>
+    </article>
+  </div>
+</section>
+
+<!-- ================= PENAGIHAN ================= -->
+<section id="penagihan">
+  <h2>Kinerja penagihan dan efek musiman</h2>
+  <p class="lead">Rasio di bawah dihitung dari mutasi bulan masing-masing (saldo awal bulan sampai saldo akhir bulan), sehingga menggambarkan efektivitas penagihan pada bulan itu, bukan sepanjang tahun.</p>
+
+  <div class="charts">
+    <div class="chart">
+      <h3>Rasio pelunasan bulan Desember vs September</h3>
+      <p class="cap">Persen terhadap tagihan yang tersedia untuk dilunasi.</p>
+      <div class="legend"><span><i style="background:var(--prev)"></i>Des 2025</span><span><i style="background:var(--accent)"></i>Sep 2026</span></div>
+      <div id="ch-collect" class="pairs"></div>
+    </div>
+    <div class="chart">
+      <h3>Dinamika bulanan: Nov → Des vs Agu → Sep</h3>
+      <p class="cap">Saldo awal bulan sama dengan saldo akhir bulan sebelumnya.</p>
+      <div class="tw" style="border:0;border-radius:0"><table>
+        <thead><tr><th></th><th class="n">Nov → Des 2025</th><th class="n">Agu → Sep 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Saldo total (Rp M)</td><td class="n">151,36 → 155,29</td><td class="n">≈155,79 → 161,03</td></tr>
+          <tr><td>Perubahan saldo</td><td class="n">+2,60%</td><td class="n">+3,37%</td></tr>
+          <tr><td>Tunggakan (Rp M)</td><td class="n">14,77 → 14,04</td><td class="n">15,34 → 15,10</td></tr>
+          <tr><td>Perubahan tunggakan</td><td class="n">−4,97%</td><td class="n">−1,60%</td></tr>
+          <tr><td>Lembar tunggakan</td><td class="n">1.010 → 341</td><td class="n">1.302 → 879</td></tr>
+          <tr><td>Lembar tunggakan TNI/Polri</td><td class="n">836 → 303</td><td class="n">1.130 → 846</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="note warn"><b>Cara membaca musiman.</b> Desember tampak seperti bulan pembersihan akhir tahun: lembar tunggakan turun dua pertiga dan tunggakan TNI/Polri turun dari 836 ke 303. Karena itu, membandingkan September dengan Desember akan melebih-lebihkan pemburukan. Sebaliknya, posisi awal September (1.302 lembar) sudah jauh lebih buruk daripada awal Desember (1.010), sehingga penurunan 1,6% pada September terjadi dari basis yang lebih tinggi. Kesimpulan yang adil: ada pemulihan bulanan, tetapi belum cukup untuk mengembalikan kualitas ke level akhir tahun lalu. Ini penafsiran dari pola dua titik data; verifikasi dengan data bulanan Jan–Agu 2026.</div>
+
+  <h3 style="margin-top:22px">Mutasi lain yang layak dicermati</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Mutasi</th><th class="n">Des 2025</th><th class="n">Sep 2026</th><th>Makna</th></tr></thead>
+    <tbody>
+      <tr><td>Rekening susulan</td><td class="n">Rp2,24 M</td><td class="n">Rp1,19 M</td><td>Tagihan tambahan periode lalu berkurang hampir separuh, tanda akurasi pencatatan membaik.</td></tr>
+      <tr><td>Rekening perbaikan (penambahan)</td><td class="n">Rp1,56 M</td><td class="n">Rp0,03 M</td><td>Koreksi besar di Desember tidak berulang.</td></tr>
+      <tr><td>Pembatalan piutang</td><td class="n">Rp0,42 M + perbaikan Rp0,79 M</td><td class="n">Rp0,25 M + perbaikan Rp0,03 M</td><td>Pengurangan non-tunai lebih kecil, kualitas tagihan lebih bersih.</td></tr>
+      <tr><td>Dipindahkan ke piutang ragu-ragu</td><td class="n">Rp2,9 jt</td><td class="n">Rp42,3 jt</td><td>Naik 14,5 kali tetapi masih sangat kecil dibanding tunggakan keras Rp14 miliar. Status 33 pelanggan besar belum tercermin.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= RISIKO ================= -->
+<section id="risiko">
+  <h2>Register risiko</h2>
+  <p class="lead">Diurutkan menurut dampak terhadap kas dan kualitas piutang.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Risiko</th><th>Tingkat</th><th>Bukti dalam data</th><th>Dampak</th></tr></thead>
+    <tbody>
+      <tr><td>Konsentrasi pada 33 pelanggan Umum</td><td><span class="pill bad">Tinggi</span></td><td>Rp14,02 M, 92,9% tunggakan, nilai tidak bergerak sejak Des 2025</td><td>2,4 hari penjualan tertahan; potensi kerugian bila tidak tertagih</td></tr>
+      <tr><td>Penurunan disiplin bayar TNI/Polri</td><td><span class="pill bad">Tinggi</span></td><td>Rekening berjalan terbayar 95,6% → 13,2%; tunggakan 303 → 846 lembar</td><td>Tunggakan segmen naik 9,8 kali; dapat menjalar ke instansi lain</td></tr>
+      <tr><td>Pemulihan tunggakan melemah</td><td><span class="pill bad">Tinggi</span></td><td>Pelunasan tunggakan Rp738 jt → Rp214 jt</td><td>Tunggakan menumpuk bila pola berlanjut</td></tr>
+      <tr><td>Hari piutang di atas pembanding</td><td><span class="pill warn">Sedang</span></td><td>25,47 hari vs 24,09 (gabungan tanpa Yogya) dan 20,21 (terbaik)</td><td>Kas tertahan Rp8,0–30,7 M</td></tr>
+      <tr><td>Rekening berjalan belum lunas membesar</td><td><span class="pill warn">Sedang</span></td><td>142 → 723 lembar (Umum 482, TNI/Polri 224)</td><td>Indikator awal tunggakan baru</td></tr>
+      <tr><td>Kecukupan pencadangan</td><td><span class="pill warn">Sedang</span></td><td>Ragu-ragu hanya Rp42 jt, 33 pelanggan Rp14 M belum diklasifikasi di laporan ini</td><td>Risiko aset piutang tercatat terlalu tinggi; perlu penilaian akuntansi tersendiri</td></tr>
+      <tr><td>Integritas dan rekonsiliasi data</td><td><span class="pill warn">Sedang</span></td><td>Selisih Rp9–10 M antar-tabel; sel tanpa label</td><td>Target dan peringkat dapat meleset</td></tr>
+      <tr><td>Pemda, Instansi Vertikal, BUMN</td><td><span class="pill good">Rendah</span></td><td>Tanpa tunggakan; pelunasan berjalan 95–100%</td><td>Tetap dipantau rutin</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= DATA ================= -->
+<section id="data">
+  <h2>Kualitas data dan batas analisis</h2>
+  <p class="lead">Temuan di atas kuat untuk arah dan urutan prioritas. Hal-hal berikut perlu diselesaikan sebelum angka dipakai sebagai target kinerja.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Temuan</th><th>Rincian</th><th>Dampak pada analisis</th></tr></thead>
+    <tbody>
+      <tr><td>Selisih antar-tabel</td><td>Saldo Sukoharjo pada tabel peringkat (Rp145,61 M Des; Rp151,87 M Sep) lebih rendah daripada saldo akhir pada rincian (Rp155,29 M; Rp161,03 M). Selisih Rp9,68 M (6,6%) dan Rp9,16 M (6,0%), dan tidak cocok dengan satu segmen mana pun.</td><td>Hari piutang pada basis rincian akan 27,08 hari, bukan 25,47. Peringkat bisa lebih buruk. Laporan ini memakai basis peringkat untuk perbandingan antar-UP3 dan basis rincian untuk komposisi.</td></tr>
+      <tr><td>Yogyakarta</td><td>Piutang Rp0 pada kedua periode, penjualan Rp1,17 T tetap masuk total gabungan.</td><td>Hari piutang gabungan terlalu rendah (23,08 vs 24,09).</td></tr>
+      <tr><td>Sel tanpa label</td><td>Dua angka di bawah tabel September (5.740.615.677 dan 34.443.694). Yang pertama sama dengan selisih saldo akhir Sep dan Des pada rincian. Yang kedua tidak dapat ditelusuri.</td><td>Angka kedua tidak dipakai.</td></tr>
+      <tr><td>Presisi angka September</td><td>Beberapa nilai tersimpan dalam notasi ilmiah 5 digit (misalnya 1,3044E+11). Identitas arus September meleset Rp0,85 juta.</td><td>Nilai bertanda ≈ berketelitian sekitar Rp10 juta; tidak memengaruhi kesimpulan.</td></tr>
+      <tr><td>Tidak ada umur piutang per pelanggan</td><td>Laporan hanya membagi baru, berjalan, dan tunggakan.</td><td>Tidak dapat menentukan umur tunggakan 33 pelanggan, status hukum, atau jaminan.</td></tr>
+      <tr><td>Rata-rata dua titik</td><td>Hari piutang memakai rata-rata saldo Des dan Sep, bukan rata-rata bulanan.</td><td>Sensitif terhadap pola musiman; angka bulanan Jan–Agu akan lebih akurat.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= AKSI ================= -->
+<section id="aksi">
+  <h2>Rekomendasi dan rencana tindakan</h2>
+  <p class="lead">Target pada kotak "Ukuran keberhasilan" adalah usulan berbasis pembanding dalam laporan ini. Sesuaikan dengan target korporat bila sudah ada.</p>
+
+  <div class="note" style="margin:0 0 16px"><b>Ukuran dampak.</b> Setiap Rp5,84 miliar piutang tertagih setara 1 hari piutang. Menagih 25%, 50%, dan 100% dari 33 pelanggan Umum (Rp14,02 miliar) berarti Rp3,5 miliar, Rp7,0 miliar, dan Rp14,0 miliar, atau sekitar 0,6, 1,2, dan 2,4 hari (proksi saldo akhir).</div>
+
+  <div class="plan">
+    <div class="act">
+      <div class="when">0–30 hari<b>Tuntaskan 33 pelanggan besar</b></div>
+      <div>
+        <ul>
+          <li>Buat profil per pelanggan: nilai, umur tunggakan, status (sengketa, pailit, bongkar rampung, nomor ganda, jaminan), dan penanggung jawab. Urutkan 10 nilai terbesar lebih dulu.</li>
+          <li>Tetapkan jalur penyelesaian per pelanggan: jadwal angsuran, penagihan eskalasi manajemen, atau pemrosesan hukum/penghapusan sesuai kebijakan.</li>
+          <li>Evaluasi klasifikasi dan kecukupan pencadangan bersama bagian keuangan.</li>
+        </ul>
+        <p class="tgt"><b>Ukuran keberhasilan (usulan):</b> 100% pelanggan memiliki status dan rencana tertulis dalam 30 hari; tertagih atau terjadwal ≥ Rp3,5 miliar sampai akhir Desember 2026.</p>
+      </div>
+    </div>
+    <div class="act">
+      <div class="when">0–60 hari<b>Pulihkan disiplin TNI/Polri</b></div>
+      <div>
+        <ul>
+          <li>Petakan 846 lembar tunggakan dan 224 rekening berjalan per satuan kerja, lalu tetapkan satu penghubung untuk tiap induk organisasi (komando daerah/wilayah).</li>
+          <li>Selaraskan jadwal penagihan dengan siklus pencairan anggaran; ajukan penagihan konsolidasi per induk.</li>
+          <li>Pastikan dokumen tagihan sudah sampai ke bendahara satuan kerja.</li>
+        </ul>
+        <p class="tgt"><b>Ukuran keberhasilan (usulan):</b> lembar tunggakan TNI/Polri kembali ke ≤ 303 (level Des 2025) dan rekening berjalan terbayar ≥ 90% pada akhir Desember 2026.</p>
+      </div>
+    </div>
+    <div class="act">
+      <div class="when">Berkelanjutan<b>Cegah tunggakan baru</b></div>
+      <div>
+        <ul>
+          <li>Pantau mingguan 723 rekening berjalan yang belum lunas (Umum 482 lembar, rata-rata sekitar Rp0,57 juta), dengan pengingat dan kunjungan sesuai SOP sebelum menjadi tunggakan.</li>
+          <li>Tetapkan ambang peringatan dini: lembar berjalan, lembar tunggakan, dan rasio pelunasan tunggakan.</li>
+          <li>Pelajari pola pelanggan kecil yang cepat lunas sebagai praktik yang bisa ditiru untuk pelanggan besar.</li>
+        </ul>
+        <p class="tgt"><b>Ukuran keberhasilan (usulan):</b> pelunasan tunggakan bulanan kembali ≥ 5% dari saldo awal tunggakan, seperti Desember 2025.</p>
+      </div>
+    </div>
+    <div class="act">
+      <div class="when">0–30 hari<b>Rapikan data pemantauan</b></div>
+      <div>
+        <ul>
+          <li>Rekonsiliasi selisih Rp9–10 miliar antara tabel peringkat dan rincian; tetapkan satu basis resmi.</li>
+          <li>Beri label pada sel total, dan keluarkan atau isi Yogyakarta pada perhitungan gabungan.</li>
+          <li>Tambahkan umur piutang dan daftar pelanggan tunggakan terbesar pada laporan bulanan.</li>
+        </ul>
+        <p class="tgt"><b>Ukuran keberhasilan (usulan):</b> selisih antar-tabel nol atau terjelaskan; hari piutang dihitung dari satu basis.</p>
+      </div>
+    </div>
+    <div class="act">
+      <div class="when">Sampai Des 2026<b>Sasaran hari piutang</b></div>
+      <div>
+        <p style="margin:0">Menurunkan hari piutang dari 25,47 ke sekitar 24,0 (di bawah gabungan tanpa Yogyakarta, mendekati median UP3 yaitu 23,8) memerlukan kenaikan penagihan sekitar Rp8,5 miliar. Penyelesaian sebagian 33 pelanggan Umum dan pemulihan TNI/Polri sudah memberi sekitar separuh kebutuhan itu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><b>Metodologi.</b> Hari piutang = ((piutang Des 2025 + piutang Sep 2026) ÷ 2) × 273 ÷ penjualan tenaga listrik periode. Proksi hari piutang saldo akhir = saldo akhir ÷ (penjualan Sukoharjo ÷ 273). Pelunasan bulanan dihitung dari baris pelunasan online pada mutasi, terhadap saldo awal bulan. Median UP3 dihitung dari 12 UP3 yang memiliki piutang. Seluruh jumlah telah diperiksa: total 12 UP3 sama dengan baris Gabungan, dan saldo awal − pengurangan + penambahan sama dengan saldo akhir (Des: tepat; Sep: selisih Rp0,85 juta akibat pembulatan).</p>
+  <p><b>Sumber.</b> Berkas "Piutang Pelanggan Sukoharjo per 30 September 2026 vs 31 Desember 2025" (tabel peringkat UP3 Jawa Tengah dan mutasi piutang pelanggan UP3 Sukoharjo bulan Desember 2025 dan September 2026). Penafsiran penyebab bersifat hipotesis dari pola data dan perlu diverifikasi dengan unit.</p>
+</footer>
+</div>
+
+<div id="tip" class="tip" hidden></div>
+
+<script>
+(function(){
+  var nf=function(n,d){return n.toLocaleString('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d});};
+
+  /* ---- data tabel peringkat (Rp) ---- */
+  var U=[
+    ['UP3 Cilacap',135971621982,138434049931,1756798376418,21.32],
+    ['UP3 Grobogan',146888508724,158700058168,1784767117187,23.37],
+    ['UP3 Klaten',147452335550,153950464721,1354269030712,30.38],
+    ['UP3 Kudus',300365167231,313831080535,3455386368561,24.26],
+    ['UP3 Magelang',102093060358,105613811628,1275359165708,22.23],
+    ['UP3 Pekalongan',125693920728,134563550782,1525364995307,23.29],
+    ['UP3 Purwokerto',128726184482,137514901922,1798131007577,20.21],
+    ['UP3 Salatiga',114363697702,124836572694,1344268571461,24.29],
+    ['UP3 Semarang',419124123361,537199051732,4950707766441,26.37],
+    ['UP3 Sukoharjo',145611254788,151867561520,1594508331366,25.47],
+    ['UP3 Surakarta',285796268511,290131906466,3213912671813,24.46],
+    ['UP3 Tegal',194250808728,208100329288,2580923313402,21.28],
+    ['UP3 Yogyakarta',0,0,1167914458633,0]
+  ];
+  var G=['Gabungan',2246336952145,2454743339387,27802311174586,23.08];
+
+  var byDso=U.filter(function(r){return r[1]>0;}).sort(function(a,b){return b[4]-a[4];});
+  var rankOf={}; byDso.forEach(function(r,i){rankOf[r[0]]=i+1;});
+
+  /* ---- tabel peringkat ---- */
+  var body=document.getElementById('rank-body');
+  var html='';
+  byDso.concat(U.filter(function(r){return r[1]===0;})).forEach(function(r){
+    var isS=r[0]==='UP3 Sukoharjo', act=r[1]>0;
+    var d=r[2]-r[1], g=act?(r[2]/r[1]-1)*100:null;
+    html+='<tr'+(isS?' class="hl"':'')+'><td>'+r[0]+'</td>'
+      +'<td class="n">'+nf(r[1]/1e9,2)+'</td><td class="n">'+nf(r[2]/1e9,2)+'</td>'
+      +'<td class="n">'+(act?'+'+nf(d/1e9,2):'0,00')+'</td>'
+      +'<td class="n">'+(act?'+'+nf(g,2)+'%':'–')+'</td>'
+      +'<td class="n">'+nf(r[3]/1e9,2)+'</td>'
+      +'<td class="n">'+(act?nf(r[4],2):'0,00')+'</td>'
+      +'<td class="n">'+(act?rankOf[r[0]]:'–')+'</td></tr>';
+  });
+  html+='<tr class="tot"><td>Gabungan (sesuai berkas)</td><td class="n">'+nf(G[1]/1e9,2)+'</td><td class="n">'+nf(G[2]/1e9,2)+'</td><td class="n">+'+nf((G[2]-G[1])/1e9,2)+'</td><td class="n">+9,28%</td><td class="n">'+nf(G[3]/1e9,2)+'</td><td class="n">23,08</td><td class="n">–</td></tr>';
+  html+='<tr class="tot"><td>Gabungan tanpa Yogyakarta</td><td class="n">'+nf(G[1]/1e9,2)+'</td><td class="n">'+nf(G[2]/1e9,2)+'</td><td class="n">+'+nf((G[2]-G[1])/1e9,2)+'</td><td class="n">+9,28%</td><td class="n">'+nf((G[3]-1167914458633)/1e9,2)+'</td><td class="n">24,09</td><td class="n">–</td></tr>';
+  body.innerHTML=html;
+
+  /* ---- util bar ---- */
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  function hbars(id,rows,max){
+    var el=document.getElementById(id), h='';
+    rows.forEach(function(r){
+      var w=Math.max(0,r.v/max*100);
+      h+='<div class="row"><div class="lb'+(r.hl?' hl':'')+'">'+esc(r.label)+'</div>'
+        +'<div class="track"><div class="bar '+(r.cls||'')+'" style="width:'+w+'%" data-tip="'+esc(r.tip)+'" role="img" aria-label="'+esc(r.tip)+'"></div></div>'
+        +'<div class="val">'+esc(r.text)+'</div></div>';
+    });
+    el.innerHTML=h;
+  }
+  function pairs(id,groups,max,fmt){
+    var el=document.getElementById(id), h='';
+    groups.forEach(function(g){
+      h+='<div class="grp"><p class="gl">'+esc(g.label)+'</p>';
+      [['Des 2025',g.a,''],['Sep 2026',g.b,'acc']].forEach(function(s){
+        var tip=g.label+', '+s[0]+': '+fmt(s[1]);
+        h+='<div class="sl"><span class="t">'+s[0]+'</span><div class="track"><div class="bar '+s[2]+'" style="width:'+Math.max(0,s[1]/max*100)+'%" data-tip="'+esc(tip)+'" role="img" aria-label="'+esc(tip)+'"></div></div><div class="val">'+fmt(s[1])+'</div></div>';
+      });
+      h+='</div>';
+    });
+    el.innerHTML=h;
+  }
+
+  /* ---- chart DSO ---- */
+  var dr=byDso.map(function(r){
+    var isS=r[0]==='UP3 Sukoharjo';
+    return {label:r[0].replace('UP3 ',''),v:r[4],cls:isS?'acc':'',hl:isS,text:nf(r[4],2),tip:r[0]+': '+nf(r[4],2)+' hari (peringkat '+rankOf[r[0]]+' dari 12)'};
+  });
+  dr.push({label:'Gabungan resmi',v:23.08,cls:'out',text:'23,08',tip:'Gabungan sesuai berkas: 23,08 hari (termasuk penjualan Yogyakarta tanpa piutang)'});
+  dr.push({label:'Gabungan tanpa Yogya',v:24.09,cls:'out',text:'24,09',tip:'Gabungan tanpa penjualan Yogyakarta: 24,09 hari'});
+  hbars('ch-dso',dr,32);
+
+  /* ---- chart growth ---- */
+  var gr=byDso.map(function(r){return {n:r[0].replace('UP3 ',''),g:(r[2]/r[1]-1)*100,full:r[0]};}).sort(function(a,b){return b.g-a.g;}).map(function(x){
+    var isS=x.n==='Sukoharjo';
+    return {label:x.n,v:x.g,cls:isS?'acc':'',hl:isS,text:'+'+nf(x.g,2)+'%',tip:x.full+': +'+nf(x.g,2)+'% (Des 2025 ke Sep 2026)'};
+  });
+  hbars('ch-growth',gr,30);
+
+  /* ---- kontribusi ---- */
+  var contrib=[
+    ['Umum',4.296601284,74.85],['TNI/Polri',1.194517607,20.81],['Instansi Vertikal',0.202406256,3.53],['Pemda',0.055426866,0.97],['BUMN',-0.008336336,-0.15]
+  ].map(function(c){
+    var neg=c[1]<0;
+    return {label:c[0],v:Math.abs(c[1]),cls:neg?'neg':(c[0]==='TNI/Polri'?'acc':''),hl:c[0]==='TNI/Polri',text:(neg?'−':'+')+nf(Math.abs(c[1]),2)+' ('+nf(c[2],1)+'%)',tip:c[0]+': '+(neg?'−':'+')+nf(Math.abs(c[1]),3)+' miliar, '+nf(c[2],2)+'% dari total kenaikan'};
+  });
+  hbars('ch-contrib',contrib,4.5);
+
+  /* ---- tunggakan ---- */
+  pairs('ch-tung-rp',[
+    {label:'Umum',a:13.928601297,b:14.021597466},
+    {label:'TNI/Polri',a:0.110016347,b:1.07437075}
+  ],15,function(v){return nf(v,2)+' M';});
+  pairs('ch-tung-lbr',[
+    {label:'Umum',a:38,b:33},
+    {label:'TNI/Polri',a:303,b:846}
+  ],900,function(v){return nf(v,0)+' lbr';});
+
+  /* ---- rasio pelunasan ---- */
+  pairs('ch-collect',[
+    {label:'TNI/Polri: rekening berjalan terbayar (nilai)',a:95.6,b:13.2},
+    {label:'TNI/Polri: tunggakan terbayar (nilai)',a:85.3,b:11.1},
+    {label:'Seluruh UP3: tunggakan terbayar (nilai)',a:5.0,b:1.4},
+    {label:'Seluruh UP3: pelunasan ÷ saldo awal bulan',a:91.5,b:89.6}
+  ],100,function(v){return nf(v,1)+'%';});
+
+  /* ---- tooltip ---- */
+  var tip=document.getElementById('tip');
+  function place(e){
+    var x=Math.min(e.clientX+14,window.innerWidth-tip.offsetWidth-8);
+    tip.style.left=Math.max(8,x)+'px'; tip.style.top=(e.clientY+16)+'px';
+  }
+  function show(e){
+    var t=e.target.closest&&e.target.closest('[data-tip]');
+    if(!t){tip.hidden=true;return;}
+    tip.textContent=t.getAttribute('data-tip'); tip.hidden=false; place(e);
+  }
+  document.addEventListener('mouseover',show);
+  document.addEventListener('mousemove',function(e){if(!tip.hidden)place(e);});
+  document.addEventListener('click',function(e){show(e);setTimeout(function(){tip.hidden=true;},2200);});
+})();
+</script>
+
+</body></html>
