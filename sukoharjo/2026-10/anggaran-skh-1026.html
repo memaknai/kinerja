@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Analisis Anggaran UP3 Sukoharjo · Okt 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@500;600&display=swap">
+<style>
+:root{--bg:#fff;--fg:#051C2C;--mut:#5b6b78;--line:#d9e0e6;--card:#f4f7f9;--bar:#c3ccd4;--acc:#2251ff;--cy:#00a9f4;--neg:#c8102e;--ok:#0a8f5b;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1620;--fg:#e8eef3;--mut:#9fb0be;--line:#26384a;--card:#102232;--bar:#3b4f61;--acc:#5b8cff;--neg:#ff6b7d;--ok:#3ddc97;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1620;--fg:#e8eef3;--mut:#9fb0be;--line:#26384a;--card:#102232;--bar:#3b4f61;--acc:#5b8cff;--neg:#ff6b7d;--ok:#3ddc97;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(60px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.65 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:'Source Serif 4',Georgia,serif;font-weight:600;line-height:1.2;margin:0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:#051C2C;display:flex;gap:4px;padding:0 16px;overflow-x:auto}
+nav a{color:#9db3c4;text-decoration:none;font-size:13px;padding:17px 14px;white-space:nowrap;border-bottom:3px solid transparent}
+nav a.on,nav a:hover{color:#fff;border-color:var(--cy)}
+.hero{background:linear-gradient(135deg,#051C2C 55%,#0b3a66);color:#fff;padding:64px 20px 40px}
+.w{max-width:1040px;margin:auto}
+.kick{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cy);font-weight:600;margin-bottom:10px}
+.hero h1{font-size:clamp(27px,4.6vw,44px);max-width:860px}.hero p{color:#b9cad8;max-width:720px;margin:16px 0 30px}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1d3a52}
+.kp div{background:#082338;padding:16px}.kp b{display:block;font:600 clamp(20px,5vw,28px) 'Source Serif 4',Georgia,serif;color:#fff}.kp span{font-size:12px;color:#9db3c4}.kp em{font-style:normal;font-size:12px;color:var(--cy)}
+.kp .l{grid-column:1/-1;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6f8ba1;padding:8px 16px}
+section{padding:56px 20px;border-bottom:1px solid var(--line)}
+.ch{font:600 13px Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+h2{font-size:clamp(22px,3vw,31px);max-width:860px;margin-bottom:12px}h3{font-size:19px;margin:30px 0 8px;max-width:820px}
+.lead{color:var(--mut);max-width:820px}
+.ex{background:var(--card);border-top:3px solid var(--fg);padding:18px 20px;margin:20px 0}
+.ex h4{margin:0 0 4px;font-size:14px}.ex .s{font-size:12px;color:var(--mut);margin-top:12px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.tabs button{border:1px solid var(--line);background:var(--bg);color:var(--fg);padding:6px 12px;font:500 12.5px Inter;cursor:pointer;border-radius:2px}
+.tabs button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.row{display:grid;grid-template-columns:96px 1fr 70px;align-items:center;gap:8px;font-size:12.5px;margin:3px 0}
+.row .t{background:transparent;height:18px;position:relative}.row .b{height:100%;background:var(--bar);width:0;transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.row.me{font-weight:600}.row.me .b{background:var(--acc)}.row.me span:last-child{color:var(--acc)}
+.row .ref{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed var(--neg)}
+.row span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.cap{font-size:13px;margin-top:10px}.cap b{color:var(--acc)}
+.leg{font-size:12px;color:var(--mut)}.leg i{display:inline-block;width:14px;border-top:2px dashed var(--neg);vertical-align:middle;margin:0 4px}
+.sowhat{border-left:4px solid var(--acc);padding:10px 16px;margin:18px 0;background:color-mix(in srgb,var(--acc) 8%,transparent);max-width:860px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0}
+.card{border:1px solid var(--line);padding:16px;background:var(--bg)}.card h5{margin:0 0 6px;font-size:14px}.card p{margin:0;font-size:13.5px;color:var(--mut)}
+.card .n{font:600 26px 'Source Serif 4',Georgia,serif}.neg{color:var(--neg)}.ok{color:var(--ok)}
+.fn{display:grid;grid-template-columns:130px 1fr 110px;gap:8px;align-items:center;margin:5px 0;font-size:13px}
+.fn .t{height:22px;background:color-mix(in srgb,var(--bar) 35%,transparent)}.fn .b{height:100%;width:0;transition:width .6s}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.big{font:600 40px 'Source Serif 4',Georgia,serif;color:var(--acc)}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right}th:first-child,td:first-child{text-align:left}
+th{cursor:pointer;background:var(--fg);color:var(--bg);font-weight:500;white-space:nowrap}tr.me td{background:color-mix(in srgb,var(--acc) 14%,transparent);font-weight:600}
+.sc{overflow-x:auto}svg text{fill:var(--mut);font:10px Inter}svg .me{fill:var(--fg);font-weight:600;font-size:11px}
+ol.m{padding-left:20px;max-width:860px}ol.m li{margin:10px 0}
+footer{padding:30px 20px;font-size:12px;color:var(--mut)}
+</style></head><body>
+<nav><a href="#top" class="on">Ringkasan</a><a href="#inv">A · Investasi</a><a href="#ops">B · Operasi</a><a href="#syn">C · Sintesis</a><a href="#app">Lampiran</a></nav>
+
+<header class="hero" id="top"><div class="w">
+<div class="kick">Analisis kinerja anggaran · UP3 Sukoharjo</div>
+<h1>Investasi sudah terkontrak tetapi belum terbayar; operasi terbayar baik tetapi menyisakan ruang komitmen</h1>
+<p>Posisi 31 Oktober 2026 (bulan ke-10, 83,3% waktu berjalan), dibandingkan dengan 11 UP3 lain di Jateng, UP2D, dan UID Jateng; UP3 Yogyakarta, yang sejak 1 April 2026 berdiri sebagai UID tersendiri, tidak dimasukkan dalam peer group. Urutan pembahasan: Investasi, lalu Operasi; setiap bab menelaah besaran, terkontrak, kemudian terbayar.</p>
+<div class="kp">
+<div class="l">Investasi (SKKI)</div>
+<div><b data-v="22.59" data-d="2" data-s=" M">0</b><span>Nilai SKKI</span><br><em>Peringkat 10 / 12 UP3</em></div>
+<div><b data-v="98.69" data-d="1" data-s="%">0</b><span>Terkontrak</span><br><em>Peringkat 2 / 12</em></div>
+<div><b data-v="42.94" data-d="1" data-s="%">0</b><span>Terbayar</span><br><em>Peringkat 11 / 12</em></div>
+<div class="l">Operasi (SKKO)</div>
+<div><b data-v="11.21" data-d="2" data-s=" M">0</b><span>Nilai SKKO</span><br><em>Peringkat 8 / 12 UP3</em></div>
+<div><b data-v="80.93" data-d="1" data-s="%">0</b><span>Terkontrak</span><br><em>Peringkat 9 / 12</em></div>
+<div><b data-v="62.98" data-d="1" data-s="%">0</b><span>Terbayar</span><br><em>Peringkat 4 / 12</em></div>
+</div></div></header>
+
+<section><div class="w">
+<div class="ch">Ringkasan eksekutif</div>
+<h2>Sukoharjo menunjukkan profil cermin terbalik: kuat di kontrak investasi dan di pembayaran operasi, lemah pada sisi sebaliknya</h2>
+<ol class="m">
+<li><b>Skala kecil, posisi menengah ke bawah.</b> Sukoharjo memegang 0,88% SKKI dan 0,75% SKKO regional. Pada investasi Rp22,59 M ia berada di peringkat 10 dari 12 UP3, sekitar seperempat Semarang (Rp97,25 M).</li>
+<li><b>Investasi: kontrak hampir penuh, kas tertinggal.</b> Terkontrak 98,7% (peringkat 2), namun terbayar 42,9% (peringkat 11), jauh di bawah median UP3 sekitar 53%. Rp12,60 M komitmen belum dibayar, dan 72% dari jumlah itu ada di program Pemasaran (SAR).</li>
+<li><b>Angka 42,9% pun terlalu optimistis.</b> Luncuran (LUN) sudah lunas dan menyumbang 51% dari seluruh realisasi. Tanpa LUN, program berjalan 2026 baru terbayar 27,1%.</li>
+<li><b>Operasi: pembayaran baik, komitmen tertinggal.</b> Terbayar 63,0% (peringkat 4; regional 50,4%), tetapi hanya 80,9% terkontrak (peringkat 9). Rp2,14 M (19,1% SKKO) belum berkomitmen, lebih tinggi dari rata-rata regional 13,6%.</li>
+<li><b>Hambatan bukan di perbendaharaan.</b> Permintaan bayar yang diajukan hampir selalu terealisasi (98,7% investasi, 99,5% operasi). Titik macet ada di hulu: progres fisik, penagihan vendor, dan keputusan komitmen.</li>
+<li><b>Satu kualifikasi penting.</b> Tolok ukur kas investasi yang sesungguhnya adalah AKI per unit, yang tidak tersedia dalam data. Regional sudah merealisasikan 98,8% AKI. Karena itu besarnya kesenjangan 2026 harus divalidasi sebelum eskalasi (lihat A5).</li>
+</ol></div></section>
+
+<section id="inv"><div class="w">
+<div class="ch">Bab A · Anggaran Investasi</div>
+<h2>A1. Sukoharjo pemain kecil: Rp22,59 M atau 0,88% SKKI regional, peringkat 10 dari 12 UP3</h2>
+<p class="lead">UID menguasai Rp1.944,8 M (75,9% regional). Semarang dan Kudus masing-masing 4,3x dan 3,8x ukuran Sukoharjo. Portofolionya sempit: 5 program dan 9 PRK, terkonsentrasi pada Pemasaran (57,6%) dan Luncuran (21,9%).</p>
+<div class="ex"><h4>Exhibit 1 · Posisi Sukoharjo terhadap 12 UP3 (Investasi)</h4>
+<div class="tabs" data-d="inv" data-t="rk1"></div><div id="rk1"></div><div class="cap" id="rk1c"></div><div class="s leg">Garis putus-putus <i></i> = rata-rata regional / rata-rata UP3. Sumber: rekap anggaran investasi per 31 Okt 2026; analisis tim.</div></div>
+
+<h3>A2. Terkontrak: 98,7% (peringkat 2 dari 12), di atas rata-rata regional 91,6%</h3>
+<p class="lead">Seluruh 9 PRK sudah terkontrak, tidak ada nota dinas tertunda, dan sisa SKKI hanya Rp296 juta (1,3%). Sebanyak 86% sisa itu ada di satu program, Perkuatan Jaringan Distribusi (DIS: komitmen baru 71,9%). Disiplin kontrak merupakan kekuatan nyata, tetapi belum berubah menjadi kas keluar.</p>
+
+<h3>A3. Terbayar: 42,9% (peringkat 11 dari 12), kesenjangan 55,8 poin dari komitmen</h3>
+<p class="lead">Hanya 43,5% komitmen yang telah dibayar dan 44,1% yang telah ditagihkan. UP3 Yogyakarta tidak dibandingkan karena sejak 1 April 2026 menjadi UID tersendiri. Rantai konversi Sukoharjo patah di tahap awal, yaitu dari komitmen ke permintaan bayar, bukan dari permintaan ke realisasi (98,7%).</p>
+<div class="ex"><h4>Exhibit 2 · Matriks komitmen vs pembayaran (ukuran gelembung = SKKI)</h4><div class="sc" id="sc1"></div><div class="s">Garis putus-putus = rata-rata regional. Kuadran kanan-bawah (kontrak tinggi, bayar rendah) adalah posisi Sukoharjo bersama Semarang dan Kudus.</div></div>
+
+<h3>A4. Dekomposisi program: 42,9% disangga luncuran, program berjalan baru terbayar 27%</h3>
+<div class="ex"><h4>Exhibit 3 · Corong SKKI → komitmen → permintaan bayar → realisasi, per program Sukoharjo</h4>
+<div class="tabs" data-t="fn1" id="ft"></div><div id="fn1"></div><div class="cap" id="fn1c"></div><div class="s">% terhadap SKKI program. Sumber: Anggaran Investasi UP3 Sukoharjo.</div></div>
+<div class="g3">
+<div class="card"><h5>SAR · Pemasaran</h5><div class="n neg">Rp9,12 M</div><p>Komitmen Rp13,00 M, terbayar 29,8%. Menyumbang 72% dari komitmen belum bayar. Prioritas tertinggi.</p></div>
+<div class="card"><h5>EDP · Evakuasi Daya &amp; JTM</h5><div class="n neg">Rp0 terbayar</div><p>Rp1,57 M terkomitmen (98,97%), nol realisasi pada bulan ke-10. Risiko bergeser ke 2027 bila progres fisik tidak terkonfirmasi.</p></div>
+<div class="card"><h5>DIS · Perkuatan Distribusi</h5><div class="n neg">Rp256 juta</div><p>Belum berkomitmen (71,9% terkomitmen), terbayar 6,4%. Harus diputuskan: gunakan atau lepas.</p></div>
+</div>
+
+<h3>A5. Menutup kesenjangan penuh menuntut laju bayar 6,5 kali lipat dalam dua bulan</h3>
+<div class="ex"><h4>Exhibit 4 · Simulasi proyeksi terbayar 31 Desember (Investasi)</h4>
+<div>Bagian komitmen belum bayar yang berhasil dibayar hingga 31 Des: <b id="s1v">60%</b></div>
+<input type="range" id="s1" min="0" max="100" value="60">
+<div class="g3"><div><div class="big" id="s1o">0</div><div class="leg">proyeksi % terbayar terhadap SKKI</div></div><div><div class="big" id="s1p">0</div><div class="leg">laju bayar per bulan Nov–Des vs rata-rata Jan–Okt (Rp0,97 M/bulan)</div></div></div>
+<div class="s">Komitmen belum bayar Rp12,60 M. Pembayaran penuh perlu Rp6,30 M/bulan.</div></div>
+<div class="sowhat"><b>Kualifikasi.</b> Skenario penuh mengasumsikan semua komitmen jatuh tempo 2026. Realisasi regional sudah 98,8% dari AKI padahal hanya 43,9% dari SKKI, artinya sebagian besar komitmen memang berjadwal lintas tahun. Bila rasio AKI/SKKI Sukoharjo serupa regional (44,4%), AKI-nya sekitar Rp10,0 M dan realisasi Rp9,70 M sudah mencapai kira-kira 97% (proksi, bukan data). Kesimpulan: kesenjangan 2026 yang nyata kemungkinan jauh lebih kecil dari Rp12,6 M, tetapi hanya AKI unit yang dapat memastikannya.</div>
+
+<h3>A6. Rekomendasi investasi</h3>
+<div class="g3">
+<div class="card"><h5>1 · Rebase target ke AKI</h5><p>Minta AKI Sukoharjo ke UID, tetapkan target bayar Nov–Des per kontrak, dan jadikan konversi komitmen→bayar sebagai KPI utama.</p></div>
+<div class="card"><h5>2 · War room SAR</h5><p>Inventarisasi seluruh kontrak SAR (Rp9,12 M): status BAST, progres, tagihan vendor. Mingguan, dengan pemilik per kontrak.</p></div>
+<div class="card"><h5>3 · Verifikasi EDP</h5><p>Cek progres fisik dan termin kontrak. Jika tidak dapat dibayar 2026, ajukan sebagai luncuran sekarang, bukan Desember.</p></div>
+<div class="card"><h5>4 · Putuskan DIS</h5><p>Tentukan sebelum pertengahan November: tambah komitmen kegiatan siap kerja atau lepas Rp256 juta untuk realokasi.</p></div></div>
+</div></section>
+
+<section id="ops"><div class="w">
+<div class="ch">Bab B · Anggaran Operasi</div>
+<h2>B1. Operasi lebih besar tetapi tetap menengah: Rp11,21 M (0,75% regional), peringkat 8 dari 12 UP3</h2>
+<p class="lead">Seluruh 22 PRK sudah terkontrak (100%), sehingga isu operasi bukan jumlah kegiatan, melainkan nilai komitmen di dalam PRK.</p>
+<div class="ex"><h4>Exhibit 5 · Posisi Sukoharjo terhadap 12 UP3 (Operasi)</h4>
+<div class="tabs" data-d="op" data-t="rk2"></div><div id="rk2"></div><div class="cap" id="rk2c"></div><div class="s leg">Garis putus-putus <i></i> = rata-rata regional / rata-rata UP3.</div></div>
+
+<h3>B2. Terkontrak: 80,9% (peringkat 9 dari 12), di bawah rata-rata regional 85,5%</h3>
+<p class="lead">Sisa SKKO Rp2,14 M (19,1%) belum berkomitmen, padahal 22 dari 22 PRK sudah dikontrakkan. Artinya selisih berupa ruang di dalam kontrak berjalan, yaitu efisiensi harga atau volume, bukan PRK yang terlewat. Ini perlu dipilah: penghematan sah atau pekerjaan yang tertunda.</p>
+
+<h3>B3. Terbayar: 63,0% (peringkat 4 dari 12), jauh di atas regional 50,4%</h3>
+<p class="lead">Pembayaran operasi merupakan titik terang: 77,8% komitmen sudah dibayar dan 99,5% permintaan bayar terealisasi. Kebutuhan Nov–Des hanya Rp1,0 M per bulan, sekitar 1,4x laju berjalan, sehingga layak dicapai.</p>
+<div class="ex"><h4>Exhibit 6 · Matriks komitmen vs pembayaran (Operasi)</h4><div class="sc" id="sc2"></div><div class="s">Sukoharjo berada di sisi atas (bayar baik) tetapi di kiri rata-rata regional pada komitmen.</div></div>
+<div class="ex"><h4>Exhibit 7 · Simulasi proyeksi terbayar 31 Desember (Operasi)</h4>
+<div>Bagian komitmen belum bayar yang berhasil dibayar: <b id="s2v">80%</b></div><input type="range" id="s2" min="0" max="100" value="80">
+<div class="g3"><div><div class="big" id="s2o">0</div><div class="leg">proyeksi % terbayar terhadap SKKO</div></div><div><div class="big" id="s2p">0</div><div class="leg">laju bayar Nov–Des vs rata-rata Jan–Okt (Rp0,71 M/bulan)</div></div></div>
+<div class="s">Komitmen belum bayar Rp2,01 M. Tanpa komitmen baru, batas atas terbayar adalah 80,9%.</div></div>
+
+<h3>B4. Konteks program (regional, bukan Sukoharjo)</h3>
+<p class="lead">Tabel “Anggaran Operasi UP3 Sukoharjo” pada berkas bertotal Rp1.502,4 M dengan 352 PRK, identik dengan total regional, sehingga tidak dapat dipakai sebagai portofolio Sukoharjo. Berikut ditampilkan sebagai konteks regional saja.</p>
+<div class="ex"><h4>Exhibit 8 · Program operasi regional: % komitmen dan % bayar terhadap SKKO</h4><div id="pr"></div><div class="s">Pemeliharaan Instalasi (INS) = 48,8% SKKO regional. Program dengan serapan terendah: TUL, KIT, SDM.</div></div>
+
+<h3>B5. Rekomendasi operasi</h3>
+<div class="g3">
+<div class="card"><h5>1 · Pilah Rp2,14 M</h5><p>Klasifikasikan per PRK: penghematan nyata (rilis ke regional), pekerjaan tertunda (kontrak tambahan), atau kebutuhan baru (pemeliharaan jaringan prioritas).</p></div>
+<div class="card"><h5>2 · Kunci komitmen cepat</h5><p>Tetapkan batas akhir komitmen baru sebelum akhir November agar masih sempat dibayar sebelum tutup buku.</p></div>
+<div class="card"><h5>3 · Bayar Rp2,01 M</h5><p>Jaga disiplin pembayaran: target seluruh komitmen terbayar pertengahan Desember.</p></div>
+<div class="card"><h5>4 · Data program UP3</h5><p>Minta ekstrak program level Sukoharjo agar rekomendasi dapat diturunkan ke jenis pekerjaan.</p></div></div>
+</div></section>
+
+<section id="syn"><div class="w">
+<div class="ch">Bab C · Sintesis</div>
+<h2>Dua anggaran, dua masalah berbeda: investasi butuh percepatan kas, operasi butuh keputusan komitmen</h2>
+<div class="ex"><table><tr><th>Indikator</th><th>Investasi</th><th>Operasi</th></tr>
+<tr><td>Nilai (peringkat UP3)</td><td>Rp22,59 M (10/12)</td><td>Rp11,21 M (8/12)</td></tr>
+<tr><td>Terkontrak</td><td class="ok">98,7% (2/12)</td><td class="neg">80,9% (9/12)</td></tr>
+<tr><td>Terbayar</td><td class="neg">42,9% (11/12)</td><td class="ok">63,0% (4/12)</td></tr>
+<tr><td>Komitmen belum bayar</td><td>Rp12,60 M</td><td>Rp2,01 M</td></tr>
+<tr><td>Sisa belum berkomitmen</td><td>Rp0,30 M (1,3%)</td><td>Rp2,14 M (19,1%)</td></tr>
+<tr><td>Gabungan (SKKI+SKKO Rp33,80 M)</td><td colspan="2" style="text-align:center">Terkontrak 92,8% · Terbayar 49,6%</td></tr></table></div>
+<div class="g3">
+<div class="card"><h5>9–15 November</h5><p>Minta AKI unit. Bentuk war room SAR dan EDP. Putuskan nasib DIS. Mulai pilah sisa SKKO Rp2,14 M.</p></div>
+<div class="card"><h5>Akhir November</h5><p>Batas akhir komitmen baru operasi. Kontrak yang pasti bergeser ke 2027 diajukan sebagai luncuran. Review mingguan konversi komitmen→bayar.</p></div>
+<div class="card"><h5>Pertengahan Desember</h5><p>Seluruh komitmen operasi terbayar. Tagihan investasi tuntas atau terjadwalkan. Rilis sisa tak terpakai ke regional.</p></div></div>
+<h3>Risiko utama</h3>
+<p class="lead">(1) Rp12,6 M komitmen investasi tidak tertagih sebelum tutup buku; (2) SKKO Rp2,1 M hangus tanpa alasan efisiensi yang terdokumentasi, berpotensi memengaruhi alokasi tahun berikutnya; (3) keputusan diambil dari data yang belum lengkap (AKI dan program Sukoharjo).</p>
+</div></section>
+
+<section id="app"><div class="w">
+<div class="ch">Lampiran</div>
+<h2>Seluruh unit dan catatan kualitas data</h2>
+<div class="ex"><h4>Perbandingan 15 unit (klik judul kolom untuk mengurutkan)</h4><div class="sc"><table id="tb"></table></div></div>
+<h3>Catatan kritis atas data</h3>
+<ol class="m">
+<li>Tabel program operasi berlabel Sukoharjo sebenarnya regional (total Rp1.502,4 M, 352 PRK).</li>
+<li>Baris total memakai basis berbeda dari baris unit: persen terkontrak unit = terkontrak / SKKI (tanpa nota dinas), sedangkan total (92,74% dan 86,38%) memakai total komitmen. Pada basis yang sama rata-rata regional adalah 91,6% (investasi) dan 85,5% (operasi), dan itulah yang dipakai di sini.</li>
+<li>Kolom % DISBURSE adalah kontribusi realisasi unit terhadap total AKI/AKO regional, bukan kinerja unit, sehingga tidak dipakai untuk peringkat. Penyebut operasi tidak dinyatakan.</li>
+<li>Sejak 1 April 2026 UP3 Yogyakarta berdiri sebagai UID tersendiri, sehingga dikeluarkan dari peer group (12 UP3) dan hanya jadi referensi. Angkanya masih ada dalam total rekap dengan dampak tidak material (kurang dari 0,4% total). Investasinya murni luncuran, operasinya terkomitmen 101,8% dengan sisa SKKO negatif (−Rp49 juta).</li>
+<li>Selisih kecil: total SKKI berbeda Rp6 dan total AKI berbeda Rp2,66 juta antara baris total dan catatan bawah. Tidak material.</li>
+<li>Interpretasi penyebab (progres fisik, penagihan vendor, efisiensi harga) adalah hipotesis yang perlu divalidasi dengan data kontrak. Data tidak memuat jadwal termin maupun status BAST.</li>
+</ol></div></section>
+<footer><div class="w">Sumber: ang-skh-1026.csv (Rekap Anggaran Investasi dan Operasi Jawa Tengah per 31 Oktober 2026). Nilai dalam Rp miliar (M); peringkat = 12 UP3 Jateng (UP2D dan UID, termasuk UID Yogyakarta, sebagai referensi). Peringkat terbayar dihitung terhadap nilai SKKI/SKKO.</div></footer>
+
+<script>
+const fm=(n,d=1)=>n.toLocaleString('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d});
+// [nama,tipe,[SKKI,terkontrak,ND,permintaan,realisasi],[SKKO,...]]  (Rp miliar)
+const U=[['UID Jateng','UID',[1944.796,1769.653,7.853,836.098,833.458],[1294.779,1119.486,0,779.782,642.034]],
+['UP3 Kudus','UP3',[86.308,82.573,2.443,45.947,38.763],[24.711,16.088,5.753,5.201,5.194]],
+['UP3 Surakarta','UP3',[44.563,42.151,0,26.244,26.033],[16.406,14.101,0,12.692,12.549]],
+['UID Yogyakarta','UID',[9.342,9.342,0,9.342,9.342],[2.705,2.755,0,2.221,2.221]],
+['UP3 Magelang','UP3',[48.823,45.314,2.577,24.509,23.738],[10.489,9.050,.719,5.913,5.692]],
+['UP3 Purwokerto','UP3',[33.790,30.511,2.079,18.671,18.521],[11.981,8.931,0,7.003,7.003]],
+['UP3 Tegal','UP3',[48.616,47.385,0,27.265,26.762],[15.175,13.174,0,7.507,7.507]],
+['UP3 Semarang','UP3',[97.250,94.868,2.161,33.825,33.161],[19.232,15.745,2.393,10.533,9.710]],
+['UP3 Salatiga','UP3',[17.053,16.289,0,8.855,8.734],[10.552,8.797,0,5.857,5.857]],
+['UP3 Klaten','UP3',[28.832,27.426,0,17.638,17.433],[8.442,7.100,.509,5.868,5.675]],
+['UP3 Pekalongan','UP3',[46.700,39.603,.299,20.684,20.548],[15.326,13.667,.275,10.019,9.627]],
+['UP3 Cilacap','UP3',[30.377,30.233,0,16.793,16.576],[12.222,11.211,0,9.623,7.984]],
+['UP3 Grobogan','UP3',[22.130,20.339,1.223,12.537,12.476],[8.914,6.107,1.718,4.667,4.246]],
+['UP3 Sukoharjo','UP3',[22.594,22.298,0,9.830,9.701],[11.210,9.072,0,7.092,7.060]],
+['UP2D Jateng & DIY','UP2D',[82.349,69.362,11.536,30.492,29.613],[40.280,29.914,1.287,24.489,24.489]]];
+const ME='UP3 Sukoharjo',P3=U.filter(u=>u[1]=='UP3');
+const M={size:{l:'Nilai anggaran',f:x=>x[0],u:' M',d:2},term:{l:'% Terkontrak',f:x=>x[1]/x[0]*100,u:'%',d:1},pay:{l:'% Terbayar',f:x=>x[4]/x[0]*100,u:'%',d:1},conv:{l:'Konversi komitmen→bayar',f:x=>x[4]/(x[1]+x[2])*100,u:'%',d:1}};
+const sum=(i,k)=>U.reduce((s,u)=>s+u[i][k],0);
+function ref(i,m){const a=[0,1,2,3,4].map(k=>sum(i,k));return m=='size'?P3.reduce((s,u)=>s+u[i][0],0)/P3.length:M[m].f(a)}
+function rank(id,i,m){const el=document.getElementById(id),mm=M[m],rows=P3.map(u=>[u[0],mm.f(u[i])]).sort((a,b)=>b[1]-a[1]);
+ const mx=Math.max(...rows.map(r=>r[1]),ref(i,m))*1.04,rf=ref(i,m);
+ el.innerHTML=rows.map(r=>`<div class="row ${r[0]==ME?'me':''}"><span>${r[0].replace('UP3 ','')}</span><div class="t"><div class="b" data-w="${r[1]/mx*100}"></div><div class="ref" style="left:${rf/mx*100}%"></div></div><span>${fm(r[1],mm.d)}${mm.u}</span></div>`).join('');
+ requestAnimationFrame(()=>el.querySelectorAll('.b').forEach(b=>b.style.width=b.dataset.w+'%'));
+ const p=rows.findIndex(r=>r[0]==ME)+1,v=rows[p-1][1];
+ document.getElementById(id+'c').innerHTML=`<b>${mm.l}: Sukoharjo peringkat ${p} dari ${P3.length}</b> (${fm(v,mm.d)}${mm.u}) vs rata-rata ${fm(rf,mm.d)}${mm.u}.`}
+document.querySelectorAll('.tabs[data-d]').forEach(t=>{const i=t.dataset.d=='inv'?2:3;
+ Object.keys(M).forEach((k,j)=>{const b=document.createElement('button');b.textContent=M[k].l;b.onclick=()=>{t.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');rank(t.dataset.t,i,k)};t.appendChild(b);if(j==2)b.click()})});
+function scat(id,i){const W=640,H=330,L=40,B=30,x0=60,x1=105,y0=10,y1=105,X=v=>L+(v-x0)/(x1-x0)*(W-L-10),Y=v=>H-B-(v-y0)/(y1-y0)*(H-B-10);
+ const a=[0,1,2,3,4].map(k=>sum(i,k)),rx=a[1]/a[0]*100,ry=a[4]/a[0]*100;let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:520px">`;
+ for(let v=20;v<=100;v+=20)s+=`<line x1="${L}" x2="${W-10}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="4" y="${Y(v)+3}">${v}%</text>`;
+ for(let v=60;v<=100;v+=10)s+=`<text x="${X(v)-8}" y="${H-12}">${v}%</text>`;
+ s+=`<line x1="${X(rx)}" x2="${X(rx)}" y1="10" y2="${H-B}" stroke="var(--neg)" stroke-dasharray="4 3"/><line x1="${L}" x2="${W-10}" y1="${Y(ry)}" y2="${Y(ry)}" stroke="var(--neg)" stroke-dasharray="4 3"/>`;
+ s+=`<text x="${W/2-40}" y="${H-1}">% Terkontrak →</text><text x="2" y="9">% Terbayar ↑</text>`;
+ P3.forEach(u=>{const d=u[i],cx=X(Math.min(d[1]/d[0]*100,104)),cy=Y(d[4]/d[0]*100),r=5+Math.sqrt(d[0])*1.4,me=u[0]==ME;
+ s+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="${me?'var(--acc)':'var(--bar)'}" fill-opacity="${me?.9:.65}" stroke="${me?'var(--fg)':'none'}"><title>${u[0]}: terkontrak ${fm(d[1]/d[0]*100)}%, terbayar ${fm(d[4]/d[0]*100)}%, nilai ${fm(d[0],2)} M</title></circle><text class="${me?'me':''}" x="${cx+r+2}" y="${cy+3}">${u[0].replace('UP3 ','')}</text>`});
+ document.getElementById(id).innerHTML=s+'</svg>'}
+scat('sc1',2);scat('sc2',3);
+// funnel Sukoharjo investasi: [nama,SKKI,komit,permintaan,realisasi]
+const PG=[['Total',22.594,22.298,9.830,9.701],['Tanpa Luncuran',17.655,17.373,4.905,4.776],['LUN · Luncuran',4.939,4.925,4.925,4.925],['SAR · Pemasaran',13.010,13.000,3.991,3.876],['LOS · Penurunan Susut',2.144,2.144,.857,.842],['EDP · Evakuasi/JTM',1.589,1.573,0,0],['DIS · Distribusi',.912,.655,.059,.058]];
+function fun(n){const p=PG[n],c=['var(--bar)','var(--cy)','#7a8da0','var(--acc)'],lb=['SKKI','Komitmen','Permintaan bayar','Realisasi bayar'];
+ document.getElementById('fn1').innerHTML=lb.map((l,k)=>`<div class="fn"><span>${l}</span><div class="t"><div class="b" style="background:${c[k]}" data-w="${p[k+1]/p[1]*100}"></div></div><span>Rp${fm(p[k+1],2)} M · ${fm(p[k+1]/p[1]*100)}%</span></div>`).join('');
+ requestAnimationFrame(()=>document.querySelectorAll('#fn1 .b').forEach(b=>b.style.width=b.dataset.w+'%'));
+ document.getElementById('fn1c').innerHTML=`<b>${p[0]}</b>: komitmen belum bayar Rp${fm(p[2]-p[4],2)} M (${fm((p[2]-p[4])/(22.298-9.701)*100,0)}% dari total Rp12,60 M).`}
+PG.forEach((p,n)=>{const b=document.createElement('button');b.textContent=p[0];b.onclick=()=>{document.querySelectorAll('#ft button').forEach(x=>x.classList.remove('on'));b.classList.add('on');fun(n)};document.getElementById('ft').appendChild(b);if(!n)b.click()});
+function sim(sid,i,def){const u=U.find(x=>x[0]==ME)[i],o=u[1]+u[2]-u[4],h=u[4]/10,r=document.getElementById(sid);
+ const go=()=>{const s=r.value/100;document.getElementById(sid+'v').textContent=r.value+'%';document.getElementById(sid+'o').textContent=fm((u[4]+s*o)/u[0]*100)+'%';document.getElementById(sid+'p').textContent=fm(s*o/2/h,1)+'x'};r.oninput=go;go()}
+sim('s1',2);sim('s2',3);
+// program operasi regional [nama,SKKO,komit(terkontrak),realisasi]
+const OP=[['INS Instalasi',732.964,674.554,372.491],['AGA Adm. Niaga',338.569,327.089,171.771],['SRN Sarana',189.597,155.873,93.956],['PTL Tenaga Listrik',126.956,72.092,59.922],['MUM Adm. Umum',35.894,31.862,28.464],['NONAHG',21.330,13.341,12.118],['SDM',19.988,7.715,5.965],['TUL',15.992,2.395,.952],['SEWAAHG',12.942,10.601,9.452],['KIT',6.699,.990,.990],['BBM',1.495,1.339,.767]];
+document.getElementById('pr').innerHTML=OP.map(p=>`<div class="fn" style="grid-template-columns:130px 1fr 130px"><span>${p[0]}</span><div class="t" style="position:relative"><div class="b" style="background:var(--cy);width:${p[2]/p[1]*100}%;height:11px"></div><div class="b" style="background:var(--acc);width:${p[3]/p[1]*100}%;height:11px"></div></div><span>${fm(p[2]/p[1]*100,0)}% / ${fm(p[3]/p[1]*100,0)}%</span></div>`).join('')+'<div class="leg" style="margin-top:8px">Bar atas (cyan) = komitmen · bar bawah (biru) = realisasi bayar</div>';
+// tabel
+let sk='n',asc=1;const col=[['Unit',u=>u[0]],['SKKI (M)',u=>u[2][0]],['Terk. inv',u=>u[2][1]/u[2][0]*100],['Bayar inv',u=>u[2][4]/u[2][0]*100],['SKKO (M)',u=>u[3][0]],['Terk. ops',u=>u[3][1]/u[3][0]*100],['Bayar ops',u=>u[3][4]/u[3][0]*100]];
+function tb(){const d=[...U].sort((a,b)=>{const x=col[sk][1](a),y=col[sk][1](b);return (x>y?1:x<y?-1:0)*asc});
+ document.getElementById('tb').innerHTML='<tr>'+col.map((c,i)=>`<th data-i="${i}">${c[0]}${i==sk?(asc>0?' ▲':' ▼'):''}</th>`).join('')+'</tr>'+d.map(u=>`<tr class="${u[0]==ME?'me':''}">`+col.map((c,i)=>`<td>${i?fm(c[1](u),i%3==1?2:1)+(i%3==1?'':'%'):u[0]}</td>`).join('')+'</tr>').join('');
+ document.querySelectorAll('#tb th').forEach(h=>h.onclick=()=>{const i=+h.dataset.i;asc=sk==i?-asc:1;sk=i;tb()})}
+sk=1;asc=-1;tb();
+// counter
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const v=+e.target.dataset.v,d=+e.target.dataset.d,s=e.target.dataset.s;let t0;const st=t=>{t0=t0||t;const p=Math.min((t-t0)/1100,1);e.target.textContent=fm(v*(1-Math.pow(1-p,3)),d)+s;if(p<1)requestAnimationFrame(st)};requestAnimationFrame(st)}));
+document.querySelectorAll('[data-v]').forEach(e=>io.observe(e));
+// scrollspy
+const ids=['top','inv','ops','syn','app'],ln=[...document.querySelectorAll('nav a')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){ln.forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+e.target.id))}}),{rootMargin:'-40% 0px -55% 0px'});
+ids.forEach(i=>so.observe(document.getElementById(i)));
+</script></body></html>
