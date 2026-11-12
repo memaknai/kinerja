@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kinerja Sukoharjo · Oktober 2026 · NKO 105,76</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--sf:#f4f6f9;--tx:#0b1f33;--mu:#5d6b7c;--ln:#dfe4ea;--nv:#051c2c;--nv2:#2251ff;--cy:#00a9f4;--ok:#1a8a5b;--wr:#d98e04;--cr:#c8372d;--okb:#e1f3ea;--wrb:#fcf0d4;--crb:#fbe3e0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1521;--sf:#122134;--tx:#e6ecf4;--mu:#97a6b9;--ln:#223650;--nv:#040d16;--nv2:#6f93ff;--cy:#3cc0ff;--ok:#4cc592;--wr:#f0b64a;--cr:#f27c72;--okb:#10352a;--wrb:#3a2d12;--crb:#3d1c19;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1521;--sf:#122134;--tx:#e6ecf4;--mu:#97a6b9;--ln:#223650;--nv:#040d16;--nv2:#6f93ff;--cy:#3cc0ff;--ok:#4cc592;--wr:#f0b64a;--cr:#f27c72;--okb:#10352a;--wrb:#3a2d12;--crb:#3d1c19;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 56px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.65 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--nv);z-index:30}
+.w{max-width:1100px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--nv);border-bottom:1px solid #ffffff22}
+nav .w{display:flex;gap:4px;overflow-x:auto;align-items:center;height:48px}
+nav b{color:#fff;font:700 13px 'Source Serif 4',Georgia,serif;margin-right:14px;white-space:nowrap}
+nav a{color:#b8c6d9;font-size:12.5px;text-decoration:none;padding:6px 10px;border-radius:4px;white-space:nowrap}
+nav a:hover,nav a.on{color:#fff;background:#ffffff1c}
+.hero{background:var(--nv);color:#fff;padding:56px 0 48px;background-image:linear-gradient(135deg,transparent 60%,#2251ff40)}
+.hero .e{color:var(--cy);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+h1,h2,h3{font-family:'Source Serif 4',Georgia,serif;line-height:1.22}
+h1{font-size:clamp(26px,4.4vw,40px);margin:14px 0 14px;max-width:880px;font-weight:700}
+.hero p{max-width:720px;color:#c3cfde;margin:0}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#ffffff26;margin-top:34px;border:1px solid #ffffff26}
+.kp div{background:#0a2540;padding:16px 18px}
+.kp b{font:700 32px 'Source Serif 4',Georgia,serif;display:block;color:#fff}
+.kp span{font-size:11.5px;color:#a9b9cc}
+section{padding:44px 0 6px}
+.ex{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--nv2);font-weight:700}
+h2{font-size:clamp(22px,3vw,29px);margin:6px 0 10px;max-width:900px;font-weight:700}
+.lead{color:var(--mu);max-width:820px;margin:0 0 20px}
+.card{border:1px solid var(--ln);background:var(--bg);padding:18px 20px;border-radius:2px}
+.sw{background:var(--sf);border-left:4px solid var(--nv2);padding:14px 18px;margin:18px 0;font-size:14.5px}
+.sw b:first-child{color:var(--nv2);text-transform:uppercase;font-size:11px;letter-spacing:.14em;display:block;margin-bottom:2px}
+.src{font-size:11.5px;color:var(--mu);margin-top:8px}
+.msg{display:grid;grid-template-columns:44px 1fr;gap:6px 14px;padding:14px 0;border-top:1px solid var(--ln)}
+.msg i{font:700 26px 'Source Serif 4',Georgia,serif;color:var(--nv2);font-style:normal}
+.msg h3{margin:0 0 3px;font-size:18px}.msg p{margin:0;color:var(--mu);font-size:14.5px}
+.pr{display:grid;grid-template-columns:minmax(120px,230px) 1fr 70px;gap:10px;align-items:center;font-size:13px;margin:6px 0}
+.pr div{height:16px;background:var(--sf)}.pr div i{display:block;height:100%;width:0;background:var(--cr);transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.pr b{text-align:right;font-variant-numeric:tabular-nums}
+svg{width:100%;height:auto;display:block}
+svg text{font-family:Inter,sans-serif}
+.wb{transform-box:fill-box;transform-origin:bottom;animation:up .9s both}
+@keyframes up{from{transform:scaleY(0)}}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button,.chip{font:600 12.5px Inter,sans-serif;border:1px solid var(--ln);background:var(--bg);color:var(--tx);padding:7px 13px;border-radius:99px;cursor:pointer}
+.tabs button.on,.chip.on{background:var(--nv2);border-color:var(--nv2);color:#fff}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;align-items:start}
+.tg{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:99px}
+.tg.ok{background:var(--okb);color:var(--ok)}.tg.wr{background:var(--wrb);color:var(--wr)}.tg.cr{background:var(--crb);color:var(--cr)}.tg.mu{background:var(--sf);color:var(--mu)}
+.ts{overflow-x:auto;border:1px solid var(--ln)}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:820px}
+th{background:var(--nv);color:#fff;text-align:left;font-weight:600;padding:10px;font-size:11.5px}
+td{padding:8px 10px;border-top:1px solid var(--ln)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+td.nt{color:var(--mu);font-size:12px}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.ctl input{font:13px Inter,sans-serif;padding:7px 12px;border:1px solid var(--ln);border-radius:99px;background:var(--bg);color:var(--tx);min-width:200px}
+.sl{margin:14px 0}.sl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600}
+.sl input{width:100%;accent-color:#2251ff}
+.big{font:700 54px 'Source Serif 4',Georgia,serif;color:var(--nv2);line-height:1}
+.gauge{height:10px;background:var(--sf);margin:10px 0;position:relative}.gauge i{position:absolute;inset:0 auto 0 0;background:var(--nv2);transition:width .4s}
+.sw2{display:inline-flex;border:1px solid var(--ln);border-radius:99px;overflow:hidden}
+.sw2 button{border:0;background:var(--bg);color:var(--tx);padding:8px 16px;font:600 12.5px Inter,sans-serif;cursor:pointer}.sw2 button.on{background:var(--nv);color:#fff}
+.rm{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.rm .card h3{font-size:17px;margin:4px 0}.rm .card p{font-size:13.5px;color:var(--mu);margin:4px 0}
+.rm .pt{font:700 22px 'Source Serif 4',Georgia,serif;color:var(--ok)}
+#tt{position:fixed;pointer-events:none;background:var(--nv);color:#fff;font-size:12px;padding:6px 10px;border-radius:3px;opacity:0;transition:opacity .12s;z-index:50;max-width:260px}
+footer{margin:56px 0 44px;border-top:2px solid var(--nv);padding-top:16px;font-size:12px;color:var(--mu)}
+@media(max-width:600px){.pr{grid-template-columns:110px 1fr 54px}}
+</style>
+</head>
+<body>
+<nav><div class="w"><b>Sukoharjo · Okt 2026</b><a href="#ring">Ringkasan</a><a href="#skor">Skor</a><a href="#bocor">Kebocoran</a><a href="#bobot">Bobot</a><a href="#dalam">Analisis</a><a href="#proy">Proyeksi</a><a href="#sim">Simulator</a><a href="#rek">Rekomendasi</a></div></nav>
+
+<div class="hero"><div class="w">
+<div class="e">Monitoring Kinerja · Realisasi Kumulatif Jan–Okt 2026</div>
+<h1>NKO Oktober 105,76: kenaikan 0,38 poin dari September nyaris seluruhnya berasal dari perubahan bobot, sementara susut dan NAC menahan skor</h1>
+<p>Skor di atas 100 ditopang bonus capaian di batas 110%. Risiko tahun ini bergeser ke keandalan jaringan dan pengendalian biaya NAC pada dua bulan tersisa.</p>
+<div class="kp">
+<div><b data-n="105.76" data-d="2">0</b><span>NKO Oktober 2026</span></div>
+<div><b data-n="4.24" data-d="2">0</b><span>Poin hilang vs batas 110%</span></div>
+<div><b data-n="3" data-d="0">0</b><span>Indikator ≤ Hati-hati</span></div>
+<div><b data-n="118.3" data-d="1">0</b><span>NAC, % dari pagu tahunan</span></div>
+<div><b data-n="112" data-d="0">0</b><span>Gangguan TM Okt (tertinggi sejak Mei)</span></div>
+</div>
+</div></div>
+
+<div class="w">
+<section id="ring">
+<div class="ex">Ringkasan eksekutif</div>
+<h2>Lima pesan yang menentukan dua bulan terakhir</h2>
+<div class="msg"><i>1</i><div><h3>Peningkatan skor bersifat teknis, bukan operasional</h3><p>NKO naik dari 105,38 (September) ke 105,76. Dengan bobot kolom BOBOT yang sama dengan September, skor Oktober hanya <b>105,47</b> (+0,09 poin). Selisihnya berasal dari bobot yang dipakai kolom NILAI, berbeda untuk tujuh indikator.</p></div></div>
+<div class="msg"><i>2</i><div><h3>Tiga indikator menyumbang 60% poin hilang</h3><p>Susut distribusi (1,54), penyelesaian fisik investasi (0,50), dan NAC (0,49) = 2,53 dari 4,24 poin. Fisik investasi terkunci di 100% sehingga tidak pernah dapat melampaui bobot.</p></div></div>
+<div class="msg"><i>3</i><div><h3>Susut memburuk di tengah P2TL yang melampaui target</h3><p>Susut 6,44% (naik dari 6,39%, kenaikan pertama sejak Mei) vs target 6,07%. P2TL sudah 117% dari target tahunan, namun belum menurunkan susut.</p></div></div>
+<div class="msg"><i>4</i><div><h3>NAC telah melampaui pagu tahunan</h3><p>Realisasi Rp 13.800 juta vs pagu Rp 11.666 juta (118%, lebih Rp 2.134 juta); capaian merosot dari 76% ke 61%. Bobot hanya 1, tetapi penggunaan melebihi SKAO terbit adalah isu kepatuhan.</p></div></div>
+<div class="msg"><i>5</i><div><h3>Keandalan: status “Baik” menutupi tren memburuk</h3><p>Gangguan TM Oktober 112 kali (+60% vs September). Dengan laju tiga bulan terakhir, akhir tahun ±1.158 (103% pagu). Bantalan SAIDI hanya ±0,06 menit per bulan di atas laju Oktober.</p></div></div>
+</section>
+
+<section id="skor">
+<div class="ex">Exhibit 1 · Jembatan skor</div>
+<h2>Sebelas dari dua belas kelompok indikator berada di atas bobot; hanya Susut Distribusi yang di bawah</h2>
+<p class="lead">Selisih skor terhadap bobot per kelompok KPI. Sumbu dipotong pada 99 agar selisih terbaca.</p>
+<div class="card"><svg id="wf" viewBox="0 0 920 340"></svg></div>
+<div class="sw"><b>So what</b>Margin 5,76 poin di atas 100 terbentuk dari kelebihan capaian. Penjualan (+1,20), Penyambungan (+1,20), dan Keandalan Penyaluran (+0,80) menyumbang 56% dari margin; ketiganya sensitif terhadap musim hujan dan realisasi akhir tahun.</div>
+<div class="src">Sumber: km-1026.xlsx, kolom NILAI; selisih = nilai − bobot kelompok.</div>
+</section>
+
+<section id="bocor">
+<div class="ex">Exhibit 2 · Pareto poin hilang</div>
+<h2>Memperbaiki tiga indikator saja memulihkan hingga 2,5 dari 4,24 poin yang hilang</h2>
+<p class="lead">Poin hilang diukur terhadap capaian maksimum 110%. Arahkan kursor ke batang untuk detail.</p>
+<div class="card" id="par"></div>
+<div class="sw"><b>So what</b>Susut sendiri 36% dari kebocoran. Fisik investasi bukan masalah kinerja melainkan desain pengukuran (selalu 100% sejak Januari). Menaikkan susut ke target (capaian 100%) bernilai ±0,54 poin; ke 110% hingga 1,54 poin.</div>
+</section>
+
+<section id="bobot">
+<div class="ex">Exhibit 3 · Kebijakan bobot</div>
+<h2>Kolom NILAI memakai bobot yang berbeda dari kolom BOBOT pada tujuh indikator</h2>
+<p class="lead">Bobot basis NILAI diturunkan dari nilai ÷ capaian. Alihkan basis untuk melihat dampaknya pada NKO.</p>
+<div class="card">
+<div class="ctl"><div class="sw2"><button class="on" data-b="n">Basis NILAI (file)</button><button data-b="f">Basis kolom BOBOT</button></div><span>NKO:</span><span class="big" id="nkb" style="font-size:36px">105,76</span></div>
+<div class="ts"><table style="min-width:640px"><thead><tr><th>Indikator</th><th class="n">Bobot kolom</th><th class="n">Bobot basis NILAI</th><th class="n">Capaian</th><th class="n">Skor basis kolom</th><th class="n">Skor basis NILAI</th></tr></thead><tbody id="wt"></tbody></table></div>
+</div>
+<div class="sw"><b>So what</b>Total bobot tetap 100, tetapi bobot bergeser dari Penjualan, Susut, Pendapatan Penyambungan, dan Lisdes ke Penambahan Pelanggan, Daya Tersambung, dan P2TL. Perlu konfirmasi apakah ini penyesuaian resmi. Bila tidak, bobot di kolom BOBOT dan NILAI harus diseragamkan sebelum laporan dipakai sebagai dasar penilaian.</div>
+</section>
+
+<section id="dalam">
+<div class="ex">Exhibit 4 · Analisis mendalam</div>
+<h2>Pilih indikator untuk melihat tren dan implikasinya</h2>
+<div class="tabs" id="tabs"></div>
+<div class="g2"><div class="card"><div id="chh" style="font-weight:600;font-size:14px;margin-bottom:4px"></div><div id="ch"></div></div><div id="tx"></div></div>
+</section>
+
+<section id="proy">
+<div class="ex">Exhibit 5 · Lintasan akhir tahun</div>
+<h2>Enam indikator berisiko tipis atau terlampaui pada Desember bila laju tiga bulan terakhir berlanjut</h2>
+<p class="lead">Proyeksi = realisasi Oktober + laju rata-rata Agu–Okt × 2 bulan, dibandingkan target tahunan. Indikatif.</p>
+<div class="ctl"><button class="chip on" data-f="all">Semua</button><button class="chip" data-f="att">Perlu perhatian</button><button class="chip" data-f="ok">Aman</button><input id="q" placeholder="Cari indikator…"></div>
+<div class="ts"><table><thead><tr><th>Indikator</th><th class="n">Bobot</th><th class="n">Target</th><th class="n">Okt</th><th class="n">% target</th><th class="n">Capaian</th><th class="n">Δ vs Sep</th><th class="n">Proyeksi Des</th><th>Risiko</th><th>Catatan</th></tr></thead><tbody id="tb"></tbody></table></div>
+</section>
+
+<section id="sim">
+<div class="ex">Exhibit 6 · Simulator</div>
+<h2>Lima pengungkit menentukan apakah NKO akhir tahun naik atau turun</h2>
+<p class="lead">Geser capaian akhir tahun masing-masing indikator. NKO = Σ bobot × capaian (basis NILAI, batas 0–110%).</p>
+<div class="g2"><div class="card" id="sl"></div>
+<div class="card"><div style="font-size:12px;color:var(--mu)">NKO simulasi</div><div class="big" id="sn">105,76</div><div id="sd" style="font-weight:600;margin-top:4px"></div><div class="gauge"><i id="sg"></i></div>
+<div class="tabs" style="margin-top:14px"><button data-p="0">Kondisi sekarang</button><button data-p="1">Perbaikan realistis</button><button data-p="2">Risiko Q4</button></div>
+<p class="src">Perbaikan realistis: susut 100%, NAC 80%, efektivitas 100%. Risiko Q4: gangguan TM 95%, SAIDI 98%, NAC 40%, susut 92%.</p></div></div>
+</section>
+
+<section id="rek">
+<div class="ex">Rekomendasi</div>
+<h2>Enam keputusan prioritas untuk November–Desember</h2>
+<div class="rm">
+<div class="card"><span class="tg cr">Prioritas 1</span><h3>Bedah susut per penyulang/trafo</h3><p>Pisahkan teknis vs non-teknis; arahkan P2TL dan ganti meter ke area susut tertinggi, bukan sekadar mengejar kWh temuan.</p><div class="pt">+0,54 hingga +1,54 poin</div></div>
+<div class="card"><span class="tg cr">Prioritas 2</span><h3>Kunci NAC dan rekonsiliasi SKAO</h3><p>Hentikan komitmen baru, rekonsiliasi Rp 2.134 juta di atas pagu, dan siapkan penjelasan kepatuhan.</p><div class="pt">+0,39 poin · hindari risiko kepatuhan</div></div>
+<div class="card"><span class="tg wr">Prioritas 3</span><h3>Redam gangguan TM dan padam sebelum puncak hujan</h3><p>Pangkas pohon, termovisi, recloser pada penyulang dengan gangguan tertinggi Agu–Okt; pantau mingguan terhadap sisa pagu (±65 kali/bulan).</p><div class="pt">Lindungi ±12 poin bobot</div></div>
+<div class="card"><span class="tg wr">Prioritas 4</span><h3>Amankan indikator penutup semester</h3><p>Usulan ATTB (tanpa progres sejak Juni, 35,6% dari target tahunan) dan penyampaian usulan penghapusan PRR 2027 (Sem II 0%) perlu diselesaikan sebelum penutupan.</p><div class="pt">Cegah jatuh dari 110%/100%</div></div>
+<div class="card"><span class="tg wr">Prioritas 5</span><h3>Perbaiki desain pengukuran fisik investasi</h3><p>Konstan 100% sejak Januari: validasi sumber data EAM Maximo dan metode hitung agar indikator dapat membedakan kinerja.</p><div class="pt">+0,50 poin (struktural)</div></div>
+<div class="card"><span class="tg mu">Tata kelola</span><h3>Seragamkan bobot, lengkapi KPI 13, kalibrasi target</h3><p>Konfirmasi bobot NILAI, isi komponen pengurang KPI 13 (eksposur hingga −9), perbaiki label “#NAME?”, dan naikkan target indikator jenuh 110% untuk 2027.</p><div class="pt">Integritas laporan</div></div>
+</div>
+</section>
+
+<footer><b>Metodologi &amp; keterbatasan.</b> Sumber tunggal: km-1026.xlsx (realisasi kumulatif Jan–Okt, pencapaian, nilai, poin hilang). Bobot basis NILAI = nilai ÷ capaian per indikator. Poin hilang mengikuti file (selisih terhadap capaian 110%). Target berjalan bertahap tidak tercantum sehingga proyeksi Desember terhadap target tahunan hanya indikatif dan tidak memperhitungkan musim hujan atau kejadian luar biasa; indikator lumpy (JTM, ATTB, NAC) tidak diproyeksikan. Komponen pengurang KPI 13 kosong sehingga NKO belum memuat pengurang. Catatan data: label “#NAME?” pada empat baris, sheet masih bernama “km-0926”, MVOD Sep=Okt (104,9), auto dispatch Agu=Sep (28,32), dan Sem II PRR bernilai 0 namun diskor 100%.</footer>
+</div>
+<div id="tt"></div>
+
+<script>
+const L0=[{"F": 14, "T": 129.5, "m": [15.04, 29.25, 47.46, 55.84, 58.97, 70.69, 82.53, 94.92, 114.64, 125.25], "cap": 1.1, "sc": 13.2, "w": 12.0, "st": "Baik", "ph": 0}, {"F": 12, "T": 6.07, "m": [5.86, 5.87, 6.3, 6.39, 6.76, 6.42, 6.41, 6.41, 6.39, 6.44], "cap": 0.9464, "sc": 9.46, "w": 10.0, "st": "Masalah", "ph": 1.54}, {"F": 5, "T": 60.67, "m": [1.93, 3.96, 14.05, 19.33, 22.41, 25.26, 32.98, 39.29, 42.46, 48.49], "cap": 1.0406, "sc": 5.2, "w": 5.0, "st": "Baik", "ph": 0.3}, {"F": 5, "T": 0.92, "m": [0.05, 0.07, 0.22, 0.3, 0.34, 0.37, 0.51, 0.6, 0.63, 0.71], "cap": 1.0784, "sc": 5.39, "w": 5.0, "st": "Baik", "ph": 0.11}, {"F": 2, "T": 217.32, "m": [6.39, 15.23, 39.82, 52.67, 62.04, 67.75, 93.78, 113.01, 122.34, 142.03], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 1.67, "T": 19.01, "m": [0, 0, 0, 2.61, 3.28, 4.09, 9.43, 13.13, 36.9, 37.16], "cap": 1.1, "sc": 1.83, "w": 1.66, "st": "Baik", "ph": 0}, {"F": 1.67, "T": 22.41, "m": [0, 0, 0, 3.85, 9.03, 11.9, 15.15, 16.83, 20.67, 25.33], "cap": 1.1, "sc": 1.83, "w": 1.66, "st": "Baik", "ph": 0}, {"F": 1.67, "T": 6.77, "m": [0, 0, 0, 2.13, 2.53, 3, 3.86, 5.59, 5.92, 6.44], "cap": 1.1, "sc": 1.83, "w": 1.66, "st": "Baik", "ph": 0}, {"F": 5, "T": 100, "m": [100, 100, 100, 100, 100, 100, 100, 100, 100, 100], "cap": 1, "sc": 5, "w": 5.0, "st": "Baik", "ph": 0.5}, {"F": 0.5, "T": 21420, "m": [1740, 3399, 4737, 6467, 8477, 10873, 13239, 14998, 16722, 18767], "cap": 1.1, "sc": 4.4, "w": 4.0, "st": "Baik", "ph": 0}, {"F": 1.5, "T": 28.54, "m": [5.88, 10.73, 12.71, 18.23, 25.05, 32.56, 38.09, 44.36, 47.47, 53.14], "cap": 1.1, "sc": 4.4, "w": 4.0, "st": "Baik", "ph": 0}, {"F": 2, "T": 46.93, "m": [5.21, 9.84, 13.35, 18.34, 24.51, 33.5, 39.15, 45.53, 50.74, 58.3], "cap": 1.1, "sc": 0, "w": 0.0, "st": "Baik", "ph": 0}, {"F": 4, "T": 9, "m": [0, 9, 9, 9, 9, 9, 9, 9, 9, 10], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 2, "T": 3212, "m": [0, 0, 0, 0, 102, 614, 614, 1425, 1831, 2446], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 2, "T": 60, "m": [1, 1, 4, 11, 16, 21, 24, 25, 28, 30], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 2, "T": 30, "m": [23.19, 22.2, 22.46, 22.35, 22.72, 22.46, 22.42, 22.06, 21.86, 21.68], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 2, "T": 13.43, "m": [26.99, 26.01, 24.88, 24.5, 26.31, 26.92, 27.25, 28.32, 28.32, 29.51], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 1.2, "T": 291, "m": [29, 54, 87, 130, 178, 227, 288, 359, 400, 431], "cap": 1.1, "sc": 1.32, "w": 1.2, "st": "Baik", "ph": 0}, {"F": 0.8, "T": 52, "m": [5, 10, 17, 25, 33, 42, 50, 58, 64, 73], "cap": 1.1, "sc": 0.88, "w": 0.8, "st": "Baik", "ph": 0}, {"F": 5, "T": 1130, "m": [70, 156, 335, 479, 622, 717, 763, 818, 888, 1000], "cap": 1.0431, "sc": 5.22, "w": 5.0, "st": "Baik", "ph": 0.28}, {"F": 2, "T": 37, "m": [2, 6, 9, 11, 12, 14, 15, 20, 24, 28], "cap": 1.0667, "sc": 2.13, "w": 2.0, "st": "Baik", "ph": 0.07}, {"F": 4, "T": 100, "m": [110, 110, 110, 110, 110, 106.75, 106.68, 106.15, 104.9, 104.9], "cap": 1.049, "sc": 4.2, "w": 4.0, "st": "Baik", "ph": 0.2}, {"F": 2, "T": 100, "m": [110, 110, 110, 110, 110, 110, 110, 110, 110, 110], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 2, "T": 12390, "m": [12308.11, 12296.54, 12302.68, 12298.61, 12294.55, 12280.58, 12275.06, 12292.07, 12322.35, 12321.94], "cap": 1.0055, "sc": 2.01, "w": 2.0, "st": "Baik", "ph": 0.19}, {"F": 2, "T": 144, "m": [23.97, 89.76, 116.45, 139.75, 155.34, 181.07, 197.98, 212.86, 240.93, 258.98], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 2, "T": 0.02, "m": [0, 0, 0, 0, 0, 0.02, 0, 0, 0, 0], "cap": 1, "sc": 2, "w": 2.0, "st": "Baik", "ph": 0.2}, {"F": 2, "T": "95-100", "m": [100, 100, 100, 100, 100, 100, 97.82, 100, 100, 100], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 2, "T": 2466, "m": [0, 0, 0, 0, 0, 878.69, 878.69, 878.69, 878.69, 878.69], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 1, "T": 11666.05, "m": [0, 0, 0, 0, 0, 6529.67, 6529.67, 6529.67, 11440.9, 13800], "cap": 0.6086, "sc": 0.61, "w": 1.0, "st": "Masalah", "ph": 0.49}, {"F": 3, "T": 8211915, "m": [600494, 1017177, 1807493, 2305364, 2706924, 5535860, 6434338, 7939088, 8788008, 9628464], "cap": 1.1, "sc": 5.5, "w": 5.0, "st": "Baik", "ph": 0}, {"F": 2, "T": 10347, "m": [1018, 1915, 3013, 4195, 5028, 6101, 7243, 8320, 9468, 10706], "cap": 1.1, "sc": 2.2, "w": 2.0, "st": "Baik", "ph": 0}, {"F": 1, "T": 99, "m": [0, 0, 0, 0, 0, 100, 100, 100, 100, 100], "cap": 1.0101, "sc": 1.01, "w": 1.0, "st": "Baik", "ph": 0.09}, {"F": 2, "T": 100, "m": [100, 100, 100, 100, 100, 101.51, 103.36, 104.59, 108.53, 108.44], "cap": 1.0844, "sc": 2.17, "w": 2.0, "st": "Baik", "ph": 0.03}, {"F": 2, "T": 100, "m": [100, 100, 100, 100, 100, 100, 97.37, 97.7, 97.7, 97.94], "cap": 0.9794, "sc": 1.96, "w": 2.0, "st": "Hati-hati", "ph": 0.24}];
+const M=["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt"];
+const GN=["Penjualan","Susut Distribusi","Keandalan Penyaluran","Eksekusi RUPTL","Penyambungan","Pelayanan Pelanggan","Keandalan JTM","Emergency Response","Cash In","Pengendalian Anggaran","Transaksi Energi","Digitalisasi"];
+const GB=[12,10,12,10,12,8,7,6,6,5,8,4],GSC=[13.2,9.46,12.8,10.5,13.2,8.8,7.35,6.4,6.21,5.01,8.71,4.13];
+const SEP=[110,96,107,109,110,110,110,110,100,110,110,110,110,104,110,110,110,110,110,95,110,105,110,101,110,100,110,110,76,110,110,101,109,98];
+const SH=["Penjualan tenaga listrik (GWh)","Susut distribusi (%)","SAIDI (menit/plg)","SAIFI (kali/plg)","ENS (MWh)","Aset RUPTL JTM (kms)","Aset RUPTL JTR (kms)","Aset RUPTL Trafo (MVA)","Penyelesaian fisik investasi (%)","Penambahan pelanggan","Penambahan daya tersambung (MVA)","Pendapatan biaya penyambungan (Rp M)","Pelanggan Lisdes","kWh penjualan Lisdes","Feedback negatif PLN Mobile","Response time gangguan (menit)","Success rate auto dispatch (%)","Transaksi PLN Mobile (ribu kali)","Rupiah transaksi PLN Mobile (Rp M)","Gangguan TM (kali)","Kerusakan peralatan (unit)","MVOD (%)","MTTR Siaga 1 TM (%)","Saldo rata-rata (Rp juta)","Pelunasan PRR/Ex-PRR (Rp juta)","Usulan penghapusan PRR","Anggaran investasi (%)","Usulan penghapusan ATTB (Rp juta)","Pengendalian NAC (Rp juta)","Perolehan kWh P2TL","Ganti meter (unit)","Tindak lanjut LBKB (%)","Pengembangan aset distribusi (%)","Efektivitas pemeliharaan (%)"];
+const TY=["cmax","rmin","cmin","cmin","cmin","cmax","cmax","cmax","rmax","cmax","cmax","cmax","cmax","cmax","cmin","rmin","rmax","cmax","cmax","cmin","cmin","rmax","rmax","rmin","cmax","rmax","rng","cmax","cmin","cmax","cmax","rmax","rmax","rmax"];
+const GR=[0,1,2,2,2,3,3,3,3,4,4,4,4,4,5,5,5,5,5,6,6,7,7,8,8,8,9,9,9,10,10,10,11,11];
+const NT=["Okt +10,6 GWh, melambat dari Sep (+19,7)","Naik ke 6,44%; kenaikan pertama sejak Mei","Sisa pagu 12,2 menit untuk 2 bulan","Bantalan memadai","Bantalan memadai","195% target tahunan; 64% masuk di Sep","Sudah melampaui target tahunan","Kurang 0,33 MVA dari target tahunan","Konstan 100 sejak Januari; tak bisa melampaui","Sisa 2.653; laju Okt +2.045","Target diduga keliru (2,83 vs 1,33 kVA/plg)","Bobot 0 pada basis NILAI","Pelanggan ke-10 masuk Okt (pertama sejak Feb)","+615 kWh di Okt; sesuai jalur","Rendah dan stabil","Margin 28% di bawah target","Target longgar (13,43 vs 29,51)","148% target tahunan","140% target tahunan","Okt 112, tertinggi sejak Mei; naik 4 bulan beruntun","Proyeksi hampir menyentuh pagu","104,9 identik dengan Sep; validasi","Konstan di batas 110","Bantalan Rp 68 juta; tren mendatar","180% target tahunan","Sem II tercatat 0 namun diskor 100%","Dalam rentang 95–100","Tanpa progres sejak Juni (35,6%)","118% pagu; lebih Rp 2.134 juta","117% target tahunan; bobot 5 pada basis NILAI","103% target tahunan","Terisi sejak Juli","Turun tipis dari 108,53 (Sep)","Di bawah 100 sejak Juli"];
+const L=L0.map((d,i)=>Object.assign(d,{i,n:SH[i],g:GR[i],t:TY[i],nt:NT[i],sep:SEP[i]/100,o:d.m[9]}));
+const fm=(x,k)=>x==null?"—":typeof x=="string"?x:x.toLocaleString("id-ID",{maximumFractionDigits:k!=null?k:(Math.abs(x)>=1000?0:2),minimumFractionDigits:k!=null?k:0});
+const $=id=>document.getElementById(id),tt=$("tt");
+document.addEventListener("mousemove",e=>{const t=e.target.closest("[data-t]");if(t){tt.innerHTML=t.dataset.t;tt.style.opacity=1;tt.style.left=Math.min(e.clientX+14,innerWidth-270)+"px";tt.style.top=e.clientY+14+"px"}else tt.style.opacity=0});
+// count-up
+document.querySelectorAll("[data-n]").forEach(el=>{const n=+el.dataset.n,d=+el.dataset.d;let s=null;const f=t=>{s=s||t;const p=Math.min(1,(t-s)/1200);el.textContent=fm(n*(1-Math.pow(1-p,3)),d);p<1&&requestAnimationFrame(f)};requestAnimationFrame(f)});
+// waterfall
+(function(){const W=920,H=340,pl=30,pb=92,pt=26,lo=99,hi=108;const st=[{n:"Bobot",v:100,t:"b"}];GSC.forEach((s,i)=>st.push({n:GN[i],v:s-GB[i],t:"d"}));st.push({n:"NKO",v:105.76,t:"e"});
+const y=v=>pt+(hi-v)/(hi-lo)*(H-pt-pb),bw=(W-pl)/st.length;let c=100,o="";
+[99,100,102,104,106,108].forEach(g=>o+=`<line x1="${pl}" x2="${W}" y1="${y(g)}" y2="${y(g)}" stroke="var(--ln)"/><text x="${pl-4}" y="${y(g)+3}" font-size="9" text-anchor="end" fill="var(--mu)">${g}</text>`);
+st.forEach((s,i)=>{const x=pl+i*bw+6,w=bw-12;let a,b,col;if(s.t=="b"){a=lo;b=100;col="var(--mu)"}else if(s.t=="e"){a=lo;b=s.v;col="var(--nv2)"}else{a=c;b=c+s.v;c=b;col=s.v>=0?"var(--ok)":"var(--cr)"}
+const top=y(Math.max(a,b)),h=Math.max(2,Math.abs(y(a)-y(b))),lab=s.t=="d"?(s.v>=0?"+":"")+fm(s.v,2):fm(s.v,2);
+o+=`<rect class="wb" style="animation-delay:${i*70}ms" x="${x}" y="${top}" width="${w}" height="${h}" fill="${col}" rx="2" data-t="<b>${s.n}</b><br>${lab}"/><text x="${x+w/2}" y="${top-5}" font-size="10" font-weight="600" text-anchor="middle" fill="var(--tx)">${lab}</text><text transform="translate(${x+w/2},${H-pb+14}) rotate(-38)" font-size="10" text-anchor="end" fill="var(--mu)">${s.n}</text>`});
+$("wf").innerHTML=o})();
+// pareto
+(function(){const a=L.filter(l=>l.ph>0).sort((x,y)=>y.ph-x.ph),tot=a.reduce((s,l)=>s+l.ph,0);let cum=0;
+$("par").innerHTML=a.map(l=>{cum+=l.ph;return `<div class="pr" data-t="<b>${l.n}</b><br>Poin hilang ${fm(l.ph,2)} · kumulatif ${fm(cum/tot*100,0)}%"><span>${l.n}</span><div><i data-w="${l.ph/a[0].ph*100}"></i></div><b>${fm(l.ph,2)}</b></div>`}).join("");
+setTimeout(()=>document.querySelectorAll("#par i").forEach(i=>i.style.width=i.dataset.w+"%"),150)})();
+// bobot
+const WI=[0,1,9,10,11,12,29];
+(function(){const rows=WI.map(i=>L[i]);const draw=b=>{$("wt").innerHTML=rows.map(l=>`<tr><td>${l.n}</td><td class="n">${fm(l.F,2)}</td><td class="n"><b>${fm(l.w,2)}</b></td><td class="n">${fm(l.cap*100,1)}%</td><td class="n">${fm(l.F*l.cap,2)}</td><td class="n">${fm(l.sc,2)}</td></tr>`).join("");
+$("nkb").textContent=b=="n"?"105,76":"105,47"};draw("n");
+document.querySelectorAll("[data-b]").forEach(bt=>bt.onclick=()=>{document.querySelectorAll("[data-b]").forEach(x=>x.classList.remove("on"));bt.classList.add("on");$("nkb").textContent=bt.dataset.b=="n"?"105,76":"105,47"})})();
+// charts
+const inc=m=>m.map((v,i)=>i?+(v-m[i-1]).toFixed(2):v);
+function chart(c){const W=640,H=270,pl=50,pb=26,pt=20,pr=12,v=c.v,lo=c.lo!=null?c.lo:0,hi=c.hi||Math.max(...v,c.ref)*1.15,y=x=>pt+(hi-x)/(hi-lo)*(H-pt-pb),bw=(W-pl-pr)/v.length,x=i=>pl+i*bw+bw/2;let s=`<svg viewBox="0 0 ${W} ${H}">`;
+for(let k=0;k<=4;k++){const g=lo+(hi-lo)*k/4;s+=`<line x1="${pl}" x2="${W-pr}" y1="${y(g)}" y2="${y(g)}" stroke="var(--ln)"/><text x="${pl-5}" y="${y(g)+3}" font-size="9" text-anchor="end" fill="var(--mu)">${fm(g,hi<20?1:0)}</text>`}
+if(c.bar)v.forEach((a,i)=>s+=`<rect class="wb" style="animation-delay:${i*50}ms" x="${x(i)-bw*.34}" y="${y(a)}" width="${bw*.68}" height="${Math.max(1,y(lo)-y(a))}" fill="${i==v.length-1?"var(--cr)":"var(--nv2)"}" opacity="${i==v.length-1?1:.82}" data-t="<b>${M[i]}</b>: ${fm(a,2)}"/>`);
+else{s+=`<polyline fill="none" stroke="var(--nv2)" stroke-width="2.4" points="${v.map((a,i)=>x(i)+","+y(a)).join(" ")}"/>`;v.forEach((a,i)=>s+=`<circle cx="${x(i)}" cy="${y(a)}" r="${i==v.length-1?5:3.2}" fill="${i==v.length-1?"var(--cr)":"var(--nv2)"}" data-t="<b>${M[i]}</b>: ${fm(a,2)}"/>`)}
+s+=`<line x1="${pl}" x2="${W-pr}" y1="${y(c.ref)}" y2="${y(c.ref)}" stroke="var(--wr)" stroke-width="1.6" stroke-dasharray="5 4"/><text x="${W-pr}" y="${y(c.ref)-5}" font-size="10" font-weight="600" text-anchor="end" fill="var(--wr)">${c.rl}</text>`;
+M.forEach((m,i)=>s+=`<text x="${x(i)}" y="${H-8}" font-size="9.5" text-anchor="middle" fill="var(--mu)">${m}</text>`);return s+"</svg>"}
+const TB=[
+{k:"Susut",h:"Susut distribusi (%) per bulan",c:{v:L[1].m,lo:5.6,hi:7,ref:6.07,rl:"Target 6,07"},x:`<h3>Susut naik lagi di atas target</h3><p>Oktober 6,44%: kenaikan pertama sejak Mei dan 0,37 poin persen di atas target. Setelah puncak 6,76% (Mei), susut mendatar ±6,4% empat bulan, lalu naik.</p><div class="sw"><b>Insight</b>P2TL 117% dan ganti meter 103% dari target tahunan tidak menurunkan susut: hasil penertiban tampaknya tercatat sebagai pendapatan temuan, belum memperbaiki sumber susut. Setiap penurunan 0,1 poin persen bernilai ±0,16 poin NKO (perkiraan linear).</div>`},
+{k:"NAC",h:"Realisasi NAC kumulatif (Rp juta) vs pagu",c:{bar:1,v:L[28].m,ref:11666.05,rl:"Pagu 11.666"},x:`<h3>NAC melampaui pagu tahunan</h3><p>Realisasi masuk berbentuk gelombang: Rp 6.530 juta (Juni), +4.911 (September), +2.359 (Oktober). Total Rp 13.800 juta = 118% pagu, lebih Rp 2.134 juta.</p><div class="sw"><b>Insight</b>Capaian turun 76% → 61%. Dengan bobot 1, dampak skor kecil, tetapi biaya yang melebihi SKAO terbit berpotensi menjadi temuan kepatuhan (komponen KPI 13 belum terisi). Pola per semester menunjukkan biaya dicatat serentak, bukan dikendalikan bertahap.</div>`},
+{k:"Gangguan TM",h:"Gangguan TM per bulan (kali)",c:{bar:1,v:inc(L[19].m),ref:94.2,rl:"Rata-rata pagu bulanan 94"},x:`<h3>Gangguan TM naik empat bulan beruntun</h3><p>Juli 46 → Agustus 55 → September 70 → Oktober 112. Kumulatif 1.000 (88,5% pagu), sisa hanya 130 untuk dua bulan (±65/bulan), sedangkan laju tiga bulan terakhir 79/bulan.</p><div class="sw"><b>Insight</b>Capaian naik dari 95% (September) ke 104% walau gangguan memburuk: indikasi target berjalan Oktober lebih longgar. Jangan jadikan “Baik” sebagai sinyal aman; proyeksi Desember ±1.158 (103% pagu) pada indikator berbobot 5.</div>`},
+{k:"SAIDI",h:"SAIDI per bulan (menit/pelanggan)",c:{bar:1,v:inc(L[2].m),ref:5.06,rl:"Rata-rata pagu bulanan 5,06"},x:`<h3>SAIDI: bantalan nyaris habis</h3><p>Kumulatif 48,49 menit (80% pagu). Sisa 12,18 menit untuk dua bulan (±6,09/bulan), sementara Oktober sudah 6,03.</p><div class="sw"><b>Insight</b>SAIDI berbobot 5 dan SAIFI relatif aman (proyeksi ±92%), artinya padam lebih lama per kejadian. Satu kejadian besar seperti Maret (+10,1 menit) di musim hujan cukup untuk menembus pagu. Kerusakan peralatan (28 dari 37) juga mendekati pagu.</div>`},
+{k:"Saldo",h:"Saldo rata-rata akhir bulan (Rp juta)",c:{v:L[23].m,lo:12260,hi:12400,ref:12390,rl:"Target 12.390"},x:`<h3>Saldo berhenti naik, bantalan tipis</h3><p>Oktober 12.321,94 (−0,41 vs September) setelah dua bulan naik. Ruang di bawah target Rp 68 juta (0,55%).</p><div class="sw"><b>Insight</b>Pelunasan PRR 180% dari target menunjukkan penagihan kuat, tetapi saldo belum turun: piutang baru tampaknya setara pelunasan. Lonjakan kecil (+30 juta/bulan) cukup menembus target dalam dua bulan. MVOD juga tercatat identik 104,9 pada September dan Oktober, perlu validasi.</div>`}];
+(function(){const tb=$("tabs");function show(k){tb.querySelectorAll("button").forEach((b,i)=>b.classList.toggle("on",i==k));$("chh").textContent=TB[k].h;$("ch").innerHTML=chart(TB[k].c);$("tx").innerHTML=TB[k].x}
+TB.forEach((t,i)=>{const b=document.createElement("button");b.textContent=t.k;b.onclick=()=>show(i);tb.appendChild(b)});show(0)})();
+// proyeksi table
+const LUMP=[5,27,28];
+function risk(l){if(l.i==28)return["Terlampaui","cr"];if(l.i==27)return["Stagnan","wr"];if(l.i==25)return["Sem II = 0","wr"];if(l.i==8)return["Terkunci 100","wr"];
+if(l.p==null)return l.st=="Baik"?["—","mu"]:["Hati-hati","wr"];const r=l.p/l.T;if(l.t=="cmin")return r>1?["Terlampaui","cr"]:r>.95?["Tipis","wr"]:["Aman","ok"];return r>=1?["Tercapai","ok"]:["Di bawah target","wr"]}
+L.forEach(l=>{l.p=(l.t=="cmax"||l.t=="cmin")&&!LUMP.includes(l.i)?l.o+2*(l.o-l.m[6])/3:null;l.r=risk(l);l.att=l.st!="Baik"||["cr","wr"].includes(l.r[1])});
+let flt="all";
+function tbl(){const q=$("q").value.toLowerCase();$("tb").innerHTML=L.filter(l=>(flt=="all"||(flt=="att")==l.att)&&l.n.toLowerCase().includes(q)).map(l=>{const nu=typeof l.T=="number",d=Math.round((l.cap-l.sep)*100);
+return `<tr><td>${l.n}</td><td class="n">${fm(l.w,2)}</td><td class="n">${fm(l.T)}</td><td class="n">${fm(l.o)}</td><td class="n">${nu?fm(l.o/l.T*100,1)+"%":"—"}</td><td class="n"><b>${fm(l.cap*100,1)}%</b></td><td class="n" style="color:var(--${d<0?"cr":d>0?"ok":"mu"})">${d>0?"+":""}${d} pp</td><td class="n">${l.p==null?"—":fm(l.p/l.T*100,0)+"%"}</td><td><span class="tg ${l.r[1]}">${l.r[0]}</span></td><td class="nt">${l.nt}</td></tr>`}).join("")}
+document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-f]").forEach(x=>x.classList.remove("on"));b.classList.add("on");flt=b.dataset.f;tbl()});$("q").oninput=tbl;tbl();
+// simulator
+const SL=[[1,"Susut distribusi",80,110],[28,"Pengendalian NAC",30,110],[19,"Gangguan TM",85,110],[2,"SAIDI",90,110],[33,"Efektivitas pemeliharaan",90,110]];
+const PRE=[null,{1:100,28:80,33:100},{19:95,2:98,28:40,1:92}];
+(function(){const el=$("sl");el.innerHTML=SL.map(s=>{const l=L[s[0]];return `<div class="sl"><label><span>${s[1]} <small style="color:var(--mu);font-weight:400">(bobot ${fm(l.w,0)})</small></span><b id="v${s[0]}"></b></label><input type="range" id="r${s[0]}" min="${s[2]}" max="${s[3]}" step="0.5" value="${Math.max(s[2],Math.min(s[3],l.cap*100))}"></div>`}).join("");
+const upd=()=>{let n=105.76;SL.forEach(s=>{const l=L[s[0]],v=+$("r"+s[0]).value;$("v"+s[0]).textContent=fm(v,1)+"%";n+=l.w*(v-l.cap*100)/100});
+$("sn").textContent=fm(n,2);const d=n-105.76;$("sd").innerHTML=`<span style="color:var(--${d<-.005?"cr":d>.005?"ok":"mu"})">${d>=0?"+":""}${fm(d,2)} poin vs Oktober</span>`;$("sg").style.width=Math.max(0,Math.min(100,(n-95)/15*100))+"%"};
+SL.forEach(s=>$("r"+s[0]).oninput=upd);
+document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{const p=PRE[+b.dataset.p];SL.forEach(s=>{const l=L[s[0]];$("r"+s[0]).value=p&&p[s[0]]!=null?p[s[0]]:Math.max(s[2],Math.min(s[3],l.cap*100))});upd()});upd()})();
+// nav highlight
+const secs=[...document.querySelectorAll("section")],as=[...document.querySelectorAll("nav a")];
+addEventListener("scroll",()=>{let k=0;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<140)k=i});as.forEach((a,i)=>a.classList.toggle("on",i==k))});
+</script>
+</body>
+</html>
