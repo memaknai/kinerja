@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UP3 Sukoharjo dalam peta gangguan UID Jateng</title>
+<style>
+:root{--bg:#fff;--ink:#0b1f33;--mut:#566679;--line:#d9e2ee;--card:#f3f6fb;--navy:#051c2c;--blue:#2251ff;--cyan:#00a9f4;--bad:#d1430c;--good:#0a8a5f;--b25:#b7c3d5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#09151f;--ink:#e7eef7;--mut:#9db0c5;--line:#22384d;--card:#10222f;--b25:#46596f;--blue:#6b94ff;--bad:#ff8a5c;--good:#3ddc9a}}
+:root[data-theme="dark"]{--bg:#09151f;--ink:#e7eef7;--mut:#9db0c5;--line:#22384d;--card:#10222f;--b25:#46596f;--blue:#6b94ff;--bad:#ff8a5c;--good:#3ddc9a}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 56px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:700;line-height:1.2;margin:0}
+.hero{background:linear-gradient(120deg,#051c2c,#0a2f55 60%,#0b3d78);color:#fff;padding:56px 20px 48px;margin-top:calc(-1*env(safe-area-inset-top,0px));padding-top:calc(56px + env(safe-area-inset-top,0px))}
+.wrap{max-width:980px;margin:0 auto}
+.hero h1{font-size:clamp(28px,5vw,46px);max-width:760px}
+.hero p{max-width:640px;color:#c5d4e6;margin:14px 0 28px}
+.duel{display:grid;gap:10px;max-width:560px}
+.duel div{display:grid;grid-template-columns:150px 1fr 52px;gap:10px;align-items:center;font-size:14px}
+.duel i{display:block;height:14px;border-radius:7px;width:0;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+nav .wrap{display:flex;gap:4px;padding:0 12px}
+nav a{padding:14px 12px;color:var(--mut);text-decoration:none;font-size:14px}
+nav a:hover,nav a.on{color:var(--blue);box-shadow:inset 0 -3px var(--blue)}
+#pg{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;background:var(--cyan);width:0;z-index:30}
+section{padding:56px 20px 8px}
+h2{font-size:clamp(22px,3.4vw,30px);max-width:800px;margin-bottom:10px}
+.lead{color:var(--mut);max-width:720px;margin:0 0 24px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.k{background:var(--card);border-radius:10px;padding:18px;border-top:4px solid var(--blue)}
+.k b{font:700 38px/1.1 Georgia,serif;display:block;color:var(--blue)}
+.k small{color:var(--mut);display:block;margin-top:6px;font-size:13.5px;line-height:1.4}
+.k.r{border-color:var(--bad)}.k.r b{color:var(--bad)}.k.g{border-color:var(--good)}.k.g b{color:var(--good)}
+.so{border-left:4px solid var(--cyan);background:var(--card);padding:14px 18px;margin:22px 0;border-radius:0 10px 10px 0;max-width:820px}
+.so strong{color:var(--blue)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.tabs button{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:8px 14px;border-radius:20px;cursor:pointer;font:inherit;font-size:14px}
+.tabs button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.row{display:grid;grid-template-columns:104px 1fr 92px;gap:10px;align-items:center;padding:5px 6px;border-radius:8px;font-size:14px}
+.row.me{background:color-mix(in srgb,var(--cyan) 18%,transparent);font-weight:700}
+.bars i{display:block;height:8px;border-radius:4px;width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.bars i+i{margin-top:3px;height:11px}
+.b25{background:var(--b25)}.b26{background:var(--blue)}.me .b26{background:var(--cyan)}
+.chip{font-size:12.5px;text-align:right}.up{color:var(--bad)}.dn{color:var(--good)}
+.leg{font-size:13px;color:var(--mut);display:flex;gap:16px;margin:6px 0 12px}
+.leg s{display:inline-block;width:12px;height:8px;border-radius:3px;margin-right:6px;text-decoration:none}
+table{border-collapse:collapse;width:100%;max-width:820px;font-size:14.5px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--mut)}td.n,th.n{text-align:right;white-space:nowrap}
+.dict{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.dict div{border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px}
+.dict b{font:700 18px Georgia,serif}.dict .i b{color:var(--blue)}.dict .e b{color:var(--bad)}
+.cx{display:grid;grid-template-columns:1fr 62px;gap:4px 10px;font-size:14px;align-items:center;max-width:820px}
+.cxl{grid-column:1/-1;margin-top:10px}.cxl span{color:var(--mut);font-size:13px}
+.note{font-size:13px;color:var(--mut);max-width:820px}
+.dur{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin:18px 0 8px;max-width:820px}.dur div{border-radius:10px;padding:14px 16px;background:var(--card);font-size:14.5px}.dur b{font:700 18px Georgia,serif;display:block;margin-bottom:4px}.dur .p{border-top:4px solid var(--bad)}.dur .t{border-top:4px solid var(--cyan)}
+footer{padding:40px 20px 56px}
+@media(max-width:600px){.row{grid-template-columns:78px 1fr 70px}.duel div{grid-template-columns:96px 1fr 44px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<div id="pg"></div>
+<header class="hero"><div class="wrap">
+<h1>Sukoharjo menyumbang sedikit pada gangguan UID Jateng, tetapi kualitas gangguannya mulai bergeser ke arah yang lebih berdampak</h1>
+<p>Review manajemen atas gangguan penyulang dan trafo, kumulatif Januari sampai Oktober 2026 dibanding periode yang sama 2025. Sumber data: SILM, Oktober 2026.</p>
+<div class="duel" id="duel">
+<div><span>Porsi panjang jaringan</span><i data-w="8.6" style="background:#7fa4ff"></i><b>8,6%</b></div>
+<div><span>Porsi gangguan &gt;5</span><i data-w="4.8" style="background:#00a9f4"></i><b>4,8%</b></div>
+<div><span>Porsi populasi trafo</span><i data-w="6.1" style="background:#7fa4ff"></i><b>6,1%</b></div>
+<div><span>Porsi gangguan trafo</span><i data-w="7.7" style="background:#ffb085"></i><b>7,7%</b></div>
+</div></div></header>
+<nav><div class="wrap"><a href="#ringkasan">Ringkasan</a><a href="#kode">Kode penyebab</a><a href="#uid">Konteks UID</a><a href="#kontribusi">Kontribusi</a><a href="#penyulang">Penyulang</a><a href="#trafo">Trafo</a><a href="#urgensi">Mengapa penting</a><a href="#aksi">Rekomendasi</a></div></nav>
+
+<section id="ringkasan"><div class="wrap">
+<h2>Penyulang Sukoharjo relatif sehat, trafonya perlu perhatian lebih awal</h2>
+<p class="lead">Jawaban singkat untuk manajemen: kontribusi Sukoharjo terhadap beban gangguan UID kecil dan efisien, tetapi dua tren di dalam unit berlawanan dengan arah UID.</p>
+<div class="grid">
+<div class="k"><b data-n="4.8" data-d="1" data-s="%">0</b><small>porsi Sukoharjo atas gangguan &gt;5 UID, padahal memegang 8,6% panjang jaringan</small></div>
+<div class="k r"><b data-n="27" data-p="+" data-s="%">0</b><small>kenaikan gangguan &gt;5 penyulang Sukoharjo (30 menjadi 38)</small></div>
+<div class="k r"><b data-n="75" data-p="+" data-s="%">0</b><small>kenaikan gangguan akibat pohon, E-1 (8 menjadi 14)</small></div>
+<div class="k r"><b data-n="28">0</b><small>gangguan trafo, satu-satunya UP3 yang naik (26 menjadi 28) saat UID turun 27%</small></div>
+</div>
+<div class="so"><strong>Pesan utama.</strong> Seluruh 38 gangguan &gt;5 di Sukoharjo berasal dari penyebab yang bisa dikelola (aset, pohon, pihak lain). Tidak ada yang dari bencana alam. Artinya kenaikan ini bisa dibalikkan lewat program yang terarah.</div>
+</div></section>
+
+<section id="kode"><div class="wrap">
+<h2>Cara membaca durasi dan kode penyebab gangguan</h2>
+<p class="lead">Pemetaan kode berikut diambil dari satu jurnal teknik elektro tentang distribusi PLN Rayon Daya Makassar. Ini belum dokumen resmi PLN, jadi konfirmasi ke bidang keandalan sebelum dipakai untuk keputusan.</p>
+<div class="dict">
+<div class="i"><b>I-1</b><br>Komponen JTM</div><div class="i"><b>I-2</b><br>Peralatan JTM</div><div class="i"><b>I-3</b><br>Trafo dan lainnya</div><div class="i"><b>I-4</b><br>Tiang</div>
+<div class="e"><b>E-1</b><br>Pohon</div><div class="e"><b>E-2</b><br>Bencana alam</div><div class="e"><b>E-3</b><br>Pekerjaan pihak lain atau binatang</div><div class="e"><b>E-4</b><br>Layang-layang, umbul-umbul, dan sejenisnya</div>
+</div>
+<div class="dur"><div class="p"><b>Gangguan &gt;5: permanen</b>Padam lebih dari 5 menit. Tidak pulih sendiri, baru normal setelah penyebab diperbaiki atau diisolasi. Dampak ke pelanggan paling besar, dan hanya gangguan ini yang dirinci penyebabnya (I-1 sampai E-4).</div><div class="t"><b>Gangguan ≤5: temporer</b>Padam 5 menit atau kurang. Umumnya pulih sendiri atau lewat penutupan balik (recloser). Jika berulang, bisa merusak peralatan dan berkembang menjadi permanen.</div></div>
+<p class="note">Biru: internal (aset dan operasi PLN). Oranye: eksternal. Arti kode di tabel trafo belum terkonfirmasi, jadi bagian trafo memakai kode apa adanya. Definisi durasi mengacu pada materi kinerja distribusi PLN dan standar IEEE 1366. Keduanya sumber sekunder, jadi tetap konfirmasi ke bidang keandalan.</p>
+</div></section>
+
+<section id="uid"><div class="wrap">
+<h2>Di tingkat UID, penyulang memburuk sedangkan trafo membaik, dan Semarang menentukan arah penyulang</h2>
+<p class="lead">Gangguan &gt;5 (permanen) penyulang naik dari 630 menjadi 796 (+26%). Gangguan trafo turun dari 495 menjadi 363 (−27%). Pilih tampilan untuk membandingkan semua UP3.</p>
+<div class="tabs" id="tabs"></div>
+<div class="leg"><span><s class="b25"></s>2025</span><span><s class="b26"></s>2026</span></div>
+<div id="uc"></div>
+<div class="so"><strong>Pembacaan.</strong> Semarang menyumbang +143 dari +166 kenaikan gangguan &gt;5 UID (86%). Tanpa Semarang, kenaikan UID hanya sekitar 5%. Data penyulang Yogyakarta 2026 tidak lengkap (jumlah penyulang dan panjang kosong), jadi bacaan Yogyakarta ditandai bintang.</div>
+</div></section>
+
+<section id="kontribusi"><div class="wrap">
+<h2>Sukoharjo memikul gangguan penyulang lebih ringan dari porsi jaringannya, tetapi lebih berat dari porsi trafonya</h2>
+<p class="lead">Membandingkan porsi aset dengan porsi gangguan menunjukkan apakah unit menyumbang lebih besar atau lebih kecil dari proporsinya.</p>
+<div class="cx" id="cx"></div>
+<p class="note">Basis jaringan: total UID 2026 tanpa Yogyakarta (datanya kosong). Jika memakai panjang Yogyakarta 2025 sebagai perkiraan, porsi jaringan Sukoharjo sekitar 7,7%, kesimpulannya tetap sama.</p>
+<div class="grid" style="margin-top:22px">
+<div class="k g"><b data-n="4.8" data-d="1" data-s="%">0</b><small>porsi Sukoharjo atas kenaikan gangguan &gt;5 UID (+8 dari +166)</small></div>
+<div class="k r"><b data-n="2">0</b><small>kenaikan gangguan trafo Sukoharjo, saat UID turun 132 kejadian</small></div>
+<div class="k"><b data-n="5.3" data-d="1" data-s="%">0</b><small>porsi gangguan trafo Sukoharjo pada 2025, naik menjadi 7,7% pada 2026</small></div>
+</div>
+</div></section>
+
+<section id="penyulang"><div class="wrap">
+<h2>Penyulang: total gangguan datar, tetapi komposisinya bergeser ke gangguan &gt;5 yang lebih terasa pelanggan</h2>
+<p class="lead">Gangguan temporer (≤5 menit) turun 13%, gangguan permanen (&gt;5 menit) naik 27%. Porsi gangguan &gt;5 naik dari 31% menjadi 40% (UID: 29% menjadi 33%).</p>
+<table><tr><th>Indikator</th><th class="n">2025</th><th class="n">2026</th><th class="n">UID 2026</th></tr>
+<tr><td>Gangguan &gt;5 (kali)</td><td class="n">30</td><td class="n">38</td><td class="n">796</td></tr>
+<tr><td>Gangguan ≤5 (kali)</td><td class="n">67</td><td class="n">58</td><td class="n">1.632</td></tr>
+<tr><td>Total gangguan (kali)</td><td class="n">97</td><td class="n">96</td><td class="n">2.428</td></tr>
+<tr><td>Per 100 kms, total</td><td class="n">2,26</td><td class="n">2,22</td><td class="n">4,82</td></tr>
+<tr><td>Per 100 kms, &gt;5</td><td class="n">0,70</td><td class="n">0,88</td><td class="n">1,58</td></tr>
+<tr><td>Penyulang (bh) / panjang (kms)</td><td class="n">54 / 4.286</td><td class="n">55 / 4.325</td><td class="n">849 / 50.409</td></tr></table>
+<h3 style="margin:30px 0 6px;font-size:20px">Gangguan &gt;5 menurut penyebab</h3>
+<div class="leg"><span><s class="b25"></s>2025</span><span><s class="b26"></s>2026</span></div>
+<div id="cp"></div>
+<div class="so"><strong>Pembacaan.</strong> Pohon (E-1) adalah penyebab tunggal terbesar: 14 dari 38 kejadian (37%). I-1 dan I-2 naik, artinya komponen dan peralatan JTM perlu dicek. E-3 naik 6 menjadi 9, sehingga koordinasi dengan pihak yang bekerja di sekitar jaringan perlu diperkuat. Posisi per 100 kms tetap kedua terendah di UID untuk total gangguan, tetapi untuk gangguan &gt;5 sudah di tengah (urutan 6 dari 12 UP3 dengan data lengkap).</div>
+</div></section>
+
+<section id="trafo"><div class="wrap">
+<h2>Trafo: Sukoharjo satu-satunya UP3 yang memburuk, dan hampir seluruhnya gangguan internal</h2>
+<p class="lead">Dari urutan kedua terendah pada 2025 (0,27%), Sukoharjo kini keempat tertinggi dari 13 UP3 (0,29%), karena unit lain membaik, bukan karena lonjakan di Sukoharjo.</p>
+<table><tr><th>Indikator</th><th class="n">2025</th><th class="n">2026</th><th class="n">UID 2026</th></tr>
+<tr><td>Total gangguan (kali)</td><td class="n">26</td><td class="n">28</td><td class="n">363</td></tr>
+<tr><td>Persen terhadap jumlah trafo</td><td class="n">0,27%</td><td class="n">0,29%</td><td class="n">0,26% (0,23% jika Yogyakarta ikut dihitung)</td></tr>
+<tr><td>Internal / eksternal</td><td class="n">22 / 4</td><td class="n">25 / 3</td><td class="n">243 / 120</td></tr>
+<tr><td>Jumlah trafo (bh)</td><td class="n">9.527</td><td class="n">9.622</td><td class="n">156.878</td></tr></table>
+<h3 style="margin:30px 0 6px;font-size:20px">Gangguan trafo menurut kode penyebab</h3>
+<div class="leg"><span><s class="b25"></s>2025</span><span><s class="b26"></s>2026</span></div>
+<div id="ct"></div>
+<div class="so"><strong>Pembacaan.</strong> 25 dari 28 gangguan (89%) berasal dari faktor internal. I-3 memang turun (19 menjadi 13) dan tetap terbesar, tetapi I-1 (1 menjadi 5), I-2 (0 menjadi 2), dan I-4 (2 menjadi 5) naik bersamaan. Pola yang sama muncul di penyulang (I-1 dan I-2 naik), sehingga ada indikasi masalah aset yang saling terkait, bukan kebetulan.</div>
+</div></section>
+
+<section id="urgensi"><div class="wrap">
+<h2>Gangguan adalah penjualan yang hilang, biaya yang bertambah, dan kepercayaan yang menipis</h2>
+<p class="lead">Listrik tidak bisa disimpan. Setiap menit penyulang padam adalah kWh yang tidak terjual dan pelanggan yang tidak terlayani.</p>
+<div class="grid">
+<div class="k"><h3 style="font-size:18px">Pendapatan</h3><small>Gangguan &gt;5 menghentikan penjualan energi dan menambah energi tak tersalur. Bobotnya lebih besar karena durasi dan pelanggan terdampak lebih banyak dibanding gangguan sementara.</small></div>
+<div class="k"><h3 style="font-size:18px">Mutu layanan</h3><small>Frekuensi dan durasi pemadaman langsung membentuk indeks keandalan (seperti SAIFI dan SAIDI) yang dipakai menilai kinerja unit dan kepuasan pelanggan.</small></div>
+<div class="k"><h3 style="font-size:18px">Biaya dan aset</h3><small>Gangguan internal berarti perbaikan darurat, material, dan lembur. Gangguan trafo menyangkut aset bernilai tinggi dengan pemulihan yang cenderung lebih lama.</small></div>
+<div class="k"><h3 style="font-size:18px">Sinyal dini</h3><small>Gangguan ≤5 yang berulang sering mendahului kerusakan yang lebih serius. Menekannya lebih murah daripada menanggung gangguan &gt;5.</small></div>
+</div>
+<div class="so"><strong>Mengapa sekarang.</strong> Sukoharjo masih berada di posisi baik, jadi biaya mengoreksi arah sekarang jauh lebih rendah daripada setelah tren menetap. Seluruh penyebab gangguan &gt;5 Sukoharjo ada dalam jangkauan program unit, tidak ada yang di luar kendali.</div>
+</div></section>
+
+<section id="aksi"><div class="wrap">
+<h2>Lima langkah prioritas untuk mengembalikan Sukoharjo ke level 2025</h2>
+<table><tr><th>Langkah</th><th>Dasar data</th><th>Ukuran keberhasilan</th></tr>
+<tr><td><b>Pangkas pohon pada penyulang rawan</b></td><td>E-1 naik 8 menjadi 14, 37% gangguan &gt;5</td><td>E-1 kembali ke 8 atau kurang</td></tr>
+<tr><td><b>Inspeksi komponen dan peralatan JTM</b></td><td>I-1 7 menjadi 9, I-2 3 menjadi 5</td><td>Gangguan internal &gt;5 kembali ke 11 atau kurang</td></tr>
+<tr><td><b>Uji dan pelihara trafo prioritas</b></td><td>Trafo internal 22 menjadi 25, I-1 dan I-4 naik</td><td>Total trafo kembali ke 26 atau kurang (0,27%)</td></tr>
+<tr><td><b>Koordinasi pekerjaan pihak lain</b></td><td>E-3 6 menjadi 9</td><td>E-3 kembali ke 6 atau kurang</td></tr>
+<tr><td><b>Pantau bulanan per penyulang</b></td><td>Data kumulatif menyembunyikan kapan dan di mana lonjakan terjadi</td><td>Ada daftar 5 penyulang dan 10 trafo terburuk tiap bulan</td></tr></table>
+<p class="note" style="margin-top:12px">Target di atas disusun dari level 2025 sebagai acuan awal, bukan target resmi. Sesuaikan dengan KPI unit.</p>
+</div></section>
+
+<footer><div class="wrap note">Sumber data: SILM, Oktober 2026 (rekap gangguan penyulang dan trafo UID Jateng, kumulatif sampai 31 Oktober 2026 dengan pembanding periode yang sama 2025). Kode penyebab dari jurnal Vertex Elektro vol. 12 no. 2 (2020) dan definisi durasi dari materi kinerja distribusi PLN serta IEEE 1366, semuanya perlu dikonfirmasi. Persentase dan peringkat dihitung ulang dari data mentah.</div></footer>
+
+<script>
+const fmt=(n,d=0)=>n.toLocaleString("id-ID",{minimumFractionDigits:d,maximumFractionDigits:d});
+const dl=(a,b)=>{const p=(b/a-1)*100;return `<span class="${p>0?"up":"dn"}">${p>0?"+":"−"}${fmt(Math.abs(p))}%</span>`};
+const D={
+"Gangguan >5":[["Semarang",165,308],["Kudus",76,109],["Surakarta",93,61],["Grobogan",44,57],["Sukoharjo",30,38],["Tegal",34,43],["Klaten",43,37],["Pekalongan",26,30],["Purwokerto",11,28],["Cilacap",28,27],["Yogyakarta*",51,25],["Salatiga",16,17],["Magelang",13,16]],
+"Gangguan ≤5":[["Kudus",173,243],["Semarang",239,256],["Tegal",135,200],["Surakarta",127,132],["Grobogan",96,127],["Purwokerto",118,110],["Cilacap",108,99],["Klaten",71,96],["Salatiga",74,83],["Magelang",75,82],["Yogyakarta*",206,75],["Pekalongan",72,71],["Sukoharjo",67,58]],
+"Trafo total":[["Kudus",56,43],["Tegal",48,43],["Semarang",55,40],["Cilacap",41,35],["Purwokerto",48,34],["Sukoharjo",26,28],["Pekalongan",31,26],["Magelang",38,26],["Grobogan",33,25],["Klaten",25,22],["Yogyakarta",58,15],["Salatiga",21,13],["Surakarta",15,13]],
+"Per 100 kms":[["Semarang",11.94,16.33],["Grobogan",4.5,5.89],["Kudus",3.89,5.45],["Tegal",3.47,4.92],["Surakarta",5.41,4.71],["Salatiga",4.07,4.48],["Klaten",3.71,4.3],["Pekalongan",3.5,3.56],["Cilacap",2.9,2.67],["Purwokerto",2.24,2.39],["Sukoharjo",2.26,2.22],["Magelang",1.65,1.83],["Yogyakarta*",4.33,null]]};
+const grow=(root)=>root.querySelectorAll("[data-w]").forEach(e=>e.style.width=e.dataset.w+"%");
+function chart(k){const R=D[k],mx=Math.max(...R.map(r=>Math.max(r[1],r[2]||0)));const pc=k==="Per 100 kms";
+ uc.innerHTML=R.map(r=>`<div class="row${r[0]==="Sukoharjo"?" me":""}"><span>${r[0]}</span><div class="bars"><i class="b25" data-w="${r[1]/mx*100}"></i><i class="b26" data-w="${(r[2]||0)/mx*100}"></i></div><span class="chip">${r[2]==null?"n/a":fmt(r[2],pc?2:0)+" "+dl(r[1],r[2])}</span></div>`).join("")+(k.includes("*")||R.some(r=>r[0].endsWith("*"))?'<p class="note">* Data penyulang Yogyakarta 2026 tidak lengkap, jangan dibaca sebagai perbaikan.</p>':"");
+ requestAnimationFrame(()=>requestAnimationFrame(()=>grow(uc)));
+ tabs.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.textContent===k))}
+tabs.innerHTML=Object.keys(D).map(k=>`<button aria-pressed="false">${k}</button>`).join("");
+tabs.onclick=e=>{if(e.target.tagName==="BUTTON")chart(e.target.textContent)};chart("Gangguan >5");
+function causes(el,names,a,b,u){const mx=Math.max(...a,...b);
+ el.innerHTML=names.map((n,i)=>`<div class="row" style="grid-template-columns:150px 1fr 120px"><span>${n}</span><div class="bars"><i class="b25" data-w="${a[i]/mx*100}"></i><i class="b26" data-w="${b[i]/mx*100}"></i></div><span class="chip">${a[i]} → ${b[i]}<br><small class="note">${fmt(b[i]/u[i]*100,1)}% dari UID</small></span></div>`).join("");}
+causes(cp,["I-1 Komponen JTM","I-2 Peralatan JTM","I-3 Trafo dan lainnya","I-4 Tiang","E-1 Pohon","E-2 Bencana alam","E-3 Pihak lain/binatang","E-4 Layangan dll."],[7,3,1,0,8,1,6,4],[9,5,0,1,14,0,9,0],[177,50,18,15,242,129,139,26]);
+causes(ct,["I-1","I-2","I-3","I-4","E-1","E-2","E-3","E-4"],[1,0,19,2,4,0,0,0],[5,2,13,5,1,1,1,0],[70,7,129,37,92,9,8,11]);
+const cxd=[["Porsi panjang jaringan",8.6,0],["Porsi gangguan >5 penyulang",4.8,1],["Porsi total gangguan penyulang",4.0,1],["Porsi populasi trafo",6.1,0],["Porsi gangguan trafo",7.7,2]];
+cx.innerHTML=cxd.map(r=>`<div class="cxl"><span>${r[0]}</span></div><div class="bars"><i style="height:14px;border-radius:7px;background:${["#7fa4ff","#00a9f4","#ff8a5c"][r[2]]}" data-w="${r[1]/10*100}"></i></div><b>${fmt(r[1],1)}%</b>`).join("");
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const t=e.target;
+ if(t.id==="duel"||t.id==="cx")grow(t);
+ t.querySelectorAll&&t.querySelectorAll("[data-n]").forEach(c=>{const n=+c.dataset.n,d=+(c.dataset.d||0),p=c.dataset.p||"",s=c.dataset.s||"";let st;const f=ts=>{st=st||ts;const x=Math.min((ts-st)/1100,1);c.textContent=p+fmt(n*(1-Math.pow(1-x,3)),d)+s;if(x<1)requestAnimationFrame(f)};requestAnimationFrame(f)});
+ }),{threshold:.25});
+[duel,cx,...document.querySelectorAll(".grid")].forEach(e=>io.observe(e));
+[cp,ct].forEach(e=>new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){grow(e);o.disconnect()}},{threshold:.2}).observe(e));
+const L=[...document.querySelectorAll("nav a")],S=L.map(a=>document.querySelector(a.hash));
+addEventListener("scroll",()=>{const h=document.documentElement;pg.style.width=scrollY/(h.scrollHeight-innerHeight)*100+"%";let i=0;S.forEach((s,j)=>{if(s.getBoundingClientRect().top<120)i=j});L.forEach((a,j)=>a.classList.toggle("on",j===i))},{passive:true});
+</script></body></html>
