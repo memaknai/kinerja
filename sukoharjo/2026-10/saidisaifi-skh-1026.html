@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Analisis SAIDI–SAIFI Oktober 2026 vs 2025 · UP3 Sukoharjo</title>
+<style>
+:root{--bg:#fff;--fg:#0b1f33;--mut:#5b6b7b;--line:#dfe5ec;--card:#f3f6fa;--ac:#2251ff;--cy:#00a9f4;--bad:#d64545;--good:#168a5b;--old:#a9b6c4;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07121d;--fg:#e8eef5;--mut:#9fb0c1;--line:#1f3144;--card:#0e1d2c;--ac:#6b95ff;--cy:#35c2ff;--bad:#ff7070;--good:#3ecf94;--old:#4a5d70;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#07121d;--fg:#e8eef5;--mut:#9fb0c1;--line:#1f3144;--card:#0e1d2c;--ac:#6b95ff;--cy:#35c2ff;--bad:#ff7070;--good:#3ecf94;--old:#4a5d70;color-scheme:dark}
+html{scroll-padding-top:calc(56px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,.big{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.01em}
+.w{max-width:980px;margin:0 auto;padding:0 20px}
+.hd{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line);height:52px;display:flex;align-items:center;gap:14px;padding:0 20px;font-size:13px}
+.hd b{letter-spacing:.14em}.hd span{color:var(--mut)}.hd i{position:absolute;left:0;bottom:-1px;height:2px;background:var(--ac);width:0}
+.hero{background:#051c2c;color:#fff;padding:64px 0 56px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,#00a9f455,transparent 65%);animation:pl 6s ease-in-out infinite alternate}
+@keyframes pl{to{transform:scale(1.3)}}
+.ey{color:#6fd3ff;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px}
+h1{font-size:clamp(30px,5.4vw,52px);line-height:1.12;margin:0 0 18px;max-width:780px}
+.lead{color:#b9c9d8;max-width:640px;margin:0 0 36px}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;position:relative;z-index:1}
+.k{background:#ffffff10;border:1px solid #ffffff22;border-radius:6px;padding:16px 18px}
+.k small{color:#9fb6c9;display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.k .big{font-size:36px;line-height:1.2;margin:4px 0}.k .o{color:#9fb6c9;font-size:13px}
+.dl{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;margin-left:6px}
+.dl.bad{background:#d6454533;color:#ff9a9a}.dl.good{background:#168a5b44;color:#6ee7b0}
+.s{padding:56px 0;border-bottom:1px solid var(--line)}
+.no{color:var(--ac);font-weight:700;font-size:13px;letter-spacing:.16em}
+h2{font-size:clamp(22px,3.4vw,32px);line-height:1.22;margin:6px 0 10px;max-width:800px}
+.sub{color:var(--mut);margin:0 0 28px;max-width:720px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.c{background:var(--card);border-left:3px solid var(--ac);padding:16px 18px;border-radius:0 6px 6px 0}
+.c b{display:block;margin-bottom:4px}.c p{margin:0;color:var(--mut);font-size:15px}
+.src{font-size:12px;color:var(--mut);margin-top:14px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.rv.on{opacity:1;transform:none}
+.bar{transform:scaleX(0);transform-origin:left;transition:transform 1s cubic-bezier(.2,.8,.2,1),width .6s}.on .bar{transform:scaleX(1)}
+.wf{display:flex;gap:10px;align-items:stretch;height:300px;border-bottom:1px solid var(--fg);padding-top:20px}
+.wc{flex:1;position:relative;text-align:center;font-size:12px}
+.wc .bar{position:absolute;left:12%;right:12%;transform:scaleY(0);transform-origin:bottom;transition:transform 1s .1s}.on .wc .bar{transform:scaleY(1)}
+.wc em{position:absolute;left:0;right:0;font-style:normal;font-weight:700;font-size:13px}
+.wl{display:flex;gap:10px;font-size:12px;color:var(--mut);text-align:center;margin-top:6px}.wl span{flex:1}
+.tg{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:18px}
+.tg button{border:0;background:none;color:var(--fg);padding:7px 16px;font:inherit;font-size:14px;cursor:pointer}.tg button.a{background:var(--ac);color:#fff}
+.row{margin:16px 0}.row>div:first-child{font-size:14px;font-weight:600;margin-bottom:5px}
+.br{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:12px;color:var(--mut)}.br .t{flex:1}.br .bar{height:14px;border-radius:2px}.br u{text-decoration:none;min-width:58px;color:var(--fg)}
+.tb{width:100%;border-collapse:collapse;font-size:14px}.tb th{text-align:left;font-size:12px;color:var(--mut);font-weight:600;border-bottom:2px solid var(--fg);padding:8px 6px}
+.tb td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:middle}.tb td.n{text-align:right;white-space:nowrap}
+.dv{position:relative;height:16px;min-width:150px;background:linear-gradient(var(--line),var(--line)) center/1px 100% no-repeat}
+.dv i{position:absolute;top:2px;height:12px;transition:transform 1s}.dv i.p{left:50%;background:var(--bad);transform:scaleX(0);transform-origin:left}.dv i.m{right:50%;background:var(--good);transform:scaleX(0);transform-origin:right}.on .dv i{transform:scaleX(1)}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:8px}
+.st div{border-top:2px solid var(--fg);padding-top:8px}.st .big{font-size:28px;line-height:1.2}.st small{color:var(--mut);display:block;font-size:13px}
+.sm{background:var(--card);border-radius:8px;padding:22px}
+.sl{display:grid;grid-template-columns:minmax(150px,230px) 1fr 52px;gap:12px;align-items:center;margin:12px 0;font-size:14px}
+input[type=range]{width:100%;accent-color:var(--ac)}
+.res{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+.res .big{font-size:48px;line-height:1}.pill{padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600}
+.pill.good{background:var(--good);color:#fff}.pill.bad{background:var(--bad);color:#fff}
+.gb{position:relative;height:10px;background:var(--line);border-radius:5px;margin-top:14px}.gb i{display:block;height:100%;background:var(--ac);border-radius:5px;transition:width .4s}.gb s{position:absolute;top:-5px;width:2px;height:20px;background:var(--fg)}
+.bt{border:1px solid var(--ac);background:none;color:var(--ac);padding:6px 14px;border-radius:20px;font:inherit;font-size:13px;cursor:pointer;margin:4px 6px 0 0}
+.tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;color:#fff;background:var(--ac)}.tag.h{background:var(--bad)}.tag.l{background:var(--old)}
+footer{padding:36px 0 56px;color:var(--mut);font-size:13px}footer li{margin-bottom:6px}
+</style></head><body>
+<header class="hd"><b>UP3 SUKOHARJO</b><span>Analisis keandalan · Okt 2026 vs Okt 2025</span><i id="pg"></i></header>
+
+<section class="hero"><div class="w">
+<p class="ey">Laporan SAIDI–SAIFI kumulatif · YoY</p>
+<h1>SAIDI naik 36% dari tahun lalu, tetapi kinerja internal UP3 justru membaik 15%</h1>
+<p class="lead">Kenaikan durasi padam hampir seluruhnya berasal dari gangguan hulu (transmisi/pembangkit) dan bencana alam. Sisi yang dikelola langsung distribusi, yaitu padam terencana dan gangguan tidak terencana, turun dari 46,3 menjadi 39,4 menit per pelanggan.</p>
+<div class="kp" id="kp"></div>
+</div></section>
+
+<section class="s"><div class="w rv">
+<div class="no">01 · RINGKASAN EKSEKUTIF</div>
+<h2>Empat temuan utama yang perlu diketahui pimpinan</h2><p class="sub">Basis: laporan kumulatif Oktober 2025 (764.007 pelanggan) dan Oktober 2026 (786.559 pelanggan).</p>
+<div class="g2">
+<div class="c"><b>1. Padam lebih lama, bukan lebih sering</b><p>SAIDI 77,8 → 106,1 menit (+36%), sementara SAIFI hanya 1,024 → 1,068 (+4%). Durasi rata-rata tiap padam naik dari 76 ke 99 menit.</p></div>
+<div class="c"><b>2. Penyebabnya eksternal</b><p>Gangguan hulu menambah +26,1 menit dan bencana alam +9,1 menit. Keduanya setara 124% dari kenaikan bersih; padam terencana menyerap −7,1 menit.</p></div>
+<div class="c"><b>3. Kinerja internal membaik</b><p>SAIDI terencana + tidak terencana turun 14,9%. Jumlah gangguan turun 34% (34.323 → 22.696) dan kWh tak tersalurkan turun 7%.</p></div>
+<div class="c"><b>4. Risiko baru di jaringan TM</b><p>SAIFI konduktor SUTM naik 38% dan kejadian FCO trafo melonjak dari 3 menjadi 169. Keduanya perlu investigasi segera.</p></div>
+</div>
+</div></section>
+
+<section class="s"><div class="w rv">
+<div class="no">02 · JEMBATAN SAIDI</div>
+<h2>Hulu dan bencana alam menambah 35 menit; perbaikan padam terencana memangkas 7 menit</h2>
+<p class="sub">Perubahan SAIDI (menit/pelanggan) dari Oktober 2025 ke Oktober 2026, per kelompok penyebab.</p>
+<div class="wf" id="wf"></div><div class="wl" id="wl"></div>
+<p class="src">Sumber: Laporan SAIDI–SAIFI UP3 Sukoharjo, Okt 2025 dan Okt 2026. Hulu = Transmisi (2025) + Pembangkit (2026); lihat catatan data.</p>
+</div></section>
+
+<section class="s"><div class="w rv">
+<div class="no">03 · KOMPOSISI PENYEBAB</div>
+<h2>Gangguan hulu kini 54% dari SAIDI; padam terencana turun dari penyebab terbesar ke posisi kedua</h2>
+<p class="sub">Bandingkan per penyebab. Pilih metrik untuk melihat pergeseran.</p>
+<div class="tg" id="tg"><button class="a" data-m="0">SAIDI (menit)</button><button data-m="1">SAIFI (kali)</button></div>
+<div id="cm"></div>
+<p class="src">Abu-abu = Okt 2025, biru = Okt 2026. Bencana alam 2025 praktis nol (3 kejadian, 2 pelanggan).</p>
+</div></section>
+
+<section class="s"><div class="w rv">
+<div class="no">04 · GANGGUAN TIDAK TERENCANA DISTRIBUSI</div>
+<h2>SAIDI-nya datar (14,4 → 14,6 menit), tetapi komposisinya bergeser: FCO trafo dan konduktor naik, DS/LBS membaik</h2>
+<p class="sub">Selisih SAIDI per fasilitas (menit/pelanggan). Merah = memburuk, hijau = membaik.</p>
+<table class="tb"><thead><tr><th>Fasilitas</th><th class="n">2025</th><th class="n">2026</th><th>Selisih</th><th class="n">Kejadian 25 → 26</th></tr></thead><tbody id="tbd"></tbody></table>
+<div class="g2" style="margin-top:22px">
+<div class="c"><b>Gangguan “kecil” turun, gangguan TM naik</b><p>Kejadian sisi pelanggan (SR, APP, JTR) turun 34%, tetapi kejadian SUTM naik 37% (467 → 642). Konduktor kini 65% dari SAIDI tidak terencana.</p></div>
+<div class="c"><b>Restorasi lebih cepat</b><p>Durasi per padam tidak terencana turun dari 64 ke 59 menit. Inilah yang menahan SAIDI tetap datar saat SAIFI naik 9%.</p></div>
+</div>
+</div></section>
+
+<section class="s"><div class="w rv">
+<div class="no">05 · PADAM TERENCANA</div>
+<h2>Pekerjaan pemeliharaan lebih terkonsolidasi dan lebih singkat: durasi per padam turun 21%</h2>
+<p class="sub">Penyumbang perbaikan terbesar tahun ini, terutama dari pemeliharaan penyulang.</p>
+<div class="st">
+<div><small>SAIDI terencana</small><span class="big">31,9 → 24,8</span><small>menit, −22%</small></div>
+<div><small>Jumlah kejadian</small><span class="big">2.112 → 926</span><small>−56%</small></div>
+<div><small>Pelanggan per kejadian</small><span class="big">125 → 287</span><small>pekerjaan digabung</small></div>
+<div><small>Durasi per padam</small><span class="big">92 → 73</span><small>menit, −21%</small></div>
+</div>
+<p class="src">Catatan: SAIFI terencana nyaris sama (0,345 → 0,338), jadi pelanggan tetap padam terencana dengan frekuensi serupa, hanya lebih singkat.</p>
+</div></section>
+
+<section class="s"><div class="w rv">
+<div class="no">06 · HULU DAN BENCANA ALAM</div>
+<h2>Dua faktor eksternal menjelaskan seluruh kenaikan SAIDI</h2>
+<p class="sub">Pola hulu berubah: dulu sedikit kejadian berdampak masif, sekarang lebih sering tetapi dengan pemulihan jauh lebih lama.</p>
+<div class="g2">
+<div class="c"><b>Gangguan hulu (SAIDI 31,5 → 57,7 menit)</b><p>Kejadian 4 → 49; pelanggan per kejadian 86.293 → 5.748. SAIFI turun 21% (0,452 → 0,358), tetapi durasi per padam melonjak 70 → 161 menit (+131%). Fokus: kecepatan pemulihan dan manuver beban.</p></div>
+<div class="c"><b>Bencana alam (SAIDI 0 → 9,1 menit)</b><p>45 kejadian: JTR hanya 6 kejadian tetapi 53.065 pelanggan (4,6 menit); penyulang 37 kejadian, 45.134 pelanggan (4,5 menit). Tidak ada baseline 2025 untuk dibandingkan.</p></div>
+</div>
+</div></section>
+
+<section class="s"><div class="w rv">
+<div class="no">07 · SIMULATOR SKENARIO</div>
+<h2>Seberapa banyak SAIDI turun jika tiap penyebab ditekan?</h2>
+<p class="sub">Geser untuk mengurangi kontribusi tiap penyebab dari basis Oktober 2026. Garis hitam = SAIDI Oktober 2025 (77,8 menit).</p>
+<div class="sm" id="sm">
+<div id="sls"></div>
+<div><button class="bt" id="p1">Hulu kembali ke level 2025</button><button class="bt" id="p2">Hulu level 2025 + terencana −10%</button><button class="bt" id="p0">Reset</button></div>
+<div class="res"><span class="big" id="rs">106,1</span><span>menit/pelanggan</span><span class="pill" id="rp"></span></div>
+<div class="gb"><i id="gi"></i><s id="gs"></s></div>
+</div></div></section>
+
+<section class="s"><div class="w rv">
+<div class="no">08 · REKOMENDASI</div>
+<h2>Enam langkah prioritas, diurutkan menurut dampak terhadap SAIDI</h2>
+<p class="sub">Dasar data tertera pada tiap rekomendasi.</p>
+<table class="tb"><thead><tr><th>Prioritas</th><th>Inisiatif</th><th>Dasar data</th></tr></thead><tbody>
+<tr><td><span class="tag h">TINGGI</span></td><td><b>Percepat pemulihan gangguan hulu</b><br>Koordinasi rutin dengan unit transmisi/pembangkit, skenario manuver beban dan back-feed antarpenyulang.</td><td>54% SAIDI; durasi per padam 70 → 161 menit</td></tr>
+<tr><td><span class="tag h">TINGGI</span></td><td><b>Program pengendalian konduktor SUTM</b><br>Pemangkasan pohon, penggantian konduktor tua pada penyulang rawan, pasang fault indicator.</td><td>65% SAIDI tidak terencana; SAIFI +38%</td></tr>
+<tr><td><span class="tag h">TINGGI</span></td><td><b>Investigasi lonjakan FCO trafo</b><br>Audit pembebanan trafo, kualitas fuse link, arrester, dan korelasi dengan cuaca.</td><td>Kejadian 3 → 169; kWh tak tersalur 47 → 15.235</td></tr>
+<tr><td><span class="tag">SEDANG</span></td><td><b>Pertahankan efisiensi pemeliharaan</b><br>Standarkan pola konsolidasi pekerjaan, perluas pekerjaan bertegangan dan manuver beban.</td><td>SAIDI terencana −22%; durasi per padam −21%</td></tr>
+<tr><td><span class="tag">SEDANG</span></td><td><b>Kesiapsiagaan bencana</b><br>Tim siaga, stok material, dan SOP khusus penyulang serta JTR rawan.</td><td>9,1 menit SAIDI dari 45 kejadian</td></tr>
+<tr><td><span class="tag l">PEMELIHARAAN</span></td><td><b>Jaga capaian DS/LBS dan sisi pelanggan</b><br>Pertahankan kebijakan yang menurunkan gangguan DS/LBS dan kabel SR.</td><td>DS/LBS −75%; kejadian SR −41%</td></tr>
+</tbody></table>
+</div></section>
+
+<footer><div class="w"><b>Catatan data dan keterbatasan</b><ul>
+<li>Data kumulatif sampai Oktober tiap tahun; tren bulanan tidak tersedia, sehingga lonjakan satu kejadian besar dapat menggeser angka.</li>
+<li>Klasifikasi gangguan hulu berbeda: 2025 tercatat sebagai Transmisi, 2026 sebagai Pembangkit. Keduanya digabung sebagai “hulu” agar sebanding; sebaiknya dikonfirmasi ke unit pencatat.</li>
+<li>Pelanggan naik 3% (764.007 → 786.559). SAIDI/SAIFI sudah dinormalisasi per pelanggan.</li>
+<li>Tidak ada target SAIDI/SAIFI dalam data, sehingga penilaian baik/buruk hanya relatif terhadap tahun lalu.</li>
+<li>kWh tak tersalurkan turun walau SAIDI naik karena SAIDI berbobot pelanggan sedangkan kWh berbobot beban dan waktu kejadian.</li></ul></div></footer>
+
+<script>
+const f=(n,d=1)=>n.toLocaleString('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d});
+const $=s=>document.querySelector(s);
+/* KPI */
+const K=[['SAIDI','menit/pelanggan',77.81,106.13,1],['SAIFI','kali/pelanggan',1.0236,1.0677,3],['Jumlah gangguan','kejadian',34323,22696,0],['kWh tak tersalurkan','kWh',235971,218630,0]];
+$('#kp').innerHTML=K.map(k=>{const d=(k[3]-k[2])/k[2]*100;return `<div class="k"><small>${k[0]} · ${k[1]}</small><div class="big" data-v="${k[3]}" data-d="${k[4]}">0</div><div class="o">Okt 2025: ${f(k[2],k[4])}<span class="dl ${d>0?'bad':'good'}">${d>0?'+':'−'}${f(Math.abs(d))}%</span></div></div>`}).join('');
+function cu(el){const v=+el.dataset.v,d=+el.dataset.d,t0=performance.now();(function s(t){const p=Math.min((t-t0)/1300,1),e=1-Math.pow(1-p,3);el.textContent=f(v*e,d);if(p<1)requestAnimationFrame(s)})(t0)}
+document.querySelectorAll('[data-v]').forEach(cu);
+/* Waterfall */
+const W=[['SAIDI Okt 2025',77.81,1],['Gangguan hulu',26.14],['Bencana alam',9.10],['Padam terencana',-7.12],['Tidak terencana',0.21],['SAIDI Okt 2026',106.14,1]];
+let cum=0,mx=120,h='',l='';
+W.forEach(w=>{let lo,hh,c;if(w[2]){lo=0;hh=w[1];cum=w[1];c='var(--ac)'}else{lo=Math.min(cum,cum+w[1]);hh=Math.abs(w[1]);cum+=w[1];c=w[1]>0?'var(--bad)':'var(--good)'}
+const top=(lo+hh)/mx*100,lab=w[2]?f(w[1]):(w[1]>0?'+':'−')+f(Math.abs(w[1]));
+h+=`<div class="wc"><div class="bar" style="bottom:${lo/mx*100}%;height:${Math.max(hh/mx*100,.8)}%;background:${c}"></div><em style="bottom:calc(${top}% + 4px)">${lab}</em></div>`;l+=`<span>${w[0]}</span>`});
+$('#wf').innerHTML=h;$('#wl').innerHTML=l;
+/* Komposisi */
+const G=[['Gangguan hulu (Transmisi + Pembangkit)',[31.51,0.4518],[57.65,0.3582]],['Bencana alam',[0,0],[9.10,0.1248]],['Padam terencana',[31.89,0.3450],[24.77,0.3378]],['Gangguan tidak terencana distribusi',[14.41,0.2268],[14.62,0.2468]]];
+$('#cm').innerHTML=G.map((g,i)=>`<div class="row"><div>${g[0]}</div><div class="br"><div class="t"><div class="bar" id="a${i}" style="background:var(--old)"></div></div><u id="av${i}"></u></div><div class="br"><div class="t"><div class="bar" id="b${i}" style="background:var(--ac)"></div></div><u id="bv${i}"></u></div></div>`).join('');
+function rc(m){const mx=Math.max(...G.map(g=>g[2][m]),...G.map(g=>g[1][m])),d=m?3:1;G.forEach((g,i)=>{$('#a'+i).style.width=g[1][m]/mx*100+'%';$('#b'+i).style.width=g[2][m]/mx*100+'%';$('#av'+i).textContent=f(g[1][m],d);$('#bv'+i).textContent=f(g[2][m],d)})}
+rc(0);document.querySelectorAll('#tg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#tg button').forEach(x=>x.classList.remove('a'));b.classList.add('a');rc(+b.dataset.m)});
+/* Tabel fasilitas */
+const T=[['FCO Trafo',0.01,0.86,3,169],['Konduktor SUTM',8.66,9.44,318,380],['APP',0.16,0.22,3561,3370],['Recloser / PMCB',0.41,0.45,18,10],['JTR (kabel, tiang, PHB)',0.23,0.20,4948,3824],['CO Branch',2.07,1.99,57,210],['Kabel SR',0.94,0.78,23216,13662],['DS / LBS',1.57,0.40,49,29]];
+$('#tbd').innerHTML=T.map(t=>{const d=t[2]-t[1],w=Math.abs(d)/1.2*50;return `<tr><td>${t[0]}</td><td class="n">${f(t[1],2)}</td><td class="n">${f(t[2],2)}</td><td><div class="dv"><i class="${d>0?'p':'m'}" style="width:${w}%;${d>0?'':''}"></i></div></td><td class="n">${f(t[3],0)} → ${f(t[4],0)}</td></tr>`}).join('');
+/* Simulator */
+const S=[['Gangguan hulu',57.65],['Bencana alam',9.10],['Padam terencana',24.77],['Tidak terencana distribusi',14.62]];
+$('#sls').innerHTML=S.map((s,i)=>`<div class="sl"><span>${s[0]} <small style="color:var(--mut)">(${f(s[1])} mnt)</small></span><input type="range" min="0" max="100" value="0" id="r${i}"><b id="rv${i}">−0%</b></div>`).join('');
+const rs=()=>{let t=0;S.forEach((s,i)=>{const v=+$('#r'+i).value;$('#rv'+i).textContent='−'+v+'%';t+=s[1]*(1-v/100)});$('#rs').textContent=f(t);const df=t-77.81;$('#rp').textContent=df>0?`${f(df)} menit di atas Okt 2025`:`${f(-df)} menit di bawah Okt 2025`;$('#rp').className='pill '+(df>0?'bad':'good');$('#gi').style.width=t/120*100+'%';$('#gs').style.left=77.81/120*100+'%'};
+const sv=a=>{a.forEach((v,i)=>$('#r'+i).value=v);rs()};
+S.forEach((s,i)=>$('#r'+i).oninput=rs);$('#p0').onclick=()=>sv([0,0,0,0]);$('#p1').onclick=()=>sv([45.3,0,0,0]);$('#p2').onclick=()=>sv([45.3,0,10,0]);rs();
+/* Reveal + progress */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+addEventListener('scroll',()=>{const d=document.documentElement;$('#pg').style.width=scrollY/(d.scrollHeight-innerHeight)*100+'%'},{passive:true});
+</script></body></html>
