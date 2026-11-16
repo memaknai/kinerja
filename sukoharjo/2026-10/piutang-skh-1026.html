@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Analisis Piutang UP3 Sukoharjo — Okt 2026 vs Des 2025</title>
+<style>
+:root{--bg:#f3fbf9;--card:#fff;--tx:#0f2b2b;--mut:#5b7776;--bd:#d5ebe6;--teal:#0d9488;--lime:#65a30d;--sky:#0ea5e9;--cor:#e11d48;--amb:#d97706;--hero:linear-gradient(135deg,#0d9488,#0ea5e9 60%,#84cc16);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0a1a1a;--card:#112828;--tx:#e6f6f3;--mut:#8fb3ae;--bd:#1d3d3b;--teal:#2dd4bf;--lime:#a3e635;--sky:#38bdf8;--cor:#fb7185;--amb:#fbbf24}}
+:root[data-theme=dark]{--bg:#0a1a1a;--card:#112828;--tx:#e6f6f3;--mut:#8fb3ae;--bd:#1d3d3b;--teal:#2dd4bf;--lime:#a3e635;--sky:#38bdf8;--cor:#fb7185;--amb:#fbbf24}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.w{max-width:1100px;margin:auto;padding:0 16px 60px}
+header{background:var(--hero);color:#fff;padding:36px 16px 70px;border-radius:0 0 28px 28px}
+header .w{padding-bottom:0}h1{margin:6px 0;font-size:clamp(24px,5vw,38px);line-height:1.2}header p{margin:0;opacity:.92;max-width:680px}
+.pill{display:inline-block;background:#ffffff30;border-radius:99px;padding:2px 12px;font-size:12px;font-weight:600}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:6px;overflow-x:auto;background:var(--bg);padding:10px 16px;border-bottom:1px solid var(--bd)}
+nav a{white-space:nowrap;color:var(--mut);text-decoration:none;padding:5px 14px;border-radius:99px;font-weight:600;font-size:13px}nav a:hover{background:var(--teal);color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:-48px}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:18px;box-shadow:0 6px 20px #0d948812}
+.k small{color:var(--mut);font-weight:600}.k b{display:block;font-size:30px;margin:2px 0}.k span{font-size:13px;font-weight:600}
+.up{color:var(--cor)}.dn{color:var(--lime)}.ok{color:var(--teal)}
+h2{margin:44px 0 6px;font-size:23px}h2:before{content:"";display:inline-block;width:10px;height:22px;border-radius:4px;background:var(--hero);margin-right:10px;vertical-align:-3px}
+.sub{color:var(--mut);margin:0 0 14px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px}
+.ins{border-left:5px solid var(--teal)}.ins.r{border-color:var(--cor)}.ins.a{border-color:var(--amb)}.ins.s{border-color:var(--sky)}
+.ins h3{margin:0 0 4px;font-size:16px}.ins p{margin:0;color:var(--mut);font-size:14px}
+.tg{display:inline-block;font-size:11px;font-weight:700;padding:1px 9px;border-radius:99px;background:var(--teal);color:#fff;margin-bottom:6px}.r .tg{background:var(--cor)}.a .tg{background:var(--amb)}.s .tg{background:var(--sky)}
+.tog{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}.tog button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:99px;padding:5px 14px;cursor:pointer;font-weight:600}.tog button.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+canvas{max-height:340px}.kd{margin:8px 0 0;font-size:12.5px;color:var(--mut);line-height:1.45}.ch{position:relative;height:320px}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--bd)}th:first-child,td:first-child{text-align:left}th{color:var(--mut);font-size:12px}
+.act{display:flex;gap:12px;align-items:flex-start;cursor:pointer}.act input{margin-top:5px;accent-color:var(--teal);width:18px;height:18px}.act.done{opacity:.5;text-decoration:line-through}
+.bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--hero)}
+footer{color:var(--mut);font-size:12px;margin-top:40px}
+</style></head><body>
+<header><div class="w"><span class="pill">⚡ Analisis Piutang Listrik · TUL IV-04</span><h1>Analisis Piutang Listrik UP3 Sukoharjo</h1><p>Posisi Oktober 2026 dibandingkan Desember 2025: piutang pelanggan, tunggakan, kinerja penagihan, piutang ragu-ragu, dan benchmark terhadap UP3 se-wilayah.</p></div></header>
+<nav><a href="#ring">Ringkasan</a><a href="#ins">Insight</a><a href="#seg">Segmen</a><a href="#tung">Tunggakan</a><a href="#ragu">Ragu-ragu</a><a href="#bench">Benchmark</a><a href="#rek">Rekomendasi</a></nav>
+<div class="w">
+<div class="kpis" id="ring"></div>
+
+<h2 id="ins">Insight Utama</h2><p class="sub">Tujuh temuan yang paling menentukan arah tindakan.</p>
+<div class="g2" id="insg"></div>
+
+<h2 id="seg">Segmen Pelanggan</h2><p class="sub">Pilih tampilan untuk membandingkan Des 2025 dan Okt 2026.</p>
+<div class="c"><div class="tog" id="t1"><button class="on" data-m="v">Saldo piutang (Rp M)</button><button data-m="t">Tunggakan (Rp M)</button><button data-m="g">Pertumbuhan (%)</button></div><div class="ch"><canvas id="cs"></canvas></div>
+<div style="overflow-x:auto;margin-top:12px"><table id="tseg"></table></div></div>
+
+<h2 id="tung">Struktur &amp; Kualitas Tagihan</h2><p class="sub">Komposisi saldo akhir dan efektivitas penagihan.</p>
+<div class="g2"><div class="c"><div class="tog" id="t2"><button class="on" data-p="o">Okt 2026</button><button data-p="d">Des 2025</button></div><div class="ch"><canvas id="cd"></canvas></div></div>
+<div class="c"><h3 style="margin-top:0">Kinerja penagihan</h3><div id="col"></div></div></div>
+
+<h2 id="ragu">Piutang Ragu-ragu</h2><p class="sub">Saldo kecil secara nominal, namun tanpa pemulihan sama sekali.</p>
+<div class="c" style="overflow-x:auto"><table id="trg"></table></div>
+
+<h2 id="bench">Benchmark 12 UP3 Wilayah</h2><p class="sub">Pertumbuhan saldo piutang Okt 2026 vs Des 2025 (UP3 Yogyakarta dikeluarkan karena sejak 1 April 2026 menjadi UID tersendiri, terpisah dari Jawa Tengah, sehingga basis wilayah dibuat sebanding tanpa Yogyakarta). Sukoharjo disorot.</p>
+<div class="c"><div class="ch" style="height:400px"><canvas id="cb"></canvas></div></div><div class="c" style="margin-top:14px;overflow-x:auto"><h3 style="margin-top:0">Sukoharjo vs wilayah per segmen (basis sebanding)</h3><table id="treg"></table></div>
+
+<h2 id="rek">Rekomendasi Aksi</h2><p class="sub">Centang untuk melacak progres.</p>
+<div class="c"><div class="bar"><i id="pr" style="width:0"></i></div><div id="acts" style="margin-top:8px"></div></div>
+<footer>Sumber: Laporan TUL IV-04 UP3 Sukoharjo &amp; konsolidasi wilayah (Okt 2026, Des 2025). Perhitungan rasio adalah analisis internal; hipotesis penyebab perlu dikonfirmasi lapangan.</footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const M=1e9,f=(n,d=2)=>(n/M).toLocaleString('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d}),p=(n,d=1)=>n.toLocaleString('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d})+'%';
+const S=['Umum','TNI/Polri','Ins. Vertikal','Pemda','BUMN'];
+const O=[156401975250,1967118807,1339086287,6623843068,845125327],D=[146614365154,449719453,1021855974,6410095166,793199491];
+const OT=[13888548949,1325282429,860800,0,0],DT=[13928601297,110016347,0,0,0];
+const TO=167177148739,TD=155289235238,TuO=15214692178,TuD=14038617644;
+const gr=(a,b)=>(a/b-1)*100;
+const kp=[['Total Piutang Okt 2026',TO/M,'Rp M',gr(TO,TD),'vs Des 2025','Saldo seluruh tagihan listrik pelanggan yang belum dibayar per 31 Okt 2026 (rekening baru + berjalan + tunggakan), 419.115 lembar.'],['Tunggakan',TuO/M,'Rp M',gr(TuO,TuD),'vs Des 2025','Tagihan yang sudah lewat jatuh tempo dan belum dibayar (rekening tunggakan), 1.148 lembar. Rp15,21 M ini setara 9,1% dari total piutang.'],['Efektivitas Pelunasan',89.65,'%',-1.86,'vs Des (91,5%)','Persentase saldo awal piutang yang berhasil dilunasi selama Okt 2026 (Rp144,36 M dari Rp161,03 M). Makin tinggi makin baik.'],['Piutang Ragu-ragu',0.624,'Rp M',16.4,'vs Des 2025','Tagihan yang dinilai sulit tertagih dan dipindahkan ke pos ragu-ragu: 1.679 lembar, setara 0,37% dari total piutang.']];
+document.getElementById('ring').innerHTML=kp.map((k,i)=>`<div class="c k"><small>${k[0]}</small><b data-v="${k[1]}" data-d="${i==3?3:2}">0</b><span class="${k[3]>0&&i!=2?'up':k[3]<0?'up':'dn'}">${k[3]>0?'▲':'▼'} ${p(Math.abs(k[3]))} ${i==2?'poin':''} <em style="font-style:normal;color:var(--mut)">${k[4]}</em></span> <small>${k[2]}</small><p class="kd">${k[5]}</p></div>`).join('');
+document.querySelectorAll('.k b').forEach(e=>{const v=+e.dataset.v,d=+e.dataset.d;let t=0;const s=()=>{t+=.04;const x=Math.min(1,t),y=1-Math.pow(1-x,3);e.textContent=(v*y).toLocaleString('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d});if(x<1)requestAnimationFrame(s)};s()});
+const I=[['','Pertumbuhan terkendali, tetapi bukan dari pelanggan baru','Piutang naik Rp11,89 M (+7,7%), lebih rendah dari median UP3 (10,1%) dan peringkat ke-10 dari 12. Jumlah lembar nyaris datar (418.868 → 419.115), sehingga kenaikan berasal dari rata-rata tagihan per lembar: Rp371 rb → Rp399 rb (+7,6%).'],
+['s','Perputaran piutang stabil ±33 hari','Saldo piutang setara 33,4 hari tagihan (Des: 33,3 hari). Siklus bulanan sehat; sekitar 3 hari di antaranya “tertahan” sebagai tunggakan.'],
+['r','Rp13,9 M tunggakan Umum macet di hanya 78 lembar','Tunggakan Umum nyaris tidak bergerak (Rp13,93 M → Rp13,89 M), rata-rata Rp178 jt per lembar. Bulan Okt hanya Rp0,15 M tunggakan yang tertagih (0,97% vs 5,0% di Des). Ini piutang inti yang butuh penanganan khusus, bukan penagihan rutin.'],
+['r','Tunggakan TNI/Polri melonjak 12×','Dari Rp0,11 M (303 lembar) menjadi Rp1,33 M (1.069 lembar); 69% lembar TNI/Polri menunggak. Saldo TNI/Polri se-wilayah (tanpa Yogyakarta) juga naik 169%, sehingga pola ini kemungkinan terkait siklus pencairan anggaran (hipotesis, perlu dikonfirmasi) dan berpotensi sementara. Namun kenaikan Sukoharjo (+337%) lebih tajam dari wilayah.'],
+['','Pemda, BUMN, dan Instansi Vertikal sangat bersih','Pemda (Rp6,62 M, 1.966 lembar) dan BUMN (Rp0,85 M) tanpa tunggakan; Instansi Vertikal hanya Rp0,86 jt. Ketiganya adalah benchmark disiplin bayar yang bisa dijaga dengan pengingat otomatis.'],
+['s','Kualitas pencatatan membaik, pembayaran 100% online','Rekening susulan turun Rp1,996 M → Rp0,747 M dan rekening perbaikan Rp1,56 M → Rp0,12 M. Seluruh pelunasan lewat kanal online, tanpa off-line maupun nota buku.'],
+['a','Piutang ragu-ragu tumbuh, tanpa pemulihan atau penghapusan','Saldo Rp536 jt → Rp624 jt (+16,4%). Pelunasan dan penghapusan nol. Dipindahkan ke ragu-ragu di laporan piutang listrik: 33 lembar/Rp414 jt, sedangkan penambahan di laporan ragu-ragu hanya 27 lembar/Rp28,7 jt. Selisih perlu direkonsiliasi.'],['s','Sukoharjo tumbuh lebih lambat dari wilayah dan porsinya menyusut','Dengan basis sebanding (tanpa Yogyakarta), piutang wilayah naik 13,4% dari Rp2.384 M ke Rp2.704 M, sementara Sukoharjo 7,7%. Porsi Sukoharjo turun 6,51% → 6,18%. Segmen Umum wilayah naik 12,4% vs Sukoharjo 6,7%; Pemda dan BUMN wilayah justru turun, sedangkan Sukoharjo naik tipis.']];
+document.getElementById('insg').innerHTML=I.map(x=>`<div class="c ins ${x[0]}"><span class="tg">${{'':'Positif/Info',r:'Risiko',a:'Perhatian',s:'Info'}[x[0]]}</span><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join('');
+const tx=getComputedStyle(document.documentElement).getPropertyValue('--tx')||'#333',gc='#88888830';
+Chart.defaults.color=getComputedStyle(document.body).color;Chart.defaults.font.family='system-ui';
+const cs=new Chart('cs',{type:'bar',data:{labels:S,datasets:[]},options:{maintainAspectRatio:false,scales:{y:{grid:{color:gc}},x:{grid:{display:false}}},plugins:{legend:{position:'bottom'}}}});
+function seg(m){const a=m=='t'?DT:D,b=m=='t'?OT:O;let d1,d2;if(m=='g'){cs.data.datasets=[{label:'Pertumbuhan %',data:O.map((v,i)=>gr(v,D[i])),backgroundColor:O.map((v,i)=>gr(v,D[i])>20?'#e11d48':'#0d9488'),borderRadius:8}]}else cs.data.datasets=[{label:'Des 2025',data:a.map(v=>v/M),backgroundColor:'#84cc16',borderRadius:8},{label:'Okt 2026',data:b.map(v=>v/M),backgroundColor:'#0d9488',borderRadius:8}];cs.update()}
+seg('v');document.querySelectorAll('#t1 button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#t1 button').forEach(x=>x.classList.remove('on'));b.classList.add('on');seg(b.dataset.m)});
+document.getElementById('tseg').innerHTML='<tr><th>Segmen</th><th>Des 2025 (Rp M)</th><th>Okt 2026 (Rp M)</th><th>Δ %</th><th>Tunggakan Okt (Rp M)</th><th>% menunggak</th></tr>'+S.map((s,i)=>`<tr><td>${s}</td><td>${f(D[i],3)}</td><td>${f(O[i],3)}</td><td class="${gr(O[i],D[i])>15?'up':''}">${p(gr(O[i],D[i]))}</td><td>${f(OT[i],3)}</td><td class="${OT[i]/O[i]>.2?'up':''}">${p(OT[i]/O[i]*100)}</td></tr>`).join('')+`<tr><th>Total</th><th>${f(TD,3)}</th><th>${f(TO,3)}</th><th>${p(gr(TO,TD))}</th><th>${f(TuO,3)}</th><th>${p(TuO/TO*100)}</th></tr>`;
+const CP={o:[151532762888,429693673,15214692178],d:[141142312511,108305083,14038617644]};
+const cd=new Chart('cd',{type:'doughnut',data:{labels:['Rekening baru','Rekening berjalan','Tunggakan'],datasets:[{data:CP.o,backgroundColor:['#0d9488','#38bdf8','#e11d48'],borderWidth:0}]},options:{maintainAspectRatio:false,cutout:'62%',plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>c.label+': Rp'+f(c.raw)+' M'}}}}});
+document.querySelectorAll('#t2 button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#t2 button').forEach(x=>x.classList.remove('on'));b.classList.add('on');cd.data.datasets[0].data=CP[b.dataset.p];cd.update()});
+const col=[['Pelunasan vs saldo awal',89.65,91.51],['Pelunasan tunggakan vs saldo awal tunggakan',0.97,5.0],['Tunggakan / total piutang',9.10,9.04]];
+document.getElementById('col').innerHTML=col.map(c=>`<div style="margin-bottom:14px"><b>${c[0]}</b><div style="font-size:13px;color:var(--mut)">Okt 2026: ${p(c[1],2)} · Des 2025: ${p(c[2],2)}</div><div class="bar"><i style="width:${c[1]}%"></i></div></div>`).join('')+'<p class="sub" style="font-size:13px">Pelunasan tagihan berjalan tetap ±99,8% (Rp143,6 M dari Rp144,0 M). Penurunan efektivitas total berasal dari tunggakan lama yang hampir tidak tertagih.</p>';
+document.getElementById('trg').innerHTML='<tr><th>Uraian</th><th>Des 2025 lembar</th><th>Des 2025 Rp</th><th>Okt 2026 lembar</th><th>Okt 2026 Rp</th></tr><tr><td>Saldo awal</td><td>1.595</td><td>535.094.539</td><td>1.652</td><td>595.369.748</td></tr><tr><td>Pelunasan</td><td>3</td><td>415.172</td><td>0</td><td>0</td></tr><tr><td>Penambahan dari piutang listrik</td><td>18</td><td>1.432.769</td><td>27</td><td>28.709.074</td></tr><tr><th>Saldo akhir</th><th>1.610</th><th>536.112.136</th><th>1.679</th><th>624.078.822</th></tr><tr><td>% terhadap total piutang</td><td></td><td>0,345%</td><td></td><td>0,373%</td></tr><tr><td>Cakupan terhadap tunggakan</td><td></td><td>3,8%</td><td></td><td>4,1%</td></tr>';
+const B=[['Cilacap',150.359,145.842],['Grobogan',174.572,155.130],['Klaten',169.789,155.271],['Kudus',349.010,315.626],['Magelang',119.630,109.297],['Pekalongan',178.128,130.389],['Purwokerto',149.090,140.163],['Salatiga',136.227,119.883],['Semarang',547.232,449.579],['Sukoharjo',167.177,155.289],['Surakarta',326.676,298.168],['Tegal',236.462,209.822]].map(x=>[x[0],gr(x[1],x[2])]).sort((a,b)=>b[1]-a[1]);
+new Chart('cb',{type:'bar',data:{labels:B.map(x=>x[0]),datasets:[{data:B.map(x=>x[1]),backgroundColor:B.map(x=>x[0]=='Sukoharjo'?'#84cc16':'#0d948899'),borderRadius:6}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>p(c.raw)}}},scales:{x:{grid:{color:gc},ticks:{callback:v=>v+'%'}},y:{grid:{display:false}}}}});
+const RD=[2190961096326,24331730007,38951571277,87849743266,42365195932],RO=[2463101946637,65547982311,48104163455,85880138524,41717562050];
+document.getElementById('treg').innerHTML='<tr><th>Segmen</th><th>Sukoharjo Δ%</th><th>Wilayah Δ%</th><th>Porsi Sukoharjo Des</th><th>Porsi Sukoharjo Okt</th></tr>'+S.map((s,i)=>`<tr><td>${s}</td><td>${p(gr(O[i],D[i]))}</td><td>${p(gr(RO[i],RD[i]))}</td><td>${p(D[i]/RD[i]*100,2)}</td><td>${p(O[i]/RO[i]*100,2)}</td></tr>`).join('')+`<tr><th>Total</th><th>${p(gr(TO,TD))}</th><th>${p(gr(2704351792977,2384459336808))}</th><th>${p(TD/2384459336808*100,2)}</th><th>${p(TO/2704351792977*100,2)}</th></tr>`;
+const A=[['Tinggi','Bentuk tim khusus 78 lembar tunggakan Umum (Rp13,9 M): verifikasi status (aktif/tutup/sengketa), negosiasi cicilan, pemutusan, dan jalur hukum. Target: pelunasan tunggakan ≥5% per bulan seperti Des.'],['Tinggi','Rekonsiliasi selisih pemindahan ke ragu-ragu (Rp414 jt vs Rp28,7 jt; 33 vs 27 lembar) sebelum penutupan buku.'],['Tinggi','Koordinasi dengan satker TNI/Polri untuk 1.069 lembar menunggak: jadwal pembayaran sesuai pencairan anggaran dan PIC per satker.'],['Sedang','Evaluasi kecukupan penyisihan: ragu-ragu hanya 4,1% dari tunggakan; tetapkan kebijakan umur piutang dan target pemulihan/penghapusan.'],['Sedang','Pertahankan Pemda, BUMN, dan Instansi Vertikal lewat pengingat otomatis dan monitoring bulanan.'],['Sedang','Selidiki kenaikan rata-rata tagihan per lembar (+7,6%): musiman, tarif, atau perubahan golongan.'],['Rendah','Gunakan basis pembanding sebanding (tanpa Yogyakarta, UID tersendiri sejak 1 April 2026) pada pelaporan wilayah berikutnya.']];
+const ac=document.getElementById('acts');ac.innerHTML=A.map((a,i)=>`<label class="act" style="padding:8px 0;border-bottom:1px solid var(--bd)"><input type="checkbox" data-i="${i}"><span><span class="tg" style="background:${{Tinggi:'var(--cor)',Sedang:'var(--amb)',Rendah:'var(--sky)'}[a[0]]}">${a[0]}</span><br>${a[1]}</span></label>`).join('');
+ac.onchange=()=>{const n=ac.querySelectorAll('input:checked').length;document.getElementById('pr').style.width=n/A.length*100+'%';ac.querySelectorAll('label').forEach(l=>l.classList.toggle('done',l.querySelector('input').checked))};
+</script></body></html>
